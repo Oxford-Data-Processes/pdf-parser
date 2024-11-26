@@ -1,18 +1,111 @@
 {
+    "metadata": {
+        "template_id": "barclays_statement_template",
+        "version": "1.0.0"
+    },
     "rules": [
         {
-            "page_numbers": [1, 2, 3, 4],
-            "coordinates": [[50, 100], [50, 200]], 
-            "line_delimiters": ["\n", ", "],
-            "fields": ["sort_code", "account_number", "customer_name", "start_balance", "money_in", "money_out", "end_balance", "overdraft_limit"],
-            "ignore_page": false
+            "rule_id": "customer_details",
+            "type": "form",
+            "config": {
+                "field_name": "customer_name",
+                "coordinates": {
+                    "top_left": { "x": 50, "y": 150 },
+                    "bottom_right": { "x": 300, "y": 200 }
+                },
+                "type": "text"
+            }
         },
         {
-            "page_numbers": [2, 3],
-            "coordinates": [[50, 300], [50, 400]], 
-            "line_delimiters": ["\n", ", "],
-            "fields": ["date", "description", "money_in", "money_out", "balance"],
-            "ignore_page": false
+            "rule_id": "sort_code",
+            "type": "form",
+            "config": {
+                "field_name": "sort_code",
+                "coordinates": {
+                    "top_left": { "x": 50, "y": 200 },
+                    "bottom_right": { "x": 150, "y": 250 }
+                },
+                "type": "text"
+            }
+        },
+        {
+            "rule_id": "account_number",
+            "type": "form",
+            "config": {
+                "field_name": "account_number",
+                "coordinates": {
+                    "top_left": { "x": 200, "y": 200 },
+                    "bottom_right": { "x": 350, "y": 250 }
+                },
+                "type": "text"
+            }
+        },
+        {
+            "rule_id": "transactions_page_2_onwards",
+            "type": "table",
+            "config": {
+                "header": "Your transactions",
+                "columns": [
+                    {
+                        "field_name": "date",
+                        "coordinates": {
+                            "top_left": { "x": 50, "y": 100 },
+                            "bottom_right": { "x": 100, "y": 750 }
+                        },
+                        "type": "text"
+                    },
+                    {
+                        "field_name": "description",
+                        "coordinates": {
+                            "top_left": { "x": 100, "y": 100 },
+                            "bottom_right": { "x": 300, "y": 750 }
+                        },
+                        "type": "text"
+                    },
+                    {
+                        "field_name": "money_out",
+                        "coordinates": {
+                            "top_left": { "x": 300, "y": 100 },
+                            "bottom_right": { "x": 400, "y": 750 }
+                        },
+                        "type": "text"
+                    },
+                    {
+                        "field_name": "money_in",
+                        "coordinates": {
+                            "top_left": { "x": 400, "y": 100 },
+                            "bottom_right": { "x": 500, "y": 750 }
+                        },
+                        "type": "text"
+                    },
+                    {
+                        "field_name": "balance",
+                        "coordinates": {
+                            "top_left": { "x": 500, "y": 100 },
+                            "bottom_right": { "x": 600, "y": 750 }
+                        },
+                        "type": "text"
+                    }
+                ],
+                "row_delimiter": {
+                    "type": "line"
+                }
+            }
+        }
+    ],
+    "pages": [
+        {
+            "page_numbers": ["1"],
+            "forms": ["customer_details", "sort_code", "account_number"]
+        },
+        {
+            "page_numbers": ["2-(-2)"],
+            "forms": [],
+            "tables": ["transactions_page_2_onwards"]
+        },
+        {
+            "page_numbers": ["-1"],
+            "ignore": true
         }
     ]
 }
