@@ -19,7 +19,7 @@ class FormParser:
         return items_in_box
 
     def get_text_from_items(self, items):
-        return "".join([item["text"] for item in items])
+        return " ".join([item["text"] for item in items])
 
     def get_text_from_page(self, page_content, coordinates):
         items_within_coordinates = self.get_items_in_bounding_box(

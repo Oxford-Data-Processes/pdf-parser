@@ -11,12 +11,12 @@
                 "field_name": "sort_code",
                 "coordinates": {
                     "top_left": {
-                        "x": 0.639,
-                        "y": 0.427
+                        "x": 0.799,
+                        "y": 0.104
                     },
                     "bottom_right": {
-                        "x": 0.705,
-                        "y": 0.438
+                        "x": 0.858,
+                        "y": 0.116
                     }
                 },
                 "type": "text"
@@ -28,8 +28,14 @@
             "config": {
                 "field_name": "account_number",
                 "coordinates": {
-                    "top_left": { "x": 0.550299, "y": 0.604435 },
-                    "bottom_right": { "x": 0.602451, "y": 0.620161 }
+                    "top_left": {
+                        "x": 0.810,
+                        "y": 0.115
+                    },
+                    "bottom_right": {
+                        "x": 0.880,
+                        "y": 0.128
+                    }
                 },
                 "type": "text"
             }
@@ -40,8 +46,14 @@
             "config": {
                 "field_name": "customer_name",
                 "coordinates": {
-                    "top_left": { "x": 0.412653, "y": 0.679839 },
-                    "bottom_right": { "x": 0.550299, "y": 0.697984 }
+                    "top_left": {
+                        "x": 0.725,
+                        "y": 0.082
+                    },
+                    "bottom_right": {
+                        "x": 0.948,
+                        "y": 0.102
+                    }
                 },
                 "type": "text"
             }
@@ -52,8 +64,14 @@
             "config": {
                 "field_name": "start_balance",
                 "coordinates": {
-                    "top_left": { "x": 0.61271, "y": 0.267742 },
-                    "bottom_right": { "x": 0.661157, "y": 0.283871 }
+                    "top_left": {
+                        "x": 0.864,
+                        "y": 0.189
+                    },
+                    "bottom_right": {
+                        "x": 0.965,
+                        "y": 0.209
+                    }
                 },
                 "type": "text"
             }
@@ -166,12 +184,8 @@
     ],
     "pages": [
         {
-            "page_numbers": "1",
-            "forms": ["customer_name", "sort_code", "account_number"]
-        },
-        {
             "page_numbers": "2",
-            "forms": ["start_balance", "money_in", "money_out", "end_balance", "overdraft_limit"]
+            "forms": ["sort_code", "account_number", "customer_name", "start_balance", "money_in", "money_out", "end_balance", "overdraft_limit"]
         },
         {
             "page_numbers": "2:-2",
