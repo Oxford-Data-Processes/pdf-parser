@@ -112,8 +112,7 @@
           "type": "object",
           "properties": {
             "page_numbers": {
-              "type": "array",
-              "items": { "type": "string" }
+              "type": "string"
             },
             "forms": {
               "type": "array",

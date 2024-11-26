@@ -82,8 +82,14 @@
             "config": {
                 "field_name": "money_in",
                 "coordinates": {
-                    "top_left": { "x": 0.61271, "y": 0.295161 },
-                    "bottom_right": { "x": 0.669137, "y": 0.312903 }
+                    "top_left": {
+                        "x": 0.871,
+                        "y": 0.209
+                    },
+                    "bottom_right": {
+                        "x": 0.957,
+                        "y": 0.226
+                    }
                 },
                 "type": "text"
             }
@@ -94,8 +100,14 @@
             "config": {
                 "field_name": "money_out",
                 "coordinates": {
-                    "top_left": { "x": 0.61271, "y": 0.320565 },
-                    "bottom_right": { "x": 0.669137, "y": 0.338306 }
+                    "top_left": {
+                        "x": 0.871,
+                        "y": 0.226
+                    },
+                    "bottom_right": {
+                        "x": 0.957,
+                        "y": 0.244
+                    }
                 },
                 "type": "text"
             }
@@ -106,8 +118,14 @@
             "config": {
                 "field_name": "end_balance",
                 "coordinates": {
-                    "top_left": { "x": 0.61271, "y": 0.346371 },
-                    "bottom_right": { "x": 0.661157, "y": 0.3625 }
+                    "top_left": {
+                        "x": 0.87,
+                        "y": 0.244
+                    },
+                    "bottom_right": {
+                        "x": 0.959,
+                        "y": 0.262
+                    }
                 },
                 "type": "text"
             }
@@ -118,8 +136,14 @@
             "config": {
                 "field_name": "overdraft_limit",
                 "coordinates": {
-                    "top_left": { "x": 0.626959, "y": 0.421371 },
-                    "bottom_right": { "x": 0.668282, "y": 0.438306 }
+                    "top_left": {
+                        "x": 0.887,
+                        "y": 0.296
+                    },
+                    "bottom_right": {
+                        "x": 0.97,
+                        "y": 0.317
+                    }
                 },
                 "type": "text"
             }
