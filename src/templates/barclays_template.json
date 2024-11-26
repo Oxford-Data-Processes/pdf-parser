@@ -10,8 +10,8 @@
             "config": {
                 "field_name": "customer_name",
                 "coordinates": {
-                    "top_left": { "x": 50, "y": 150 },
-                    "bottom_right": { "x": 300, "y": 200 }
+                    "top_left": { "x": 0.23, "y": 0.15 },
+                    "bottom_right": { "x": 0.3, "y": 0.2 }
                 },
                 "type": "text"
             }
@@ -22,8 +22,8 @@
             "config": {
                 "field_name": "sort_code",
                 "coordinates": {
-                    "top_left": { "x": 50, "y": 200 },
-                    "bottom_right": { "x": 150, "y": 250 }
+                    "top_left": { "x": 0.23, "y": 0.2 },
+                    "bottom_right": { "x": 0.3, "y": 0.25 }
                 },
                 "type": "text"
             }
@@ -34,8 +34,8 @@
             "config": {
                 "field_name": "account_number",
                 "coordinates": {
-                    "top_left": { "x": 200, "y": 200 },
-                    "bottom_right": { "x": 350, "y": 250 }
+                    "top_left": { "x": 0.23, "y": 0.2 },
+                    "bottom_right": { "x": 0.3, "y": 0.25 }
                 },
                 "type": "text"
             }
@@ -49,40 +49,40 @@
                     {
                         "field_name": "date",
                         "coordinates": {
-                            "top_left": { "x": 50, "y": 100 },
-                            "bottom_right": { "x": 100, "y": 750 }
+                            "top_left": { "x": 0.23, "y": 0.15 },
+                            "bottom_right": { "x": 0.3, "y": 0.2 }
                         },
                         "type": "text"
                     },
                     {
                         "field_name": "description",
                         "coordinates": {
-                            "top_left": { "x": 100, "y": 100 },
-                            "bottom_right": { "x": 300, "y": 750 }
+                            "top_left": { "x": 0.23, "y": 0.2 },
+                            "bottom_right": { "x": 0.3, "y": 0.25 }
                         },
                         "type": "text"
                     },
                     {
                         "field_name": "money_out",
                         "coordinates": {
-                            "top_left": { "x": 300, "y": 100 },
-                            "bottom_right": { "x": 400, "y": 750 }
+                            "top_left": { "x": 0.23, "y": 0.15 },
+                            "bottom_right": { "x": 0.3, "y": 0.2 }
                         },
                         "type": "text"
                     },
                     {
                         "field_name": "money_in",
                         "coordinates": {
-                            "top_left": { "x": 400, "y": 100 },
-                            "bottom_right": { "x": 500, "y": 750 }
+                            "top_left": { "x": 0.23, "y": 0.2 },
+                            "bottom_right": { "x": 0.3, "y": 0.25 }
                         },
                         "type": "text"
                     },
                     {
                         "field_name": "balance",
                         "coordinates": {
-                            "top_left": { "x": 500, "y": 100 },
-                            "bottom_right": { "x": 600, "y": 750 }
+                            "top_left": { "x": 0.23, "y": 0.15 },
+                            "bottom_right": { "x": 0.3, "y": 0.2 }
                         },
                         "type": "text"
                     }

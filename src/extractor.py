@@ -8,10 +8,10 @@ class TextExtractor:
 
     def extract_text(self):
         """
-        Extract text and bounding box information from the PDF file.
+        Extract text, bounding box information, and line coordinates from the PDF file.
 
         Returns:
-            dict: Dictionary containing extracted text, bounding box information, number of pages, and dimensions.
+            dict: Dictionary containing extracted text, bounding box information, line coordinates, number of pages, and dimensions.
         """
         with pdfplumber.open(io.BytesIO(self.pdf_bytes)) as pdf:
             data = {
@@ -41,8 +41,26 @@ class TextExtractor:
                             },
                         }
                     )
+
+                # Extracting lines
+                lines = page.lines
+                line_coordinates = []
+                for line in lines:
+                    line_coordinates.append(
+                        {
+                            "x0": line["x0"],
+                            "y0": line["y0"],
+                            "x1": line["x1"],
+                            "y1": line["y1"],
+                        }
+                    )
+
                 data["pages"].append(
-                    {"page_number": page_num + 1, "content": page_data}
+                    {
+                        "page_number": page_num + 1,
+                        "content": page_data,
+                        "lines": line_coordinates,
+                    }
                 )
 
             return data
