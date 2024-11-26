@@ -150,35 +150,35 @@
             },
             {
               "date": "2023-04-11",
-              "description": "Bill Payment to E J ThorneloeRef: Cambridge Day",
+              "description": "Bill Payment to E J Thorneloe Ref: Cambridge Day",
               "money_in": null,
               "money_out": "4.39",
               "balance": "65.16"
             },
             {
               "date": "2023-04-11",
-              "description": "Transfer From Sort Code 20-44-51Account 13415759\nRef: Mobile-Channel",
+              "description": "Transfer From Sort Code 20-44-51 Account 13415759 Ref: Mobile-Channel",
               "money_in": "20.00",
               "money_out": null,
               "balance": "65.16"
             },
             {
               "date": "2023-04-11",
-              "description": "Transfer From Sort Code 20-44-51Account 13415759\nRef: Mobile-Channel",
+              "description": "Transfer From Sort Code 20-44-51 Account 13415759 Ref: Mobile-Channel",
               "money_in": "20.00",
               "money_out": null,
               "balance": "65.16"
             },
             {
               "date": "2023-04-11",
-              "description": "Transfer From Sort Code 20-44-51Account 13415759\nRef: Mobile-Channel",
+              "description": "Transfer From Sort Code 20-44-51 Account 13415759 Ref: Mobile-Channel",
               "money_in": "60.00",
               "money_out": null,
               "balance": "65.16"
             },
             {
               "date": "2023-04-12",
-              "description": "Transfer to Sort Code 20-44-51Account 13415759\nRef: Mobile-Channel",
+              "description": "Transfer to Sort Code 20-44-51 Account 13415759 Ref: Mobile-Channel",
               "money_in": null,
               "money_out": "1400.00",
               "balance": "65.16"
