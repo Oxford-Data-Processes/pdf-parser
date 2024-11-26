@@ -167,7 +167,7 @@
     "pages": [
         {
             "page_numbers": "1",
-            "forms": ["customer_details", "sort_code", "account_number"]
+            "forms": ["customer_name", "sort_code", "account_number"]
         },
         {
             "page_numbers": "2",
