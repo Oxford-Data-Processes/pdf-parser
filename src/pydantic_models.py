@@ -1,5 +1,5 @@
-from pydantic import BaseModel
-from typing import List
+from pydantic import BaseModel, RootModel
+from typing import List, Optional, Dict, Any
 
 
 class Metadata(BaseModel):
@@ -8,19 +8,14 @@ class Metadata(BaseModel):
     number_of_pages: int
 
 
-class Transaction(BaseModel):
-    table_header: str
-    data: List[dict]
-
-
 class Table(BaseModel):
     table_header: str
-    data: List[Transaction]
+    data: List[RootModel]
 
 
 class Page(BaseModel):
-    forms: dict
-    tables: List[Table]
+    forms: Optional[List[RootModel]]
+    tables: Optional[List[Table]]
 
 
 class Document(BaseModel):
