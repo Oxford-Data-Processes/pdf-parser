@@ -1,0 +1,18 @@
+{
+    "rules": [
+        {
+            "page_numbers": [1, 2, 3, 4],
+            "coordinates": [[50, 100], [50, 200]], 
+            "line_delimiters": ["\n", ", "],
+            "fields": ["sort_code", "account_number", "customer_name", "start_balance", "money_in", "money_out", "end_balance", "overdraft_limit"],
+            "ignore_page": false
+        },
+        {
+            "page_numbers": [2, 3],
+            "coordinates": [[50, 300], [50, 400]], 
+            "line_delimiters": ["\n", ", "],
+            "fields": ["date", "description", "money_in", "money_out", "balance"],
+            "ignore_page": false
+        }
+    ]
+}
