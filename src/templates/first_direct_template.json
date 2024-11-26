@@ -1,0 +1,285 @@
+{
+    "metadata": {
+        "template_id": "first_direct_statement_template", 
+        "version": "1.0.0"
+    },
+    "rules": [
+        {
+            "rule_id": "customer_name",
+            "type": "form",
+            "config": {
+                "field_name": "customer_name",
+                "coordinates": {
+                    "top_left": {
+                        "x": 0.107,
+                        "y": 0.443
+                    },
+                    "bottom_right": {
+                        "x": 0.443,
+                        "y": 0.458
+                    }
+                },
+                "type": "text"
+            }
+        },
+        {
+            "rule_id": "sort_code",
+            "type": "form",
+            "config": {
+                "field_name": "sort_code",
+                "coordinates": {
+                    "top_left": {
+                        "x": 0.613,
+                        "y": 0.443
+                    },
+                    "bottom_right": {
+                        "x": 0.705,
+                        "y": 0.46
+                    }
+                },
+                "type": "text"
+            }
+        },
+        {
+            "rule_id": "account_number",
+            "type": "form",
+            "config": {
+                "field_name": "account_number",
+                "coordinates": {
+                    "top_left": {
+                        "x": 0.713,
+                        "y": 0.443
+                    },
+                    "bottom_right": {
+                        "x": 0.849,
+                        "y": 0.456
+                    }
+                },
+                "type": "text"
+            }
+        },
+        {
+            "rule_id": "start_balance",
+            "type": "form",
+            "config": {
+                "field_name": "start_balance",
+                "coordinates": {
+                    "top_left": {
+                        "x": 0.77,
+                        "y": 0.237
+                    },
+                    "bottom_right": {
+                        "x": 0.961,
+                        "y": 0.25
+                    }
+                },
+                "type": "text"
+            }
+        },
+        {
+            "rule_id": "transactions_first_page",
+            "type": "table",
+            "config": {
+                "columns": [
+                    {
+                        "field_name": "date",
+                        "coordinates": {
+                            "top_left": {
+                                "x": 0.104,
+                                "y": 0.541
+                            },
+                            "bottom_right": {
+                                "x": 0.191,
+                                "y": 0.894
+                            }
+                        },
+                        "type": "text"
+                    },
+                    {
+                        "field_name": "type",
+                        "coordinates": {
+                            "top_left": {
+                                "x": 0.2,
+                                "y": 0.536
+                            },
+                            "bottom_right": {
+                                "x": 0.254,
+                                "y": 0.895
+                            }
+                        },
+                        "type": "text"
+                    },
+                    {
+                        "field_name": "description",
+                        "coordinates": {
+                            "top_left": {
+                                "x": 0.258,
+                                "y": 0.541
+                            },
+                            "bottom_right": {
+                                "x": 0.589,
+                                "y": 0.893
+                            }
+                        },
+                        "type": "text"
+                    },
+                    {
+                        "field_name": "money_out",
+                        "coordinates": {
+                            "top_left": {
+                                "x": 0.625,
+                                "y": 0.541
+                            },
+                            "bottom_right": {
+                                "x": 0.715,
+                                "y": 0.904
+                            }
+                        },
+                        "type": "text"
+                    },
+                    {
+                        "field_name": "money_in",
+                        "coordinates": {
+                            "top_left": {
+                                "x": 0.769,
+                                "y": 0.528
+                            },
+                            "bottom_right": {
+                                "x": 0.868,
+                                "y": 0.905
+                            }
+                        },
+                        "type": "text"
+                    },
+                    {
+                        "field_name": "balance",
+                        "coordinates": {
+                            "top_left": {
+                                "x": 0.906,
+                                "y": 0.539
+                            },
+                            "bottom_right": {
+                                "x": 0.984,
+                                "y": 0.893
+                            }
+                        },
+                        "type": "text"
+                    }
+                ],
+                "row_delimiter": {
+                    "type": "line"
+                }
+            }
+        },
+        {
+            "rule_id": "transactions_middle",
+            "type": "table",
+            "config": {
+                "columns": [
+                    {
+                        "field_name": "date",
+                        "coordinates": {
+                            "top_left": {
+                                "x": 0.109,
+                                "y": 0.315
+                            },
+                            "bottom_right": {
+                                "x": 0.194,
+                                "y": 0.954
+                            }
+                        },
+                        "type": "text"
+                    },
+                    {
+                        "field_name": "type",
+                        "coordinates": {
+                            "top_left": {
+                                "x": 0.202,
+                                "y": 0.309
+                            },
+                            "bottom_right": {
+                                "x": 0.253,
+                                "y": 0.95
+                            }
+                        },
+                        "type": "text"
+                    },
+                    {
+                        "field_name": "description",
+                        "coordinates": {
+                            "top_left": {
+                                "x": 0.255,
+                                "y": 0.319
+                            },
+                            "bottom_right": {
+                                "x": 0.612,
+                                "y": 0.951
+                            }
+                        },
+                        "type": "text"
+                    },
+                    {
+                        "field_name": "money_out",
+                        "coordinates": {
+                            "top_left": {
+                                "x": 0.618,
+                                "y": 0.305
+                            },
+                            "bottom_right": {
+                                "x": 0.721,
+                                "y": 0.946
+                            }
+                        },
+                        "type": "text"
+                    },
+                    {
+                        "field_name": "money_in",
+                        "coordinates": {
+                            "top_left": {
+                                "x": 0.618,
+                                "y": 0.305
+                            },
+                            "bottom_right": {
+                                "x": 0.721,
+                                "y": 0.946
+                            }
+                        },
+                        "type": "text"
+                    },
+                    {
+                        "field_name": "balance",
+                        "coordinates": {
+                            "top_left": {
+                                "x": 0.881,
+                                "y": 0.321
+                            },
+                            "bottom_right": {
+                                "x": 0.984,
+                                "y": 0.961
+                            }
+                        },
+                        "type": "text"
+                    }
+                ],
+                "row_delimiter": {
+                    "type": "line"
+                }
+            }
+        }
+    ],
+    "pages": [
+        {
+            "page_numbers": ["1"],
+            "forms": ["customer_name", "sort_code", "account_number", "start_balance"],
+            "tables": ["transactions_first_page"]
+        },
+        {
+            "page_numbers": ["2-(-1)"],
+            "tables": ["transactions_middle_page"]
+        },
+        {
+            "page_numbers": ["-1"],
+            "tables": ["transactions_last_page"]
+        }
+    ]
+}

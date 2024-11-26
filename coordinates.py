@@ -4,11 +4,37 @@ import matplotlib.patches as patches
 from PIL import Image
 import json
 import numpy as np
+import os
+import glob
 
 class PDFCoordinateFinder:
-    def __init__(self, pdf_path):
-        self.pdf_path = pdf_path
-        self.doc = fitz.open(pdf_path)
+    def __init__(self):
+        # Get list of PDFs in data folder
+        self.pdf_files = self.find_pdf_files()
+        if not self.pdf_files:
+            print("No PDF files found in the data folder!")
+            return
+        
+        # Show available PDFs
+        print("\nAvailable PDF files:")
+        for i, pdf in enumerate(self.pdf_files):
+            print(f"{i+1}. {pdf}")
+        
+        # Get user selection
+        while True:
+            try:
+                selection = int(input("\nSelect a PDF file (enter number): ")) - 1
+                if 0 <= selection < len(self.pdf_files):
+                    self.pdf_path = self.pdf_files[selection]
+                    break
+                else:
+                    print("Invalid selection. Please try again.")
+            except ValueError:
+                print("Please enter a valid number.")
+        
+        print(f"\nSelected: {self.pdf_path}")
+        
+        self.doc = fitz.open(self.pdf_path)
         self.current_page = 0
         self.first_point = None
         self.second_point = None
@@ -62,6 +88,23 @@ class PDFCoordinateFinder:
         # Load first page
         self.load_page()
         plt.show()
+    
+    def find_pdf_files(self):
+        # Start from the current directory
+        current_dir = os.getcwd()
+        data_dir = os.path.join(current_dir, 'data')
+        
+        # Find all PDF files recursively in the data directory
+        pdf_files = []
+        for root, dirs, files in os.walk(data_dir):
+            for file in files:
+                if file.lower().endswith('.pdf'):
+                    # Store relative path from current directory
+                    full_path = os.path.join(root, file)
+                    rel_path = os.path.relpath(full_path, current_dir)
+                    pdf_files.append(rel_path)
+        
+        return sorted(pdf_files)
     
     def toggle_mode(self, event):
         if self.mode == 'select':
@@ -265,5 +308,4 @@ class PDFCoordinateFinder:
             print("Invalid input. Please enter numeric values.")
 
 if __name__ == "__main__":
-    pdf_path = "data/bank_statements/halifax/pdf/April Halifax.pdf"
-    app = PDFCoordinateFinder(pdf_path)
+    app = PDFCoordinateFinder()
