@@ -1,6 +1,6 @@
 import json
 import os
-from typing import Dict, Any, List
+from typing import Dict, Any
 from datetime import datetime
 
 
@@ -20,8 +20,6 @@ pdf_data: Dict[str, Any] = json.load(open(pdf_data_path))
 parser: PDFParser = PDFParser()
 output: Dict[str, Any] = parser.parse(template, pdf_data)
 
-# Write output to file for inspection
-with open("src/outputs/barclays_output.json", "w") as f:
-    json.dump(output, f, indent=2)
+print(output)
 
 assert output == json.load(open("src/outputs/barclays_output.json"))
