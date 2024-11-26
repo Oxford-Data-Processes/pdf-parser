@@ -1,4 +1,8 @@
 class FormParser:
+
+    def get_rule_from_id(self, rule_id, template):
+        return [item for item in template["rules"] if item["rule_id"] == rule_id][0]
+
     def get_items_in_bounding_box(self, page_data, coordinates):
         items_in_box = []
         for item in page_data:
@@ -23,7 +27,8 @@ class FormParser:
         )
         return self.get_text_from_items(items_within_coordinates)
 
-    def get_output_data_for_rule(self, form_rule, page_index, pdf_data):
+    def get_output_data_for_rule(self, form_rule_id, page_index, pdf_data, template):
+        form_rule = self.get_rule_from_id(form_rule_id, template)
         coordinates = form_rule["config"]["coordinates"]
         page_content = pdf_data["pages"][page_index]["content"]
         return {
