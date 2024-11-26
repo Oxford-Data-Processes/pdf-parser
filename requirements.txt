@@ -1,3 +1,4 @@
 pdfplumber
+pytest
 pandas
 pathlib
