@@ -11,12 +11,12 @@
                 "field_name": "sort_code",
                 "coordinates": {
                     "top_left": {
-                        "x": 0.641,
-                        "y": 0.495
+                        "x": 0.639,
+                        "y": 0.427
                     },
                     "bottom_right": {
-                        "x": 0.7,
-                        "y": 0.507
+                        "x": 0.705,
+                        "y": 0.438
                     }
                 },
                 "type": "text"
