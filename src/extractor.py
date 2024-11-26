@@ -36,8 +36,8 @@ class TextExtractor:
     def get_dimensions(self, pdf):
         """Get the dimensions of the first page of the PDF."""
         return {
-            "width": pdf.pages[0].width,
-            "height": pdf.pages[0].height,
+            "width": round(pdf.pages[0].width, 2),
+            "height": round(pdf.pages[0].height, 2),
         }
 
     def extract_page_data(self, page):
@@ -46,17 +46,29 @@ class TextExtractor:
         for element in page.extract_words():
             text = element["text"]
             x0, y0, x1, y1 = (
-                element["x0"],
-                element["top"],
-                element["x1"],
-                element["bottom"],
+                round(element["x0"], 2),
+                round(element["top"], 2),
+                round(element["x1"], 2),
+                round(element["bottom"], 2),
             )
             page_data.append(
                 {
                     "text": text,
                     "bounding_box": {
-                        "top_left": {"x": x0, "y": y0},
-                        "bottom_right": {"x": x1, "y": y1},
+                        "coordinates": {
+                            "top_left": {"x": x0, "y": y0},
+                            "bottom_right": {"x": x1, "y": y1},
+                        },
+                        "decimal_coordinates": {
+                            "top_left": {
+                                "x": round(x0 / page.width, 6),
+                                "y": round(y0 / page.height, 6),
+                            },
+                            "bottom_right": {
+                                "x": round(x1 / page.width, 6),
+                                "y": round(y1 / page.height, 6),
+                            },
+                        },
                     },
                 }
             )
@@ -64,14 +76,12 @@ class TextExtractor:
 
     def extract_line_coordinates(self, lines):
         """Extract line coordinates from a list of lines."""
-        line_coordinates = []
-        for line in lines:
-            line_coordinates.append(
-                {
-                    "x0": line["x0"],
-                    "y0": line["y0"],
-                    "x1": line["x1"],
-                    "y1": line["y1"],
-                }
-            )
-        return line_coordinates
+        return [
+            {
+                "x0": round(line["x0"], 2),
+                "y0": round(line["y0"], 2),
+                "x1": round(line["x1"], 2),
+                "y1": round(line["y1"], 2),
+            }
+            for line in lines
+        ]

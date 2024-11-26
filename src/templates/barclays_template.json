@@ -10,8 +10,14 @@
             "config": {
                 "field_name": "sort_code",
                 "coordinates": {
-                    "top_left": { "x": 0.45483, "y": 0.605242 },
-                    "bottom_right": { "x": 0.495013, "y": 0.617742 }
+                    "top_left": {
+                        "x": 0.641,
+                        "y": 0.495
+                    },
+                    "bottom_right": {
+                        "x": 0.7,
+                        "y": 0.507
+                    }
                 },
                 "type": "text"
             }
@@ -108,8 +114,14 @@
                     {
                         "field_name": "date",
                         "coordinates": {
-                            "top_left": { "x": 0.066116, "y": 0.690323 },
-                            "bottom_right": { "x": 0.103448, "y": 0.991935 }
+                            "top_left": {
+                                "x": 0.097,
+                                "y": 0.488
+                            },
+                            "bottom_right": {
+                                "x": 0.149,
+                                "y": 0.898
+                            }
                         },
                         "type": "text"
                     },

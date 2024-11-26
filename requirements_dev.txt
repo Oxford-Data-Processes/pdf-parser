@@ -1,4 +1,7 @@
 pdfplumber
 ipykernel
 jsonschema
+fitz
 pydantic
+matplotlib
+PyMuPDF
