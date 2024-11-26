@@ -23,9 +23,9 @@ class FormParser:
         )
         return self.get_text_from_items(items_within_coordinates)
 
-    def get_output_data_for_rule(self, form_rule, page_number, pdf_data):
+    def get_output_data_for_rule(self, form_rule, page_index, pdf_data):
         coordinates = form_rule["config"]["coordinates"]
-        page_content = pdf_data["pages"][page_number - 1]["content"]
+        page_content = pdf_data["pages"][page_index]["content"]
         return {
             form_rule["config"]["field_name"]: self.get_text_from_page(
                 page_content, coordinates

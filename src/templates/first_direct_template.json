@@ -269,16 +269,16 @@
     ],
     "pages": [
         {
-            "page_numbers": ["1"],
+            "page_numbers": "1",
             "forms": ["customer_name", "sort_code", "account_number", "start_balance"],
             "tables": ["transactions_first_page"]
         },
         {
-            "page_numbers": ["2-(-1)"],
+            "page_numbers": "2:-1",
             "tables": ["transactions_middle_page"]
         },
         {
-            "page_numbers": ["-1"],
+            "page_numbers": "-1",
             "tables": ["transactions_last_page"]
         }
     ]

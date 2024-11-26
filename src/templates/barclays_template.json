@@ -166,20 +166,20 @@
     ],
     "pages": [
         {
-            "page_numbers": ["1"],
+            "page_numbers": "1",
             "forms": ["customer_details", "sort_code", "account_number"]
         },
         {
-            "page_numbers": ["2"],
+            "page_numbers": "2",
             "forms": ["start_balance", "money_in", "money_out", "end_balance", "overdraft_limit"]
         },
         {
-            "page_numbers": ["2-(-2)"],
+            "page_numbers": "2:-2",
             "forms": [],
             "tables": ["transactions_page_2_onwards"]
         },
         {
-            "page_numbers": ["-1"],
+            "page_numbers": "-1",
             "ignore": true
         }
     ]
