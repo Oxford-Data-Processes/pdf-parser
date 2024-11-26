@@ -1,7 +1,7 @@
 {
     "metadata": {
       "document_id": "barclays_apr_2",
-      "parsed_at": "2023-04-28",
+      "parsed_at": "2024-08-01T12:00:00",
       "number_of_pages": 4
     },
     "pages": [
@@ -21,19 +21,19 @@
             "customer_name": "Miss Meghan Victoria Thorneloe"
           },
           {
-            "start_balance": "£73.72"
+            "start_balance": "\u00a373.72"
           },
           {
-            "money_in": "£2,234.60"
+            "money_in": "\u00a32,234.60"
           },
           {
-            "money_out": "£1,879.23"
+            "money_out": "\u00a31,879.23"
           },
           {
-            "end_balance": "£429.09"
+            "end_balance": "\u00a3429.09"
           },
           {
-            "overdraft_limit": "£500"
+            "overdraft_limit": "\u00a3500"
           }
         ],
         "tables": [
@@ -41,85 +41,85 @@
             "table_header": "Your Transactions",
             "data": [
               {
-                "date": "2023-04-01",
+                "date": "01 Apr 2023",
                 "description": "Start balance",
                 "money_in": null,
                 "money_out": null,
                 "balance": "73.72"
               },
               {
-                "date": "2023-04-03", 
-                "description": "Received From Thorneloe C&CRef: From Mandd",
+                "date": "03 Apr 2023", 
+                "description": "Received From Thorneloe C&C Ref: From Mandd",
                 "money_in": "60.00",
                 "money_out": null,
                 "balance": "133.72"
               },
               {
-                "date": "2023-04-05",
-                "description": "Direct Debit to Severn Trent WaterRef: 681017965320230901\nThis Is A New Direct Debit Payment",
+                "date": "05 Apr 2023",
+                "description": "Direct Debit to Severn Trent Water Ref: 681017965320230901 This Is A New Direct Debit Payment",
                 "money_in": null,
                 "money_out": "27.94",
                 "balance": "74.78"
               },
               {
-                "date": "2023-04-05",
-                "description": "Payment to Matthew PriceRef: Room Payment",
+                "date": "05 Apr 2023",
+                "description": "Payment to Matthew Price Ref: Room Payment",
                 "money_in": null,
                 "money_out": "5.00",
                 "balance": "74.78"
               },
               {
-                "date": "2023-04-05",
-                "description": "Payment to Sam OakleyRef: Broadband",
+                "date": "05 Apr 2023",
+                "description": "Payment to Sam Oakley Ref: Broadband",
                 "money_in": null,
                 "money_out": "6.00",
                 "balance": "74.78"
               },
               {
-                "date": "2023-04-05",
-                "description": "Transfer to Sort Code 20-44-51Account 83254534\nRef: Mobile-Channel",
+                "date": "05 Apr 2023",
+                "description": "Transfer to Sort Code 20-44-51 Account 83254534 Ref: Mobile-Channel",
                 "money_in": null,
                 "money_out": "20.00",
                 "balance": "74.78"
               },
               {
-                "date": "2023-04-11",
-                "description": "Transfer to Sort Code 20-44-51Account 83254534\nRef: Mobile-Channel",
+                "date": "11 Apr 2023",
+                "description": "Transfer to Sort Code 20-44-51 Account 83254534 Ref: Mobile-Channel",
                 "money_in": null,
                 "money_out": "20.00",
                 "balance": "34.78"
               },
               {
-                "date": "2023-04-11",
-                "description": "Transfer to Sort Code 20-44-51Account 83254534\nRef: Mobile-Channel",
+                "date": "11 Apr 2023",
+                "description": "Transfer to Sort Code 20-44-51 Account 83254534 Ref: Mobile-Channel",
                 "money_in": null,
                 "money_out": "20.00",
                 "balance": "34.78"
               },
               {
-                "date": "2023-04-11",
-                "description": "Transfer to Sort Code 20-44-51Account 83254534\nRef: Mobile-Channel",
+                "date": "11 Apr 2023",
+                "description": "Transfer to Sort Code 20-44-51Account 83254534 Ref: Mobile-Channel",
                 "money_in": null,
                 "money_out": "60.00",
                 "balance": "34.78"
               },
               {
-                "date": "2023-04-11",
-                "description": "Received From Thorneloe C&CRef: From Mandd",
+                "date": "11 Apr 2023",
+                "description": "Received From Thorneloe C&C Ref: From Mandd",
                 "money_in": "60.00",
                 "money_out": null,
                 "balance": "34.78"
               },
               {
-                "date": "2023-04-12",
-                "description": "Payment to Matthew PriceRef: Room Payment",
+                "date": "12 Apr 2023",
+                "description": "Payment to Matthew Price Ref: Room Payment",
                 "money_in": null,
                 "money_out": "5.00",
                 "balance": "25.49"
               },
               {
-                "date": "2023-04-12",
-                "description": "Bill Payment to TOP365Ref: 3Frederickgrove MT",
+                "date": "12 Apr 2023",
+                "description": "Bill Payment to TOP365 Ref: 3Frederickgrove MT",
                 "money_in": null,
                 "money_out": "1404.29",
                 "balance": "25.49"
@@ -135,112 +135,112 @@
             "table_header": "Your Transactions",
             "data": [
               {
-                "date": "2023-04-12",
-                "description": "Transfer From Sort Code 20-44-51Account 83254534\nRef: Mobile-Channel",
+                "date": "12 Apr 2023",
+                "description": "Transfer From Sort Code 20-44-51 Account 83254534 Ref: Mobile-Channel",
                 "money_in": "1400.00",
                 "money_out": null,
                 "balance": "25.49"
               },
               {
-                "date": "2023-04-13",
-                "description": "Transfer to Sort Code 20-44-51Account 83254534\nRef: Mobile-Channel",
+                "date": "13 Apr 2023",
+                "description": "Transfer to Sort Code 20-44-51 Account 83254534 Ref: Mobile-Channel",
                 "money_in": null,
                 "money_out": "20.00",
                 "balance": "5.49"
               },
               {
-                "date": "2023-04-17",
-                "description": "Received From Thorneloe C&CRef: From Mandd",
+                "date": "17 Apr 2023",
+                "description": "Received From Thorneloe C&C Ref: From Mandd",
                 "money_in": "60.00",
                 "money_out": null,
                 "balance": "65.49"
               },
               {
-                "date": "2023-04-18",
-                "description": "Transfer to Sort Code 20-44-51Account 83254534\nRef: Mobile-Channel",
+                "date": "18 Apr 2023",
+                "description": "Transfer to Sort Code 20-44-51 Account 83254534 Ref: Mobile-Channel",
                 "money_in": null,
                 "money_out": "30.00",
                 "balance": "35.49"
               },
               {
-                "date": "2023-04-19",
-                "description": "Payment to Matthew PriceRef: Room Payment",
+                "date": "19 Apr 2023",
+                "description": "Payment to Matthew Price Ref: Room Payment",
                 "money_in": null,
                 "money_out": "5.00",
                 "balance": "30.49"
               },
               {
-                "date": "2023-04-20",
-                "description": "Transfer to Sort Code 20-44-51Account 83254534\nRef: Mobile-Channel",
+                "date": "20 Apr 2023",
+                "description": "Transfer to Sort Code 20-44-51 Account 83254534 Ref: Mobile-Channel",
                 "money_in": null,
                 "money_out": "30.00",
                 "balance": "0.49"
               },
               {
-                "date": "2023-04-21",
-                "description": "Account Credit: Deposit at Barclays\n120/LB26416Ref: Cheque Via Bmb",
+                "date": "21 Apr 2023",
+                "description": "Account Credit: Deposit at Barclays 120/LB26416 Ref: Cheque Via Bmb",
                 "money_in": "594.60",
                 "money_out": null,
                 "balance": "595.09"
               },
               {
-                "date": "2023-04-24",
-                "description": "Transfer to Sort Code 20-44-51Account 83254534\nRef: Mobile-Channel",
+                "date": "24 Apr 2023",
+                "description": "Transfer to Sort Code 20-44-51 Account 83254534 Ref: Mobile-Channel",
                 "money_in": null,
                 "money_out": "30.00",
                 "balance": "535.09"
               },
               {
-                "date": "2023-04-24",
-                "description": "Transfer to Sort Code 20-44-51Account 83254534\nRef: Mobile-Channel",
+                "date": "24 Apr 2023",
+                "description": "Transfer to Sort Code 20-44-51 Account 83254534 Ref: Mobile-Channel",
                 "money_in": null,
                 "money_out": "30.00",
                 "balance": "535.09"
               },
               {
-                "date": "2023-04-24",
-                "description": "Transfer to Sort Code 20-44-51Account 83254534\nRef: Mobile-Channel",
+                "date": "24 Apr 2023",
+                "description": "Transfer to Sort Code 20-44-51 Account 83254534 Ref: Mobile-Channel",
                 "money_in": null,
                 "money_out": "60.00",
                 "balance": "535.09"
               },
               {
-                "date": "2023-04-24",
-                "description": "Received From Thorneloe C&CRef: From Mandd",
+                "date": "24 Apr 2023",
+                "description": "Received From Thorneloe C&C Ref: From Mandd",
                 "money_in": "60.00",
                 "money_out": null,
                 "balance": "535.09"
               },
               {
-                "date": "2023-04-26",
-                "description": "Payment to Matthew PriceRef: Room Payment",
+                "date": "26 Apr 2023",
+                "description": "Payment to Matthew Price Ref: Room Payment",
                 "money_in": null,
                 "money_out": "5.00",
                 "balance": "474.09"
               },
               {
-                "date": "2023-04-26",
-                "description": "Transfer to Sort Code 20-44-51Account 83254534\nRef: Mobile-Channel",
+                "date": "26 Apr 2023",
+                "description": "Transfer to Sort Code 20-44-51 Account 83254534 Ref: Mobile-Channel",
                 "money_in": null,
                 "money_out": "56.00",
                 "balance": "474.09"
               },
               {
-                "date": "2023-04-28",
-                "description": "Transfer to Sort Code 20-44-51Account 83254534\nRef: Mobile-Channel",
+                "date": "28 Apr 2023",
+                "description": "Transfer to Sort Code 20-44-51 Account 83254534 Ref: Mobile-Channel",
                 "money_in": null,
                 "money_out": "10.00",
                 "balance": "429.09"
               },
               {
-                "date": "2023-04-28",
-                "description": "Transfer to Sort Code 20-44-51Account 83254534\nRef: Mobile-Channel",
+                "date": "28 Apr 2023",
+                "description": "Transfer to Sort Code 20-44-51 Account 83254534 Ref: Mobile-Channel",
                 "money_in": null,
                 "money_out": "35.00",
                 "balance": "429.09"
               },
               {
-                "date": "2023-04-28",
+                "date": "28 Apr 2023",
                 "description": "End balance",
                 "money_in": null,
                 "money_out": null,
