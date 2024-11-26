@@ -51,7 +51,6 @@
                 },
                 {
                   "properties": {
-                    "header": { "type": "string" },
                     "columns": {
                       "type": "array",
                       "items": {
@@ -99,7 +98,7 @@
                       "required": ["type"]
                     }
                   },
-                  "required": ["header", "columns", "row_delimiter"]
+                  "required": ["columns", "row_delimiter"]
                 }
               ]
             }
