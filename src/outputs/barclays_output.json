@@ -98,7 +98,7 @@
               },
               {
                 "date": "11 Apr 2023",
-                "description": "Transfer to Sort Code 20-44-51Account 83254534 Ref: Mobile-Channel",
+                "description": "Transfer to Sort Code 20-44-51 Account 83254534 Ref: Mobile-Channel",
                 "money_in": null,
                 "money_out": "60.00",
                 "balance": "34.78"
@@ -121,7 +121,7 @@
                 "date": "12 Apr 2023",
                 "description": "Bill Payment to TOP365 Ref: 3Frederickgrove MT",
                 "money_in": null,
-                "money_out": "1404.29",
+                "money_out": "1,404.29",
                 "balance": "25.49"
               }
             ]
@@ -137,7 +137,7 @@
               {
                 "date": "12 Apr 2023",
                 "description": "Transfer From Sort Code 20-44-51 Account 83254534 Ref: Mobile-Channel",
-                "money_in": "1400.00",
+                "money_in": "1,400.00",
                 "money_out": null,
                 "balance": "25.49"
               },
