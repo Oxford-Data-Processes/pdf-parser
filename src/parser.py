@@ -34,17 +34,19 @@ class Parser:
     def get_rule_from_id(self, rule_id, template):
         return [item for item in template["rules"] if item["rule_id"] == rule_id][0]
 
-    def get_items_in_bounding_box(self, page_data, coordinates):
+    def get_items_in_bounding_box(self, page_data, coordinates, threshold=0.01):
         items_in_box = []
         for item in page_data:
             bounding_box = item["bounding_box"]["decimal_coordinates"]
             if (
-                bounding_box["top_left"]["x"] >= coordinates["top_left"]["x"]
-                and bounding_box["top_left"]["y"] >= coordinates["top_left"]["y"]
+                bounding_box["top_left"]["x"]
+                >= coordinates["top_left"]["x"] - threshold
+                and bounding_box["top_left"]["y"]
+                >= coordinates["top_left"]["y"] - threshold
                 and bounding_box["bottom_right"]["x"]
-                <= coordinates["bottom_right"]["x"]
+                <= coordinates["bottom_right"]["x"] + threshold
                 and bounding_box["bottom_right"]["y"]
-                <= coordinates["bottom_right"]["y"]
+                <= coordinates["bottom_right"]["y"] + threshold
             ):
                 items_in_box.append(item)
         return items_in_box
@@ -80,16 +82,14 @@ class TableSplitter:
         items_within_coordinates = self.parser.get_items_in_bounding_box(
             page_content, coordinates
         )
-
         line_separation_y_coordinates = {
             item["bounding_box"]["decimal_coordinates"]["top_left"]["y"]
             for item in items_within_coordinates
         }
         return sorted(line_separation_y_coordinates)
 
-    def split_table_by_line(self, pdf_data, coordinates):
-        lines = pdf_data["lines"]
-        print(f"lines: {lines}")
+    def split_table_by_line(self, pdf_page_data, coordinates):
+        lines = pdf_page_data["lines"]
         min_x = coordinates["top_left"]["x"]
         max_x = coordinates["bottom_right"]["x"]
         line_separation_y_coordinates = []
@@ -98,9 +98,6 @@ class TableSplitter:
             y0 = line["y0"]
             x0 = line["x0"]
             x1 = line["x1"]
-
-            print(f"x0: {x0}, x1: {x1}")
-            print(f"y0: {y0}")
 
             if x0 <= min_x and x1 >= max_x:
                 line_separation_y_coordinates.append(y0)

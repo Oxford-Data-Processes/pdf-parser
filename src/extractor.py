@@ -21,7 +21,21 @@ class TextExtractor:
             }
             for page_num, page in enumerate(pdf.pages):
                 page_data = self.extract_page_data(page)
-                line_coordinates = self.extract_line_coordinates(page.lines)
+                line_coordinates = [
+                    {
+                        "decimal_coordinates": {
+                            "top_left": {
+                                "x": round(line["x0"] / page.width, 6),
+                                "y": round(line["y0"] / page.height, 6),
+                            },
+                            "bottom_right": {
+                                "x": round(line["x1"] / page.width, 6),
+                                "y": round(line["y1"] / page.height, 6),
+                            },
+                        }
+                    }
+                    for line in page.lines
+                ]
 
                 data["pages"].append(
                     {
@@ -73,15 +87,3 @@ class TextExtractor:
                 }
             )
         return page_data
-
-    def extract_line_coordinates(self, lines):
-        """Extract line coordinates from a list of lines."""
-        return [
-            {
-                "x0": round(line["x0"], 2),
-                "y0": round(line["y0"], 2),
-                "x1": round(line["x1"], 2),
-                "y1": round(line["y1"], 2),
-            }
-            for line in lines
-        ]
