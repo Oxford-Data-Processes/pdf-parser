@@ -2,7 +2,6 @@ from typing import List
 
 
 class Parser:
-
     def page_number_converter(
         self, page_numbers: str, number_of_pages: int
     ) -> List[int]:
@@ -70,3 +69,46 @@ class Parser:
                 page_content, coordinates
             )
         }
+
+
+class TableSplitter:
+    def __init__(self, template, parser):
+        self.template = template
+        self.parser = parser
+
+    def split_table_by_delimiter(self, page_content, coordinates):
+        items_within_coordinates = self.parser.get_items_in_bounding_box(
+            page_content, coordinates
+        )
+
+        line_separation_y_coordinates = {
+            item["bounding_box"]["decimal_coordinates"]["top_left"]["y"]
+            for item in items_within_coordinates
+        }
+        return sorted(line_separation_y_coordinates)
+
+    def split_table_by_line(self, pdf_data, coordinates):
+        lines = pdf_data["lines"]
+        print(f"lines: {lines}")
+        min_x = coordinates["top_left"]["x"]
+        max_x = coordinates["bottom_right"]["x"]
+        line_separation_y_coordinates = []
+
+        for line in lines:
+            y0 = line["y0"]
+            x0 = line["x0"]
+            x1 = line["x1"]
+
+            print(f"x0: {x0}, x1: {x1}")
+            print(f"y0: {y0}")
+
+            if x0 <= min_x and x1 >= max_x:
+                line_separation_y_coordinates.append(y0)
+
+        return sorted(line_separation_y_coordinates)
+
+    def split_table(self, row_delimiter_type: str, page_content, coordinates):
+        if row_delimiter_type == "line":
+            return self.split_table_by_line(page_content, coordinates)
+        elif row_delimiter_type == "delimiter":
+            return self.split_table_by_delimiter(page_content, coordinates)
