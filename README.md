@@ -12,6 +12,17 @@ The user of the package will provide rules, inside a template, to extract data f
 - Result is a JSON which follows a certain schema.
 The end result from an extracted pdf will look like this JSON:
 
+
+
+Use Parser to create a parser for table objects that is similar to Forms but uses horizontal line coordinates to split into form objects.
+
+The horizontal line coordinates are detected by pdfplumber.
+
+If no lines are provided, then the user must provide a delimiter which can  be used to split the table as well.
+
+
+Focus on building this first, the thing that can split tables into form objects.
+
 {
   "metadata": {
     "document_id": "1234567890",
