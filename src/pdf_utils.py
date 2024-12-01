@@ -22,7 +22,38 @@ class ImageDrawer:
         jpg_image_original.save("output.jpeg", "JPEG")
         return jpg_image_original
 
-    def draw_lines(self, pdf_lines_y_coordinates):
+    def draw_coordinates(self, coordinates):
+        """Draw the decimal coordinates on the image."""
+        image_copy = self.image.copy()
+        draw = ImageDraw.Draw(image_copy)
+
+        img_width, img_height = image_copy.size
+
+        for coordinate in coordinates:
+            # Calculate the pixel coordinates from decimal coordinates
+            top_left_x = coordinate["top_left"]["x"] * img_width
+            top_left_y = coordinate["top_left"]["y"] * img_height
+            bottom_right_x = coordinate["bottom_right"]["x"] * img_width
+            bottom_right_y = coordinate["bottom_right"]["y"] * img_height
+
+            print(
+                f"top_left_x: {top_left_x}, top_left_y: {top_left_y}, bottom_right_x: {bottom_right_x}, bottom_right_y: {bottom_right_y}"
+            )
+            # Draw the rectangle using pixel coordinates
+            draw.rectangle(
+                [
+                    top_left_x,
+                    top_left_y,
+                    bottom_right_x,
+                    bottom_right_y,
+                ],
+                outline="red",
+                width=2,
+            )
+
+        return image_copy
+
+    def draw_horizontal_lines(self, pdf_lines_y_coordinates):
         """Draw the extracted PDF lines on the image."""
         image_copy = self.image.copy()
         draw = ImageDraw.Draw(image_copy)

@@ -66,6 +66,8 @@ Focus on building this first, the thing that can split tables into form objects.
 }
 
 
+COORDINATES ARE DECIMAL COORDINATES STARTING FROM TOP LEFT CORNER OF THE IMAGE.
+
 Please provide step by step instructions on how to build this package. Don't write any code, just provide the exact classes and methods that will be used. Be as detailed as possible without writing any code. Don't include any testing/CI/CD instructions. Just the classes and methods.
 
 Page numbers:
