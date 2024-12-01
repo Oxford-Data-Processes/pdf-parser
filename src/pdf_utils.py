@@ -36,9 +36,6 @@ class ImageDrawer:
             bottom_right_x = coordinate["bottom_right"]["x"] * img_width
             bottom_right_y = coordinate["bottom_right"]["y"] * img_height
 
-            print(
-                f"top_left_x: {top_left_x}, top_left_y: {top_left_y}, bottom_right_x: {bottom_right_x}, bottom_right_y: {bottom_right_y}"
-            )
             # Draw the rectangle using pixel coordinates
             draw.rectangle(
                 [
@@ -60,14 +57,11 @@ class ImageDrawer:
 
         img_width, img_height = image_copy.size
 
-        print(f"PDF lines: {pdf_lines_y_coordinates}")
-
         for i, y_coordinate in enumerate(pdf_lines_y_coordinates, 1):
             y = img_height - (y_coordinate * img_height)  # Flip y-coordinate
 
             # Draw a line across the entire width of the image
             draw.line([(0, y), (img_width, y)], fill="red", width=2)
-            print(f"Drew line {i} at y: {y:.1f}")
 
         print(f"Successfully drew {len(pdf_lines_y_coordinates)} lines")
         return image_copy
