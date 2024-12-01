@@ -1,18 +1,27 @@
-import json
+import pdfplumber
 from PIL import ImageDraw
 from pdf2image import convert_from_path
 
 
-class ImageDrawer:
-    def __init__(self, image, pdf_lines, pdf_width, pdf_height):
-        self.image = image
-        self.pdf_lines = pdf_lines
-        self.pdf_width = pdf_width
-        self.pdf_height = pdf_height
+class PDFProcessor:
+    def __init__(self, pdf_path):
+        self.pdf_path = pdf_path
+        self.pdf_width = None
+        self.pdf_height = None
+        self.pdf_lines = None
 
-    def create_jpg_image(self, pdf_path):
+    def extract_lines(self, page_number=1):
+        """Extract lines from PDF using pdfplumber."""
+        with pdfplumber.open(self.pdf_path) as pdf:
+            page = pdf.pages[page_number]
+            self.pdf_lines = page.lines
+            self.pdf_width = page.width
+            self.pdf_height = page.height
+            print(f"PDF dimensions: {self.pdf_width}x{self.pdf_height}")
+
+    def create_jpg_image(self):
         """Convert the PDF page to a JPG."""
-        images = convert_from_path(pdf_path)
+        images = convert_from_path(self.pdf_path)
         jpg_image_original = images[1]  # Get the second page
 
         # Get dimensions
@@ -23,24 +32,28 @@ class ImageDrawer:
         jpg_image_original.save("output.jpeg", "JPEG")
         return jpg_image_original
 
+
+class ImageDrawer:
+    def __init__(self, image, pdf_lines, pdf_width, pdf_height):
+        self.image = image
+        self.pdf_lines = pdf_lines
+        self.pdf_width = pdf_width
+        self.pdf_height = pdf_height
+
     def draw_lines(self):
         """Draw the extracted PDF lines on the image."""
         image_copy = self.image.copy()
         draw = ImageDraw.Draw(image_copy)
 
         img_width, img_height = image_copy.size
-
-        print(f"PDF lines: {self.pdf_lines}")
+        scale_x = img_width / self.pdf_width
+        scale_y = img_height / self.pdf_height
 
         for i, line in enumerate(self.pdf_lines, 1):
-            x0 = float(line["decimal_coordinates"]["top_left"]["x"]) * img_width
-            y0 = img_height - (
-                float(line["decimal_coordinates"]["top_left"]["y"]) * img_height
-            )  # Flip y-coordinate
-            x1 = float(line["decimal_coordinates"]["bottom_right"]["x"]) * img_width
-            y1 = img_height - (
-                float(line["decimal_coordinates"]["bottom_right"]["y"]) * img_height
-            )  # Flip y-coordinate
+            x0 = line["x0"] * scale_x
+            y0 = (self.pdf_height - line["y0"]) * scale_y  # Flip y-coordinate
+            x1 = line["x1"] * scale_x
+            y1 = (self.pdf_height - line["y1"]) * scale_y  # Flip y-coordinate
 
             # Verify coordinates are within bounds
             assert 0 <= x0 <= img_width, f"Line {i}: x0 out of bounds"
@@ -57,23 +70,20 @@ class ImageDrawer:
 
 def main():
     pdf_path = "data/bank_statements/barclays/pdf/barclays March 2.pdf"
-    pdf_data_path = "src/pdf_data/barclays_march_2_pdf_data.json"
     try:
-        pdf_data = json.load(open(pdf_data_path))
-        extracted_lines = pdf_data["pages"][1]["lines"]
+        pdf_processor = PDFProcessor(pdf_path)
+        print("Extracting lines from PDF...")
+        pdf_processor.extract_lines()
 
-        print(f"Extracted {len(extracted_lines)} lines from PDF")
-
-        jpg_image = ImageDrawer(None, extracted_lines, None, None).create_jpg_image(
-            pdf_path
-        )
+        print("\nConverting PDF to JPG...")
+        jpg_image = pdf_processor.create_jpg_image()
 
         print("\nDrawing lines...")
         image_drawer = ImageDrawer(
             jpg_image,
-            extracted_lines,
-            jpg_image.size[0],  # Use the image width
-            jpg_image.size[1],  # Use the image height
+            pdf_processor.pdf_lines,
+            pdf_processor.pdf_width,
+            pdf_processor.pdf_height,
         )
         modified_image = image_drawer.draw_lines()
 
@@ -85,7 +95,3 @@ def main():
 
     except Exception as e:
         print(f"Error: {str(e)}")
-
-
-if __name__ == "__main__":
-    main()
