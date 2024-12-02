@@ -9,7 +9,8 @@ class ImageDrawer:
         self.pdf_width = pdf_width
         self.pdf_height = pdf_height
 
-    def create_jpg_image(self, pdf_path):
+    @staticmethod
+    def create_jpg_image(pdf_path):
         """Convert the PDF page to a JPG."""
         images = convert_from_path(pdf_path)
         jpg_image_original = images[1]  # Get the second page

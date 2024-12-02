@@ -82,30 +82,36 @@ class TableSplitter:
         items_within_coordinates = self.parser.get_items_in_bounding_box(
             page_content, coordinates
         )
+
         line_separation_y_coordinates = {
             item["bounding_box"]["decimal_coordinates"]["top_left"]["y"]
             for item in items_within_coordinates
         }
-        return sorted(line_separation_y_coordinates)
+        return sorted(list(set(line_separation_y_coordinates)))
 
-    def split_table_by_line(self, pdf_page_data, coordinates):
-        lines = pdf_page_data["lines"]
-        min_x = coordinates["top_left"]["x"]
-        max_x = coordinates["bottom_right"]["x"]
+    def split_table_by_line(self, lines, coordinates):
+
+        min_y = coordinates["top_left"]["y"] - 0.01
+        max_y = coordinates["bottom_right"]["y"] + 0.01
+
+        min_x = coordinates["top_left"]["x"] - 0.01
+        max_x = coordinates["bottom_right"]["x"] + 0.01
+
         line_separation_y_coordinates = []
 
         for line in lines:
-            y0 = line["y0"]
-            x0 = line["x0"]
-            x1 = line["x1"]
+            x0 = line["decimal_coordinates"]["top_left"]["x"]
+            x1 = line["decimal_coordinates"]["bottom_right"]["x"]
+            y0 = line["decimal_coordinates"]["top_left"]["y"]
+            y1 = line["decimal_coordinates"]["bottom_right"]["y"]
 
-            if x0 <= min_x and x1 >= max_x:
+            if x0 >= min_x and x1 <= max_x and 1 - y0 >= min_y and 1 - y1 <= max_y:
                 line_separation_y_coordinates.append(y0)
 
-        return sorted(line_separation_y_coordinates)
+        return sorted(list(set(line_separation_y_coordinates)))
 
     def split_table(self, row_delimiter_type: str, page_content, coordinates):
         if row_delimiter_type == "line":
-            return self.split_table_by_line(page_content, coordinates)
+            return self.split_table_by_line(page_content["lines"], coordinates)
         elif row_delimiter_type == "delimiter":
             return self.split_table_by_delimiter(page_content, coordinates)
