@@ -34,8 +34,14 @@ class Extractor:
             for page_num, page in enumerate(pdf.pages):
                 page_data = self.extract_page_data(page)
 
-                line_coordinates = []
+                line_data = []
                 for line in page.lines:
+
+                    average_pixel_value, _, _, _ = (
+                        image_extractor.calculate_average_pixel_value(
+                            pdf_jpg_files[f"{prefix}_page_{page_num + 1}.jpg"], line
+                        )
+                    )
                     coordinates = {
                         "top_left": {
                             "x": round(line["x0"] / page.width, 6),
@@ -46,13 +52,10 @@ class Extractor:
                             "y": 1 - round(line["y1"] / page.height, 6),
                         },
                     }
-                    line_coordinates.append(
+                    line_data.append(
                         {
                             "decimal_coordinates": coordinates,
-                            "average_pixel_value": image_extractor.calculate_average_pixel_value(
-                                pdf_jpg_files[f"{prefix}_page_{page_num + 1}.jpg"],
-                                coordinates,
-                            ),
+                            "average_pixel_value": average_pixel_value,
                         }
                     )
 
@@ -60,7 +63,7 @@ class Extractor:
                     {
                         "page_number": page_num + 1,
                         "content": page_data,
-                        "lines": line_coordinates,
+                        "lines": line_data,
                     }
                 )
 

@@ -46,19 +46,19 @@ def draw_boxes(image, lines, color="red", width=2):
 with open(pdf_path, "rb") as pdf_file:
     pdf_bytes = pdf_file.read()
 
-
-image_extractor = ImageExtractor(pdf_bytes)
-pdf_jpg_files = image_extractor.convert_pdf_to_jpg_files(
-    prefix=f"{template_name}_{identifier}"
-)
-
+# Extract text and lines
 extractor = Extractor(pdf_bytes, template_name, identifier)
 pdf_data = extractor.extract_data()
 
-print(json.dumps(pdf_data, indent=4))
+print(pdf_data)
 
 
-# print(pdf_data)
+# # Convert PDF to images
+# image_extractor = ImageExtractor(pdf_bytes)
+# pdf_jpg_files = image_extractor.convert_pdf_to_jpg_files(
+#     prefix=f"{template_name}_{identifier}"
+# )
+
 # # Process page 2
 # page_number = 2
 # lines = pdf_data["pages"][page_number - 1]["lines"]  # 0-based index
