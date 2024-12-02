@@ -1,6 +1,10 @@
 import json
 import os
+from PIL import Image, ImageDraw
+import io
 from src.extractor import Extractor
+from src.parser import Parser, TableSplitter
+from src.pdf_utils import ImageDrawer
 
 template_name: str = "barclays_student"
 identifier: str = "march"
@@ -15,8 +19,48 @@ output_path: str = os.path.join(
     "src", "outputs", f"{template_name}_{identifier}_output.json"
 )
 
+
+def draw_lines(image, lines, coordinates, color="red", width=2):
+    """Draw lines for each line in the data within the coordinates box."""
+    draw = ImageDraw.Draw(image)
+    image_width, image_height = image.size
+
+    # Draw the description box
+    box_coords = (
+        coordinates["top_left"]["x"] * image_width,
+        coordinates["top_left"]["y"] * image_height,
+        coordinates["bottom_right"]["x"] * image_width,
+        coordinates["bottom_right"]["y"] * image_height,
+    )
+    draw.rectangle(box_coords, outline=color, width=width)
+
+    # Draw filtered lines that intersect with the box
+    box_left = coordinates["top_left"]["x"] * image_width
+    box_right = coordinates["bottom_right"]["x"] * image_width
+    box_top = coordinates["top_left"]["y"] * image_height
+    box_bottom = coordinates["bottom_right"]["y"] * image_height
+
+    for line in lines:
+        try:
+            coords = line["decimal_coordinates"]
+            y0 = coords["top_left"]["y"] * image_height
+
+            # Check if line intersects with description box
+            if box_top <= y0 <= box_bottom:
+                # Draw line across the box width
+                draw.line([(box_left, y0), (box_right, y0)], fill=color, width=width)
+
+        except Exception as e:
+            print(f"Error processing line: {e}")
+            continue
+
+    return image
+
+
+# Read and process PDF
 with open(pdf_path, "rb") as pdf_file:
-    text_extractor = Extractor(pdf_file.read(), template_name, identifier)
+    pdf_bytes = pdf_file.read()
+    text_extractor = Extractor(pdf_bytes, template_name, identifier)
     extracted_data = text_extractor.extract_data()
 
     with open(pdf_data_path, "w") as f:
@@ -25,69 +69,52 @@ with open(pdf_path, "rb") as pdf_file:
 template = json.load(open(template_path))
 pdf_data = json.load(open(pdf_data_path))
 
-output_data = json.load(open(output_path))
-
-
-from src.parser import Parser, TableSplitter
-from src.pdf_utils import ImageDrawer
-
-parser = Parser()
-
+# Process page 2
 page_number = 2
-
-table_splitter = TableSplitter(template, parser)
-
 page_content = pdf_data["pages"][page_number - 1]
+lines = page_content["lines"]
 
-template = json.load(open(template_path))
-
-
-def get_column_data_by_field_name(table_rule, field_name):
-    for column in table_rule["config"]["columns"]:
-        if column["field_name"] == field_name:
-            return column
-
-
-for rule in template["rules"][-1:]:
+# Get description column coordinates
+description_coords = None
+for rule in template["rules"]:
     if rule["type"] == "table":
-        table_rule = rule
-        print(table_rule)
-        for column in table_rule["config"]["columns"][1:2]:
-            print(column)
-            coordinates = column["coordinates"]
-            delimiter_field_name = "description"
+        for column in rule["config"]["columns"]:
+            if column["field_name"] == "description":
+                description_coords = column["coordinates"]
+                break
+        break
 
-            delimiter_type = "line"
+if not description_coords:
+    raise ValueError("Description column coordinates not found in template")
 
-            if delimiter_type == "delimiter":
+# Filter lines by pixel value
+max_pixel_value = (200, 200, 200)
+filtered_lines = []
+for line in lines:
+    if "average_pixel_value" in line:
+        avg_red, avg_green, avg_blue = line["average_pixel_value"]
+        max_red, max_green, max_blue = max_pixel_value
 
-                column_data = get_column_data_by_field_name(
-                    table_rule, delimiter_field_name
-                )
-                delimiter_coordinates = column_data["coordinates"]
+        if avg_red < max_red and avg_green < max_green and avg_blue < max_blue:
+            filtered_lines.append(line)
 
-                lines_y_coordinates = table_splitter.split_table(
-                    delimiter_type, page_content, delimiter_coordinates
-                )
+# Convert PDF to image and draw lines
+from src.extractor import ImageExtractor
 
-            if delimiter_type == "line":
+image_extractor = ImageExtractor(pdf_bytes)
+pdf_jpg_files = image_extractor.convert_pdf_to_jpg_files(
+    prefix=f"{template_name}_{identifier}"
+)
 
-                pixel_maximum_value = (255, 255, 255)
+jpg_key = f"{template_name}_{identifier}_page_{page_number}.jpg"
+jpg_bytes = pdf_jpg_files[jpg_key]
 
-                column_data = get_column_data_by_field_name(
-                    table_rule, delimiter_field_name
-                )
-                delimiter_coordinates = column_data["coordinates"]
+# Draw lines on the image
+image = Image.open(io.BytesIO(jpg_bytes))
+image_with_lines = draw_lines(image, filtered_lines, description_coords)
 
-                lines_y_coordinates = table_splitter.split_table(
-                    delimiter_type,
-                    page_content,
-                    delimiter_coordinates,
-                    pixel_maximum_value,
-                )
-                print(lines_y_coordinates)
-
-            image_with_lines = ImageDrawer.draw_column_box_and_lines(
-                pdf_path, lines_y_coordinates, coordinates, page_number
-            )
-            image_with_lines.show()
+# Save and show the result
+output_image_path = f"output_{jpg_key}"
+image_with_lines.save(output_image_path)
+print(f"\nSaved output image to: {output_image_path}")
+image_with_lines.show()
