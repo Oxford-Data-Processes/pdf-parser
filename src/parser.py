@@ -34,19 +34,21 @@ class Parser:
     def get_rule_from_id(self, rule_id, template):
         return [item for item in template["rules"] if item["rule_id"] == rule_id][0]
 
-    def get_items_in_bounding_box(self, page_data, coordinates, threshold=0.01):
+    def get_items_in_bounding_box(
+        self, text_coordinates, box_coordinates, threshold=0.01
+    ):
         items_in_box = []
-        for item in page_data:
+        for item in text_coordinates:
             bounding_box = item["bounding_box"]["decimal_coordinates"]
             if (
                 bounding_box["top_left"]["x"]
-                >= coordinates["top_left"]["x"] - threshold
+                >= box_coordinates["top_left"]["x"] - threshold
                 and bounding_box["top_left"]["y"]
-                >= coordinates["top_left"]["y"] - threshold
+                >= box_coordinates["top_left"]["y"] - threshold
                 and bounding_box["bottom_right"]["x"]
-                <= coordinates["bottom_right"]["x"] + threshold
+                <= box_coordinates["bottom_right"]["x"] + threshold
                 and bounding_box["bottom_right"]["y"]
-                <= coordinates["bottom_right"]["y"] + threshold
+                <= box_coordinates["bottom_right"]["y"] + threshold
             ):
                 items_in_box.append(item)
         return items_in_box
@@ -79,8 +81,9 @@ class TableSplitter:
         self.parser = parser
 
     def split_table_by_delimiter(self, page_content, coordinates):
+        text_coordinates = page_content["content"]
         items_within_coordinates = self.parser.get_items_in_bounding_box(
-            page_content, coordinates
+            text_coordinates, coordinates
         )
 
         line_separation_y_coordinates = {
@@ -89,13 +92,13 @@ class TableSplitter:
         }
         return sorted(list(set(line_separation_y_coordinates)))
 
-    def split_table_by_line(self, lines, coordinates):
+    def split_table_by_line(self, lines, coordinates, threshold=0.01):
 
-        min_y = coordinates["top_left"]["y"] - 0.01
-        max_y = coordinates["bottom_right"]["y"] + 0.01
+        min_y = coordinates["top_left"]["y"] - threshold
+        max_y = coordinates["bottom_right"]["y"] + threshold
 
-        min_x = coordinates["top_left"]["x"] - 0.01
-        max_x = coordinates["bottom_right"]["x"] + 0.01
+        min_x = coordinates["top_left"]["x"] - threshold
+        max_x = coordinates["bottom_right"]["x"] + threshold
 
         line_separation_y_coordinates = []
 
