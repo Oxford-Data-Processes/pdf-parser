@@ -101,7 +101,13 @@ class TableSplitter:
         }
         return sorted(list(set(line_separation_y_coordinates)))
 
-    def split_table_by_line(self, lines, coordinates, threshold=0.01):
+    def split_table_by_line(
+        self,
+        lines,
+        coordinates,
+        pixel_maximum_value=None,
+        threshold=0.01,
+    ):
 
         min_y = coordinates["top_left"]["y"] - threshold
         max_y = coordinates["bottom_right"]["y"] + threshold
@@ -117,13 +123,33 @@ class TableSplitter:
             y0 = line["decimal_coordinates"]["top_left"]["y"]
             y1 = line["decimal_coordinates"]["bottom_right"]["y"]
 
-            if x0 >= min_x and x1 <= max_x and y0 >= min_y and y1 <= max_y:
+            red, green, blue = line["average_pixel_value"]
+
+            if (
+                x0 >= min_x
+                and x1 <= max_x
+                and y0 >= min_y
+                and y1 <= max_y
+                and red < pixel_maximum_value[0]
+                and green < pixel_maximum_value[1]
+                and blue < pixel_maximum_value[2]
+            ):
                 line_separation_y_coordinates.append(y0)
 
         return sorted(list(set(line_separation_y_coordinates)))
 
-    def split_table(self, row_delimiter_type: str, page_content, coordinates):
+    def split_table(
+        self,
+        row_delimiter_type: str,
+        page_content,
+        coordinates,
+        pixel_maximum_value=None,
+    ):
         if row_delimiter_type == "line":
-            return self.split_table_by_line(page_content["lines"], coordinates)
+            return self.split_table_by_line(
+                page_content["lines"],
+                coordinates,
+                pixel_maximum_value,
+            )
         elif row_delimiter_type == "delimiter":
             return self.split_table_by_delimiter(page_content, coordinates)
