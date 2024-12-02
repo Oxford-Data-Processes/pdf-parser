@@ -52,11 +52,30 @@ pdf_data = extractor.extract_data()
 page_number = 2
 
 lines = pdf_data["pages"][page_number - 1]["lines"]
-print(lines)
 
+max_pixel_value = (200, 200, 200)
 
-# Assuming you have an image to draw on, you would call draw_lines here
-# For example:
-# image = Image.open("path_to_image")  # Load your image
-# image_with_lines = draw_lines(image, lines)
-# image_with_lines.show()  # Display the image with lines
+filtered_lines = []
+for line in lines:
+    average_red = line["average_pixel_value"][0]
+    average_green = line["average_pixel_value"][1]
+    average_blue = line["average_pixel_value"][2]
+
+    max_red = max_pixel_value[0]
+    max_green = max_pixel_value[1]
+    max_blue = max_pixel_value[2]
+
+    if average_red < max_red and average_green < max_green and average_blue < max_blue:
+        filtered_lines.append(line)
+
+image_extractor = ImageExtractor(pdf_bytes)
+
+pdf_bytes_dictionary = image_extractor.convert_pdf_to_jpg_files(
+    prefix=f"{template_name}_{identifier}"
+)
+
+pdf_bytes = pdf_bytes_dictionary[f"{template_name}_{identifier}_page_{page_number}.jpg"]
+
+image = Image.open(io.BytesIO(pdf_bytes))
+image_with_lines = draw_lines(image, filtered_lines)
+image_with_lines.show()
