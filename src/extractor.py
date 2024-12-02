@@ -127,9 +127,9 @@ class ImageExtractor:
 
         # Calculate the coordinates in pixel values
         x_min = int(coordinates["top_left"]["x"] * image.width)
-        y_min = int(1 - coordinates["top_left"]["y"] * image.height)
+        y_min = int(coordinates["top_left"]["y"] * image.height)
         x_max = int(coordinates["bottom_right"]["x"] * image.width)
-        y_max = int(1 - coordinates["bottom_right"]["y"] * image.height)
+        y_max = int(coordinates["bottom_right"]["y"] * image.height)
 
         # Check for line coordinates
         if x_min == x_max:
