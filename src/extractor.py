@@ -1,4 +1,6 @@
 import pdfplumber
+import numpy as np
+from PIL import Image
 import io
 from pdf2image import convert_from_bytes
 
@@ -89,6 +91,11 @@ class Extractor:
             )
         return page_data
 
+
+class PDFImageExtractor:
+    def __init__(self, pdf_bytes: bytes):
+        self.pdf_bytes = pdf_bytes
+
     def convert_pdf_to_jpg_files(self, prefix=""):
         """Convert the PDF into several JPG files, one for each page.
 
@@ -112,3 +119,33 @@ class Extractor:
             image.save(img_byte_arr, format="JPEG")
             jpg_files[jpg_file_name] = img_byte_arr.getvalue()
         return jpg_files
+
+    def calculate_average_pixel_value(self, jpg_bytes, coordinates):
+        # Load the image from bytes
+        image = Image.open(io.BytesIO(jpg_bytes)).convert("RGB")
+        pixels = np.array(image)
+
+        # Calculate the coordinates in pixel values
+        x_min = int(coordinates["top_left"]["x"] * image.width)
+        y_min = int(coordinates["top_left"]["y"] * image.height)
+        x_max = int(coordinates["bottom_right"]["x"] * image.width)
+        y_max = int(coordinates["bottom_right"]["y"] * image.height)
+
+        # Check for invalid coordinates
+        if x_min == x_max and y_min == y_max:
+            raise ValueError("Invalid coordinates: both x and y values are the same.")
+
+        # Extract the region of interest
+        region = pixels[y_min:y_max, x_min:x_max]
+
+        # Calculate the average pixel value
+        average_pixel_value = np.mean(region, axis=(0, 1))
+        average_pixel_code = tuple(map(int, average_pixel_value))
+
+        return (
+            average_pixel_code,
+            average_pixel_value,
+            region,
+            image,
+            (x_min, y_min, x_max, y_max),
+        )
