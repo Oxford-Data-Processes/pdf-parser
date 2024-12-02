@@ -7,7 +7,6 @@ from src.extractor import Extractor, ImageExtractor
 
 
 template_name = "barclays_student"
-
 identifier = "march"
 
 pdf_path: str = os.path.join(
@@ -15,30 +14,85 @@ pdf_path: str = os.path.join(
 )
 
 
-def create_average_color_image(average_pixel_value, size=(50, 50)):
-    # Create an image filled with the average pixel color
-    avg_color_image = Image.new("RGB", size, tuple(map(int, average_pixel_value)))
-    return avg_color_image
+def validate_line_box(image, box_coords, expected_color=(255, 0, 0), thickness=2):
+    """
+    Validate that a box was drawn correctly at the given coordinates.
+    Returns True if the box is found with the expected color.
+    """
+    img_array = np.array(image)
+    x_min, y_min, x_max, y_max = [int(coord) for coord in box_coords]
+
+    # Check top and bottom horizontal lines
+    for y in [y_min, y_max]:
+        for x in range(
+            max(0, x_min - thickness), min(img_array.shape[1], x_max + thickness)
+        ):
+            if not any(
+                np.array_equal(img_array[y, x], expected_color)
+                for y in range(
+                    max(0, y - thickness), min(img_array.shape[0], y + thickness)
+                )
+            ):
+                return False
+
+    # Check left and right vertical lines
+    for x in [x_min, x_max]:
+        for y in range(
+            max(0, y_min - thickness), min(img_array.shape[0], y_max + thickness)
+        ):
+            if not any(
+                np.array_equal(img_array[y, x], expected_color)
+                for x in range(
+                    max(0, x - thickness), min(img_array.shape[1], x + thickness)
+                )
+            ):
+                return False
+
+    return True
 
 
-def show_average_color_image(average_pixel_value, region, image, box_coords):
-
-    # Draw a red box around the coordinates
+def draw_and_validate_boxes(image, lines, color="red", width=2):
+    """Draw boxes for lines and validate each box."""
     draw = ImageDraw.Draw(image)
-    draw.rectangle(box_coords, outline="red", width=3)
+    image_width, image_height = image.size
+    validation_results = []
 
-    # Show the image with the red box
-    image.show(title="JPEG File with Red Box")
+    for i, line in enumerate(lines):
+        try:
+            coords = line["decimal_coordinates"]
 
-    # Create an image of the average color
-    average_color_image = create_average_color_image(average_pixel_value)
+            # Convert decimal coordinates to pixel coordinates
+            # Note: y coordinates are already inverted in the PDF data (1 - y)
+            box_coords = (
+                coords["top_left"]["x"] * image_width,
+                coords["top_left"]["y"] * image_height,
+                coords["bottom_right"]["x"] * image_width,
+                coords["bottom_right"]["y"] * image_height,
+            )
 
-    # Display the original region and the average color image
-    region_image = Image.fromarray(region)
-    region_image.show(title="Extracted Region")
-    average_color_image.show(title="Average Color Image")
+            # Draw the box
+            draw.rectangle(box_coords, outline=color, width=width)
+
+            # Validate the box was drawn correctly
+            is_valid = validate_line_box(image, box_coords)
+            validation_results.append(
+                {"line_index": i, "coords": box_coords, "is_valid": is_valid}
+            )
+
+            if not is_valid:
+                print(f"Warning: Box validation failed for line {i}")
+                print(f"Coordinates: {box_coords}")
+
+        except Exception as e:
+            print(f"Error processing line {i}: {e}")
+            validation_results.append(
+                {"line_index": i, "error": str(e), "is_valid": False}
+            )
+
+    return image, validation_results
 
 
+# Read and process PDF
 with open(pdf_path, "rb") as pdf_file:
     pdf_bytes = pdf_file.read()
 
@@ -47,28 +101,35 @@ pdf_jpg_files = image_extractor.convert_pdf_to_jpg_files(
     prefix=f"{template_name}_{identifier}"
 )
 
-
-with open(pdf_path, "rb") as pdf_file:
-    pdf_bytes = pdf_file.read()
-
 extractor = Extractor(pdf_bytes)
-
 pdf_data = extractor.extract_text()
 
-
+# Process page 2
 page_number = 2
-lines = pdf_data["pages"][page_number]["lines"]
+lines = pdf_data["pages"][page_number - 1]["lines"]  # 0-based index
+jpg_key = f"{template_name}_{identifier}_page_{page_number}.jpg"
+jpg_bytes = pdf_jpg_files[jpg_key]
 
-for line in lines[1:2]:
+# Open image and draw boxes
+image = Image.open(io.BytesIO(jpg_bytes))
+image_with_boxes, validation_results = draw_and_validate_boxes(image, lines)
 
-    coordinates = line["decimal_coordinates"]
+# Print validation summary
+valid_boxes = sum(1 for result in validation_results if result["is_valid"])
+print(f"\nValidation Summary:")
+print(f"Total lines: {len(lines)}")
+print(f"Valid boxes drawn: {valid_boxes}")
+print(f"Invalid boxes: {len(lines) - valid_boxes}")
 
-    jpg_bytes = pdf_jpg_files[f"{template_name}_{identifier}_page_{page_number}.jpg"]
+if valid_boxes == len(lines):
+    print("\nAll boxes were drawn and validated successfully!")
+else:
+    print("\nSome boxes failed validation. Check the warnings above for details.")
 
-    print(coordinates)
+# Save the image for inspection
+output_path = f"output_{jpg_key}"
+image_with_boxes.save(output_path)
+print(f"\nSaved annotated image to: {output_path}")
 
-    average_pixel_value, region, image, box_coords = (
-        image_extractor.calculate_average_pixel_value(jpg_bytes, coordinates)
-    )
-
-    show_average_color_image(average_pixel_value, region, image, box_coords)
+# Show the image
+image_with_boxes.show(title="PDF Page with Line Boxes")
