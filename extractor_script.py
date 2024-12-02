@@ -15,8 +15,8 @@ pdf_path: str = os.path.join(
 )
 
 
-def draw_boxes(image, lines, color="red", width=2):
-    """Draw boxes for lines."""
+def draw_lines(image, lines, color="red", width=2):
+    """Draw lines for each line in the data."""
     draw = ImageDraw.Draw(image)
     image_width, image_height = image.size
 
@@ -25,16 +25,15 @@ def draw_boxes(image, lines, color="red", width=2):
             coords = line["decimal_coordinates"]
 
             # Convert decimal coordinates to pixel coordinates
-            # Note: y coordinates are already inverted in the PDF data (1 - y)
-            box_coords = (
+            line_coords = (
                 coords["top_left"]["x"] * image_width,
                 coords["top_left"]["y"] * image_height,
                 coords["bottom_right"]["x"] * image_width,
                 coords["bottom_right"]["y"] * image_height,
             )
 
-            # Draw the box
-            draw.rectangle(box_coords, outline=color, width=width)
+            # Draw the line
+            draw.line(line_coords[:2] + line_coords[2:], fill=color, width=width)
 
         except Exception as e:
             print(f"Error processing line: {e}")
@@ -50,4 +49,14 @@ with open(pdf_path, "rb") as pdf_file:
 extractor = Extractor(pdf_bytes, template_name, identifier)
 pdf_data = extractor.extract_data()
 
-print(pdf_data)
+page_number = 2
+
+lines = pdf_data["pages"][page_number - 1]["lines"]
+print(lines)
+
+
+# Assuming you have an image to draw on, you would call draw_lines here
+# For example:
+# image = Image.open("path_to_image")  # Load your image
+# image_with_lines = draw_lines(image, lines)
+# image_with_lines.show()  # Display the image with lines

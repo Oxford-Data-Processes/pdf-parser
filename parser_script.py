@@ -72,7 +72,7 @@ for rule in template["rules"][-1:]:
 
             if delimiter_type == "line":
 
-                pixel_maximum_value = (100, 100, 100)
+                pixel_maximum_value = (255, 255, 255)
 
                 column_data = get_column_data_by_field_name(
                     table_rule, delimiter_field_name
