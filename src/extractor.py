@@ -92,7 +92,7 @@ class Extractor:
         return page_data
 
 
-class PDFImageExtractor:
+class ImageExtractor:
     def __init__(self, pdf_bytes: bytes):
         self.pdf_bytes = pdf_bytes
 
@@ -127,23 +127,25 @@ class PDFImageExtractor:
 
         # Calculate the coordinates in pixel values
         x_min = int(coordinates["top_left"]["x"] * image.width)
-        y_min = int(coordinates["top_left"]["y"] * image.height)
+        y_min = int(1 - coordinates["top_left"]["y"] * image.height)
         x_max = int(coordinates["bottom_right"]["x"] * image.width)
-        y_max = int(coordinates["bottom_right"]["y"] * image.height)
+        y_max = int(1 - coordinates["bottom_right"]["y"] * image.height)
 
-        # Check for invalid coordinates
-        if x_min == x_max and y_min == y_max:
-            raise ValueError("Invalid coordinates: both x and y values are the same.")
-
-        # Extract the region of interest
-        region = pixels[y_min:y_max, x_min:x_max]
+        # Check for line coordinates
+        if x_min == x_max:
+            x_min = x_max = round(x_min)  # Round to the nearest whole pixel
+            region = pixels[y_min:y_max, x_min : x_min + 1]  # Get the vertical line
+        elif y_min == y_max:
+            y_min = y_max = round(y_min)  # Round to the nearest whole pixel
+            region = pixels[y_min : y_min + 1, x_min:x_max]  # Get the horizontal line
+        else:
+            # Extract the region of interest
+            region = pixels[y_min:y_max, x_min:x_max]
 
         # Calculate the average pixel value
-        average_pixel_value = np.mean(region, axis=(0, 1))
-        average_pixel_code = tuple(map(int, average_pixel_value))
+        average_pixel_value = tuple(np.mean(region, axis=(0, 1)))
 
         return (
-            average_pixel_code,
             average_pixel_value,
             region,
             image,
