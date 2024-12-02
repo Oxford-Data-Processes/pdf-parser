@@ -6,39 +6,55 @@ from pdf2image import convert_from_bytes
 
 
 class Extractor:
-    def __init__(self, pdf_bytes: bytes):
+    def __init__(self, pdf_bytes: bytes, template_name: str, identifier: str):
         self.pdf_bytes = pdf_bytes
+        self.template_name = template_name
+        self.identifier = identifier
 
-    def extract_text(self):
+    def extract_data(self):
         """
         Extract text, bounding box information, and line coordinates from the PDF file.
 
         Returns:
             dict: Dictionary containing extracted text, bounding box information, line coordinates, number of pages, and dimensions.
         """
+        prefix = f"{self.template_name}_{self.identifier}"
+        pdf_jpg_files = ImageExtractor(self.pdf_bytes).convert_pdf_to_jpg_files(
+            prefix=prefix
+        )
         with pdfplumber.open(io.BytesIO(self.pdf_bytes)) as pdf:
             data = {
                 "pages": [],
                 "number_of_pages": len(pdf.pages),
                 "dimensions": self.get_dimensions(pdf),
             }
+            image_extractor = ImageExtractor(
+                self.pdf_bytes
+            )  # Create an instance of ImageExtractor
             for page_num, page in enumerate(pdf.pages):
                 page_data = self.extract_page_data(page)
-                line_coordinates = [
-                    {
-                        "decimal_coordinates": {
-                            "top_left": {
-                                "x": round(line["x0"] / page.width, 6),
-                                "y": 1 - round(line["y0"] / page.height, 6),
-                            },
-                            "bottom_right": {
-                                "x": round(line["x1"] / page.width, 6),
-                                "y": 1 - round(line["y1"] / page.height, 6),
-                            },
-                        }
+
+                line_coordinates = []
+                for line in page.lines:
+                    coordinates = {
+                        "top_left": {
+                            "x": round(line["x0"] / page.width, 6),
+                            "y": 1 - round(line["y0"] / page.height, 6),
+                        },
+                        "bottom_right": {
+                            "x": round(line["x1"] / page.width, 6),
+                            "y": 1 - round(line["y1"] / page.height, 6),
+                        },
                     }
-                    for line in page.lines
-                ]
+                    line_coordinates.append(
+                        {
+                            "decimal_coordinates": coordinates,
+                            "average_pixel_value": image_extractor.calculate_average_pixel_value(
+                                pdf_jpg_files[f"{prefix}_page_{page_num + 1}.jpg"],
+                                coordinates,
+                            ),
+                        }
+                    )
 
                 data["pages"].append(
                     {
@@ -96,7 +112,7 @@ class ImageExtractor:
     def __init__(self, pdf_bytes: bytes):
         self.pdf_bytes = pdf_bytes
 
-    def convert_pdf_to_jpg_files(self, prefix=""):
+    def convert_pdf_to_jpg_files(self, prefix: str):
         """Convert the PDF into several JPG files, one for each page.
 
         Args:
@@ -108,14 +124,8 @@ class ImageExtractor:
         images = convert_from_bytes(self.pdf_bytes)
         jpg_files = {}
         for page_num, image in enumerate(images):
-            jpg_file_name = (
-                f"{prefix}_page_{page_num + 1}.jpg"
-                if prefix
-                else f"page_{page_num + 1}.jpg"
-            )
-            from io import BytesIO
-
-            img_byte_arr = BytesIO()
+            jpg_file_name = f"{prefix}_page_{page_num + 1}.jpg"
+            img_byte_arr = io.BytesIO()
             image.save(img_byte_arr, format="JPEG")
             jpg_files[jpg_file_name] = img_byte_arr.getvalue()
         return jpg_files
