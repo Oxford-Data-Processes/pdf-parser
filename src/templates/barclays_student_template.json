@@ -128,8 +128,14 @@
                     {
                         "field_name": "description",
                         "coordinates": {
-                            "top_left": { "x": 0.128527, "y": 0.690323 },
-                            "bottom_right": { "x": 0.300085, "y": 1.02621 }
+                            "top_left": {
+                                "x": 0.148,
+                                "y": 0.462
+                            },
+                            "bottom_right": {
+                                "x": 0.429,
+                                "y": 0.887
+                            }
                         },
                         "type": "text"
                     },

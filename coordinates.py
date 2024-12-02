@@ -277,5 +277,5 @@ class PDFCoordinateFinder:
 
 
 if __name__ == "__main__":
-    pdf_path = "data/bank_statements/barclays/pdf/barclays March 2.pdf"
+    pdf_path = "data/bank_statements/barclays_student/pdf/barclays_student_march.pdf"
     app = PDFCoordinateFinder(pdf_path)

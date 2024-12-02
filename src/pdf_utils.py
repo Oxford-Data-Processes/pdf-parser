@@ -1,4 +1,4 @@
-import json
+from typing import Optional
 from PIL import ImageDraw
 from pdf2image import convert_from_path
 
@@ -88,11 +88,11 @@ class ImageDrawer:
 
     @staticmethod
     def draw_column_box_and_lines(
-        pdf_path, table_splitter, page_content, coordinates, delimiter_type, page_number
+        pdf_path,
+        lines_y_coordinates,
+        coordinates,
+        page_number,
     ):
-        lines_y_coordinates = table_splitter.split_table(
-            delimiter_type, page_content, coordinates
-        )
         jpg_image = ImageDrawer.create_jpg_image(pdf_path, page_number)
         image_drawer = ImageDrawer(jpg_image, jpg_image.size[0], jpg_image.size[1])
         modified_image = image_drawer.draw_lines_and_coordinates(

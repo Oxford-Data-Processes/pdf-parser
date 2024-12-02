@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 
 
 class Parser:
@@ -74,6 +74,14 @@ class Parser:
             )
         }
 
+    def get_output_data_from_table_rule(
+        self, table_rule_id, page_index, pdf_data, template
+    ):
+        table_rule = self.get_rule_from_id(table_rule_id, template)
+        coordinates = table_rule["config"]["coordinates"]
+        page_content = pdf_data["pages"][page_index]["content"]
+        return None
+
 
 class TableSplitter:
     def __init__(self, template, parser):
@@ -81,6 +89,7 @@ class TableSplitter:
         self.parser = parser
 
     def split_table_by_delimiter(self, page_content, coordinates):
+
         text_coordinates = page_content["content"]
         items_within_coordinates = self.parser.get_items_in_bounding_box(
             text_coordinates, coordinates
