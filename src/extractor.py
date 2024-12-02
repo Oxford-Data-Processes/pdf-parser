@@ -3,7 +3,7 @@ import io
 from pdf2image import convert_from_bytes
 
 
-class TextExtractor:
+class Extractor:
     def __init__(self, pdf_bytes: bytes):
         self.pdf_bytes = pdf_bytes
 
