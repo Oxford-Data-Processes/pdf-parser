@@ -1,5 +1,6 @@
 import pdfplumber
 import io
+from pdf2image import convert_from_bytes
 
 
 class TextExtractor:
@@ -87,3 +88,27 @@ class TextExtractor:
                 }
             )
         return page_data
+
+    def convert_pdf_to_jpg_files(self, prefix=""):
+        """Convert the PDF into several JPG files, one for each page.
+
+        Args:
+            prefix (str): Optional prefix for the JPG file names.
+
+        Returns:
+            dict: Dictionary with file names as keys and JPEG bytes as values.
+        """
+        images = convert_from_bytes(self.pdf_bytes)
+        jpg_files = {}
+        for page_num, image in enumerate(images):
+            jpg_file_name = (
+                f"{prefix}_page_{page_num + 1}.jpg"
+                if prefix
+                else f"page_{page_num + 1}.jpg"
+            )
+            from io import BytesIO
+
+            img_byte_arr = BytesIO()
+            image.save(img_byte_arr, format="JPEG")
+            jpg_files[jpg_file_name] = img_byte_arr.getvalue()
+        return jpg_files

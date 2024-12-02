@@ -68,6 +68,8 @@ Focus on building this first, the thing that can split tables into form objects.
 
 COORDINATES ARE DECIMAL COORDINATES STARTING FROM TOP LEFT CORNER OF THE IMAGE.
 
+PDF extractor gets lines, text using pdf plumber, then also provides image and pixel hexcodes and can create original jpg and transformed jpg with lines. This is useful for debugging and inspecting the data. Top left corner of image is (0, 0). Bottom right corner is (1, 1).
+
 Please provide step by step instructions on how to build this package. Don't write any code, just provide the exact classes and methods that will be used. Be as detailed as possible without writing any code. Don't include any testing/CI/CD instructions. Just the classes and methods.
 
 Page numbers:
