@@ -36,28 +36,30 @@ class Extractor:
 
                 line_data = []
                 for line in page.lines:
-
-                    average_pixel_value, _, _, _ = (
-                        image_extractor.calculate_average_pixel_value(
-                            pdf_jpg_files[f"{prefix}_page_{page_num + 1}.jpg"], line
-                        )
-                    )
-                    coordinates = {
-                        "top_left": {
-                            "x": round(line["x0"] / page.width, 6),
-                            "y": 1 - round(line["y0"] / page.height, 6),
-                        },
-                        "bottom_right": {
-                            "x": round(line["x1"] / page.width, 6),
-                            "y": 1 - round(line["y1"] / page.height, 6),
-                        },
-                    }
-                    line_data.append(
-                        {
-                            "decimal_coordinates": coordinates,
-                            "average_pixel_value": average_pixel_value,
+                    # Ensure line has the necessary keys before proceeding
+                    if "x0" in line and "y0" in line and "x1" in line and "y1" in line:
+                        coordinates = {
+                            "top_left": {
+                                "x": round(line["x0"] / page.width, 6),
+                                "y": 1 - round(line["y0"] / page.height, 6),
+                            },
+                            "bottom_right": {
+                                "x": round(line["x1"] / page.width, 6),
+                                "y": 1 - round(line["y1"] / page.height, 6),
+                            },
                         }
-                    )
+                        average_pixel_value, _, _, _ = (
+                            image_extractor.calculate_average_pixel_value(
+                                pdf_jpg_files[f"{prefix}_page_{page_num + 1}.jpg"],
+                                coordinates,
+                            )
+                        )
+                        line_data.append(
+                            {
+                                "decimal_coordinates": coordinates,
+                                "average_pixel_value": average_pixel_value,
+                            }
+                        )
 
                 data["pages"].append(
                     {
@@ -156,11 +158,11 @@ class ImageExtractor:
             region = pixels[y_min:y_max, x_min:x_max]
 
         # Calculate the average pixel value
-        average_pixel_value = tuple(np.mean(region, axis=(0, 1)))
+        average_pixel_value = list(np.round(np.mean(region, axis=(0, 1))).astype(int))
 
         return (
             average_pixel_value,
             region,
             image,
-            (x_min, y_min, x_max, y_max),
+            (round(x_min), round(y_min), round(x_max), round(y_max)),
         )
