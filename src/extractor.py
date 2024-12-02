@@ -26,11 +26,11 @@ class TextExtractor:
                         "decimal_coordinates": {
                             "top_left": {
                                 "x": round(line["x0"] / page.width, 6),
-                                "y": round(line["y0"] / page.height, 6),
+                                "y": 1 - round(line["y0"] / page.height, 6),
                             },
                             "bottom_right": {
                                 "x": round(line["x1"] / page.width, 6),
-                                "y": round(line["y1"] / page.height, 6),
+                                "y": 1 - round(line["y1"] / page.height, 6),
                             },
                         }
                     }

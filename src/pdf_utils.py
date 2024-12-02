@@ -59,7 +59,7 @@ class ImageDrawer:
         img_width, img_height = image_copy.size
 
         for i, y_coordinate in enumerate(pdf_lines_y_coordinates, 1):
-            y = img_height - (y_coordinate * img_height)  # Flip y-coordinate
+            y = y_coordinate * img_height
 
             # Draw a line across the entire width of the image
             draw.line([(0, y), (img_width, y)], fill="red", width=2)

@@ -105,7 +105,7 @@ class TableSplitter:
             y0 = line["decimal_coordinates"]["top_left"]["y"]
             y1 = line["decimal_coordinates"]["bottom_right"]["y"]
 
-            if x0 >= min_x and x1 <= max_x and 1 - y0 >= min_y and 1 - y1 <= max_y:
+            if x0 >= min_x and x1 <= max_x and y0 >= min_y and y1 <= max_y:
                 line_separation_y_coordinates.append(y0)
 
         return sorted(list(set(line_separation_y_coordinates)))
