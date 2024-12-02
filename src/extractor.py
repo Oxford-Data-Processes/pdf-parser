@@ -41,11 +41,11 @@ class Extractor:
                         coordinates = {
                             "top_left": {
                                 "x": round(line["x0"] / page.width, 6),
-                                "y": 1 - round(line["y0"] / page.height, 6),
+                                "y": round(1 - (line["y0"] / page.height), 6),
                             },
                             "bottom_right": {
                                 "x": round(line["x1"] / page.width, 6),
-                                "y": 1 - round(line["y1"] / page.height, 6),
+                                "y": round(1 - (line["y1"] / page.height), 6),
                             },
                         }
                         average_pixel_value, _, _, _ = (
@@ -99,12 +99,12 @@ class Extractor:
                         },
                         "decimal_coordinates": {
                             "top_left": {
-                                "x": round(x0 / page.width, 6),
-                                "y": round(y0 / page.height, 6),
+                                "x": round((x0 / page.width), 6),
+                                "y": round((y0 / page.height), 6),
                             },
                             "bottom_right": {
-                                "x": round(x1 / page.width, 6),
-                                "y": round(y1 / page.height, 6),
+                                "x": round((x1 / page.width), 6),
+                                "y": round((y1 / page.height), 6),
                             },
                         },
                     },
@@ -158,7 +158,9 @@ class ImageExtractor:
             region = pixels[y_min:y_max, x_min:x_max]
 
         # Calculate the average pixel value
-        average_pixel_value = list(np.round(np.mean(region, axis=(0, 1))).astype(int))
+        average_pixel_value = list(
+            np.round(np.mean(region, axis=(0, 1))).astype(int).tolist()
+        )
 
         return (
             average_pixel_value,
