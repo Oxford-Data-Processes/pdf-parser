@@ -54,7 +54,7 @@ class ImageDrawer:
 
         img_width, img_height = image_copy.size
 
-        for i, y_coordinate in enumerate(pdf_lines_y_coordinates, 1):
+        for y_coordinate in pdf_lines_y_coordinates:
             y = y_coordinate * img_height
 
             # Draw a line across the entire width of the image
@@ -62,3 +62,41 @@ class ImageDrawer:
 
         print(f"Successfully drew {len(pdf_lines_y_coordinates)} lines")
         return image_copy
+
+    def draw_lines_and_coordinates(self, coordinates, lines_y_coordinates):
+        """Draw coordinates and horizontal lines on the image."""
+        x0 = coordinates["top_left"]["x"]
+        x1 = coordinates["bottom_right"]["x"]
+        y0 = coordinates["top_left"]["y"]
+        y1 = coordinates["bottom_right"]["y"]
+
+        # Create a list of y coordinates within the range
+        y_coordinates = [y for y in lines_y_coordinates if y0 <= y <= y1]
+
+        # Generate new coordinate boxes
+        new_coordinates = []
+        for i in range(len(y_coordinates) + 1):
+            top_left = {"x": x0, "y": y0 if i == 0 else y_coordinates[i - 1]}
+            bottom_right = {
+                "x": x1,
+                "y": y1 if i == len(y_coordinates) else y_coordinates[i],
+            }
+            new_coordinates.append({"top_left": top_left, "bottom_right": bottom_right})
+
+        modified_image = self.draw_coordinates(new_coordinates)
+        return modified_image
+
+    @staticmethod
+    def draw_column_box_and_lines(
+        pdf_path, table_splitter, page_content, coordinates, delimiter_type, page_number
+    ):
+        lines_y_coordinates = table_splitter.split_table(
+            delimiter_type, page_content, coordinates
+        )
+        jpg_image = ImageDrawer.create_jpg_image(pdf_path, page_number)
+        image_drawer = ImageDrawer(jpg_image, jpg_image.size[0], jpg_image.size[1])
+        modified_image = image_drawer.draw_lines_and_coordinates(
+            coordinates, lines_y_coordinates
+        )
+
+        return modified_image
