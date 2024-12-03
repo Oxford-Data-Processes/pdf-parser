@@ -112,6 +112,23 @@ class Parser:
         return None
 
 
+class TableProcessor:
+    def __init__(self, template, parser):
+        self.template = template
+        self.parser = parser
+
+    def process_table(template, page_content):
+        parser = Parser()
+        table_splitter = TableSplitter(template, parser)
+        lines = page_content["lines"]
+
+        for table_rule in template["rules"]:
+            if table_rule["type"] == "table":
+                process_columns(
+                    table_rule, parser, table_splitter, lines, pdf_data, page_content
+                )
+
+
 class TableSplitter:
     def __init__(self, template, parser):
         self.template = template

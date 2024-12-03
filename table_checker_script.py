@@ -32,29 +32,11 @@ def load_json_data(file_path):
         return json.load(f)
 
 
-def process_table(template, page_content):
-    parser = Parser()
-    table_splitter = TableSplitter(template, parser)
-    lines = page_content["lines"]
-
-    for rule in template["rules"]:
-        if rule["type"] == "table":
-            table_rule = rule
-            print_table_rule(table_rule)
-            process_columns(
-                table_rule, parser, table_splitter, lines, pdf_data, page_content
-            )
-
-
-def print_table_rule(table_rule):
-    print(table_rule)
-    for column in table_rule["config"]["columns"]:
-        print(column)
-
-
-def process_columns(table_rule, parser, table_splitter, lines, pdf_data, page_content):
+def process_columns(table_rule, parser, table_splitter, lines, page_content):
     delimiter_field_name = "date"
     delimiter_type = "delimiter"
+
+    processed_columns = []
 
     for column in table_rule["config"]["columns"]:
         coordinates = column["coordinates"]
@@ -67,7 +49,7 @@ def process_columns(table_rule, parser, table_splitter, lines, pdf_data, page_co
                 delimiter_type, page_content, delimiter_coordinates
             )
 
-        if delimiter_type == "line":
+        elif delimiter_type == "line":
             max_pixel_value = (100, 100, 100)
             delimiter_coordinates = parser.get_delimiter_column_coordinates(
                 template, delimiter_field_name
@@ -79,12 +61,11 @@ def process_columns(table_rule, parser, table_splitter, lines, pdf_data, page_co
                 line["decimal_coordinates"]["top_left"]["y"] for line in filtered_lines
             ]
 
-            print(lines_y_coordinates)
-
-        image_with_lines = ImageDrawer.draw_column_box_and_lines(
-            pdf_path, lines_y_coordinates, coordinates, page_number
+        processed_columns.append(
+            {"coordinates": coordinates, "lines_y_coordinates": lines_y_coordinates}
         )
-        image_with_lines.show()
+
+    return processed_columns
 
 
 # Main execution
@@ -96,4 +77,23 @@ output_data = load_json_data(output_path)
 page_number = 2
 
 page_content = pdf_data["pages"][page_number - 1]
-process_table(template, page_content)
+
+parser = Parser()
+splitter = TableSplitter(template, parser)
+
+lines = page_content["lines"]
+
+for table_rule in template["rules"]:
+    if table_rule["type"] == "table":
+        processed_columns = process_columns(
+            table_rule, parser, splitter, lines, page_content
+        )
+
+        for processed_column in processed_columns:
+            coordinates = processed_column["coordinates"]
+            lines_y_coordinates = processed_column["lines_y_coordinates"]
+
+            image_with_lines = ImageDrawer.draw_column_box_and_lines(
+                pdf_path, lines_y_coordinates, coordinates, page_number
+            )
+            image_with_lines.show()
