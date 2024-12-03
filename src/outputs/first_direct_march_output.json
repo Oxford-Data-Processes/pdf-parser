@@ -1,7 +1,7 @@
 {
     "metadata": {
-        "document_id": "58d23d07-60e7-4fbf-86e5-d7a39a556e7d",
-        "parsed_at": "2024-12-03T17:42:37",
+        "document_id": "c7157c4c-6884-4f45-9587-4018895376d3",
+        "parsed_at": "2024-12-03T18:09:15",
         "number_of_pages": 3
     },
     "pages": [
@@ -200,12 +200,44 @@
                 {
                     "data": [
                         {
-                            "date": "21 Mar 23 27 Mar 23 28 Mar 23 28 Mar 23",
-                            "payment_type": "MAS MAS CR BP",
-                            "description": "Balancebroughtforward INT'L 0619419166 APPLE.COM/BILL APPLE.COM/BIL PureGym Limited Leeds HIYACAR LIMITED F SALARY JAKE HOLMES MONZO Balancecarriedforward the Financial Services Compensation",
-                            "paid_out": "6.99 16.99 1,500.00 Scheme",
+                            "date": "",
+                            "payment_type": "",
+                            "description": "Balancebroughtforward",
+                            "paid_out": "",
+                            "paid_in": "",
+                            "balance": "144.99D"
+                        },
+                        {
+                            "date": "",
+                            "payment_type": "MAS",
+                            "description": "INT'L 0619419166 APPLE.COM/BILL APPLE.COM/BIL",
+                            "paid_out": "6.99",
+                            "paid_in": "",
+                            "balance": "151.98D"
+                        },
+                        {
+                            "date": "21 Mar 23",
+                            "payment_type": "MAS",
+                            "description": "PureGym Limited Leeds",
+                            "paid_out": "16.99",
+                            "paid_in": "",
+                            "balance": "168.97D"
+                        },
+                        {
+                            "date": "27 Mar 23",
+                            "payment_type": "CR",
+                            "description": "HIYACAR LIMITED F SALARY",
+                            "paid_out": "",
                             "paid_in": "2,021.16",
-                            "balance": "144.99D 151.98D 168.97D 1,852.19 352.19 352.19"
+                            "balance": "1,852.19"
+                        },
+                        {
+                            "date": "28 Mar 23 28 Mar 23",
+                            "payment_type": "BP",
+                            "description": "JAKE HOLMES MONZO Balancecarriedforward the Financial Services Compensation",
+                            "paid_out": "1,500.00 Scheme",
+                            "paid_in": "",
+                            "balance": "352.19 352.19"
                         },
                         {
                             "date": "Your",
