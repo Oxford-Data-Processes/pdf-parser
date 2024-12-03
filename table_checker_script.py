@@ -32,10 +32,9 @@ def load_json_data(file_path):
         return json.load(f)
 
 
-def process_table(template, pdf_data, page_number):
+def process_table(template, page_content):
     parser = Parser()
     table_splitter = TableSplitter(template, parser)
-    page_content = pdf_data["pages"][page_number - 1]
     lines = page_content["lines"]
 
     for rule in template["rules"]:
@@ -95,4 +94,6 @@ pdf_data = load_json_data(pdf_data_path)
 output_data = load_json_data(output_path)
 
 page_number = 2
-process_table(template, pdf_data, page_number)
+
+page_content = pdf_data["pages"][page_number - 1]
+process_table(template, page_content)
