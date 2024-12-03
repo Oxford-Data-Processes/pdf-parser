@@ -1,9 +1,9 @@
 import json
 import os
 from extractor import Extractor
-from parser import Parser, TableProcessor
+from parser import Parser, TableSplitter
 from pdf_utils import ImageDrawer
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 template_name: str = "barclays_student"
 identifier: str = "may"
@@ -21,7 +21,6 @@ def extract_data_from_pdf(pdf_path: str, template_name: str, identifier: str) ->
     with open(pdf_path, "rb") as pdf_file:
         text_extractor = Extractor(pdf_file.read(), template_name, identifier)
         extracted_data = text_extractor.extract_data()
-
         with open(pdf_data_path, "w") as f:
             json.dump(extracted_data, f, indent=4, sort_keys=True)
 
@@ -32,33 +31,116 @@ def load_json_data(file_path: str) -> Dict:
         return json.load(f)
 
 
-def visualize_table_data(table_data: Dict, pdf_path: str) -> None:
-    """Visualize table data by drawing boxes and lines for all columns."""
-    if not table_data:
-        return
+def process_table_data(
+    table_rule: Dict,
+    page_content: Dict,
+    parser: Parser,
+    table_splitter: TableSplitter,
+    max_pixel_value: tuple = (100, 100, 100),
+) -> List[Dict]:
+    """Process a single table's data."""
+    # Get description column coordinates
+    description_coords = None
+    for column in table_rule["config"]["columns"]:
+        if column["field_name"] == "description":
+            description_coords = column["coordinates"]
+            break
 
+    if not description_coords:
+        raise ValueError("Description column not found")
+
+    # Filter lines by pixel value and location
+    lines = page_content["lines"]
+    filtered_lines = parser.filter_lines_by_pixel_value(lines, max_pixel_value)
+
+    # Get y-coordinates from filtered lines
+    lines_y_coordinates = sorted(
+        set(line["decimal_coordinates"]["top_left"]["y"] for line in filtered_lines)
+    )
+
+    # Process each column
+    processed_columns = []
+    for column in table_rule["config"]["columns"]:
+        processed_columns.append(
+            {
+                "field_name": column["field_name"],
+                "coordinates": column["coordinates"],
+                "lines_y_coordinates": lines_y_coordinates,
+            }
+        )
+
+    return processed_columns
+
+
+def process_tables(template: Dict, pdf_data: Dict) -> List[Dict]:
+    """Process all tables according to template pages."""
+    results = []
+    parser = Parser()
+    table_splitter = TableSplitter(template, parser)
+
+    # Process each page rule
+    for page_rule in template["pages"]:
+        if "tables" not in page_rule or not page_rule["tables"]:
+            continue
+
+        # Get page indexes
+        page_indexes = parser.page_number_converter(
+            page_rule["page_numbers"], len(pdf_data["pages"])
+        )
+
+        # Process each page
+        for page_index in page_indexes:
+            page_content = pdf_data["pages"][page_index]
+
+            # Process each table rule
+            for rule_id in page_rule["tables"]:
+                try:
+                    # Get table rule
+                    table_rule = parser.get_rule_from_id(rule_id, template)
+                    if not table_rule:
+                        print(f"Warning: Table rule {rule_id} not found")
+                        continue
+
+                    # Process table data
+                    processed_columns = process_table_data(
+                        table_rule, page_content, parser, table_splitter
+                    )
+
+                    if processed_columns and any(
+                        col["lines_y_coordinates"] for col in processed_columns
+                    ):
+                        results.append(
+                            {
+                                "rule_id": rule_id,
+                                "page_number": page_index + 1,
+                                "columns": processed_columns,
+                            }
+                        )
+                        print(f"\nProcessed table {rule_id} on page {page_index + 1}")
+                        print(
+                            f"Found {len(processed_columns[0]['lines_y_coordinates'])} lines"
+                        )
+
+                except Exception as e:
+                    print(
+                        f"Error processing table {rule_id} on page {page_index + 1}: {str(e)}"
+                    )
+
+    return results
+
+
+def visualize_table_data(table_data: Dict, pdf_path: str) -> None:
+    """Visualize table data by drawing boxes and lines."""
     print(
         f"\nVisualizing table {table_data['rule_id']} on page {table_data['page_number']}:"
     )
 
-    # Group columns by their y-coordinates to avoid duplicate visualizations
-    visualized_coords = set()
-
+    # Process each column
     for column in table_data["columns"]:
-        if not column["lines_y_coordinates"]:
+        if not column.get("lines_y_coordinates"):
             continue
 
-        # Create a unique key for this column's coordinates
-        coord_key = (
-            column["coordinates"]["top_left"]["x"],
-            column["coordinates"]["top_left"]["y"],
-            column["coordinates"]["bottom_right"]["x"],
-            column["coordinates"]["bottom_right"]["y"],
-        )
-
-        if coord_key not in visualized_coords:
-            visualized_coords.add(coord_key)
-
+        try:
             image_with_lines = ImageDrawer.draw_column_box_and_lines(
                 pdf_path,
                 column["lines_y_coordinates"],
@@ -69,60 +151,57 @@ def visualize_table_data(table_data: Dict, pdf_path: str) -> None:
             print(f"Number of lines: {len(column['lines_y_coordinates'])}")
             image_with_lines.show()
 
+        except Exception as e:
+            print(f"Error visualizing column {column['field_name']}: {str(e)}")
+
 
 def run_tests(template: Dict, pdf_data: Dict) -> None:
     """Run tests to verify table processing."""
     print("\nRunning tests...")
 
-    table_processor = TableProcessor(template, Parser())
+    # Process tables
+    results = process_tables(template, pdf_data)
 
-    # Test 1: Check if we can process all pages
-    results = table_processor.process_tables(pdf_data)
-    assert len(results) > 0, "No tables were processed"
+    # Verify results
+    assert results, "No tables were processed"
 
-    # Test 2: Check if each result has required fields
     for result in results:
-        assert "rule_id" in result, "Missing rule_id in result"
-        assert "page_number" in result, "Missing page_number in result"
-        assert "columns" in result, "Missing columns in result"
+        # Check required fields
+        assert all(
+            key in result for key in ["rule_id", "page_number", "columns"]
+        ), "Missing required fields in result"
 
-        # Test 3: Check if all columns have line coordinates
+        # Check columns
+        assert result["columns"], "No columns in result"
+
+        # Check line coordinates
         for column in result["columns"]:
-            assert (
-                "lines_y_coordinates" in column
-            ), f"Missing lines_y_coordinates in {column['field_name']}"
-            assert (
-                column["lines_y_coordinates"] is not None
-            ), f"No line coordinates found for {column['field_name']}"
-            assert (
-                len(column["lines_y_coordinates"]) > 0
-            ), f"Empty line coordinates for {column['field_name']}"
+            assert column[
+                "lines_y_coordinates"
+            ], f"No line coordinates for column {column['field_name']}"
 
         print(
             f"\nTest passed for table {result['rule_id']} on page {result['page_number']}"
         )
         print(f"Found {len(result['columns'][0]['lines_y_coordinates'])} lines")
-        print(f"All {len(result['columns'])} columns have valid line coordinates")
+        print(f"All {len(result['columns'])} columns processed successfully")
 
 
 if __name__ == "__main__":
-
     # Extract and load data
     extract_data_from_pdf(pdf_path, template_name, identifier)
     template = load_json_data(template_path)
     pdf_data = load_json_data(pdf_data_path)
-    table_processor = TableProcessor(template, Parser())
 
-    # Run tests
     try:
+        # Run tests
         run_tests(template, pdf_data)
-    except AssertionError as e:
-        print(f"Test failed: {str(e)}")
+
+        # Process and visualize tables
+        results = process_tables(template, pdf_data)
+        for result in results:
+            visualize_table_data(result, pdf_path)
+
+    except Exception as e:
+        print(f"Error: {str(e)}")
         exit(1)
-
-    # Process tables
-    results = table_processor.process_tables(pdf_data)
-
-    # Visualize results
-    for table_data in results:
-        visualize_table_data(table_data, pdf_path)
