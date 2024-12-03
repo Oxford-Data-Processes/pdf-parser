@@ -75,6 +75,7 @@ def process_tables(template: Dict, pdf_data: Dict) -> List[Dict]:
                     page_indexes = parser.page_number_converter(
                         page_rule["page_numbers"], len(pdf_data["pages"])
                     )
+                    print("PAGE_INDEXES", page_indexes)
                     if page_indexes:
                         page_number = page_indexes[0] + 1
                         break

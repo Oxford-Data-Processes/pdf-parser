@@ -348,12 +348,12 @@
             "tables": ["transactions_first_page"]
         },
         {
-            "page_numbers": "2:-1",
+            "page_numbers": "2:-2",
             "tables": ["transactions_second_page_onwards"]
         },
         {
             "page_numbers": "-1",
-            "tables": ["transactions_last_page"]
+            "ignore": true
         }
     ]
 }
