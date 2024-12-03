@@ -3,8 +3,8 @@ import os
 from typing import Dict, Any
 
 
-template_name: str = "barclays_student"
-identifier: str = "may"
+template_name: str = "first_direct"
+identifier: str = "march"
 
 template_path: str = os.path.join("src", "templates", f"{template_name}_template.json")
 pdf_data_path: str = os.path.join(
