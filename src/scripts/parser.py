@@ -119,23 +119,35 @@ class TableProcessor:
         self.template = template
         self.parser = parser
 
-    def get_table_data(
+    def process_table_data(
         self,
-        rule_id: str,
-        page_index: int,
-        pdf_data,
+        table_rule: Dict,
+        page_content: Dict,
         delimiter_field_name: str,
         delimiter_type: str,
-    ) -> Dict:
-        """Get table data for a specific rule and page."""
-        table_rule = self.parser.get_rule_from_id(rule_id, self.template)
-        if not table_rule:
-            raise ValueError(f"Table rule {rule_id} not found")
+    ) -> List[Dict]:
+        """Process a single table's data."""
 
-        page_content = pdf_data["pages"][page_index]
-        lines = page_content["lines"]
+        delimiter_coordinates = self.parser.get_delimiter_column_coordinates(
+            self.template, delimiter_field_name
+        )
 
         table_splitter = TableSplitter(self.template, self.parser)
+
+        if delimiter_type == "line":
+
+            filtered_lines = self.parser.filter_lines_by_pixel_value(
+                page_content["lines"]
+            )
+
+            lines_y_coordinates = sorted(
+                set(
+                    [
+                        line["decimal_coordinates"]["top_left"]["y"]
+                        for line in filtered_lines
+                    ]
+                )
+            )
 
         if delimiter_type == "field":
             delimiter_coordinates = self.parser.get_delimiter_column_coordinates(
@@ -145,77 +157,70 @@ class TableProcessor:
                 delimiter_type, page_content, delimiter_coordinates
             )
 
-        if delimiter_type == "line":
-            delimiter_coordinates = self.parser.get_delimiter_column_coordinates(
-                self.template, delimiter_field_name
-            )
-            filtered_lines = self.parser.filter_lines_by_pixel_value(lines)
+        if not delimiter_coordinates:
+            raise ValueError("Delimiter coordinates not found")
 
-            lines_y_coordinates = [
-                line["decimal_coordinates"]["top_left"]["y"] for line in filtered_lines
-            ]
-
-        return self.process_columns(
-            table_rule, lines_y_coordinates, rule_id, page_index
-        )
-
-    def get_y_coordinates(self, filtered_lines):
-        """Get y-coordinates from filtered lines."""
-        return sorted(
-            set(line["decimal_coordinates"]["top_left"]["y"] for line in filtered_lines)
-        )
-
-    def process_columns(self, table_rule, lines_y_coordinates, rule_id, page_index):
-        """Process each column and return structured data."""
-        columns_data = []
+        # Process each column
+        processed_columns = []
         for column in table_rule["config"]["columns"]:
-            column_data = {
-                "field_name": column["field_name"],
-                "coordinates": column["coordinates"],
-                "lines_y_coordinates": lines_y_coordinates,
-            }
-            columns_data.append(column_data)
+            processed_columns.append(
+                {
+                    "field_name": column["field_name"],
+                    "coordinates": column["coordinates"],
+                    "lines_y_coordinates": lines_y_coordinates,
+                }
+            )
 
-        return {
-            "rule_id": rule_id,
-            "page_number": page_index + 1,
-            "columns": columns_data,
-        }
+        return processed_columns
 
     def process_tables(self, pdf_data: Dict) -> List[Dict]:
         """Process all tables according to template pages."""
         results = []
-        number_of_pages = len(pdf_data["pages"])
-
+        # Process each page rule
         for page_rule in self.template["pages"]:
-            if "tables" not in page_rule:
+            if "tables" not in page_rule or not page_rule["tables"]:
                 continue
 
+            # Get page indexes
             page_indexes = self.parser.page_number_converter(
-                page_rule["page_numbers"], number_of_pages
+                page_rule["page_numbers"], len(pdf_data["pages"])
             )
 
+            # Process each page
             for page_index in page_indexes:
-                results.extend(
-                    self.process_table_rules(page_rule, page_index, pdf_data)
-                )
+                page_content = pdf_data["pages"][page_index]
 
-        return results
+                # Process each table rule
+                for rule_id in page_rule["tables"]:
+                    # Get table rule
+                    table_rule = self.parser.get_rule_from_id(rule_id, self.template)
+                    if not table_rule:
+                        print(f"Warning: Table rule {rule_id} not found")
+                        continue
 
-    def process_table_rules(self, page_rule, page_index, pdf_data):
-        """Process each table rule for the given page."""
-        results = []
-        for rule_id in page_rule["tables"]:
-            try:
-                delimiter_field_name = page_rule["delimiter_field_name"]
-                delimiter_type = page_rule["delimiter_type"]
-                table_data = self.get_table_data(
-                    rule_id, page_index, pdf_data, delimiter_field_name, delimiter_type
-                )
-                if table_data:
-                    results.append(table_data)
-            except Exception:
-                continue
+                    delimiter_field_name = table_rule["config"]["row_delimiter"][
+                        "field_name"
+                    ]
+                    delimiter_type = table_rule["config"]["row_delimiter"]["type"]
+
+                    # Process table data
+                    processed_columns = self.process_table_data(
+                        table_rule,
+                        page_content,
+                        delimiter_field_name,
+                        delimiter_type,
+                    )
+
+                    if processed_columns and any(
+                        col["lines_y_coordinates"] for col in processed_columns
+                    ):
+                        results.append(
+                            {
+                                "rule_id": rule_id,
+                                "page_number": page_index + 1,
+                                "columns": processed_columns,
+                            }
+                        )
 
         return results
 

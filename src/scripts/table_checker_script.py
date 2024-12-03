@@ -1,7 +1,7 @@
 import json
 import os
 from extractor import Extractor
-from parser import Parser, TableSplitter
+from parser import Parser, TableSplitter, TableProcessor
 from pdf_utils import ImageDrawer
 from typing import Dict, List, Optional
 
@@ -29,117 +29,6 @@ def load_json_data(file_path: str) -> Dict:
     """Load JSON data from file."""
     with open(file_path) as f:
         return json.load(f)
-
-
-def process_table_data(
-    table_rule: Dict,
-    page_content: Dict,
-    parser: Parser,
-    delimiter_field_name: str,
-    delimiter_type: str,
-) -> List[Dict]:
-    """Process a single table's data."""
-
-    delimiter_coordinates = parser.get_delimiter_column_coordinates(
-        template, delimiter_field_name
-    )
-
-    table_splitter = TableSplitter(template, parser)
-
-    if delimiter_type == "line":
-
-        filtered_lines = parser.filter_lines_by_pixel_value(page_content["lines"])
-
-        lines_y_coordinates = sorted(
-            set(
-                [
-                    line["decimal_coordinates"]["top_left"]["y"]
-                    for line in filtered_lines
-                ]
-            )
-        )
-
-    if delimiter_type == "field":
-        delimiter_coordinates = parser.get_delimiter_column_coordinates(
-            template, delimiter_field_name
-        )
-        lines_y_coordinates = table_splitter.split_table(
-            delimiter_type, page_content, delimiter_coordinates
-        )
-
-    if not delimiter_coordinates:
-        raise ValueError("Delimiter coordinates not found")
-
-    # Process each column
-    processed_columns = []
-    for column in table_rule["config"]["columns"]:
-        processed_columns.append(
-            {
-                "field_name": column["field_name"],
-                "coordinates": column["coordinates"],
-                "lines_y_coordinates": lines_y_coordinates,
-            }
-        )
-
-    return processed_columns
-
-
-def process_tables(template: Dict, pdf_data: Dict) -> List[Dict]:
-    """Process all tables according to template pages."""
-    results = []
-    parser = Parser()
-    # Process each page rule
-    for page_rule in template["pages"]:
-        if "tables" not in page_rule or not page_rule["tables"]:
-            continue
-
-        # Get page indexes
-        page_indexes = parser.page_number_converter(
-            page_rule["page_numbers"], len(pdf_data["pages"])
-        )
-
-        # Process each page
-        for page_index in page_indexes:
-            page_content = pdf_data["pages"][page_index]
-
-            # Process each table rule
-            for rule_id in page_rule["tables"]:
-                # Get table rule
-                table_rule = parser.get_rule_from_id(rule_id, template)
-                if not table_rule:
-                    print(f"Warning: Table rule {rule_id} not found")
-                    continue
-
-                delimiter_field_name = table_rule["config"]["row_delimiter"][
-                    "field_name"
-                ]
-                delimiter_type = table_rule["config"]["row_delimiter"]["type"]
-
-                # Process table data
-                processed_columns = process_table_data(
-                    table_rule,
-                    page_content,
-                    parser,
-                    delimiter_field_name,
-                    delimiter_type,
-                )
-
-                if processed_columns and any(
-                    col["lines_y_coordinates"] for col in processed_columns
-                ):
-                    results.append(
-                        {
-                            "rule_id": rule_id,
-                            "page_number": page_index + 1,
-                            "columns": processed_columns,
-                        }
-                    )
-                    print(f"\nProcessed table {rule_id} on page {page_index + 1}")
-                    print(
-                        f"Found {len(processed_columns[0]['lines_y_coordinates'])} lines"
-                    )
-
-    return results
 
 
 def visualize_table_data(table_data: Dict, pdf_path: str) -> None:
@@ -172,8 +61,10 @@ def run_tests(template: Dict, pdf_data: Dict) -> None:
     """Run tests to verify table processing."""
     print("\nRunning tests...")
 
+    table_processor = TableProcessor(template, Parser())
+
     # Process tables
-    results = process_tables(template, pdf_data)
+    results = table_processor.process_tables(pdf_data)
 
     # Verify results
     assert results, "No tables were processed"
@@ -210,8 +101,10 @@ if __name__ == "__main__":
         # Run tests
         run_tests(template, pdf_data)
 
+        table_processor = TableProcessor(template, Parser())
+
         # Process and visualize tables
-        results = process_tables(template, pdf_data)
+        results = table_processor.process_tables(pdf_data)
         for result in results:
             visualize_table_data(result, pdf_path)
 
