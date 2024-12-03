@@ -1,7 +1,7 @@
 {
     "metadata": {
-        "document_id": "7568c831-32a1-4bc7-8ad1-e323c8db7fd1",
-        "parsed_at": "2024-12-03T10:49:23",
+        "document_id": "84c1eead-5a26-4c2d-8525-db8defe93f3c",
+        "parsed_at": "2024-12-03T12:21:00",
         "number_of_pages": 5
     },
     "pages": [
@@ -34,13 +34,49 @@
             ],
             "tables": [
                 {
-                    "results": []
+                    "table_header": "date",
+                    "data": [
+                        "date",
+                        "description",
+                        "money_out",
+                        "money_in",
+                        "balance",
+                        "date",
+                        "description",
+                        "money_out",
+                        "money_in",
+                        "balance"
+                    ]
                 },
                 {
-                    "results": []
+                    "table_header": "date",
+                    "data": [
+                        "date",
+                        "description",
+                        "money_out",
+                        "money_in",
+                        "balance",
+                        "date",
+                        "description",
+                        "money_out",
+                        "money_in",
+                        "balance"
+                    ]
                 },
                 {
-                    "results": []
+                    "table_header": "date",
+                    "data": [
+                        "date",
+                        "description",
+                        "money_out",
+                        "money_in",
+                        "balance",
+                        "date",
+                        "description",
+                        "money_out",
+                        "money_in",
+                        "balance"
+                    ]
                 }
             ]
         }

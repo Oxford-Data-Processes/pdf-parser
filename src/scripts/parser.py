@@ -62,22 +62,6 @@ class Parser:
         )
         return self.get_text_from_items(items_within_coordinates)
 
-    def get_delimiter_column_coordinates(self, template, delimiter_field_name):
-        """Get the coordinates of the description column from the template."""
-        delimiter_coordinates = None
-        for rule in template["rules"]:
-            if rule["type"] == "table":
-                for column in rule["config"]["columns"]:
-                    if column["field_name"] == delimiter_field_name:
-                        delimiter_coordinates = column["coordinates"]
-                        break
-                break
-
-        if not delimiter_coordinates:
-            raise ValueError("Description column coordinates not found in template")
-
-        return delimiter_coordinates
-
     def get_output_data_from_form_rule(
         self, form_rule_id, page_index, pdf_data, template
     ):
@@ -94,17 +78,37 @@ class Parser:
         self, table_rule_id, page_index, pdf_data, template
     ):
         table_processor = TableProcessor(template, self)
-
         results = table_processor.process_tables(pdf_data)
-        for table_data in results:
-            print(table_data)
-        return {"results": results}
+
+        table_header = results[0]["columns"][0]["field_name"]
+        data = []
+        for result in results:
+            for column in result["columns"]:
+                data.append(column["field_name"])
+
+        return {"table_header": table_header, "data": data}
 
 
 class TableProcessor:
     def __init__(self, template, parser):
         self.template = template
         self.parser = parser
+
+    def get_delimiter_column_coordinates(self, template, delimiter_field_name):
+        """Get the coordinates of the description column from the template."""
+        delimiter_coordinates = None
+        for rule in template["rules"]:
+            if rule["type"] == "table":
+                for column in rule["config"]["columns"]:
+                    if column["field_name"] == delimiter_field_name:
+                        delimiter_coordinates = column["coordinates"]
+                        break
+                break
+
+        if not delimiter_coordinates:
+            raise ValueError("Description column coordinates not found in template")
+
+        return delimiter_coordinates
 
     def process_table_data(
         self,
@@ -115,7 +119,7 @@ class TableProcessor:
     ) -> List[Dict]:
         """Process a single table's data."""
 
-        delimiter_coordinates = self.parser.get_delimiter_column_coordinates(
+        delimiter_coordinates = self.get_delimiter_column_coordinates(
             self.template, delimiter_field_name
         )
 
@@ -128,7 +132,7 @@ class TableProcessor:
             )
 
         if delimiter_type == "field":
-            delimiter_coordinates = self.parser.get_delimiter_column_coordinates(
+            delimiter_coordinates = self.get_delimiter_column_coordinates(
                 self.template, delimiter_field_name
             )
             lines_y_coordinates = table_splitter.split_table(
@@ -196,9 +200,7 @@ class TableProcessor:
                 results.append(
                     {
                         "rule_id": rule_id,
-                        "page_number": page_content[
-                            "page_number"
-                        ],  # Assuming page_number is part of page_content
+                        "page_number": page_content["page_number"],
                         "columns": processed_columns,
                     }
                 )
