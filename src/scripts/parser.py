@@ -35,7 +35,7 @@ class Parser:
         return [item for item in template["rules"] if item["rule_id"] == rule_id][0]
 
     def get_items_in_bounding_box(
-        self, text_coordinates, box_coordinates, threshold=0.01
+        self, text_coordinates, box_coordinates, threshold=0.005
     ):
         items_in_box = []
         for item in text_coordinates:
