@@ -1,7 +1,7 @@
 {
     "metadata": {
-        "document_id": "72f65f73-ae17-422d-9093-74c2aef8c9fc",
-        "parsed_at": "2024-12-03T09:17:59",
+        "document_id": "3dba3d83-808d-4e0f-8430-82d49509508d",
+        "parsed_at": "2024-12-03T09:10:08",
         "number_of_pages": 5
     },
     "pages": [
@@ -32,17 +32,7 @@
                     "overdraft_limit": ""
                 }
             ],
-            "tables": [
-                {
-                    "table_rule_id": "transactions_first_page"
-                },
-                {
-                    "table_rule_id": "transactions_second_page_onwards"
-                },
-                {
-                    "table_rule_id": "transactions_second_page_onwards"
-                }
-            ]
+            "tables": []
         }
     ]
 }

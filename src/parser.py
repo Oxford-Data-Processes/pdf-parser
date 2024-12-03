@@ -107,9 +107,7 @@ class Parser:
         self, table_rule_id, page_index, pdf_data, template
     ):
         table_rule = self.get_rule_from_id(table_rule_id, template)
-        coordinates = table_rule["config"]["coordinates"]
-        page_content = pdf_data["pages"][page_index]["content"]
-        return None
+        return {"table_rule_id": table_rule_id}
 
 
 class TableProcessor:
