@@ -4,8 +4,8 @@ from src.extractor import Extractor
 from src.parser import Parser, TableSplitter
 from src.pdf_utils import ImageDrawer
 
-template_name: str = "barclays_student"
-identifier: str = "march"
+template_name: str = "first_direct"
+identifier: str = "may"
 template_path: str = os.path.join("src", "templates", f"{template_name}_template.json")
 pdf_path: str = os.path.join(
     "data", "bank_statements", template_name, "pdf", f"{template_name}_{identifier}.pdf"
@@ -30,8 +30,8 @@ def load_json_data(file_path):
 
 
 def process_columns(table_rule, parser, table_splitter, lines, page_content):
-    delimiter_field_name = "date"
-    delimiter_type = "delimiter"
+    delimiter_field_name = "description"
+    delimiter_type = "line"
 
     processed_columns = []
 
@@ -77,10 +77,10 @@ splitter = TableSplitter(template, parser)
 
 for table_rule in template["rules"]:
     if table_rule["type"] == "table":
-        if table_rule["rule_id"] == "transactions_page_2":
+        if table_rule["rule_id"] == "transactions_first_page":
+            page_number = 1
+        elif table_rule["rule_id"] == "transactions_second_page_onwards":
             page_number = 2
-        elif table_rule["rule_id"] == "transactions_page_3_onwards":
-            page_number = 3
 
         page_content = pdf_data["pages"][page_number - 1]
         lines = page_content["lines"]

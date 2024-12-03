@@ -275,7 +275,7 @@
         {
             "page_numbers": "2:-2",
             "forms": [],
-            "tables": ["transactions_page_1", "transactions_last_page"]
+            "tables": ["transactions_first_page"]
         },
         {
             "page_numbers": "-1",

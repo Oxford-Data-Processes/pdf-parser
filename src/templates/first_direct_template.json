@@ -172,7 +172,7 @@
             }
         },
         {
-            "rule_id": "transactions_middle",
+            "rule_id": "transactions_second_page_onwards",
             "type": "table",
             "config": {
                 "columns": [
@@ -275,7 +275,7 @@
         },
         {
             "page_numbers": "2:-1",
-            "tables": ["transactions_middle_page"]
+            "tables": ["transactions_second_page_onwards"]
         },
         {
             "page_numbers": "-1",

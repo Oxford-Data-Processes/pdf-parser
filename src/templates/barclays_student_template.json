@@ -107,7 +107,7 @@
             }
         },
         {
-            "rule_id": "transactions_page_2",
+            "rule_id": "transactions_first_page",
             "type": "table",
             "config": {
                 "columns": [
@@ -188,7 +188,7 @@
             }
         },
         {
-            "rule_id": "transactions_page_3_onwards",
+            "rule_id": "transactions_second_page_onwards",
             "type": "table",
             "config": {
                 "columns": [
@@ -272,18 +272,18 @@
     "pages": [
         {
             "page_numbers": "1",
-            "forms": ["customer_details", "sort_code", "account_number"],
+            "forms": [],
             "tables": []
         },
         {
             "page_numbers": "2",
-            "forms": ["start_balance", "money_in", "money_out", "end_balance", "overdraft_limit"],
-            "tables": ["transactions_page_2"]
+            "forms": ["sort_code", "account_number", "customer_name", "start_balance", "money_in", "money_out", "end_balance", "overdraft_limit"],
+            "tables": ["transactions_first_page"]
         },
         {
             "page_numbers": "3:-2",
             "forms": [],
-            "tables": ["transactions_page_3_onwards"]
+            "tables": ["transactions_second_page_onwards"]
         },
         {
             "page_numbers": "-1",
