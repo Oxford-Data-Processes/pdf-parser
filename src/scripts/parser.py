@@ -175,57 +175,6 @@ class TableProcessor:
 
         return processed_columns
 
-    def process_tables(self, pdf_data: Dict) -> List[Dict]:
-        """Process all tables according to template pages."""
-        results = []
-        # Process each page rule
-        for page_rule in self.template["pages"]:
-            if "tables" not in page_rule or not page_rule["tables"]:
-                continue
-
-            # Get page indexes
-            page_indexes = self.parser.page_number_converter(
-                page_rule["page_numbers"], len(pdf_data["pages"])
-            )
-
-            # Process each page
-            for page_index in page_indexes:
-                page_content = pdf_data["pages"][page_index]
-                results.extend(self.process_page_tables(page_rule, page_content))
-
-        return results
-
-    def process_page_tables(self, page_rule: Dict, page_content: Dict) -> List[Dict]:
-        """Process tables for a specific page."""
-        results = []
-        # Process each table rule
-        for rule_id in page_rule["tables"]:
-            # Get table rule
-            table_rule = self.parser.get_rule_from_id(rule_id, self.template)
-
-            delimiter_field_name = table_rule["config"]["row_delimiter"]["field_name"]
-            delimiter_type = table_rule["config"]["row_delimiter"]["type"]
-
-            # Process table data
-            processed_columns = self.process_table_data(
-                table_rule,
-                page_content,
-                delimiter_field_name,
-                delimiter_type,
-            )
-
-            if processed_columns and any(
-                col["lines_y_coordinates"] for col in processed_columns
-            ):
-                results.append(
-                    {
-                        "rule_id": rule_id,
-                        "page_number": page_content["page_number"],
-                        "columns": processed_columns,
-                    }
-                )
-        return results
-
 
 class TableSplitter:
     def __init__(self, template, parser):
