@@ -78,28 +78,23 @@ class Parser:
         self, table_rule_id, page_index, pdf_data, template
     ):
         table_processor = TableProcessor(template, self)
+        table_splitter = TableSplitter(template, self)
         results = table_processor.process_tables(pdf_data)
 
-        table_header = results[0]["columns"][0]["field_name"]
         data = []
         for result in results:
+            row_data = {}
             for column in result["columns"]:
-                print(column["field_name"])
-                data.append(column["field_name"])
-
-                table_splitter = TableSplitter(template, self)
                 split_boxes = table_splitter.split_bounding_box_by_lines(
                     column["coordinates"], column["lines_y_coordinates"]
                 )
-                print(split_boxes)
 
-                data.append(
-                    self.get_text_from_page(
-                        pdf_data["pages"][page_index]["content"], split_boxes[0]
-                    )
+                row_data[column["field_name"]] = self.get_text_from_page(
+                    pdf_data["pages"][page_index]["content"], split_boxes[0]
                 )
+            data.append(row_data)
 
-        return {"table_header": table_header, "data": data}
+        return data
 
 
 class TableProcessor:

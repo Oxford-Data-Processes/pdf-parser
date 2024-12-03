@@ -1,7 +1,7 @@
 {
     "metadata": {
-        "document_id": "7fa9b8a3-440c-4b03-a879-7ed74471674a",
-        "parsed_at": "2024-12-03T12:29:14",
+        "document_id": "a0e88ca4-2223-4416-930f-57d36a3e4e9b",
+        "parsed_at": "2024-12-03T12:35:02",
         "number_of_pages": 5
     },
     "pages": [
@@ -33,81 +33,54 @@
                 }
             ],
             "tables": [
-                {
-                    "table_header": "date",
-                    "data": [
-                        "date",
-                        "01 Mar",
-                        "description",
-                        "Start balance",
-                        "money_out",
-                        "",
-                        "money_in",
-                        "",
-                        "balance",
-                        "-195.38",
-                        "date",
-                        "",
-                        "description",
-                        "",
-                        "money_out",
-                        "",
-                        "money_in",
-                        "",
-                        "balance",
-                        ""
-                    ] 
-                },
-                {
-                    "table_header": "date",
-                    "data": [
-                        "date",
-                        "22 Mar",
-                        "description",
-                        "Payment to Matthew Price Ref: Room Payment",
-                        "money_out",
-                        "5.00",
-                        "money_in",
-                        "",
-                        "balance",
-                        "",
-                        "date",
-                        "13 Mar",
-                        "description",
-                        "Transfer to Sort Code 20-44-51 Account 83254534 Ref: Mobile-Channel",
-                        "money_out",
-                        "52.00",
-                        "money_in",
-                        "",
-                        "balance",
-                        ""
-                    ]
-                },
-                {
-                    "table_header": "date",
-                    "data": [
-                        "date",
-                        "",
-                        "description",
-                        "",
-                        "money_out",
-                        "",
-                        "money_in",
-                        "",
-                        "balance",
-                        "",
-                        "date",
-                        "This",
-                        "description",
-                        "does not pay credit interest",
-                        "money_out",
-                        "",
-                        "money_in",
-                        "",
-                        "balance",
-                        ""
-                    ]
-                }
+                [
+                    {
+                        "date": "01 Mar",
+                        "description": "Start balance",
+                        "money_out": "",
+                        "money_in": "",
+                        "balance": "-195.38"
+                    },
+                    {
+                        "date": "",
+                        "description": "",
+                        "money_out": "",
+                        "money_in": "",
+                        "balance": ""
+                    }
+                ],
+                [
+                    {
+                        "date": "22 Mar",
+                        "description": "Payment to Matthew Price Ref: Room Payment",
+                        "money_out": "5.00",
+                        "money_in": "",
+                        "balance": ""
+                    },
+                    {
+                        "date": "13 Mar",
+                        "description": "Transfer to Sort Code 20-44-51 Account 83254534 Ref: Mobile-Channel",
+                        "money_out": "52.00",
+                        "money_in": "",
+                        "balance": ""
+                    }
+                ],
+                [
+                    {
+                        "date": "",
+                        "description": "",
+                        "money_out": "",
+                        "money_in": "",
+                        "balance": ""
+                    },
+                    {
+                        "date": "This",
+                        "description": "does not pay credit interest",
+                        "money_out": "",
+                        "money_in": "",
+                        "balance": ""
+                    }
+                ]
             ]
         }
     ]
