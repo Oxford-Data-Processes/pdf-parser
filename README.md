@@ -84,5 +84,7 @@ Allow combinations of ranges and negative indices:
 
 
 
-
 NEED TO FIX HALIFAX AND LLOYDS
+
+
+Need tesseract: brew install tesseract

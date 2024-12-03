@@ -2,3 +2,5 @@ pdfplumber
 pytest
 pandas
 pathlib
+pytesseract
+Pillow
