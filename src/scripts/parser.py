@@ -106,7 +106,6 @@ class Parser:
     def get_output_data_from_table_rule(
         self, table_rule_id, page_index, pdf_data, template
     ):
-        table_rule = self.get_rule_from_id(table_rule_id, template)
         return {"table_rule_id": table_rule_id}
 
 
