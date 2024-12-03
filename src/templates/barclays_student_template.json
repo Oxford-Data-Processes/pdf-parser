@@ -107,7 +107,7 @@
             }
         },
         {
-            "rule_id": "transactions_page_2_onwards",
+            "rule_id": "transactions_page_2",
             "type": "table",
             "config": {
                 "columns": [
@@ -115,12 +115,93 @@
                         "field_name": "date",
                         "coordinates": {
                             "top_left": {
-                                "x": 0.097,
-                                "y": 0.488
+                                "x": 0.095,
+                                "y": 0.463
                             },
                             "bottom_right": {
-                                "x": 0.149,
-                                "y": 0.898
+                                "x": 0.151,
+                                "y": 0.9
+                            }
+                        },
+                        "type": "text"
+                    },
+                    {
+                        "field_name": "description",
+                        "coordinates": {
+                            "top_left": {
+                                "x": 0.148,
+                                "y": 0.462
+                            },
+                            "bottom_right": {
+                                "x": 0.429,
+                                "y": 0.887
+                            }
+                        },
+                        "type": "text"
+                    },
+                    {
+                        "field_name": "money_out",
+                        "coordinates": {
+                            "top_left": {
+                                "x": 0.425,
+                                "y": 0.464
+                            },
+                            "bottom_right": {
+                                "x": 0.512,
+                                "y": 0.938
+                            }
+                        },
+                        "type": "text"
+                    },
+                    {
+                        "field_name": "money_in",
+                        "coordinates": {
+                        "top_left": {
+                            "x": 0.511,
+                            "y": 0.463
+                        },
+                        "bottom_right": {
+                            "x": 0.605,
+                            "y": 0.945
+                        }
+                        },
+                        "type": "text"
+                    },
+                    {
+                        "field_name": "balance",
+                        "coordinates":  {
+                            "top_left": {
+                                "x": 0.604,
+                                "y": 0.465
+                            },
+                            "bottom_right": {
+                                "x": 0.695,
+                                "y": 0.944
+                            }
+                        },
+                        "type": "text"
+                    }
+                ],
+                "row_delimiter": {
+                    "type": "line"
+                }
+            }
+        },
+        {
+            "rule_id": "transactions_page_3_onwards",
+            "type": "table",
+            "config": {
+                "columns": [
+                    {
+                        "field_name": "date",
+                        "coordinates": {
+                            "top_left": {
+                                "x": 0.095,
+                                "y": 0.463
+                            },
+                            "bottom_right": {
+                                "x": 0.151,
+                                "y": 0.9
                             }
                         },
                         "type": "text"
@@ -191,16 +272,18 @@
     "pages": [
         {
             "page_numbers": "1",
-            "forms": ["customer_details", "sort_code", "account_number"]
+            "forms": ["customer_details", "sort_code", "account_number"],
+            "tables": []
         },
         {
             "page_numbers": "2",
-            "forms": ["start_balance", "money_in", "money_out", "end_balance", "overdraft_limit"]
+            "forms": ["start_balance", "money_in", "money_out", "end_balance", "overdraft_limit"],
+            "tables": ["transactions_page_2"]
         },
         {
-            "page_numbers": "2:-2",
+            "page_numbers": "3:-2",
             "forms": [],
-            "tables": ["transactions_page_2_onwards"]
+            "tables": ["transactions_page_3_onwards"]
         },
         {
             "page_numbers": "-1",

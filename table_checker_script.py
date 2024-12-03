@@ -5,7 +5,7 @@ from src.parser import Parser, TableSplitter
 from src.pdf_utils import ImageDrawer
 
 template_name: str = "barclays_student"
-identifier: str = "march"
+identifier: str = "april"
 template_path: str = os.path.join("src", "templates", f"{template_name}_template.json")
 pdf_path: str = os.path.join(
     "data", "bank_statements", template_name, "pdf", f"{template_name}_{identifier}.pdf"
@@ -72,7 +72,6 @@ def process_columns(table_rule, parser, table_splitter, lines, page_content):
 extract_data_from_pdf(pdf_path, template_name, identifier)
 template = load_json_data(template_path)
 pdf_data = load_json_data(pdf_data_path)
-output_data = load_json_data(output_path)
 
 page_number = 2
 
