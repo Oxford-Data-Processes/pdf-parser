@@ -114,8 +114,11 @@ class TableProcessor:
         self.template = template
         self.parser = parser
 
-    def get_delimiter_column_coordinates(self, template, delimiter_field_name):
+    def get_delimiter_column_coordinates(
+        self, template, delimiter_field_name, page_number
+    ):
         """Get the coordinates of the description column from the template."""
+
         delimiter_coordinates = None
         for rule in template["rules"]:
             if rule["type"] == "table":
@@ -152,11 +155,9 @@ class TableProcessor:
             )
 
         if delimiter_type == "field":
-            delimiter_coordinates = self.get_delimiter_column_coordinates(
-                self.template, delimiter_field_name
-            )
+
             lines_y_coordinates = table_splitter.split_table(
-                delimiter_type, page_content, delimiter_coordinates
+                delimiter_type, page_content, delimiter_field_name
             )
 
         if not delimiter_coordinates:
@@ -236,17 +237,27 @@ class TableSplitter:
                     filtered_lines.append(line)
         return filtered_lines
 
-    def split_table_by_delimiter(self, page_content, coordinates):
+    def split_table_by_field(self, page_content, delimiter_field_name):
 
         text_coordinates = page_content["content"]
-        items_within_coordinates = self.parser.get_items_in_bounding_box(
-            text_coordinates, coordinates
+
+        delimiter_coordinates = self.get_delimiter_column_coordinates(
+            self.template, delimiter_field_name
         )
+
+        items_within_coordinates = self.parser.get_items_in_bounding_box(
+            text_coordinates, delimiter_coordinates
+        )
+
+        print("ITEMS WITHIN COORDINATES")
+        print(items_within_coordinates)
+        print("\n")
 
         line_separation_y_coordinates = {
             item["bounding_box"]["decimal_coordinates"]["top_left"]["y"]
             for item in items_within_coordinates
         }
+
         return sorted(list(set(line_separation_y_coordinates)))
 
     def split_table_by_line(self, lines):
@@ -263,9 +274,9 @@ class TableSplitter:
         self,
         row_delimiter_type: str,
         page_content,
-        delimiter_coordinates=None,
+        delimiter_field_name,
     ):
         if row_delimiter_type == "line":
             return self.split_table_by_line(page_content["lines"])
         elif row_delimiter_type == "field":
-            return self.split_table_by_delimiter(page_content, delimiter_coordinates)
+            return self.split_table_by_field(page_content, delimiter_field_name)
