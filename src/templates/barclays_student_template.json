@@ -140,26 +140,44 @@
                         "type": "text"
                     },
                     {
-                        "field_name": "money_in",
+                        "field_name": "money_out",
                         "coordinates": {
-                            "top_left": { "x": 0.30778, "y": 0.690323 },
-                            "bottom_right": { "x": 0.345398, "y": 1.02621 }
+                            "top_left": {
+                                "x": 0.425,
+                                "y": 0.464
+                            },
+                            "bottom_right": {
+                                "x": 0.512,
+                                "y": 0.938
+                            }
                         },
                         "type": "text"
                     },
                     {
-                        "field_name": "money_out",
+                        "field_name": "money_in",
                         "coordinates": {
-                            "top_left": { "x": 0.364776, "y": 0.690323 },
-                            "bottom_right": { "x": 0.402394, "y": 1.02621 }
+                        "top_left": {
+                            "x": 0.511,
+                            "y": 0.463
+                        },
+                        "bottom_right": {
+                            "x": 0.605,
+                            "y": 0.945
+                        }
                         },
                         "type": "text"
                     },
                     {
                         "field_name": "balance",
-                        "coordinates": {
-                            "top_left": { "x": 0.427472, "y": 0.690323 },
-                            "bottom_right": { "x": 0.46509, "y": 1.02621 }
+                        "coordinates":  {
+                            "top_left": {
+                                "x": 0.604,
+                                "y": 0.465
+                            },
+                            "bottom_right": {
+                                "x": 0.695,
+                                "y": 0.944
+                            }
                         },
                         "type": "text"
                     }
