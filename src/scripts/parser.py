@@ -106,7 +106,11 @@ class Parser:
     def get_output_data_from_table_rule(
         self, table_rule_id, page_index, pdf_data, template
     ):
-        return {"table_rule_id": table_rule_id}
+        table_processor = TableProcessor(template, self)
+        results = table_processor.process_tables(pdf_data)
+        for table_data in results:
+            print(table_data)
+        return {"results": results}
 
 
 class TableProcessor:
