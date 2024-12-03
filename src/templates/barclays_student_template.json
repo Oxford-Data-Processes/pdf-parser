@@ -120,7 +120,7 @@
                             },
                             "bottom_right": {
                                 "x": 0.151,
-                                "y": 0.9
+                                "y": 1
                             }
                         },
                         "type": "text"
@@ -134,7 +134,7 @@
                             },
                             "bottom_right": {
                                 "x": 0.429,
-                                "y": 0.887
+                                "y": 1
                             }
                         },
                         "type": "text"
@@ -148,7 +148,7 @@
                             },
                             "bottom_right": {
                                 "x": 0.512,
-                                "y": 0.938
+                                "y": 1
                             }
                         },
                         "type": "text"
@@ -162,7 +162,7 @@
                         },
                         "bottom_right": {
                             "x": 0.605,
-                            "y": 0.945
+                            "y": 1
                         }
                         },
                         "type": "text"
@@ -176,7 +176,7 @@
                             },
                             "bottom_right": {
                                 "x": 0.695,
-                                "y": 0.944
+                                "y": 1
                             }
                         },
                         "type": "text"
@@ -197,11 +197,11 @@
                         "coordinates": {
                             "top_left": {
                                 "x": 0.092,
-                                "y": 0.093
+                                "y": 0.095
                             },
                             "bottom_right": {
                                 "x": 0.145,
-                                "y": 0.96
+                                "y": 1
                             }
                         },
                         "type": "text"
@@ -210,12 +210,12 @@
                         "field_name": "description",
                         "coordinates": {
                             "top_left": {
-                                "x": 0.148,
-                                "y": 0.462
+                                "x": 0.153,
+                                "y": 0.095
                             },
                             "bottom_right": {
-                                "x": 0.429,
-                                "y": 0.887
+                                "x": 0.416,
+                                "y": 1
                             }
                         },
                         "type": "text"
@@ -224,12 +224,12 @@
                         "field_name": "money_out",
                         "coordinates": {
                             "top_left": {
-                                "x": 0.425,
-                                "y": 0.464
+                                "x": 0.418,
+                                "y": 0.095
                             },
                             "bottom_right": {
-                                "x": 0.512,
-                                "y": 0.938
+                                "x": 0.517,
+                                "y": 1
                             }
                         },
                         "type": "text"
@@ -237,14 +237,14 @@
                     {
                         "field_name": "money_in",
                         "coordinates": {
-                        "top_left": {
-                            "x": 0.511,
-                            "y": 0.463
-                        },
-                        "bottom_right": {
-                            "x": 0.605,
-                            "y": 0.945
-                        }
+                            "top_left": {
+                                "x": 0.514,
+                                "y": 0.095
+                            },
+                            "bottom_right": {
+                                "x": 0.609,
+                                "y": 1
+                            }
                         },
                         "type": "text"
                     },
@@ -252,12 +252,12 @@
                         "field_name": "balance",
                         "coordinates":  {
                             "top_left": {
-                                "x": 0.604,
-                                "y": 0.465
+                                "x": 0.606,
+                                "y": 0.095
                             },
                             "bottom_right": {
-                                "x": 0.695,
-                                "y": 0.944
+                                "x": 0.696,
+                                "y": 1
                             }
                         },
                         "type": "text"
