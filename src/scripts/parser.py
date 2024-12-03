@@ -142,8 +142,10 @@ class TableProcessor:
     ) -> List[Dict]:
         """Process a single table's data."""
 
+        page_number = page_content["page_number"]
+
         delimiter_coordinates = self.get_delimiter_column_coordinates(
-            self.template, delimiter_field_name
+            self.template, delimiter_field_name, page_number
         )
 
         table_splitter = TableSplitter(self.template, self.parser)
@@ -239,24 +241,36 @@ class TableSplitter:
 
     def split_table_by_field(self, page_content, delimiter_field_name):
 
+        page_number = page_content["page_number"]
+
         text_coordinates = page_content["content"]
 
-        delimiter_coordinates = self.get_delimiter_column_coordinates(
-            self.template, delimiter_field_name
+        table_processor = TableProcessor(self.template, self.parser)
+
+        delimiter_coordinates = table_processor.get_delimiter_column_coordinates(
+            self.template, delimiter_field_name, page_number
         )
 
         items_within_coordinates = self.parser.get_items_in_bounding_box(
             text_coordinates, delimiter_coordinates
         )
 
+        print("PAGE NUMBER")
+        print(page_number)
+        print("\n")
+
         print("ITEMS WITHIN COORDINATES")
         print(items_within_coordinates)
         print("\n")
 
-        line_separation_y_coordinates = {
+        line_separation_y_coordinates = [
             item["bounding_box"]["decimal_coordinates"]["top_left"]["y"]
             for item in items_within_coordinates
-        }
+        ]
+
+        print("LINE SEPARATION Y COORDINATES")
+        print(line_separation_y_coordinates)
+        print("\n")
 
         return sorted(list(set(line_separation_y_coordinates)))
 
