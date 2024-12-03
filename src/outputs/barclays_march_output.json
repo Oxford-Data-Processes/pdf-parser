@@ -1,32 +1,32 @@
 {
     "metadata": {
-        "document_id": "e18300b0-8d2a-46f9-bd5a-ae4998713724",
-        "parsed_at": "2024-12-03T14:37:03",
+        "document_id": "e6329ad3-fe24-4021-bc64-9525f628c1db",
+        "parsed_at": "2024-12-03T14:50:22",
         "number_of_pages": 5
     },
     "pages": [
         {
             "forms": [
                 {
-                    "sort_code": ""
+                    "sort_code": "20-44-51"
                 },
                 {
-                    "account_number": "Victoria 20-44-51"
+                    "account_number": "83254534"
                 },
                 {
-                    "customer_name": "01 - 31 Mar 2023"
+                    "customer_name": "Miss Meghan Victoria Thorneloe"
                 },
                 {
-                    "start_balance": ""
+                    "start_balance": "\u00a336.30"
                 },
                 {
-                    "money_in": "\u00a336.30"
+                    "money_in": "\u00a3667.92"
                 },
                 {
-                    "money_out": "\u00a336.30 \u00a3667.92"
+                    "money_out": "\u00a3659.98"
                 },
                 {
-                    "end_balance": "\u00a3667.92 \u00a3659.98"
+                    "end_balance": "\u00a344.24"
                 },
                 {
                     "overdraft_limit": ""
@@ -36,8 +36,8 @@
                 {
                     "data": [
                         {
-                            "date": "Date 01 Mar",
-                            "description": "Description Start balance",
+                            "date": "01 Mar",
+                            "description": "Start balance",
                             "money_out": "Money out",
                             "money_in": "Money in",
                             "balance": "Balance 36.30"
@@ -121,7 +121,7 @@
                         },
                         {
                             "date": "Barclays and the Registered in",
-                            "description": "Bank UK PLC. Authorised by the Prudential Regulation Regulation Authority (Financial Services Register in England. Registered No. 9740322. Registered Office: 1",
+                            "description": "UK PLC. Authorised by the Prudential Regulation Regulation Authority (Financial Services in England. Registered No. 9740322. Registered Office:",
                             "money_out": "and No. 759676). 1 Churchill Place,",
                             "money_in": "by the Financial London E14 5HP.",
                             "balance": "Continued Conduct"

@@ -11,12 +11,12 @@
                 "field_name": "sort_code",
                 "coordinates": {
                     "top_left": {
-                        "x": 0.797,
-                        "y": 0.104
+                        "x": 0.798,
+                        "y": 0.124
                     },
                     "bottom_right": {
-                        "x": 0.857,
-                        "y": 0.116
+                        "x": 0.86,
+                        "y": 0.138
                     }
                 },
                 "type": "text"
@@ -30,11 +30,11 @@
                 "coordinates": {
                     "top_left": {
                         "x": 0.811,
-                        "y": 0.116
+                        "y": 0.138
                     },
                     "bottom_right": {
-                        "x": 0.882,
-                        "y": 0.127
+                        "x": 0.904,
+                        "y": 0.149
                     }
                 },
                 "type": "text"
@@ -47,12 +47,12 @@
                 "field_name": "customer_name",
                 "coordinates": {
                     "top_left": {
-                        "x": 0.723,
-                        "y": 0.081
+                        "x": 0.724,
+                        "y": 0.102
                     },
                     "bottom_right": {
-                        "x": 0.975,
-                        "y": 0.098
+                        "x": 0.96,
+                        "y": 0.121
                     }
                 },
                 "type": "text"
@@ -65,12 +65,12 @@
                 "field_name": "start_balance",
                 "coordinates":  {
                     "top_left": {
-                        "x": 0.857,
-                        "y": 0.188
+                        "x": 0.863,
+                        "y": 0.208
                     },
                     "bottom_right": {
-                        "x": 0.955,
-                        "y": 0.204
+                        "x": 0.952,
+                        "y": 0.226
                     }
                 },
                 "type": "text"
@@ -83,12 +83,12 @@
                 "field_name": "money_in",
                 "coordinates":  {
                     "top_left": {
-                        "x": 0.858,
-                        "y": 0.204
+                        "x": 0.864,
+                        "y": 0.226
                     },
                     "bottom_right": {
-                        "x": 0.96,
-                        "y": 0.222
+                        "x": 0.958,
+                        "y": 0.244
                     }
                 },
                 "type": "text"
@@ -101,12 +101,12 @@
                 "field_name": "money_out",
                 "coordinates": {
                     "top_left": {
-                        "x": 0.859,
-                        "y": 0.223
+                        "x": 0.869,
+                        "y": 0.245
                     },
                     "bottom_right": {
-                        "x": 0.967,
-                        "y": 0.241
+                        "x": 0.954,
+                        "y": 0.259
                     }
                 },
                 "type": "text"
@@ -117,14 +117,14 @@
             "type": "form",
             "config": {
                 "field_name": "end_balance",
-                "coordinates": {
+                "coordinates":{
                     "top_left": {
-                        "x": 0.862,
-                        "y": 0.241
+                        "x": 0.87,
+                        "y": 0.263
                     },
                     "bottom_right": {
-                        "x": 0.961,
-                        "y": 0.258
+                        "x": 0.953,
+                        "y": 0.278
                     }
                 },
                 "type": "text"
@@ -157,8 +157,8 @@
                         "field_name": "date",
                         "coordinates": {
                             "top_left": {
-                                "x": 0.095,
-                                "y": 0.463
+                                "x": 0.09,
+                                "y": 0.482
                             },
                             "bottom_right": {
                                 "x": 0.151,
@@ -169,13 +169,13 @@
                     },
                     {
                         "field_name": "description",
-                        "coordinates": {
+                        "coordinates":  {
                             "top_left": {
-                                "x": 0.148,
-                                "y": 0.462
+                                "x": 0.151,
+                                "y": 0.483
                             },
                             "bottom_right": {
-                                "x": 0.429,
+                                "x": 0.421,
                                 "y": 1
                             }
                         },
