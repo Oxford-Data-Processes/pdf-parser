@@ -114,22 +114,19 @@ class TableProcessor:
         self.template = template
         self.parser = parser
 
-    def get_delimiter_column_coordinates(
-        self, template, delimiter_field_name, page_number
-    ):
+    def get_delimiter_column_coordinates(self, template, delimiter_field_name, rule_id):
         """Get the coordinates of the description column from the template."""
 
         delimiter_coordinates = None
-        for rule in template["rules"]:
-            if rule["type"] == "table":
-                for column in rule["config"]["columns"]:
-                    if column["field_name"] == delimiter_field_name:
-                        delimiter_coordinates = column["coordinates"]
-                        break
-                break
 
-        if not delimiter_coordinates:
-            raise ValueError("Description column coordinates not found in template")
+        rule = self.parser.get_rule_from_id(rule_id, template)
+
+        if rule["type"] == "table":
+            for column in rule["config"]["columns"]:
+                print(column)
+                if column["field_name"] == delimiter_field_name:
+                    delimiter_coordinates = column["coordinates"]
+                break
 
         return delimiter_coordinates
 
@@ -142,10 +139,8 @@ class TableProcessor:
     ) -> List[Dict]:
         """Process a single table's data."""
 
-        page_number = page_content["page_number"]
-
         delimiter_coordinates = self.get_delimiter_column_coordinates(
-            self.template, delimiter_field_name, page_number
+            self.template, delimiter_field_name, table_rule["rule_id"]
         )
 
         table_splitter = TableSplitter(self.template, self.parser)
@@ -159,7 +154,10 @@ class TableProcessor:
         if delimiter_type == "field":
 
             lines_y_coordinates = table_splitter.split_table(
-                delimiter_type, page_content, delimiter_field_name
+                delimiter_type,
+                page_content,
+                delimiter_field_name,
+                table_rule["rule_id"],
             )
 
         if not delimiter_coordinates:
@@ -239,25 +237,19 @@ class TableSplitter:
                     filtered_lines.append(line)
         return filtered_lines
 
-    def split_table_by_field(self, page_content, delimiter_field_name):
-
-        page_number = page_content["page_number"]
+    def split_table_by_field(self, page_content, delimiter_field_name, rule_id):
 
         text_coordinates = page_content["content"]
 
         table_processor = TableProcessor(self.template, self.parser)
 
         delimiter_coordinates = table_processor.get_delimiter_column_coordinates(
-            self.template, delimiter_field_name, page_number
+            self.template, delimiter_field_name, rule_id
         )
 
         items_within_coordinates = self.parser.get_items_in_bounding_box(
             text_coordinates, delimiter_coordinates
         )
-
-        print("PAGE NUMBER")
-        print(page_number)
-        print("\n")
 
         print("ITEMS WITHIN COORDINATES")
         print(items_within_coordinates)
@@ -289,8 +281,11 @@ class TableSplitter:
         row_delimiter_type: str,
         page_content,
         delimiter_field_name,
+        rule_id,
     ):
         if row_delimiter_type == "line":
             return self.split_table_by_line(page_content["lines"])
         elif row_delimiter_type == "field":
-            return self.split_table_by_field(page_content, delimiter_field_name)
+            return self.split_table_by_field(
+                page_content, delimiter_field_name, rule_id
+            )

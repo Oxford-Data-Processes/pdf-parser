@@ -348,7 +348,7 @@
             "tables": ["transactions_first_page"]
         },
         {
-            "page_numbers": "2",
+            "page_numbers": "2:-2",
             "tables": ["transactions_second_page_onwards"]
         },
         {
