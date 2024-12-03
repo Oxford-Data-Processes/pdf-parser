@@ -258,7 +258,19 @@ class TableSplitter:
             )
         )
 
-        return self.average_y_coordinates(line_separation_y_coordinates)
+        print("LINE SEPARATION Y COORDINATES BEFORE")
+        print(line_separation_y_coordinates)
+        print("\n")
+
+        line_separation_y_coordinates = self.average_y_coordinates(
+            line_separation_y_coordinates
+        )
+
+        print("LINE SEPARATION Y COORDINATES")
+        print(line_separation_y_coordinates)
+        print("\n")
+
+        return line_separation_y_coordinates
 
     def average_y_coordinates(self, y_coordinates):
         threshold = 0.01
@@ -285,10 +297,6 @@ class TableSplitter:
         lines_y_coordinates = [
             line["decimal_coordinates"]["top_left"]["y"] for line in filtered_lines
         ]
-
-        print("LINE Y COORDINATES")
-        print(lines_y_coordinates)
-        print("\n")
 
         return sorted(list(set(lines_y_coordinates)))
 

@@ -1,22 +1,40 @@
 {
     "metadata": {
-        "template_id": "barclays",
+        "template_id": "lloyds",
         "version": "1.0.0"
     },
     "rules": [
         {
+            "rule_id": "customer_name",
+            "type": "form", 
+            "config": {
+                "field_name": "customer_name",
+                "coordinates": {
+                    "top_left": {
+                        "x": 0.086,
+                        "y": 0.122
+                    },
+                    "bottom_right": {
+                        "x": 0.313,
+                        "y": 0.135
+                    }
+                },
+                "type": "text"
+            }
+        },
+        {
             "rule_id": "sort_code",
             "type": "form",
             "config": {
-                "field_name": "sort_code",
+                "field_name": "sort_code", 
                 "coordinates": {
                     "top_left": {
-                        "x": 0.798,
-                        "y": 0.124
+                        "x": 0.654,
+                        "y": 0.134
                     },
                     "bottom_right": {
-                        "x": 0.86,
-                        "y": 0.138
+                        "x": 0.739,
+                        "y": 0.15
                     }
                 },
                 "type": "text"
@@ -29,30 +47,12 @@
                 "field_name": "account_number",
                 "coordinates": {
                     "top_left": {
-                        "x": 0.811,
-                        "y": 0.138
-                    },
-                    "bottom_right": {
-                        "x": 0.904,
+                        "x": 0.655,
                         "y": 0.149
-                    }
-                },
-                "type": "text"
-            }
-        },
-        {
-            "rule_id": "customer_name",
-            "type": "form",
-            "config": {
-                "field_name": "customer_name",
-                "coordinates": {
-                    "top_left": {
-                        "x": 0.724,
-                        "y": 0.102
                     },
                     "bottom_right": {
-                        "x": 0.96,
-                        "y": 0.121
+                        "x": 0.761,
+                        "y": 0.163
                     }
                 },
                 "type": "text"
@@ -63,68 +63,14 @@
             "type": "form",
             "config": {
                 "field_name": "start_balance",
-                "coordinates":  {
-                    "top_left": {
-                        "x": 0.863,
-                        "y": 0.208
-                    },
-                    "bottom_right": {
-                        "x": 0.952,
-                        "y": 0.226
-                    }
-                },
-                "type": "text"
-            }
-        },
-        {
-            "rule_id": "money_in",
-            "type": "form",
-            "config": {
-                "field_name": "money_in",
-                "coordinates":  {
-                    "top_left": {
-                        "x": 0.864,
-                        "y": 0.226
-                    },
-                    "bottom_right": {
-                        "x": 0.958,
-                        "y": 0.244
-                    }
-                },
-                "type": "text"
-            }
-        },
-        {
-            "rule_id": "money_out",
-            "type": "form",
-            "config": {
-                "field_name": "money_out",
                 "coordinates": {
                     "top_left": {
-                        "x": 0.869,
-                        "y": 0.245
+                        "x": 0.816,
+                        "y": 0.276
                     },
                     "bottom_right": {
-                        "x": 0.954,
-                        "y": 0.259
-                    }
-                },
-                "type": "text"
-            }
-        },
-        {
-            "rule_id": "end_balance",
-            "type": "form",
-            "config": {
-                "field_name": "end_balance",
-                "coordinates":{
-                    "top_left": {
-                        "x": 0.87,
-                        "y": 0.263
-                    },
-                    "bottom_right": {
-                        "x": 0.953,
-                        "y": 0.278
+                        "x": 0.938,
+                        "y": 0.294
                     }
                 },
                 "type": "text"
@@ -139,26 +85,40 @@
                         "field_name": "date",
                         "coordinates": {
                             "top_left": {
-                                "x": 0.09,
-                                "y": 0.482
+                                "x": 0.086,
+                                "y": 0.404
                             },
                             "bottom_right": {
-                                "x": 0.151,
-                                "y": 1
+                                "x": 0.191,
+                                "y": 0.884
+                            }
+                        },
+                        "type": "text"
+                    },
+                    {
+                        "field_name": "type",
+                        "coordinates": {
+                            "top_left": {
+                                "x": 0.446,
+                                "y": 0.405
+                            },
+                            "bottom_right": {
+                                "x": 0.508,
+                                "y": 0.889
                             }
                         },
                         "type": "text"
                     },
                     {
                         "field_name": "description",
-                        "coordinates":  {
+                        "coordinates": {
                             "top_left": {
-                                "x": 0.151,
-                                "y": 0.483
+                                "x": 0.197,
+                                "y": 0.405
                             },
                             "bottom_right": {
-                                "x": 0.421,
-                                "y": 1
+                                "x": 0.441,
+                                "y": 0.882
                             }
                         },
                         "type": "text"
@@ -167,12 +127,12 @@
                         "field_name": "money_out",
                         "coordinates": {
                             "top_left": {
-                                "x": 0.425,
-                                "y": 0.464
+                                "x": 0.643,
+                                "y": 0.405
                             },
                             "bottom_right": {
-                                "x": 0.512,
-                                "y": 1
+                                "x": 0.771,
+                                "y": 0.895
                             }
                         },
                         "type": "text"
@@ -180,40 +140,40 @@
                     {
                         "field_name": "money_in",
                         "coordinates": {
-                        "top_left": {
-                            "x": 0.511,
-                            "y": 0.463
-                        },
-                        "bottom_right": {
-                            "x": 0.605,
-                            "y": 1
-                        }
+                            "top_left": {
+                                "x": 0.513,
+                                "y": 0.404
+                            },
+                            "bottom_right": {
+                                "x": 0.641,
+                                "y": 0.887
+                            }
                         },
                         "type": "text"
                     },
                     {
                         "field_name": "balance",
-                        "coordinates":  {
+                        "coordinates": {
                             "top_left": {
-                                "x": 0.604,
-                                "y": 0.465
+                                "x": 0.775,
+                                "y": 0.405
                             },
                             "bottom_right": {
-                                "x": 0.695,
-                                "y": 1
+                                "x": 0.922,
+                                "y": 0.899
                             }
                         },
                         "type": "text"
                     }
                 ],
                 "row_delimiter": {
-                    "type": "line",
+                    "type": "field",
                     "field_name": "description"
                 }
             }
         },
         {
-            "rule_id": "transactions_second_page_onwards",
+            "rule_id": "transactions_last_page",
             "type": "table",
             "config": {
                 "columns": [
@@ -221,12 +181,26 @@
                         "field_name": "date",
                         "coordinates": {
                             "top_left": {
-                                "x": 0.092,
-                                "y": 0.096
+                                "x": 0.081,
+                                "y": 0.212
                             },
                             "bottom_right": {
-                                "x": 0.151,
-                                "y": 1
+                                "x": 0.194,
+                                "y": 0.753
+                            }
+                        },
+                        "type": "text"
+                    },
+                    {
+                        "field_name": "type",
+                        "coordinates": {
+                            "top_left": {
+                                "x": 0.447,
+                                "y": 0.211
+                            },
+                            "bottom_right": {
+                                "x": 0.509,
+                                "y": 0.764
                             }
                         },
                         "type": "text"
@@ -235,12 +209,12 @@
                         "field_name": "description",
                         "coordinates": {
                             "top_left": {
-                                "x": 0.153,
-                                "y": 0.095
+                                "x": 0.194,
+                                "y": 0.21
                             },
                             "bottom_right": {
-                                "x": 0.416,
-                                "y": 1
+                                "x": 0.444,
+                                "y": 0.75
                             }
                         },
                         "type": "text"
@@ -249,12 +223,12 @@
                         "field_name": "money_out",
                         "coordinates": {
                             "top_left": {
-                                "x": 0.418,
-                                "y": 0.095
+                                "x": 0.644,
+                                "y": 0.212
                             },
                             "bottom_right": {
-                                "x": 0.517,
-                                "y": 1
+                                "x": 0.772,
+                                "y": 0.758
                             }
                         },
                         "type": "text"
@@ -263,33 +237,33 @@
                         "field_name": "money_in",
                         "coordinates": {
                             "top_left": {
-                                "x": 0.514,
-                                "y": 0.095
+                                "x": 0.512,
+                                "y": 0.21
                             },
                             "bottom_right": {
-                                "x": 0.609,
-                                "y": 1
+                                "x": 0.64,
+                                "y": 0.766
                             }
                         },
                         "type": "text"
                     },
                     {
                         "field_name": "balance",
-                        "coordinates":  {
+                        "coordinates": {
                             "top_left": {
-                                "x": 0.606,
-                                "y": 0.095
+                                "x": 0.775,
+                                "y": 0.212
                             },
                             "bottom_right": {
-                                "x": 0.696,
-                                "y": 1
+                                "x": 0.914,
+                                "y": 0.762
                             }
                         },
                         "type": "text"
                     }
                 ],
                 "row_delimiter": {
-                    "type": "line",
+                    "type": "field",
                     "field_name": "description"
                 }
             }
@@ -298,17 +272,17 @@
     "pages": [
         {
             "page_numbers": "1",
-            "forms": ["sort_code", "account_number", "customer_name", "start_balance", "money_in", "money_out", "end_balance"],
+            "forms": ["customer_name", "sort_code", "account_number", "start_balance"],
             "tables": ["transactions_first_page"]
         },
         {
             "page_numbers": "2:-2",
             "forms": [],
-            "tables": ["transactions_second_page_onwards"]
+            "tables": ["transactions_last_page"]
         },
         {
             "page_numbers": "-1",
-            "ignore": true
+            "ignore": false
         }
     ]
 }
