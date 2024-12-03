@@ -10,7 +10,9 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 SRC_DIR = os.path.dirname(SCRIPT_DIR)
 ROOT_DIR = os.path.dirname(SRC_DIR)
 
-template_name: str = "first_direct"
+FORMS_PAGE_NUMBER = 2
+
+template_name: str = "barclays_student"
 identifier: str = "march"
 template_path: str = os.path.join(
     SRC_DIR, "templates", f"{template_name}_template.json"
@@ -236,7 +238,7 @@ if __name__ == "__main__":
                 coordinates = form_rule["config"]["coordinates"]
                 form_data = {
                     "rule_id": rule_id,
-                    "page_number": 1,
+                    "page_number": FORMS_PAGE_NUMBER,
                     "coordinates": coordinates,
                 }
                 visualize_form_data(form_data, pdf_path, template)
