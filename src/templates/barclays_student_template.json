@@ -183,7 +183,8 @@
                     }
                 ],
                 "row_delimiter": {
-                    "type": "line"
+                    "type": "line",
+                    "field_name": "description"
                 }
             }
         },
@@ -264,7 +265,8 @@
                     }
                 ],
                 "row_delimiter": {
-                    "type": "line"
+                    "type": "line",
+                    "field_name": "description"
                 }
             }
         }

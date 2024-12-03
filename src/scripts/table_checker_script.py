@@ -1,8 +1,8 @@
 import json
 import os
-from src.extractor import Extractor
-from src.parser import Parser, TableSplitter
-from src.pdf_utils import ImageDrawer
+from extractor import Extractor
+from parser import Parser, TableSplitter
+from pdf_utils import ImageDrawer
 
 template_name: str = "barclays_student"
 identifier: str = "may"
@@ -91,7 +91,7 @@ for table_rule in template["rules"]:
         page_content = pdf_data["pages"][page_number - 1]
         lines = page_content["lines"]
         delimiter_field_name = "description"
-        delimiter_type = "field"
+        delimiter_type = "line"
         processed_columns = process_columns(
             table_rule,
             parser,

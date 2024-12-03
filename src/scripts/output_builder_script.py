@@ -18,8 +18,7 @@ output_data_path: str = os.path.join(
     "src", "outputs", f"{template_name}_{identifier}_output.json"
 )
 
-
-from src.parser import Parser
+from parser import Parser
 from datetime import datetime
 import uuid
 
