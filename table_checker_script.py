@@ -36,7 +36,7 @@ def process_columns(
     lines,
     page_content,
     delimiter_field_name,
-    delimeter_type,
+    delimiter_type,
 ):
 
     processed_columns = []
@@ -44,7 +44,7 @@ def process_columns(
     for column in table_rule["config"]["columns"]:
         coordinates = column["coordinates"]
 
-        if delimiter_type == "delimiter":
+        if delimiter_type == "field":
             delimiter_coordinates = parser.get_delimiter_column_coordinates(
                 template, delimiter_field_name
             )
@@ -91,7 +91,7 @@ for table_rule in template["rules"]:
         page_content = pdf_data["pages"][page_number - 1]
         lines = page_content["lines"]
         delimiter_field_name = "description"
-        delimiter_type = "line"
+        delimiter_type = "field"
         processed_columns = process_columns(
             table_rule,
             parser,

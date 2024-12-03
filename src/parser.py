@@ -195,5 +195,5 @@ class TableSplitter:
                 coordinates,
                 pixel_maximum_value,
             )
-        elif row_delimiter_type == "delimiter":
+        elif row_delimiter_type == "field":
             return self.split_table_by_delimiter(page_content, coordinates)
