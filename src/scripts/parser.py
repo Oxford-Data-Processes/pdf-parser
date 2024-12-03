@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import List, Dict
 
 
 class Parser:
@@ -79,7 +79,7 @@ class Parser:
         return delimiter_coordinates
 
     # Filter lines by pixel value
-    def filter_lines_by_pixel_value(self, lines, max_pixel_value):
+    def filter_lines_by_pixel_value(self, lines, max_pixel_value=(100, 100, 100)):
         """Filter lines based on their average pixel value."""
         filtered_lines = []
         for line in lines:
@@ -113,6 +113,83 @@ class TableProcessor:
     def __init__(self, template, parser):
         self.template = template
         self.parser = parser
+
+    def get_table_data(self, rule_id: str, page_index: int, pdf_data) -> Dict:
+        """Get table data for a specific rule and page."""
+        # Get the table rule
+        table_rule = self.parser.get_rule_from_id(rule_id, self.template)
+        if not table_rule:
+            raise ValueError(f"Table rule {rule_id} not found")
+
+        # Get page content
+        page_content = pdf_data["pages"][page_index]
+        lines = page_content["lines"]
+
+        # Filter lines by pixel value
+        filtered_lines = self.parser.filter_lines_by_pixel_value(lines)
+
+        # Get y-coordinates from filtered lines
+        lines_y_coordinates = sorted(
+            set(line["decimal_coordinates"]["top_left"]["y"] for line in filtered_lines)
+        )
+
+        if not lines_y_coordinates:
+            print(
+                f"Warning: No valid lines found for table {rule_id} on page {page_index + 1}"
+            )
+            return None
+
+        # Process each column
+        columns_data = []
+        for column in table_rule["config"]["columns"]:
+            column_data = {
+                "field_name": column["field_name"],
+                "coordinates": column["coordinates"],
+                "lines_y_coordinates": lines_y_coordinates,  # Use same lines for all columns
+            }
+            columns_data.append(column_data)
+
+        return {
+            "rule_id": rule_id,
+            "page_number": page_index + 1,
+            "columns": columns_data,
+        }
+
+    def process_tables(self, pdf_data: Dict) -> List[Dict]:
+        """Process all tables according to template pages."""
+        results = []
+        number_of_pages = len(pdf_data["pages"])
+
+        # Iterate through pages as defined in template
+        for page_rule in self.template["pages"]:
+            if "tables" not in page_rule:
+                continue
+
+            # Convert page numbers to indexes
+            page_indexes = self.parser.page_number_converter(
+                page_rule["page_numbers"], number_of_pages
+            )
+
+            # Process each page
+            for page_index in page_indexes:
+                # Process each table rule for this page
+                for rule_id in page_rule["tables"]:
+                    try:
+                        table_data = self.get_table_data(rule_id, page_index, pdf_data)
+                        if table_data:
+                            results.append(table_data)
+                            print(
+                                f"\nProcessed table {rule_id} on page {page_index + 1}"
+                            )
+                            print(
+                                f"Found {len(table_data['columns'][0]['lines_y_coordinates'])} lines"
+                            )
+                    except Exception as e:
+                        print(
+                            f"Error processing table {rule_id} on page {page_index + 1}: {str(e)}"
+                        )
+
+        return results
 
 
 class TableSplitter:
