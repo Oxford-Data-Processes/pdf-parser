@@ -35,18 +35,18 @@ def process_table_data(
     table_rule: Dict,
     page_content: Dict,
     parser: Parser,
-    table_splitter: TableSplitter,
+    delimiter_field_name: str,
     max_pixel_value: tuple = (100, 100, 100),
 ) -> List[Dict]:
     """Process a single table's data."""
     # Get description column coordinates
-    description_coords = None
+    delimiter_coords = None
     for column in table_rule["config"]["columns"]:
-        if column["field_name"] == "description":
-            description_coords = column["coordinates"]
+        if column["field_name"] == delimiter_field_name:
+            delimiter_coords = column["coordinates"]
             break
 
-    if not description_coords:
+    if not delimiter_coords:
         raise ValueError("Description column not found")
 
     # Filter lines by pixel value and location
@@ -101,9 +101,16 @@ def process_tables(template: Dict, pdf_data: Dict) -> List[Dict]:
                         print(f"Warning: Table rule {rule_id} not found")
                         continue
 
+                    delimiter_field_name = table_rule["config"]["row_delimiter"][
+                        "field_name"
+                    ]
+
                     # Process table data
                     processed_columns = process_table_data(
-                        table_rule, page_content, parser, table_splitter
+                        table_rule,
+                        page_content,
+                        parser,
+                        delimiter_field_name,
                     )
 
                     if processed_columns and any(

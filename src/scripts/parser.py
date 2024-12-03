@@ -215,7 +215,7 @@ class TableProcessor:
                 if table_data:
                     results.append(table_data)
             except Exception:
-                continue  # Handle exceptions silently
+                continue
 
         return results
 
