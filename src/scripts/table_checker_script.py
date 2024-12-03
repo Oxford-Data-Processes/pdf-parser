@@ -31,6 +31,43 @@ def load_json_data(file_path: str) -> Dict:
         return json.load(f)
 
 
+def process_table_rules(page_rule, page_index, pdf_data):
+    """Process each table rule for the given page."""
+    results = []
+    for rule_id in page_rule["tables"]:
+        try:
+            delimiter_field_name = page_rule["delimiter_field_name"]
+            delimiter_type = page_rule["delimiter_type"]
+            table_data = get_table_data(
+                rule_id, page_index, pdf_data, delimiter_field_name, delimiter_type
+            )
+            if table_data:
+                results.append(table_data)
+        except Exception:
+            continue
+
+    return results
+
+
+def process_tables(pdf_data: Dict) -> List[Dict]:
+    """Process all tables according to template pages."""
+    results = []
+    number_of_pages = len(pdf_data["pages"])
+
+    for page_rule in template["pages"]:
+        if "tables" not in page_rule:
+            continue
+
+        page_indexes = parser.page_number_converter(
+            page_rule["page_numbers"], number_of_pages
+        )
+
+        for page_index in page_indexes:
+            results.extend(process_table_rules(page_rule, page_index, pdf_data))
+
+    return results
+
+
 def visualize_table_data(table_data: Dict, pdf_path: str) -> None:
     """Visualize table data by drawing boxes and lines."""
     print(
@@ -61,10 +98,8 @@ def run_tests(template: Dict, pdf_data: Dict) -> None:
     """Run tests to verify table processing."""
     print("\nRunning tests...")
 
-    table_processor = TableProcessor(template, Parser())
-
     # Process tables
-    results = table_processor.process_tables(pdf_data)
+    results = process_tables(pdf_data)
 
     # Verify results
     assert results, "No tables were processed"
