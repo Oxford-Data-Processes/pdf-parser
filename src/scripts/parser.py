@@ -116,36 +116,37 @@ class TableProcessor:
 
     def get_table_data(self, rule_id: str, page_index: int, pdf_data) -> Dict:
         """Get table data for a specific rule and page."""
-        # Get the table rule
         table_rule = self.parser.get_rule_from_id(rule_id, self.template)
         if not table_rule:
             raise ValueError(f"Table rule {rule_id} not found")
 
-        # Get page content
         page_content = pdf_data["pages"][page_index]
         lines = page_content["lines"]
 
-        # Filter lines by pixel value
         filtered_lines = self.parser.filter_lines_by_pixel_value(lines)
+        lines_y_coordinates = self.get_y_coordinates(filtered_lines)
 
-        # Get y-coordinates from filtered lines
-        lines_y_coordinates = sorted(
+        if not lines_y_coordinates:
+            return None
+
+        return self.process_columns(
+            table_rule, lines_y_coordinates, rule_id, page_index
+        )
+
+    def get_y_coordinates(self, filtered_lines):
+        """Get y-coordinates from filtered lines."""
+        return sorted(
             set(line["decimal_coordinates"]["top_left"]["y"] for line in filtered_lines)
         )
 
-        if not lines_y_coordinates:
-            print(
-                f"Warning: No valid lines found for table {rule_id} on page {page_index + 1}"
-            )
-            return None
-
-        # Process each column
+    def process_columns(self, table_rule, lines_y_coordinates, rule_id, page_index):
+        """Process each column and return structured data."""
         columns_data = []
         for column in table_rule["config"]["columns"]:
             column_data = {
                 "field_name": column["field_name"],
                 "coordinates": column["coordinates"],
-                "lines_y_coordinates": lines_y_coordinates,  # Use same lines for all columns
+                "lines_y_coordinates": lines_y_coordinates,
             }
             columns_data.append(column_data)
 
@@ -160,34 +161,31 @@ class TableProcessor:
         results = []
         number_of_pages = len(pdf_data["pages"])
 
-        # Iterate through pages as defined in template
         for page_rule in self.template["pages"]:
             if "tables" not in page_rule:
                 continue
 
-            # Convert page numbers to indexes
             page_indexes = self.parser.page_number_converter(
                 page_rule["page_numbers"], number_of_pages
             )
 
-            # Process each page
             for page_index in page_indexes:
-                # Process each table rule for this page
-                for rule_id in page_rule["tables"]:
-                    try:
-                        table_data = self.get_table_data(rule_id, page_index, pdf_data)
-                        if table_data:
-                            results.append(table_data)
-                            print(
-                                f"\nProcessed table {rule_id} on page {page_index + 1}"
-                            )
-                            print(
-                                f"Found {len(table_data['columns'][0]['lines_y_coordinates'])} lines"
-                            )
-                    except Exception as e:
-                        print(
-                            f"Error processing table {rule_id} on page {page_index + 1}: {str(e)}"
-                        )
+                results.extend(
+                    self.process_table_rules(page_rule, page_index, pdf_data)
+                )
+
+        return results
+
+    def process_table_rules(self, page_rule, page_index, pdf_data):
+        """Process each table rule for the given page."""
+        results = []
+        for rule_id in page_rule["tables"]:
+            try:
+                table_data = self.get_table_data(rule_id, page_index, pdf_data)
+                if table_data:
+                    results.append(table_data)
+            except Exception:
+                continue  # Handle exceptions silently
 
         return results
 
