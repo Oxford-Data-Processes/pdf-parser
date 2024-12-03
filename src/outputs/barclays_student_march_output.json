@@ -1,7 +1,7 @@
 {
     "metadata": {
-        "document_id": "f47ed82a-8db3-49e4-9b26-5c005b3ce5c5",
-        "parsed_at": "2024-12-03T13:29:50",
+        "document_id": "ad3512ad-141a-4b9f-85dd-dc6f30457142",
+        "parsed_at": "2024-12-03T13:52:53",
         "number_of_pages": 5
     },
     "pages": [
@@ -34,7 +34,6 @@
             ],
             "tables": [
                 {
-                    "table_header": "header",
                     "data": [
                         {
                             "date": "01 Mar",
@@ -44,17 +43,149 @@
                             "balance": "-195.38"
                         },
                         {
-                            "date": "",
-                            "description": "",
-                            "money_out": "",
+                            "date": "01 Mar",
+                            "description": "Payment to Matthew Price Ref: Room Payment",
+                            "money_out": "5.00",
                             "money_in": "",
                             "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Account Credit: Deposit at B4 Ipswich Ref: Lingoda",
+                            "money_out": "",
+                            "money_in": "480.00",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Transfer From Sort Code 20-44-51 Account 83254534 Ref: Mobile-Channel",
+                            "money_out": "",
+                            "money_in": "24.00",
+                            "balance": "303.62"
+                        },
+                        {
+                            "date": "02 Mar",
+                            "description": "Transfer From Sort Code 20-44-51 Account 83254534 Ref: Mobile-Channel",
+                            "money_out": "",
+                            "money_in": "23.00",
+                            "balance": "326.62"
+                        },
+                        {
+                            "date": "06 Mar",
+                            "description": "Payment to Sam Oakley Ref: Broadband",
+                            "money_out": "6.00",
+                            "money_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Transfer to Sort Code 20-44-51 Account 83254534 Ref: Mobile-Channel",
+                            "money_out": "60.00",
+                            "money_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Transfer to Sort Code 20-44-51 Account 83254534 Ref: Mobile-Channel",
+                            "money_out": "100.00",
+                            "money_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Received From Thorneloe C&C Ref: From Mandd",
+                            "money_out": "",
+                            "money_in": "60.00",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Transfer From Sort Code 20-44-51 Account 83254534 Ref: Mobile-Channel",
+                            "money_out": "",
+                            "money_in": "23.00",
+                            "balance": "243.62"
+                        },
+                        {
+                            "date": "08 Mar",
+                            "description": "Payment to Matthew Price Ref: Room Payment",
+                            "money_out": "5.00",
+                            "money_in": "",
+                            "balance": "238.62"
+                        },
+                        {
+                            "date": "Barclays and the Registered in",
+                            "description": "Bank UK PLC. Authorised by the Prudential Regulation Regulation Authority (Financial Services Register in England. Registered No. 9740322. Registered Office: 1",
+                            "money_out": "and No. 759676). 1 Churchill Place,",
+                            "money_in": "by the Financial London E14 5HP.",
+                            "balance": "Continued Conduct"
                         }
                     ]
                 },
                 {
-                    "table_header": "header",
                     "data": [
+                        {
+                            "date": "13 Mar",
+                            "description": "Transfer to Sort Code 20-44-51 Account 83254534 Ref: Mobile-Channel",
+                            "money_out": "52.00",
+                            "money_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Transfer to Sort Code 20-44-51 Account 83254534 Ref: Mobile-Channel",
+                            "money_out": "53.00",
+                            "money_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Received From Thorneloe C&C Ref: From Mandd",
+                            "money_out": "",
+                            "money_in": "60.00",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Transfer From Sort Code 20-44-51 Account 83254534 Ref: Mobile-Channel",
+                            "money_out": "",
+                            "money_in": "23.00",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Transfer From Sort Code 20-44-51 Account 83254534 Ref: Mobile-Channel",
+                            "money_out": "",
+                            "money_in": "23.00",
+                            "balance": "239.62"
+                        },
+                        {
+                            "date": "15 Mar",
+                            "description": "Payment to Matthew Price Ref: Room Payment",
+                            "money_out": "5.00",
+                            "money_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Transfer to Sort Code 20-44-51 Account 83254534 Ref: Mobile-Channel",
+                            "money_out": "10.00",
+                            "money_in": "",
+                            "balance": "224.62"
+                        },
+                        {
+                            "date": "20 Mar",
+                            "description": "Transfer to Sort Code 20-44-51 Account 83254534 Ref: Mobile-Channel",
+                            "money_out": "60.00",
+                            "money_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Received From Thorneloe C&C Ref: From Mandd",
+                            "money_out": "",
+                            "money_in": "60.00",
+                            "balance": "224.62"
+                        },
                         {
                             "date": "22 Mar",
                             "description": "Payment to Matthew Price Ref: Room Payment",
@@ -63,30 +194,78 @@
                             "balance": ""
                         },
                         {
-                            "date": "13 Mar",
-                            "description": "Transfer to Sort Code 20-44-51 Account 83254534 Ref: Mobile-Channel",
-                            "money_out": "52.00",
-                            "money_in": "",
-                            "balance": ""
-                        }
-                    ]
-                },
-                {
-                    "table_header": "header",
-                    "data": [
-                        {
                             "date": "",
-                            "description": "",
-                            "money_out": "",
+                            "description": "Transfer to Sort Code 20-44-51 Account 83254534 Ref: Mobile-Channel",
+                            "money_out": "20.00",
                             "money_in": "",
                             "balance": ""
                         },
                         {
-                            "date": "This",
-                            "description": "does not pay credit interest",
-                            "money_out": "",
+                            "date": "",
+                            "description": "Transfer to Sort Code 20-44-51 Account 83254534 Ref: Mobile-Channel",
+                            "money_out": "20.00",
                             "money_in": "",
                             "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Transfer to Sort Code 20-44-51 Account 83254534 Ref: Mobile-Channel",
+                            "money_out": "50.00",
+                            "money_in": "",
+                            "balance": "129.62"
+                        },
+                        {
+                            "date": "23 Mar",
+                            "description": "Transfer to Sort Code 20-44-51 Account 83254534 Ref: Mobile-Channel",
+                            "money_out": "60.00",
+                            "money_in": "",
+                            "balance": "69.62"
+                        },
+                        {
+                            "date": "27 Mar",
+                            "description": "Transfer to Sort Code 20-44-51 Account 83254534 Ref: Mobile-Channel",
+                            "money_out": "20.00",
+                            "money_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Received From Thorneloe C&C Ref: From Mandd",
+                            "money_out": "",
+                            "money_in": "60.00",
+                            "balance": "109.62"
+                        },
+                        {
+                            "date": "29 Mar",
+                            "description": "Payment to Matthew Price Ref: Room Payment",
+                            "money_out": "5.00",
+                            "money_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Bill Payment to Sophia Copsey Ref: Electricity",
+                            "money_out": "30.90",
+                            "money_in": "",
+                            "balance": "73.72"
+                        },
+                        {
+                            "date": "31 Mar u the Page",
+                            "description": "End balance Wrong? If you\u2019ve spotted any next page for how to get in touch Barclays Bank UK PLC. Authorised by 2 Regulation Authority (Financial Registered in England. Registered No.",
+                            "money_out": "incorrect or us. the Prudential Register No. 9740322.",
+                            "money_in": "unusual Authority Office: 1",
+                            "balance": "73.72 see and regulated by the Place, London"
+                        }
+                    ]
+                },
+                {
+                    "data": [
+                        {
+                            "date": "This Barclays Regulation Registered",
+                            "description": "does not pay credit interest UK PLC. Authorised by the Prudential Regulation Authority (Financial Services Register No. 759676). in England. Registered No. 9740322. Registered Office:",
+                            "money_out": "Authority and 1 Churchill Place,",
+                            "money_in": "by the Financial London E14 5HP.",
+                            "balance": "Conduct"
                         }
                     ]
                 }

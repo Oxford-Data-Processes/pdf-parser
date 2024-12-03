@@ -9,7 +9,6 @@ class Metadata(BaseModel):
 
 
 class Table(BaseModel):
-    table_header: str
     data: List[RootModel]
 
 

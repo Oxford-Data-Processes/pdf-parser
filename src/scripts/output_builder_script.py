@@ -52,7 +52,7 @@ def parse_pdf(template: Dict[str, Any], pdf_data: Dict[str, Any]) -> Dict[str, A
                             rule_id, page_index, pdf_data, template
                         )
 
-                        tables.append({"table_header": "header", "data": table_data})
+                        tables.append({"data": table_data})
                     except IndexError:
                         print(
                             f"Rule ID '{rule_id}' not found in template rules or page index '{page_index}' is out of range."

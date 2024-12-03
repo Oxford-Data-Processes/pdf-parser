@@ -44,7 +44,6 @@ Focus on building this first, the thing that can split tables into form objects.
       ],
       "tables": [
         {
-          "table_header": "Your Transactions",
           "data": [
             {
               "date": "2023-01-01",

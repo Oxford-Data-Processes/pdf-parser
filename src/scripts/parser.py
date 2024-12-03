@@ -79,24 +79,34 @@ class Parser:
     ):
         table_processor = TableProcessor(template, self)
         table_splitter = TableSplitter(template, self)
-        results = table_processor.process_tables(pdf_data)
+        table_rule = self.get_rule_from_id(table_rule_id, template)
+        delimiter_field_name = table_rule["config"]["row_delimiter"]["field_name"]
+        delimiter_type = table_rule["config"]["row_delimiter"]["type"]
+        processed_columns = table_processor.process_table_data(
+            table_rule,
+            pdf_data["pages"][page_index],
+            delimiter_field_name,
+            delimiter_type,
+        )
 
-        print(results)
+        data = {}
 
-        data = []
-        for result in results:
-            row_data = {}
-            for column in result["columns"]:
-                split_boxes = table_splitter.split_bounding_box_by_lines(
-                    column["coordinates"], column["lines_y_coordinates"]
+        for column in processed_columns:
+            split_boxes = table_splitter.split_bounding_box_by_lines(
+                column["coordinates"], column["lines_y_coordinates"]
+            )
+            for row_index, box in enumerate(split_boxes):
+                text_value = self.get_text_from_page(
+                    pdf_data["pages"][page_index]["content"], box
                 )
+                if row_index not in data:
+                    data[row_index] = {}
+                data[row_index][column["field_name"]] = text_value
 
-                row_data[column["field_name"]] = self.get_text_from_page(
-                    pdf_data["pages"][page_index]["content"], split_boxes[0]
-                )
-            data.append(row_data)
+        # Convert the dictionary to a list of values ordered by row_index
+        ordered_data = [data[row_index] for row_index in sorted(data.keys())]
 
-        return data
+        return ordered_data
 
 
 class TableProcessor:
