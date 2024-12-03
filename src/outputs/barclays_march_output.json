@@ -1,7 +1,7 @@
 {
     "metadata": {
-        "document_id": "e6329ad3-fe24-4021-bc64-9525f628c1db",
-        "parsed_at": "2024-12-03T14:50:22",
+        "document_id": "d597a306-b753-45d2-9299-87f4f2c0e977",
+        "parsed_at": "2024-12-03T15:13:36",
         "number_of_pages": 5
     },
     "pages": [
@@ -27,9 +27,6 @@
                 },
                 {
                     "end_balance": "\u00a344.24"
-                },
-                {
-                    "overdraft_limit": ""
                 }
             ],
             "tables": [

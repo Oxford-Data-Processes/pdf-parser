@@ -1,0 +1,391 @@
+{
+    "metadata": {
+        "document_id": "866340fa-6158-41e3-afbd-3985cbcd54c2",
+        "parsed_at": "2024-12-03T15:14:51",
+        "number_of_pages": 4
+    },
+    "pages": [
+        {
+            "forms": [
+                {
+                    "sort_code": "20-44-51"
+                },
+                {
+                    "account_number": "83254534"
+                },
+                {
+                    "customer_name": "Miss Meghan Victoria Thorneloe"
+                },
+                {
+                    "start_balance": "\u00a344.24"
+                },
+                {
+                    "money_in": "\u00a31,870.44"
+                },
+                {
+                    "money_out": "\u00a31,865.06"
+                },
+                {
+                    "end_balance": "\u00a349.62"
+                }
+            ],
+            "tables": [
+                {
+                    "data": [
+                        {
+                            "date": "01 Apr",
+                            "description": "Start balance",
+                            "money_out": "Money out",
+                            "money_in": "Money in",
+                            "balance": "Balance 44.24"
+                        },
+                        {
+                            "date": "03 Apr",
+                            "description": "Card Payment to Tesco Stores 2209 On 01 Apr",
+                            "money_out": "0.75",
+                            "money_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Card Payment to Shell Main Rd On 02 Apr",
+                            "money_out": "0.79",
+                            "money_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Card Payment to Tesco Stores 6416 On 31 Mar",
+                            "money_out": "1.70",
+                            "money_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Card Payment to The Rosebud On 01 Apr",
+                            "money_out": "7.20",
+                            "money_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Card Payment to Paul Applegate Ltd On 31 Mar",
+                            "money_out": "9.35",
+                            "money_in": "",
+                            "balance": "24.45"
+                        },
+                        {
+                            "date": "05 Apr",
+                            "description": "Card Payment to Paypal *Proteinwor On 03 Apr",
+                            "money_out": "3.95",
+                            "money_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Transfer From Sort Code 20-44-51 Account 13415759 Ref: Mobile-Channel",
+                            "money_out": "",
+                            "money_in": "20.00",
+                            "balance": "40.50"
+                        },
+                        {
+                            "date": "06 Apr",
+                            "description": "Card Payment to Trainline.Com On 05 Apr",
+                            "money_out": "28.04",
+                            "money_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Card Payment to Holland & Barrett On 05 Apr",
+                            "money_out": "12.13",
+                            "money_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Refund From SP Aybl On 05 Apr",
+                            "money_out": "",
+                            "money_in": "33.84",
+                            "balance": "34.17"
+                        },
+                        {
+                            "date": "11 Apr",
+                            "description": "Card Payment to Michaelhouse Cafe On 08 Apr",
+                            "money_out": "5.30",
+                            "money_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "Barclays and the Registered in",
+                            "description": "UK PLC. Authorised by the Prudential Regulation Regulation Authority (Financial Services in England. Registered No. 9740322. Registered Office:",
+                            "money_out": "and No. 759676). 1 Churchill Place,",
+                            "money_in": "by the Financial London E14 5HP.",
+                            "balance": "Continued Conduct"
+                        }
+                    ]
+                },
+                {
+                    "data": [
+                        {
+                            "date": "11 Apr",
+                            "description": "Card Payment to Giggling Squid On 08 Apr",
+                            "money_out": "15.33",
+                            "money_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Card Payment to Hollister Grand AR On 08 Apr",
+                            "money_out": "17.00",
+                            "money_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Card Payment to New Look 2023 On 08 Apr",
+                            "money_out": "26.99",
+                            "money_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Bill Payment to E J Thorneloe Ref: Cambridge Day",
+                            "money_out": "4.39",
+                            "money_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Transfer From Sort Code 20-44-51 Account 13415759 Ref: Mobile-Channel",
+                            "money_out": "",
+                            "money_in": "20.00",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Transfer From Sort Code 20-44-51 Account 13415759 Ref: Mobile-Channel",
+                            "money_out": "",
+                            "money_in": "20.00",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Transfer From Sort Code 20-44-51 Account 13415759 Ref: Mobile-Channel",
+                            "money_out": "",
+                            "money_in": "60.00",
+                            "balance": "65.16"
+                        },
+                        {
+                            "date": "12 Apr",
+                            "description": "Transfer to Sort Code 20-44-51 Account 13415759 Ref: Mobile-Channel",
+                            "money_out": "1,400.00",
+                            "money_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Received From D061E00A03C6Nspb Ref: PB 317384804",
+                            "money_out": "",
+                            "money_in": "1,400.00",
+                            "balance": "65.16"
+                        },
+                        {
+                            "date": "13 Apr",
+                            "description": "Direct Debit to Paypal Payment Ref: 5YV22229Xjkke",
+                            "money_out": "43.93",
+                            "money_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Card Payment to Boots 1833 On 12 Apr",
+                            "money_out": "17.95",
+                            "money_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Transfer From Sort Code 20-44-51 Account 13415759 Ref: Mobile-Channel",
+                            "money_out": "",
+                            "money_in": "20.00",
+                            "balance": "23.28"
+                        },
+                        {
+                            "date": "17 Apr",
+                            "description": "Card Payment to Tesco Stores 4480 On 16 Apr",
+                            "money_out": "3.00",
+                            "money_in": "",
+                            "balance": "20.28"
+                        },
+                        {
+                            "date": "18 Apr",
+                            "description": "Bill Payment to Claire Thorneloe Ref: Boots Bits",
+                            "money_out": "30.00",
+                            "money_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Transfer From Sort Code 20-44-51 Account 13415759 Ref: Mobile-Channel",
+                            "money_out": "",
+                            "money_in": "30.00",
+                            "balance": "20.28"
+                        },
+                        {
+                            "date": "20 Apr",
+                            "description": "Transfer From Sort Code 20-44-51 Account 13415759 Ref: Mobile-Channel",
+                            "money_out": "",
+                            "money_in": "30.00",
+                            "balance": "50.28"
+                        },
+                        {
+                            "date": "21 Apr",
+                            "description": "Card Payment to Moonpig On 20 Apr",
+                            "money_out": "4.21",
+                            "money_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Card Purchase Paypal *Bynouck BV Netherlands On 20 Apr",
+                            "money_out": "35.60",
+                            "money_in": "",
+                            "balance": "10.47"
+                        },
+                        {
+                            "date": "24 Apr",
+                            "description": "Card Payment to Tesco Stores 2748 On 23 Apr",
+                            "money_out": "5.15",
+                            "money_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Card Payment to Zettle_*Mannaeatin On 22 Apr",
+                            "money_out": "6.50",
+                            "money_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Card Payment to Superdrug Stores P On 23 Apr",
+                            "money_out": "9.99",
+                            "money_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "Page",
+                            "description": "Barclays Bank UK PLC. Authorised by 2 Regulation Authority (Financial Registered in England. Registered No.",
+                            "money_out": "the Prudential Register No. 9740322.",
+                            "money_in": "Authority Office: 1",
+                            "balance": "Continued and regulated by the Place, London"
+                        }
+                    ]
+                },
+                {
+                    "data": [
+                        {
+                            "date": "24 Apr",
+                            "description": "Card Payment to Tfl Travel CH On 22 Apr",
+                            "money_out": "17.50",
+                            "money_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Card Payment to Boots 1833 On 23 Apr",
+                            "money_out": "29.39",
+                            "money_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Transfer From Sort Code 20-44-51 Account 13415759 Ref: Mobile-Channel",
+                            "money_out": "",
+                            "money_in": "30.00",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Transfer From Sort Code 20-44-51 Account 13415759 Ref: Mobile-Channel",
+                            "money_out": "",
+                            "money_in": "30.00",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Transfer From Sort Code 20-44-51 Account 13415759 Ref: Mobile-Channel",
+                            "money_out": "",
+                            "money_in": "60.00",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Bill Payment From Thorneloe E J Ref: Food",
+                            "money_out": "",
+                            "money_in": "15.60",
+                            "balance": "77.54"
+                        },
+                        {
+                            "date": "26 Apr",
+                            "description": "Card Payment to New Look McOmm On 24 Apr",
+                            "money_out": "26.99",
+                            "money_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Transfer From Sort Code 20-44-51 Account 13415759 Ref: Mobile-Channel",
+                            "money_out": "",
+                            "money_in": "56.00",
+                            "balance": "106.55"
+                        },
+                        {
+                            "date": "27 Apr",
+                            "description": "Card Payment to Trainline.Com On 26 Apr",
+                            "money_out": "15.74",
+                            "money_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Card Payment to Trainline On 26 Apr",
+                            "money_out": "30.19",
+                            "money_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Card Payment to Www.Bluehillscampi On 26 Apr",
+                            "money_out": "56.00",
+                            "money_in": "",
+                            "balance": "4.62"
+                        },
+                        {
+                            "date": "28 Apr",
+                            "description": "Transfer From Sort Code 20-44-51 Account 13415759 Ref: Mobile-Channel",
+                            "money_out": "",
+                            "money_in": "10.00",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "Transfer From Sort Code 20-44-51 Account 13415759 Ref: Mobile-Channel",
+                            "money_out": "",
+                            "money_in": "35.00",
+                            "balance": "49.62"
+                        },
+                        {
+                            "date": "28 Apr u the This Barclays Regulation Registered",
+                            "description": "End balance Wrong? If you\u2019ve spotted any next page for how to get in touch interest rates does not pay credit interest UK PLC. Authorised by the Prudential Regulation Authority (Financial Services Register No. 759676). in England. Registered No. 9740322. Registered Office:",
+                            "money_out": "incorrect or us. Authority and 1 Churchill Place,",
+                            "money_in": "unusual by the Financial London E14 5HP.",
+                            "balance": "49.62 see Conduct"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
