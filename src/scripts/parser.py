@@ -224,7 +224,7 @@ class TableSplitter:
         return split_boxes
 
     # Filter lines by pixel value
-    def filter_lines_by_pixel_value(self, lines, max_pixel_value=(100, 100, 100)):
+    def filter_lines_by_pixel_value(self, lines, max_pixel_value=(255, 255, 255)):
         """Filter lines based on their average pixel value."""
         filtered_lines = []
         for line in lines:
@@ -232,7 +232,11 @@ class TableSplitter:
                 avg_red, avg_green, avg_blue = line["average_pixel_value"]
                 max_red, max_green, max_blue = max_pixel_value
 
-                if avg_red < max_red and avg_green < max_green and avg_blue < max_blue:
+                if (
+                    avg_red <= max_red
+                    and avg_green <= max_green
+                    and avg_blue <= max_blue
+                ):
                     filtered_lines.append(line)
         return filtered_lines
 
@@ -304,8 +308,8 @@ class TableSplitter:
         self,
         row_delimiter_type: str,
         page_content,
-        delimiter_field_name,
-        rule_id,
+        delimiter_field_name=None,
+        rule_id=None,
     ):
         if row_delimiter_type == "line":
             return self.split_table_by_line(page_content["lines"])
