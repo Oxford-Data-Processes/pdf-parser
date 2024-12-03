@@ -62,6 +62,35 @@ class Parser:
         )
         return self.get_text_from_items(items_within_coordinates)
 
+    def get_delimiter_column_coordinates(self, template, delimiter_field_name):
+        """Get the coordinates of the description column from the template."""
+        delimiter_coordinates = None
+        for rule in template["rules"]:
+            if rule["type"] == "table":
+                for column in rule["config"]["columns"]:
+                    if column["field_name"] == delimiter_field_name:
+                        delimiter_coordinates = column["coordinates"]
+                        break
+                break
+
+        if not delimiter_coordinates:
+            raise ValueError("Description column coordinates not found in template")
+
+        return delimiter_coordinates
+
+    # Filter lines by pixel value
+    def filter_lines_by_pixel_value(self, lines, max_pixel_value):
+        """Filter lines based on their average pixel value."""
+        filtered_lines = []
+        for line in lines:
+            if "average_pixel_value" in line:
+                avg_red, avg_green, avg_blue = line["average_pixel_value"]
+                max_red, max_green, max_blue = max_pixel_value
+
+                if avg_red < max_red and avg_green < max_green and avg_blue < max_blue:
+                    filtered_lines.append(line)
+        return filtered_lines
+
     def get_output_data_from_form_rule(
         self, form_rule_id, page_index, pdf_data, template
     ):

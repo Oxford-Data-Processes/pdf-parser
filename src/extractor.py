@@ -28,38 +28,12 @@ class Extractor:
                 "number_of_pages": len(pdf.pages),
                 "dimensions": self.get_dimensions(pdf),
             }
-            image_extractor = ImageExtractor(
-                self.pdf_bytes
-            )  # Create an instance of ImageExtractor
             for page_num, page in enumerate(pdf.pages):
-                page_data = self.extract_page_data(page)
+                page_data = self.extract_page_text_data(page)
 
-                line_data = []
-                for line in page.lines:
-                    # Ensure line has the necessary keys before proceeding
-                    if "x0" in line and "y0" in line and "x1" in line and "y1" in line:
-                        coordinates = {
-                            "top_left": {
-                                "x": round(line["x0"] / page.width, 6),
-                                "y": round(1 - (line["y0"] / page.height), 6),
-                            },
-                            "bottom_right": {
-                                "x": round(line["x1"] / page.width, 6),
-                                "y": round(1 - (line["y1"] / page.height), 6),
-                            },
-                        }
-                        average_pixel_value, _, _, _ = (
-                            image_extractor.calculate_average_pixel_value(
-                                pdf_jpg_files[f"{prefix}_page_{page_num + 1}.jpg"],
-                                coordinates,
-                            )
-                        )
-                        line_data.append(
-                            {
-                                "decimal_coordinates": coordinates,
-                                "average_pixel_value": average_pixel_value,
-                            }
-                        )
+                line_data = self.extract_page_line_data(
+                    page, pdf_jpg_files[f"{prefix}_page_{page_num + 1}.jpg"]
+                )
 
                 data["pages"].append(
                     {
@@ -78,7 +52,38 @@ class Extractor:
             "height": round(pdf.pages[0].height, 2),
         }
 
-    def extract_page_data(self, page):
+    def extract_page_line_data(self, page, jpg_bytes):
+        """Extract line data from a page."""
+        image_extractor = ImageExtractor(self.pdf_bytes)
+        line_data = []
+        for line in page.lines:
+            # Ensure line has the necessary keys before proceeding
+            if "x0" in line and "y0" in line and "x1" in line and "y1" in line:
+                coordinates = {
+                    "top_left": {
+                        "x": round(line["x0"] / page.width, 6),
+                        "y": round(1 - (line["y0"] / page.height), 6),
+                    },
+                    "bottom_right": {
+                        "x": round(line["x1"] / page.width, 6),
+                        "y": round(1 - (line["y1"] / page.height), 6),
+                    },
+                }
+                average_pixel_value, _, _, _ = (
+                    image_extractor.calculate_average_pixel_value(
+                        jpg_bytes,
+                        coordinates,
+                    )
+                )
+                line_data.append(
+                    {
+                        "decimal_coordinates": coordinates,
+                        "average_pixel_value": average_pixel_value,
+                    }
+                )
+        return line_data
+
+    def extract_page_text_data(self, page):
         """Extract text and bounding box information from a page."""
         page_data = []
         for element in page.extract_words():

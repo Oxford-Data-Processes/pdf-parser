@@ -72,31 +72,23 @@ pdf_data = json.load(open(pdf_data_path))
 # Process page 2
 page_number = 2
 page_content = pdf_data["pages"][page_number - 1]
+
 lines = page_content["lines"]
 
-# Get description column coordinates
-description_coords = None
-for rule in template["rules"]:
-    if rule["type"] == "table":
-        for column in rule["config"]["columns"]:
-            if column["field_name"] == "description":
-                description_coords = column["coordinates"]
-                break
-        break
-
-if not description_coords:
-    raise ValueError("Description column coordinates not found in template")
-
-# Filter lines by pixel value
+delimiter_field_name = "description"
 max_pixel_value = (200, 200, 200)
-filtered_lines = []
-for line in lines:
-    if "average_pixel_value" in line:
-        avg_red, avg_green, avg_blue = line["average_pixel_value"]
-        max_red, max_green, max_blue = max_pixel_value
 
-        if avg_red < max_red and avg_green < max_green and avg_blue < max_blue:
-            filtered_lines.append(line)
+from src.parser import Parser
+
+parser = Parser()
+
+delimiter_coordinates = parser.get_delimiter_column_coordinates(
+    template, delimiter_field_name
+)
+
+filtered_lines = parser.filter_lines_by_pixel_value(lines, max_pixel_value)
+
+print(filtered_lines)
 
 # Convert PDF to image and draw lines
 from src.extractor import ImageExtractor
@@ -111,7 +103,7 @@ jpg_bytes = pdf_jpg_files[jpg_key]
 
 # Draw lines on the image
 image = Image.open(io.BytesIO(jpg_bytes))
-image_with_lines = draw_lines(image, filtered_lines, description_coords)
+image_with_lines = draw_lines(image, filtered_lines, delimiter_coordinates)
 
 # Save and show the result
 output_image_path = f"output_{jpg_key}"
