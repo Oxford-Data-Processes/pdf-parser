@@ -224,7 +224,7 @@ class TableSplitter:
         return split_boxes
 
     # Filter lines by pixel value
-    def filter_lines_by_pixel_value(self, lines, max_pixel_value=(255, 255, 255)):
+    def filter_lines_by_pixel_value(self, lines, max_pixel_value=(100, 100, 100)):
         """Filter lines based on their average pixel value."""
         filtered_lines = []
         for line in lines:
