@@ -79,8 +79,10 @@ Use negative integers to specify pages relative to the last page:
 -3: The third-to-last page, and so on.
 Ranges:
 Allow combinations of ranges and negative indices:
-"2-(-2)": Pages 2 to the second-to-last page.
-"1-(-1)": First page to the last page (equivalent to "all").
-Combinations:
-Allow mixing of specific pages, ranges, and negative indexing:
-["1", "-1", "3-(-2)"]:
+"2:-2": Pages 2 to the second-to-last page, inclusive for both.
+"1:-1": First page to the last page (equivalent to "all").
+
+
+
+
+NEED TO FIX HALIFAX AND LLOYDS
