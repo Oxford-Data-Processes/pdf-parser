@@ -1,0 +1,271 @@
+{
+    "metadata": {
+        "document_id": "a610c1b3-e810-40eb-9de6-50401db13738",
+        "parsed_at": "2024-12-03T18:18:35",
+        "number_of_pages": 3
+    },
+    "pages": [
+        {
+            "forms": [
+                {
+                    "customer_name": "Mr Jake Charles Holmes"
+                },
+                {
+                    "sort_code": "40-47-64"
+                },
+                {
+                    "account_number": "55504864"
+                },
+                {
+                    "opening_balance": "352.19"
+                },
+                {
+                    "payments_in": "2,054.81"
+                },
+                {
+                    "payments_out": "1,913.10"
+                },
+                {
+                    "closing_balance": "493.90"
+                },
+                {
+                    "overdraft_limit": "250.00"
+                }
+            ],
+            "tables": [
+                {
+                    "data": [
+                        {
+                            "date": "A 28 Mar 23",
+                            "payment_type": "",
+                            "description": "Balancebrought forward .",
+                            "paid_out": "",
+                            "paid_in": "",
+                            "balance": "352.19"
+                        },
+                        {
+                            "date": "30 Mar 23",
+                            "payment_type": "DD",
+                            "description": "PLUM",
+                            "paid_out": "14.41",
+                            "paid_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "payment_type": "OBP",
+                            "description": "TESCO BANK 518652******7998",
+                            "paid_out": "41.15",
+                            "paid_in": "",
+                            "balance": "296.63"
+                        },
+                        {
+                            "date": "03 Apr 23",
+                            "payment_type": "DD",
+                            "description": "LEGACY LEISURE",
+                            "paid_out": "26.00",
+                            "paid_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "payment_type": "DD",
+                            "description": "DVLA-RV56MYB",
+                            "paid_out": "19.25",
+                            "paid_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "payment_type": "CR",
+                            "description": "J HOLMES CAR",
+                            "paid_out": "",
+                            "paid_in": "19.25",
+                            "balance": "270.63"
+                        },
+                        {
+                            "date": "05 Apr 23",
+                            "payment_type": "DD",
+                            "description": "PAYPAL PAYMENT",
+                            "paid_out": "1.99",
+                            "paid_in": "",
+                            "balance": "268.64"
+                        },
+                        {
+                            "date": "06 Apr 23",
+                            "payment_type": "DD",
+                            "description": "PLUM",
+                            "paid_out": "10.73",
+                            "paid_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "payment_type": "DD",
+                            "description": "PAYPAL PAYMENT",
+                            "paid_out": "9.98",
+                            "paid_in": "",
+                            "balance": "247.93"
+                        },
+                        {
+                            "date": "11 Apr 23",
+                            "payment_type": ")))",
+                            "description": "BOOTS 1981 MARYLEBONE ST",
+                            "paid_out": "0.90",
+                            "paid_in": "",
+                            "balance": "247.03"
+                        },
+                        {
+                            "date": "12 Apr 23",
+                            "payment_type": "DD",
+                            "description": "PAYPAL PAYMENT",
+                            "paid_out": "1.59",
+                            "paid_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "payment_type": "OBP",
+                            "description": "TESCO BANK 518652******7998",
+                            "paid_out": "211.57",
+                            "paid_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "payment_type": "MAS",
+                            "description": "TESCO PAY AT PUMP BICESTER",
+                            "paid_out": "25.82",
+                            "paid_in": "",
+                            "balance": "8.05"
+                        },
+                        {
+                            "date": "13 Apr 23",
+                            "payment_type": "DD",
+                            "description": "PLUM",
+                            "paid_out": "14.06",
+                            "paid_in": "",
+                            "balance": "6.01D"
+                        },
+                        {
+                            "date": "14 Apr 23",
+                            "payment_type": "DD",
+                            "description": "PAYPAL PAYMENT",
+                            "paid_out": "9.99",
+                            "paid_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "payment_type": "OBP",
+                            "description": "TESCO BANK 518652******7998",
+                            "paid_out": "17.04",
+                            "paid_in": "",
+                            "balance": "33.04D"
+                        },
+                        {
+                            "date": "18 Apr 23",
+                            "payment_type": "DD",
+                            "description": "O2",
+                            "paid_out": "24.78",
+                            "paid_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "payment_type": "DD",
+                            "description": "PAYPAL PAYMENT",
+                            "paid_out": "16.24",
+                            "paid_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "payment_type": "MAS",
+                            "description": "INT'L 0652950423 APPLE.COM/BILL 08001076285 Balancecarriedforward",
+                            "paid_out": "2.49 first",
+                            "paid_in": "division of HSBC UK",
+                            "balance": "76.55D 76.55D"
+                        }
+                    ]
+                },
+                {
+                    "data": [
+                        {
+                            "date": "",
+                            "payment_type": "",
+                            "description": "Balancebroughtforward",
+                            "paid_out": "",
+                            "paid_in": "",
+                            "balance": "76.55D"
+                        },
+                        {
+                            "date": "27 Apr 23",
+                            "payment_type": "MAS",
+                            "description": "INT'L 0663139336 APPLE.COM/BILL APPLE.COM/BIL",
+                            "paid_out": "9.99",
+                            "paid_in": "",
+                            "balance": "86.54D"
+                        },
+                        {
+                            "date": "28 Apr 23",
+                            "payment_type": "CR",
+                            "description": "HIYACAR LIMITED F SALARY",
+                            "paid_out": "",
+                            "paid_in": "2,035.56",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "payment_type": "OBP",
+                            "description": "TESCO BANK 518652******7998",
+                            "paid_out": "155.12",
+                            "paid_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "payment_type": "BP",
+                            "description": "JAKE HOLMES MONZO",
+                            "paid_out": "600.00",
+                            "paid_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "28 Apr 23",
+                            "payment_type": "BP",
+                            "description": "Jake Bonds 413370716 Balancecarriedforward the Financial Services Compensation",
+                            "paid_out": "700.00 Scheme",
+                            "paid_in": "",
+                            "balance": "493.90 493.90"
+                        },
+                        {
+                            "date": "Your",
+                            "payment_type": "is",
+                            "description": "for protection under the Financial Services",
+                            "paid_out": "",
+                            "paid_in": "(FSCS).",
+                            "balance": "further"
+                        },
+                        {
+                            "date": "information",
+                            "payment_type": "about",
+                            "description": "compensation provided by the FSCS, refer to",
+                            "paid_out": "to the FSCS",
+                            "paid_in": "at",
+                            "balance": "or"
+                        },
+                        {
+                            "date": "give us a List which Credit",
+                            "payment_type": "on",
+                            "description": "456 100 100. Further details can be found on ourwebsite(www.firstdirect.com). AER balance variable",
+                            "paid_out": "the FSCS first",
+                            "paid_in": "Sheet and balance 250 250 division of HSBC UK",
+                            "balance": "EAR variable 0.00% 39.90%"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
