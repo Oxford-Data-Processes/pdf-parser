@@ -1,7 +1,7 @@
 {
     "metadata": {
         "template_id": "first_direct_statement_template", 
-        "version": "1.0.0"
+        "version": "1.0.1"
     },
     "rules": [
         {
@@ -253,22 +253,22 @@
                         "field_name": "date",
                         "coordinates": {
                             "top_left": {
-                                "x": 0.109,
-                                "y": 0.315
+                                "x": 0.107,
+                                "y": 0.3
                             },
                             "bottom_right": {
-                                "x": 0.194,
+                                "x": 0.202,
                                 "y": 1
-                            },
-                            "type": "text"
-                        }
+                            }
+                        },
+                        "type": "text"
                     },
                     {
-                        "field_name": "type",
+                        "field_name": "payment_type",
                         "coordinates": {
                             "top_left": {
-                                "x": 0.202,
-                                "y": 0.309
+                                "x": 0.199,
+                                "y": 0.3
                             },
                             "bottom_right": {
                                 "x": 0.253,
@@ -281,39 +281,39 @@
                         "field_name": "description",
                         "coordinates": {
                             "top_left": {
-                                "x": 0.255,
-                                "y": 0.319
+                                "x": 0.256,
+                                "y": 0.3
                             },
                             "bottom_right": {
-                                "x": 0.612,
+                                "x": 0.621,
                                 "y": 1
                             },
                             "type": "text"
                         }
                     },
                     {
-                        "field_name": "money_out",
+                        "field_name": "paid_out",
                         "coordinates": {
                             "top_left": {
-                                "x": 0.618,
-                                "y": 0.305
+                                "x": 0.61,
+                                "y": 0.3
                             },
                             "bottom_right": {
-                                "x": 0.721,
+                                "x": 0.71,
                                 "y": 1
                             },
                             "type": "text"
                         }
                     },
                     {
-                        "field_name": "money_in",
+                        "field_name": "paid_in",
                         "coordinates": {
                             "top_left": {
-                                "x": 0.618,
-                                "y": 0.305
+                                "x": 0.758,
+                                "y": 0.3
                             },
                             "bottom_right": {
-                                "x": 0.721,
+                                "x": 0.86,
                                 "y": 1
                             },
                             "type": "text"
@@ -323,11 +323,11 @@
                         "field_name": "balance",
                         "coordinates": {
                             "top_left": {
-                                "x": 0.881,
-                                "y": 0.321
+                                "x": 0.893,
+                                "y": 0.3
                             },
                             "bottom_right": {
-                                "x": 0.984,
+                                "x": 0.99,
                                 "y": 1
                             },
                             "type": "text"
@@ -336,7 +336,7 @@
                 ],
                 "row_delimiter": {
                     "type": "field",
-                    "field_name": "type"
+                    "field_name": "payment_type"
                 }
             }
         }
@@ -344,7 +344,7 @@
     "pages": [
         {
             "page_numbers": "1",
-            "forms": ["customer_name", "sort_code", "account_number", "start_balance"],
+            "forms": ["customer_name", "sort_code", "account_number", "opening_balance", "payments_in", "payments_out", "closing_balance", "overdraft_limit"],
             "tables": ["transactions_first_page"]
         },
         {

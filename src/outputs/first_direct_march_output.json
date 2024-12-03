@@ -1,0 +1,247 @@
+{
+    "metadata": {
+        "document_id": "d509b3a9-d0fe-4c69-a323-b6a31f180b2b",
+        "parsed_at": "2024-12-03T16:21:16",
+        "number_of_pages": 3
+    },
+    "pages": [
+        {
+            "forms": [
+                {
+                    "customer_name": "Account Name Mr Jake Charles Holmes"
+                },
+                {
+                    "sort_code": "Sortcode 40-47-64"
+                },
+                {
+                    "account_number": "55504864"
+                },
+                {
+                    "opening_balance": "440.93"
+                },
+                {
+                    "payments_in": "2,214.41"
+                },
+                {
+                    "payments_out": "2,214.41 2,303.15"
+                },
+                {
+                    "closing_balance": "352.19"
+                },
+                {
+                    "overdraft_limit": "352.19 250.00"
+                }
+            ],
+            "tables": [
+                {
+                    "data": [
+                        {
+                            "date": "A 28 Feb 23 01 Mar 23",
+                            "payment_type": "DD",
+                            "description": "Balancebrought forward . LEGACY LEISURE",
+                            "paid_out": "26.00",
+                            "paid_in": "",
+                            "balance": "440.93"
+                        },
+                        {
+                            "date": "01 Mar 23",
+                            "payment_type": "DD DD",
+                            "description": "LEGACY LEISURE DVLA-RV56MYB",
+                            "paid_out": "26.00 19.25",
+                            "paid_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "payment_type": "DD CR",
+                            "description": "DVLA-RV56MYB PAYPAL",
+                            "paid_out": "19.25",
+                            "paid_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "02 Mar 23",
+                            "payment_type": "CR DD",
+                            "description": "PAYPAL PPWDL4HXJ22232BJNE PLUM",
+                            "paid_out": "14.81",
+                            "paid_in": "64.00",
+                            "balance": "459.68"
+                        },
+                        {
+                            "date": "02 Mar 23",
+                            "payment_type": "DD ATM",
+                            "description": "PLUM CASH LTS1 MAR02",
+                            "paid_out": "14.81",
+                            "paid_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "03 Mar 23",
+                            "payment_type": "ATM DD",
+                            "description": "CASH LTS1 MAR02 HFX BICESTE@08.25 PAYPAL PAYMENT",
+                            "paid_out": "100.00 1.99",
+                            "paid_in": "",
+                            "balance": "344.87"
+                        },
+                        {
+                            "date": "03 Mar 23",
+                            "payment_type": "DD CR",
+                            "description": "PAYPAL PAYMENT J HOLMES",
+                            "paid_out": "1.99",
+                            "paid_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "05 Mar 23",
+                            "payment_type": "CR CR",
+                            "description": "J HOLMES CAR THORNELOE M V",
+                            "paid_out": "",
+                            "paid_in": "19.25",
+                            "balance": "362.13"
+                        },
+                        {
+                            "date": "05 Mar 23 08 Mar 23",
+                            "payment_type": "CR DD",
+                            "description": "THORNELOE M V TRAVEL PAYPAL PAYMENT",
+                            "paid_out": "1.59",
+                            "paid_in": "100.00",
+                            "balance": "462.13"
+                        },
+                        {
+                            "date": "08 Mar 23",
+                            "payment_type": "DD DD",
+                            "description": "PAYPAL PAYMENT PAYPAL PAYMENT",
+                            "paid_out": "1.59 9.98",
+                            "paid_in": "",
+                            "balance": "450.56"
+                        },
+                        {
+                            "date": "09 Mar 23",
+                            "payment_type": "DD DD",
+                            "description": "PAYPAL PAYMENT PLUM",
+                            "paid_out": "9.98 12.86",
+                            "paid_in": "",
+                            "balance": "450.56"
+                        },
+                        {
+                            "date": "09 Mar 23",
+                            "payment_type": "DD OBP",
+                            "description": "PLUM TESCO BANK",
+                            "paid_out": "12.86",
+                            "paid_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "15 Mar 23",
+                            "payment_type": "OBP DD",
+                            "description": "TESCO BANK 518652******7998 PAYPAL PAYMENT",
+                            "paid_out": "422.50 9.99",
+                            "paid_in": "",
+                            "balance": "15.20 5.21"
+                        },
+                        {
+                            "date": "15 Mar 23 16 Mar 23",
+                            "payment_type": "DD DD",
+                            "description": "PAYPAL PAYMENT PAYPAL PAYMENT",
+                            "paid_out": "9.99 16.24",
+                            "paid_in": "",
+                            "balance": "5.21"
+                        },
+                        {
+                            "date": "16 Mar 23",
+                            "payment_type": "DD DD",
+                            "description": "PAYPAL PAYMENT PAYPAL PAYMENT",
+                            "paid_out": "16.24 69.62",
+                            "paid_in": "",
+                            "balance": "80.65D"
+                        },
+                        {
+                            "date": "17 Mar 23",
+                            "payment_type": "DD MAS",
+                            "description": "PAYPAL PAYMENT EXPERIAN UK",
+                            "paid_out": "69.62",
+                            "paid_in": "",
+                            "balance": "80.65D"
+                        },
+                        {
+                            "date": "17 Mar 23",
+                            "payment_type": "MAS MAS",
+                            "description": "EXPERIAN UK WWW.EXPERIAN. INT'L 0615802072",
+                            "paid_out": "",
+                            "paid_in": "10.00",
+                            "balance": ""
+                        },
+                        {
+                            "date": "20 Mar 23",
+                            "payment_type": "MAS DD",
+                            "description": "INT'L 0615802072 APPLE.COM/BILL 08001076285 O2",
+                            "paid_out": "2.49 21.86",
+                            "paid_in": "",
+                            "balance": "73.14D"
+                        },
+                        {
+                            "date": "20 Mar 23",
+                            "payment_type": "DD DD",
+                            "description": "O2 PAYPAL PAYMENT",
+                            "paid_out": "21.86 49.99",
+                            "paid_in": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "payment_type": "DD",
+                            "description": "PAYPAL PAYMENT Balancecarriedforward",
+                            "paid_out": "49.99 first",
+                            "paid_in": "a division of HSBC UK",
+                            "balance": "144.99D"
+                        }
+                    ]
+                },
+                {
+                    "data": [
+                        {
+                            "date": "21 Mar 23 27 Mar 23 28 Mar 23 28 Mar 23",
+                            "payment_type": "MAS MAS CR BP",
+                            "description": "Balancebroughtforward INT'L 0619419166 APPLE.COM/BILL APPLE.COM/BIL PureGym Limited Leeds HIYACAR LIMITED F SALARY JAKE HOLMES MONZO Balancecarriedforward the Financial Services Compensation",
+                            "paid_out": "6.99 16.99 1,500.00 Scheme",
+                            "paid_in": "2,021.16",
+                            "balance": "144.99D 151.98D 168.97D 1,852.19 352.19 352.19"
+                        },
+                        {
+                            "date": "Your deposit",
+                            "payment_type": "is",
+                            "description": "for protection under the Financial Services",
+                            "paid_out": "",
+                            "paid_in": "(FSCS).",
+                            "balance": "further"
+                        },
+                        {
+                            "date": "information",
+                            "payment_type": "about",
+                            "description": "the compensation provided by the FSCS, refer to",
+                            "paid_out": "to the FSCS",
+                            "paid_in": "at",
+                            "balance": "or"
+                        },
+                        {
+                            "date": "give us a List which",
+                            "payment_type": "on 03",
+                            "description": "456 100 100. Further details can be found on ourwebsite(www.firstdirect.com). AER balance variable",
+                            "paid_out": "the FSCS",
+                            "paid_in": "Sheet and balance",
+                            "balance": "EAR variable"
+                        },
+                        {
+                            "date": "Credit",
+                            "payment_type": "Rates",
+                            "description": "balance variable",
+                            "paid_out": "first",
+                            "paid_in": "balance 250 250 a division of HSBC UK",
+                            "balance": "variable 0.00% 39.90%"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
