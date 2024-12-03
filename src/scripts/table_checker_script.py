@@ -29,7 +29,7 @@ def load_json_data(file_path):
         return json.load(f)
 
 
-def process_columns(
+def process_column(
     table_rule,
     parser,
     table_splitter,
@@ -37,38 +37,31 @@ def process_columns(
     page_content,
     delimiter_field_name,
     delimiter_type,
+    max_pixel_value=(100, 100, 100),
 ):
 
-    processed_columns = []
+    coordinates = column["coordinates"]
 
-    for column in table_rule["config"]["columns"]:
-        coordinates = column["coordinates"]
-
-        if delimiter_type == "field":
-            delimiter_coordinates = parser.get_delimiter_column_coordinates(
-                template, delimiter_field_name
-            )
-            lines_y_coordinates = table_splitter.split_table(
-                delimiter_type, page_content, delimiter_coordinates
-            )
-
-        elif delimiter_type == "line":
-            max_pixel_value = (100, 100, 100)
-            delimiter_coordinates = parser.get_delimiter_column_coordinates(
-                template, delimiter_field_name
-            )
-            filtered_lines = parser.filter_lines_by_pixel_value(lines, max_pixel_value)
-
-            # Extract only the y coordinates from the filtered lines
-            lines_y_coordinates = [
-                line["decimal_coordinates"]["top_left"]["y"] for line in filtered_lines
-            ]
-
-        processed_columns.append(
-            {"coordinates": coordinates, "lines_y_coordinates": lines_y_coordinates}
+    if delimiter_type == "field":
+        delimiter_coordinates = parser.get_delimiter_column_coordinates(
+            template, delimiter_field_name
+        )
+        lines_y_coordinates = table_splitter.split_table(
+            delimiter_type, page_content, delimiter_coordinates
         )
 
-    return processed_columns
+    elif delimiter_type == "line":
+        delimiter_coordinates = parser.get_delimiter_column_coordinates(
+            template, delimiter_field_name
+        )
+        filtered_lines = parser.filter_lines_by_pixel_value(lines, max_pixel_value)
+
+        # Extract only the y coordinates from the filtered lines
+        lines_y_coordinates = [
+            line["decimal_coordinates"]["top_left"]["y"] for line in filtered_lines
+        ]
+
+    return lines_y_coordinates, coordinates
 
 
 # Main execution
@@ -92,19 +85,18 @@ for table_rule in template["rules"]:
         lines = page_content["lines"]
         delimiter_field_name = "description"
         delimiter_type = "line"
-        processed_columns = process_columns(
-            table_rule,
-            parser,
-            splitter,
-            lines,
-            page_content,
-            delimiter_field_name,
-            delimiter_type,
-        )
+        processed_columns = []
 
-        for processed_column in processed_columns:
-            coordinates = processed_column["coordinates"]
-            lines_y_coordinates = processed_column["lines_y_coordinates"]
+        for column in table_rule["config"]["columns"]:
+            lines_y_coordinates, coordinates = process_column(
+                table_rule,
+                parser,
+                splitter,
+                lines,
+                page_content,
+                delimiter_field_name,
+                delimiter_type,
+            )
 
             image_with_lines = ImageDrawer.draw_column_box_and_lines(
                 pdf_path, lines_y_coordinates, coordinates, page_number
