@@ -225,8 +225,8 @@
                     }
                 ],
                 "row_delimiter": {
-                    "type": "line",
-                    "field_name": "description"
+                    "type": "field",
+                    "field_name": "date"
                 }
             }
         },
@@ -307,8 +307,8 @@
                     }
                 ],
                 "row_delimiter": {
-                    "type": "line",
-                    "field_name": "description"
+                    "type": "field",
+                    "field_name": "date"
                 }
             }
         }
