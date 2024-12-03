@@ -10,8 +10,8 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 SRC_DIR = os.path.dirname(SCRIPT_DIR)
 ROOT_DIR = os.path.dirname(SRC_DIR)
 
-template_name: str = "barclays_student"
-identifier: str = "may"
+template_name: str = "first_direct"
+identifier: str = "march"
 template_path: str = os.path.join(
     SRC_DIR, "templates", f"{template_name}_template.json"
 )
@@ -65,22 +65,15 @@ def process_tables(template: Dict, pdf_data: Dict) -> List[Dict]:
             delimiter_field_name = table_rule["config"]["row_delimiter"]["field_name"]
             delimiter_type = table_rule["config"]["row_delimiter"]["type"]
 
-            # Handle specific page numbers for known rules
-            if rule_id == "transactions_first_page":
-                page_number = 2
-            elif rule_id == "transactions_second_page_onwards":
-                page_number = 3
-            else:
-                # Find page number from template pages
-                page_number = None
-                for page_rule in template["pages"]:
-                    if "tables" in page_rule and rule_id in page_rule["tables"]:
-                        page_indexes = parser.page_number_converter(
-                            page_rule["page_numbers"], len(pdf_data["pages"])
-                        )
-                        if page_indexes:
-                            page_number = page_indexes[0] + 1
-                            break
+            page_number = None
+            for page_rule in template["pages"]:
+                if "tables" in page_rule and rule_id in page_rule["tables"]:
+                    page_indexes = parser.page_number_converter(
+                        page_rule["page_numbers"], len(pdf_data["pages"])
+                    )
+                    if page_indexes:
+                        page_number = page_indexes[0] + 1
+                        break
 
             if page_number is None or page_number > len(pdf_data["pages"]):
                 print(f"Warning: Invalid page number {page_number} for rule {rule_id}")

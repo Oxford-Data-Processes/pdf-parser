@@ -11,12 +11,12 @@
                 "field_name": "customer_name",
                 "coordinates": {
                     "top_left": {
-                        "x": 0.107,
-                        "y": 0.443
+                        "x": 0.105,
+                        "y": 0.439
                     },
                     "bottom_right": {
-                        "x": 0.443,
-                        "y": 0.458
+                        "x": 0.405,
+                        "y": 0.461
                     }
                 },
                 "type": "text"
@@ -29,12 +29,12 @@
                 "field_name": "sort_code",
                 "coordinates": {
                     "top_left": {
-                        "x": 0.613,
-                        "y": 0.443
+                        "x": 0.618,
+                        "y": 0.439
                     },
                     "bottom_right": {
-                        "x": 0.705,
-                        "y": 0.46
+                        "x": 0.693,
+                        "y": 0.462
                     }
                 },
                 "type": "text"
