@@ -13,9 +13,6 @@ pdf_path: str = os.path.join(
 pdf_data_path: str = os.path.join(
     "src", "pdf_data", f"{template_name}_{identifier}_pdf_data.json"
 )
-output_path: str = os.path.join(
-    "src", "outputs", f"{template_name}_{identifier}_output.json"
-)
 
 
 def extract_data_from_pdf(pdf_path, template_name, identifier):
@@ -24,7 +21,7 @@ def extract_data_from_pdf(pdf_path, template_name, identifier):
         extracted_data = text_extractor.extract_data()
 
         with open(pdf_data_path, "w") as f:
-            json.dump(extracted_data, f)
+            json.dump(extracted_data, f, indent=4, sort_keys=True)
 
 
 def load_json_data(file_path):
