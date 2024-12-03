@@ -84,7 +84,20 @@ class Parser:
         data = []
         for result in results:
             for column in result["columns"]:
+                print(column["field_name"])
                 data.append(column["field_name"])
+
+                table_splitter = TableSplitter(template, self)
+                split_boxes = table_splitter.split_bounding_box_by_lines(
+                    column["coordinates"], column["lines_y_coordinates"]
+                )
+                print(split_boxes)
+
+                data.append(
+                    self.get_text_from_page(
+                        pdf_data["pages"][page_index]["content"], split_boxes[0]
+                    )
+                )
 
         return {"table_header": table_header, "data": data}
 
@@ -212,6 +225,48 @@ class TableSplitter:
         self.template = template
         self.parser = parser
 
+    def split_bounding_box_by_lines(
+        self, bounding_box: Dict, lines_y_coordinates: List[float]
+    ) -> List[Dict]:
+        """Split a bounding box by given y-coordinates."""
+        split_boxes = []
+        top_left_y = bounding_box["top_left"]["y"]
+        bottom_right_y = bounding_box["bottom_right"]["y"]
+
+        # Add the top of the bounding box as the first coordinate
+        previous_y = top_left_y
+
+        for line_y in sorted(lines_y_coordinates):
+            if top_left_y < line_y < bottom_right_y:
+                # Create a new bounding box for the area above the line
+                split_boxes.append(
+                    {
+                        "top_left": {
+                            "x": bounding_box["top_left"]["x"],
+                            "y": previous_y,
+                        },
+                        "bottom_right": {
+                            "x": bounding_box["bottom_right"]["x"],
+                            "y": line_y,
+                        },
+                    }
+                )
+                previous_y = line_y
+
+        # Add the last segment from the last line to the bottom of the bounding box
+        if previous_y < bottom_right_y:
+            split_boxes.append(
+                {
+                    "top_left": {"x": bounding_box["top_left"]["x"], "y": previous_y},
+                    "bottom_right": {
+                        "x": bounding_box["bottom_right"]["x"],
+                        "y": bottom_right_y,
+                    },
+                }
+            )
+
+        return split_boxes
+
     # Filter lines by pixel value
     def filter_lines_by_pixel_value(self, lines, max_pixel_value=(100, 100, 100)):
         """Filter lines based on their average pixel value."""
@@ -255,7 +310,6 @@ class TableSplitter:
         delimiter_coordinates=None,
     ):
         if row_delimiter_type == "line":
-
             return self.split_table_by_line(page_content["lines"])
         elif row_delimiter_type == "field":
             return self.split_table_by_delimiter(page_content, delimiter_coordinates)
