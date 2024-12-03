@@ -78,19 +78,6 @@ class Parser:
 
         return delimiter_coordinates
 
-    # Filter lines by pixel value
-    def filter_lines_by_pixel_value(self, lines, max_pixel_value=(100, 100, 100)):
-        """Filter lines based on their average pixel value."""
-        filtered_lines = []
-        for line in lines:
-            if "average_pixel_value" in line:
-                avg_red, avg_green, avg_blue = line["average_pixel_value"]
-                max_red, max_green, max_blue = max_pixel_value
-
-                if avg_red < max_red and avg_green < max_green and avg_blue < max_blue:
-                    filtered_lines.append(line)
-        return filtered_lines
-
     def get_output_data_from_form_rule(
         self, form_rule_id, page_index, pdf_data, template
     ):
@@ -136,17 +123,8 @@ class TableProcessor:
 
         if delimiter_type == "line":
 
-            filtered_lines = self.parser.filter_lines_by_pixel_value(
-                page_content["lines"]
-            )
-
-            lines_y_coordinates = sorted(
-                set(
-                    [
-                        line["decimal_coordinates"]["top_left"]["y"]
-                        for line in filtered_lines
-                    ]
-                )
+            lines_y_coordinates = table_splitter.split_table(
+                delimiter_type, page_content
             )
 
         if delimiter_type == "field":
@@ -232,6 +210,19 @@ class TableSplitter:
         self.template = template
         self.parser = parser
 
+    # Filter lines by pixel value
+    def filter_lines_by_pixel_value(self, lines, max_pixel_value=(100, 100, 100)):
+        """Filter lines based on their average pixel value."""
+        filtered_lines = []
+        for line in lines:
+            if "average_pixel_value" in line:
+                avg_red, avg_green, avg_blue = line["average_pixel_value"]
+                max_red, max_green, max_blue = max_pixel_value
+
+                if avg_red < max_red and avg_green < max_green and avg_blue < max_blue:
+                    filtered_lines.append(line)
+        return filtered_lines
+
     def split_table_by_delimiter(self, page_content, coordinates):
 
         text_coordinates = page_content["content"]
@@ -245,55 +236,24 @@ class TableSplitter:
         }
         return sorted(list(set(line_separation_y_coordinates)))
 
-    def split_table_by_line(
-        self,
-        lines,
-        coordinates,
-        pixel_maximum_value=None,
-        threshold=0.01,
-    ):
+    def split_table_by_line(self, lines):
 
-        min_y = coordinates["top_left"]["y"] - threshold
-        max_y = coordinates["bottom_right"]["y"] + threshold
+        filtered_lines = self.filter_lines_by_pixel_value(lines)
 
-        min_x = coordinates["top_left"]["x"] - threshold
-        max_x = coordinates["bottom_right"]["x"] + threshold
+        lines_y_coordinates = [
+            line["decimal_coordinates"]["top_left"]["y"] for line in filtered_lines
+        ]
 
-        line_separation_y_coordinates = []
-
-        for line in lines:
-            x0 = line["decimal_coordinates"]["top_left"]["x"]
-            x1 = line["decimal_coordinates"]["bottom_right"]["x"]
-            y0 = line["decimal_coordinates"]["top_left"]["y"]
-            y1 = line["decimal_coordinates"]["bottom_right"]["y"]
-
-            red, green, blue = line["average_pixel_value"]
-
-            if (
-                x0 >= min_x
-                and x1 <= max_x
-                and y0 >= min_y
-                and y1 <= max_y
-                and red < pixel_maximum_value[0]
-                and green < pixel_maximum_value[1]
-                and blue < pixel_maximum_value[2]
-            ):
-                line_separation_y_coordinates.append(y0)
-
-        return sorted(list(set(line_separation_y_coordinates)))
+        return sorted(list(set(lines_y_coordinates)))
 
     def split_table(
         self,
         row_delimiter_type: str,
         page_content,
-        coordinates,
-        pixel_maximum_value=None,
+        delimiter_coordinates=None,
     ):
         if row_delimiter_type == "line":
-            return self.split_table_by_line(
-                page_content["lines"],
-                coordinates,
-                pixel_maximum_value,
-            )
+
+            return self.split_table_by_line(page_content["lines"])
         elif row_delimiter_type == "field":
-            return self.split_table_by_delimiter(page_content, coordinates)
+            return self.split_table_by_delimiter(page_content, delimiter_coordinates)
