@@ -1,9 +1,9 @@
 import json
 import os
 from extractor import Extractor
-from parser import Parser, TableSplitter
+from parser import Parser
 from pdf_utils import ImageDrawer
-from typing import Dict, List, Optional
+from typing import Dict, List
 
 template_name: str = "barclays_student"
 identifier: str = "may"
@@ -41,7 +41,6 @@ def get_table_data(
 ) -> Dict:
     """Get table data for a specific rule and page."""
     parser = Parser()
-    table_splitter = TableSplitter(template, parser)
 
     # Get the table rule
     table_rule = parser.get_rule_from_id(rule_id, template)
@@ -51,13 +50,6 @@ def get_table_data(
     # Get page content
     page_content = pdf_data["pages"][page_index]
     lines = page_content["lines"]
-
-    # Get description column coordinates for line filtering
-    description_coords = parser.get_delimiter_column_coordinates(
-        template, "description"
-    )
-    if not description_coords:
-        raise ValueError("Description column coordinates not found")
 
     # Filter lines by pixel value
     filtered_lines = parser.filter_lines_by_pixel_value(lines, max_pixel_value)
