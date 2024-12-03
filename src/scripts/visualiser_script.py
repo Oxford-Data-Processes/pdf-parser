@@ -10,7 +10,7 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 SRC_DIR = os.path.dirname(SCRIPT_DIR)
 ROOT_DIR = os.path.dirname(SRC_DIR)
 
-template_name: str = "first_direct"
+template_name: str = "barclays"
 identifier: str = "march"
 template_path: str = os.path.join(
     SRC_DIR, "templates", f"{template_name}_template.json"
@@ -61,7 +61,11 @@ def process_tables(template: Dict, pdf_data: Dict) -> List[Dict]:
     for table_rule in table_rules:
         try:
             # Get rule ID and configuration
-            rule_id = table_rule["rule_id"]
+            rule_id = table_rule.get("rule_id")
+            if rule_id is None:
+                print(f"Warning: Missing 'rule_id' in table rule: {table_rule}")
+                continue
+
             delimiter_field_name = table_rule["config"]["row_delimiter"]["field_name"]
             delimiter_type = table_rule["config"]["row_delimiter"]["type"]
 
@@ -168,6 +172,31 @@ def visualize_table_data(table_data: Dict, pdf_path: str) -> None:
             print(f"Error visualizing column {column['field_name']}: {str(e)}")
 
 
+def visualize_form_data(form_data: Dict, pdf_path: str, template: Dict) -> None:
+    """Visualize form data by drawing boxes and lines."""
+    print(
+        f"\nVisualizing form {form_data['rule_id']} on page {form_data['page_number']}:"
+    )
+
+    # Get the coordinates for the form using the parser
+    coordinates = Parser().get_rule_from_id(form_data["rule_id"], template)["config"][
+        "coordinates"
+    ]
+
+    # Create a bounding box for the form
+    form_box = {
+        "top_left": coordinates["top_left"],
+        "bottom_right": coordinates["bottom_right"],
+    }
+
+    # Create image and draw the form box
+    jpg_image = ImageDrawer.create_jpg_image(pdf_path, form_data["page_number"])
+    image_drawer = ImageDrawer(jpg_image, jpg_image.size[0], jpg_image.size[1])
+    image_with_form = image_drawer.draw_coordinates([form_box])
+    print("Showing form boundary")
+    image_with_form.show()
+
+
 if __name__ == "__main__":
     print("Starting table checker script...")
     print(f"Template path: {template_path}")
@@ -196,6 +225,20 @@ if __name__ == "__main__":
         # Visualize each table
         for result in results:
             visualize_table_data(result, pdf_path)
+
+        # Visualize each form
+        for form_rule in template["rules"]:
+
+            if form_rule["type"] == "form":
+                rule_id = form_rule.get("rule_id")
+                print(form_rule)
+                coordinates = form_rule["config"]["coordinates"]
+                form_data = {
+                    "rule_id": rule_id,
+                    "page_number": 1,
+                    "coordinates": coordinates,
+                }
+                visualize_form_data(form_data, pdf_path, template)
 
     except FileNotFoundError as e:
         print(f"Error: File not found - {str(e)}")

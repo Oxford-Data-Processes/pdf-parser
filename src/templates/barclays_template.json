@@ -131,24 +131,6 @@
             }
         },
         {
-            "rule_id": "overdraft_limit",
-            "type": "form",
-            "config": {
-                "field_name": "overdraft_limit",
-                "coordinates": {
-                    "top_left": {
-                        "x": 0.864,
-                        "y": 0.293
-                    },
-                    "bottom_right": {
-                        "x": 0.956,
-                        "y": 0.311
-                    }
-                },
-                "type": "text"
-            }
-        },
-        {
             "rule_id": "transactions_first_page",
             "type": "table",
             "config": {
