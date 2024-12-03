@@ -81,6 +81,8 @@ class Parser:
         table_splitter = TableSplitter(template, self)
         results = table_processor.process_tables(pdf_data)
 
+        print(results)
+
         data = []
         for result in results:
             row_data = {}
