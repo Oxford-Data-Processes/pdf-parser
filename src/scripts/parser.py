@@ -119,7 +119,14 @@ class TableProcessor:
         self.template = template
         self.parser = parser
 
-    def get_table_data(self, rule_id: str, page_index: int, pdf_data) -> Dict:
+    def get_table_data(
+        self,
+        rule_id: str,
+        page_index: int,
+        pdf_data,
+        delimiter_field_name: str,
+        delimiter_type: str,
+    ) -> Dict:
         """Get table data for a specific rule and page."""
         table_rule = self.parser.get_rule_from_id(rule_id, self.template)
         if not table_rule:
@@ -128,11 +135,25 @@ class TableProcessor:
         page_content = pdf_data["pages"][page_index]
         lines = page_content["lines"]
 
-        filtered_lines = self.parser.filter_lines_by_pixel_value(lines)
-        lines_y_coordinates = self.get_y_coordinates(filtered_lines)
+        table_splitter = TableSplitter(self.template, self.parser)
 
-        if not lines_y_coordinates:
-            return None
+        if delimiter_type == "field":
+            delimiter_coordinates = self.parser.get_delimiter_column_coordinates(
+                self.template, delimiter_field_name
+            )
+            lines_y_coordinates = table_splitter.split_table(
+                delimiter_type, page_content, delimiter_coordinates
+            )
+
+        if delimiter_type == "line":
+            delimiter_coordinates = self.parser.get_delimiter_column_coordinates(
+                self.template, delimiter_field_name
+            )
+            filtered_lines = self.parser.filter_lines_by_pixel_value(lines)
+
+            lines_y_coordinates = [
+                line["decimal_coordinates"]["top_left"]["y"] for line in filtered_lines
+            ]
 
         return self.process_columns(
             table_rule, lines_y_coordinates, rule_id, page_index
@@ -186,7 +207,11 @@ class TableProcessor:
         results = []
         for rule_id in page_rule["tables"]:
             try:
-                table_data = self.get_table_data(rule_id, page_index, pdf_data)
+                delimiter_field_name = page_rule["delimiter_field_name"]
+                delimiter_type = page_rule["delimiter_type"]
+                table_data = self.get_table_data(
+                    rule_id, page_index, pdf_data, delimiter_field_name, delimiter_type
+                )
                 if table_data:
                     results.append(table_data)
             except Exception:
