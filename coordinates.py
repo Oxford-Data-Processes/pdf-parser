@@ -277,7 +277,7 @@ class PDFCoordinateFinder:
 
 
 if __name__ == "__main__":
-    template_name = "first_direct"
+    template_name = "halifax"
     identifier = "march"
     pdf_path = (
         f"data/bank_statements/{template_name}/pdf/{template_name}_{identifier}.pdf"

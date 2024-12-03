@@ -167,7 +167,8 @@
                     }
                 ],
                 "row_delimiter": {
-                    "type": "line"
+                    "type": "field",
+                    "field_name": "description"
                 }
             }
         },
@@ -262,7 +263,8 @@
                     }
                 ],
                 "row_delimiter": {
-                    "type": "line"
+                    "type": "field",
+                    "field_name": "description"
                 }
             }
         }
@@ -270,12 +272,13 @@
     "pages": [
         {
             "page_numbers": "1",
-            "forms": ["customer_name", "sort_code", "account_number", "start_balance"]
+            "forms": ["customer_name", "sort_code", "account_number", "start_balance"],
+            "tables": ["transactions_first_page"]
         },
         {
             "page_numbers": "2:-2",
             "forms": [],
-            "tables": ["transactions_first_page"]
+            "tables": ["transactions_last_page"]
         },
         {
             "page_numbers": "-1",

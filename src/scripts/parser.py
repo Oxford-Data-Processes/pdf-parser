@@ -237,7 +237,6 @@ class TableSplitter:
         return filtered_lines
 
     def split_table_by_field(self, page_content, delimiter_field_name, rule_id):
-
         text_coordinates = page_content["content"]
 
         table_processor = TableProcessor(self.template, self.parser)
@@ -250,12 +249,34 @@ class TableSplitter:
             text_coordinates, delimiter_coordinates
         )
 
-        line_separation_y_coordinates = [
-            item["bounding_box"]["decimal_coordinates"]["top_left"]["y"]
-            for item in items_within_coordinates
-        ]
+        line_separation_y_coordinates = sorted(
+            list(
+                set(
+                    item["bounding_box"]["decimal_coordinates"]["top_left"]["y"]
+                    for item in items_within_coordinates
+                )
+            )
+        )
 
-        return sorted(list(set(line_separation_y_coordinates)))
+        return self.average_y_coordinates(line_separation_y_coordinates)
+
+    def average_y_coordinates(self, y_coordinates):
+        threshold = 0.01
+        averaged_y_coordinates = []
+        while y_coordinates:
+            current_value = y_coordinates.pop(0)
+            close_values = [current_value]
+
+            # Check for values within 0.01
+            for value in y_coordinates:
+                if abs(value - current_value) < threshold:
+                    close_values.append(value)
+                    y_coordinates.remove(value)
+
+            # Calculate the average and add to the result
+            averaged_y_coordinates.append(sum(close_values) / len(close_values))
+
+        return averaged_y_coordinates
 
     def split_table_by_line(self, lines):
 
@@ -264,6 +285,10 @@ class TableSplitter:
         lines_y_coordinates = [
             line["decimal_coordinates"]["top_left"]["y"] for line in filtered_lines
         ]
+
+        print("LINE Y COORDINATES")
+        print(lines_y_coordinates)
+        print("\n")
 
         return sorted(list(set(lines_y_coordinates)))
 
