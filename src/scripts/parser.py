@@ -189,39 +189,41 @@ class TableProcessor:
             # Process each page
             for page_index in page_indexes:
                 page_content = pdf_data["pages"][page_index]
+                results.extend(self.process_page_tables(page_rule, page_content))
 
-                # Process each table rule
-                for rule_id in page_rule["tables"]:
-                    # Get table rule
-                    table_rule = self.parser.get_rule_from_id(rule_id, self.template)
-                    if not table_rule:
-                        print(f"Warning: Table rule {rule_id} not found")
-                        continue
+        return results
 
-                    delimiter_field_name = table_rule["config"]["row_delimiter"][
-                        "field_name"
-                    ]
-                    delimiter_type = table_rule["config"]["row_delimiter"]["type"]
+    def process_page_tables(self, page_rule: Dict, page_content: Dict) -> List[Dict]:
+        """Process tables for a specific page."""
+        results = []
+        # Process each table rule
+        for rule_id in page_rule["tables"]:
+            # Get table rule
+            table_rule = self.parser.get_rule_from_id(rule_id, self.template)
 
-                    # Process table data
-                    processed_columns = self.process_table_data(
-                        table_rule,
-                        page_content,
-                        delimiter_field_name,
-                        delimiter_type,
-                    )
+            delimiter_field_name = table_rule["config"]["row_delimiter"]["field_name"]
+            delimiter_type = table_rule["config"]["row_delimiter"]["type"]
 
-                    if processed_columns and any(
-                        col["lines_y_coordinates"] for col in processed_columns
-                    ):
-                        results.append(
-                            {
-                                "rule_id": rule_id,
-                                "page_number": page_index + 1,
-                                "columns": processed_columns,
-                            }
-                        )
+            # Process table data
+            processed_columns = self.process_table_data(
+                table_rule,
+                page_content,
+                delimiter_field_name,
+                delimiter_type,
+            )
 
+            if processed_columns and any(
+                col["lines_y_coordinates"] for col in processed_columns
+            ):
+                results.append(
+                    {
+                        "rule_id": rule_id,
+                        "page_number": page_content[
+                            "page_number"
+                        ],  # Assuming page_number is part of page_content
+                        "columns": processed_columns,
+                    }
+                )
         return results
 
 
