@@ -121,22 +121,8 @@ class TableProcessor:
 
         rule = self.parser.get_rule_from_id(rule_id, template)
 
-        print("DELIMITER FIELD NAME")
-        print(delimiter_field_name)
-        print("\n")
-
-        print("RULE")
-        print(rule)
-        print("\n")
-
         if rule["type"] == "table":
             for column in rule["config"]["columns"]:
-                print("COLUMN")
-                print(column)
-                print("\n")
-                print("COLUMN FIELD NAME")
-                print(column["field_name"])
-                print("\n")
                 if column["field_name"] == delimiter_field_name:
                     delimiter_coordinates = column["coordinates"]
                     break
@@ -256,34 +242,18 @@ class TableSplitter:
 
         table_processor = TableProcessor(self.template, self.parser)
 
-        print("RULE ID")
-        print(rule_id)
-        print("\n")
-
         delimiter_coordinates = table_processor.get_delimiter_column_coordinates(
             self.template, delimiter_field_name, rule_id
         )
-
-        print("DELIMITER COORDINATES")
-        print(delimiter_coordinates)
-        print("\n")
 
         items_within_coordinates = self.parser.get_items_in_bounding_box(
             text_coordinates, delimiter_coordinates
         )
 
-        print("ITEMS WITHIN COORDINATES")
-        print(items_within_coordinates)
-        print("\n")
-
         line_separation_y_coordinates = [
             item["bounding_box"]["decimal_coordinates"]["top_left"]["y"]
             for item in items_within_coordinates
         ]
-
-        print("LINE SEPARATION Y COORDINATES")
-        print(line_separation_y_coordinates)
-        print("\n")
 
         return sorted(list(set(line_separation_y_coordinates)))
 
