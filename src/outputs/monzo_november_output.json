@@ -1,8 +1,8 @@
 {
     "metadata": {
-        "document_id": "cffca846-ffa8-4a1f-8a91-9dca15f02947",
-        "parsed_at": "2024-12-03T19:50:13",
-        "number_of_pages": 16
+        "document_id": "6a1ced10-103a-4fb2-863c-55fb4878d660",
+        "parsed_at": "2024-12-04T09:22:43",
+        "number_of_pages": 4
     },
     "pages": [
         {
@@ -22,98 +22,74 @@
                     "data": [
                         {
                             "date": "",
-                            "type": "",
                             "description": "",
-                            "money_out": "Amount",
-                            "money_in": "",
-                            "balance": "+\u00a31,908.85 Total deposits Balance"
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "30/11/2023",
-                            "type": "GBR",
                             "description": "Trainline +443332022222 GBR",
-                            "money_out": "-2.60",
-                            "money_in": "",
+                            "amount": "-2.60",
                             "balance": "1,030.16"
                         },
                         {
                             "date": "30/11/2023",
-                            "type": "",
                             "description": "C LITTLE (Faster Payments) Reference:",
-                            "money_out": "950.00",
-                            "money_in": "",
+                            "amount": "950.00",
                             "balance": "1,032.76"
                         },
                         {
                             "date": "",
-                            "type": "",
                             "description": "MONZO CASH",
-                            "money_out": "",
-                            "money_in": "",
+                            "amount": "",
                             "balance": ""
                         },
                         {
                             "date": "29/11/2023",
-                            "type": "Oxford",
                             "description": "Zettle_*OXPRO LIMITED Oxford GBR",
-                            "money_out": "-4.00",
-                            "money_in": "",
+                            "amount": "-4.00",
                             "balance": "82.76"
                         },
                         {
                             "date": "29/11/2023",
-                            "type": "GBR",
                             "description": "Trainline +443332022222 GBR",
-                            "money_out": "-2.60",
-                            "money_in": "",
+                            "amount": "-2.60",
                             "balance": "86.76"
                         },
                         {
                             "date": "29/11/2023",
-                            "type": "GBR",
                             "description": "DICE.FM +442080687457 GBR",
-                            "money_out": "-27.50",
-                            "money_in": "",
+                            "amount": "-27.50",
                             "balance": "89.36"
                         },
                         {
                             "date": "28/11/2023",
-                            "type": "GBR",
                             "description": "Trainline.com Ltd London GBR",
-                            "money_out": "-2.60",
-                            "money_in": "",
+                            "amount": "-2.60",
                             "balance": "116.86"
                         },
                         {
                             "date": "28/11/2023",
-                            "type": "",
                             "description": "DAMIRA DENTAL STUDIO BICESTER OX26",
-                            "money_out": "-15.00",
-                            "money_in": "OX26",
+                            "amount": "-15.00",
                             "balance": "119.46"
                         },
                         {
                             "date": "",
-                            "type": "",
                             "description": "GBR",
-                            "money_out": "",
-                            "money_in": "",
+                            "amount": "",
                             "balance": ""
                         },
                         {
                             "date": "27/11/2023",
-                            "type": "",
                             "description": "Amazon.co.uk AMAZON.CO.UK GBR",
-                            "money_out": "-15.99",
-                            "money_in": "",
+                            "amount": "-15.99",
                             "balance": "134.46"
                         },
                         {
                             "date": "27/11/2023",
-                            "type": "",
                             "description": "ALDI STORES LIMITED BICESTER GBR",
-                            "money_out": "-34.97",
-                            "money_in": "GBR",
+                            "amount": "-34.97",
                             "balance": "150.45"
                         }
                     ]
@@ -122,139 +98,171 @@
                     "data": [
                         {
                             "date": "",
-                            "type": "",
                             "description": "",
-                            "money_out": "",
-                            "money_in": "",
+                            "amount": "",
                             "balance": ""
                         },
                         {
+                            "date": "26/11/2023",
+                            "description": "ATGTICKETS.COM WOKING GBR",
+                            "amount": "-56.95",
+                            "balance": "185.42"
+                        },
+                        {
+                            "date": "26/11/2023",
+                            "description": "C Little (Faster Payments) Reference:",
+                            "amount": "200.00",
+                            "balance": "242.37"
+                        },
+                        {
                             "date": "",
-                            "type": "GBR",
-                            "description": "Builders Arms LONDON",
-                            "money_out": "-20.45",
-                            "money_in": "",
+                            "description": "MONZO CASH",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "26/11/2023",
+                            "description": "TfL Travel Charge TFL.gov.uk/CP GBR",
+                            "amount": "-8.10",
+                            "balance": "42.37"
+                        },
+                        {
+                            "date": "25/11/2023",
+                            "description": "M&S SIMPLY FOOD - SSP M/BONE STN",
+                            "amount": "-6.15",
+                            "balance": "50.47"
+                        },
+                        {
+                            "date": "",
+                            "description": "GBR",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "25/11/2023",
+                            "description": "Builders Arms LONDON GBR",
+                            "amount": "-20.45",
                             "balance": "56.62"
                         },
                         {
-                            "date": "",
-                            "type": "GBR",
-                            "description": "Trainline +443332022222",
-                            "money_out": "-20.90",
-                            "money_in": "",
+                            "date": "25/11/2023",
+                            "description": "Trainline +443332022222 GBR",
+                            "amount": "-20.90",
                             "balance": "77.07"
                         },
                         {
-                            "date": "",
-                            "type": "",
-                            "description": "ALDI STORES LIMITED",
-                            "money_out": "-20.82",
-                            "money_in": "GBR",
+                            "date": "23/11/2023",
+                            "description": "ALDI STORES LIMITED BICESTER GBR",
+                            "amount": "-20.82",
                             "balance": "97.97"
                         },
                         {
-                            "date": "",
-                            "type": "GBR",
-                            "description": "SAINSBURYS BICESTER",
-                            "money_out": "-14.00",
-                            "money_in": "",
+                            "date": "23/11/2023",
+                            "description": "SAINSBURYS BICESTER GBR",
+                            "amount": "-14.00",
                             "balance": "118.79"
                         },
                         {
-                            "date": "",
-                            "type": "",
-                            "description": "ALDI STORES LIMITED",
-                            "money_out": "-26.45",
-                            "money_in": "GBR",
+                            "date": "20/11/2023",
+                            "description": "ALDI STORES LIMITED BICESTER GBR",
+                            "amount": "-26.45",
                             "balance": "132.79"
                         },
                         {
-                            "date": "",
-                            "type": "",
-                            "description": "Prime Video TVOD",
-                            "money_out": "-3.19",
-                            "money_in": "GBR",
+                            "date": "19/11/2023",
+                            "description": "Prime Video TVOD 08444820123 GBR",
+                            "amount": "-3.19",
                             "balance": "159.24"
                         },
                         {
                             "date": "",
-                            "type": "",
-                            "description": "TFL TRAVEL",
-                            "money_out": "-5.40",
-                            "money_in": "GBR",
+                            "description": "TFL TRAVEL CH\\VICTORIA",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "19/11/2023",
+                            "description": "STREET\\TFL.GOV.UK/CP\\SW1H 0TL GBR",
+                            "amount": "-5.40",
                             "balance": "162.43"
                         },
                         {
                             "date": "",
-                            "type": "",
-                            "description": "This relates to a previous",
-                            "money_out": "",
-                            "money_in": "",
+                            "description": "This relates to a previous transaction",
+                            "amount": "",
                             "balance": ""
                         },
                         {
-                            "date": "",
-                            "type": "",
-                            "description": "SAINSBURY S",
-                            "money_out": "48.85",
-                            "money_in": "GBR",
+                            "date": "19/11/2023",
+                            "description": "SAINSBURY S BANBURY BANBURY GBR",
+                            "amount": "48.85",
                             "balance": "167.83"
                         },
                         {
                             "date": "",
-                            "type": "",
-                            "description": "This relates to a previous",
-                            "money_out": "",
-                            "money_in": "",
+                            "description": "This relates to a previous transaction",
+                            "amount": "",
                             "balance": ""
                         },
                         {
-                            "date": "",
-                            "type": "",
-                            "description": "SAINSBURY S",
-                            "money_out": "-100.00",
-                            "money_in": "GBR",
+                            "date": "19/11/2023",
+                            "description": "SAINSBURY S BANBURY BANBURY GBR",
+                            "amount": "-100.00",
                             "balance": "118.98"
                         },
                         {
-                            "date": "",
-                            "type": "",
-                            "description": "SAINSBURYS-",
-                            "money_out": "-30.45",
-                            "money_in": "GBR",
+                            "date": "19/11/2023",
+                            "description": "SAINSBURYS- BANBURY BANBURY GBR",
+                            "amount": "-30.45",
                             "balance": "218.98"
                         },
                         {
-                            "date": "",
-                            "type": "",
+                            "date": "19/11/2023",
                             "description": "Transfer from Pot",
-                            "money_out": "200.00",
-                            "money_in": "",
+                            "amount": "200.00",
                             "balance": "249.43"
                         },
                         {
-                            "date": "",
-                            "type": "",
-                            "description": "ALDI STORES LIMITED",
-                            "money_out": "-3.17",
-                            "money_in": "GBR",
+                            "date": "19/11/2023",
+                            "description": "ALDI STORES LIMITED BICESTER GBR",
+                            "amount": "-3.17",
                             "balance": "49.43"
                         },
                         {
-                            "date": "",
-                            "type": "PA",
-                            "description": "WESTGATE OXFORD",
-                            "money_out": "-27.20",
-                            "money_in": "GBR",
+                            "date": "19/11/2023",
+                            "description": "WESTGATE OXFORD CAR PA OXFORD GBR",
+                            "amount": "-27.20",
                             "balance": "52.60"
                         },
                         {
-                            "date": "",
-                            "type": "GBR",
-                            "description": "Prime Video TVOD",
-                            "money_out": "-3.49",
-                            "money_in": "GBR",
+                            "date": "18/11/2023",
+                            "description": "Prime Video TVOD 08444820123 GBR",
+                            "amount": "-3.49",
                             "balance": "79.80"
+                        },
+                        {
+                            "date": "18/11/2023",
+                            "description": "J. SAINSBURY OXFORD GBR",
+                            "amount": "-18.65",
+                            "balance": "83.29"
+                        },
+                        {
+                            "date": "18/11/2023",
+                            "description": "UNIV OF OXFORD DONATIO OXFORD GBR",
+                            "amount": "-5.00",
+                            "balance": "101.94"
+                        },
+                        {
+                            "date": "18/11/2023",
+                            "description": "ITSU 101 OXFORD OXFORD GBR",
+                            "amount": "-16.48",
+                            "balance": "106.94"
+                        },
+                        {
+                            "date": "17/11/2023",
+                            "description": "Troxy London GBR",
+                            "amount": "-10.00",
+                            "balance": "123.42"
                         }
                     ]
                 },
@@ -262,1120 +270,171 @@
                     "data": [
                         {
                             "date": "",
-                            "type": "",
-                            "description": "ALDI STORES LIMITED",
-                            "money_out": "",
-                            "money_in": "GBR",
+                            "description": "",
+                            "amount": "",
                             "balance": ""
                         },
                         {
-                            "date": "",
-                            "type": "",
-                            "description": "Amazon.co.uk",
-                            "money_out": "-7.99",
-                            "money_in": "",
-                            "balance": "94.25"
+                            "date": "17/11/2023",
+                            "description": "CO-OP GROUP FOOD LONDON GBR",
+                            "amount": "-1.10",
+                            "balance": "133.42"
+                        },
+                        {
+                            "date": "17/11/2023",
+                            "description": "M&S SIMPLY FOOD - SSP M/BONE STN",
+                            "amount": "-8.15",
+                            "balance": "134.52"
                         },
                         {
                             "date": "",
-                            "type": "GBR",
-                            "description": "Trainline.com Ltd London",
-                            "money_out": "-2.60",
-                            "money_in": "",
+                            "description": "GBR",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "17/11/2023",
+                            "description": "Trainline.com Ltd London GBR",
+                            "amount": "-20.90",
+                            "balance": "142.67"
+                        },
+                        {
+                            "date": "17/11/2023",
+                            "description": "Transfer from Pot",
+                            "amount": "100.00",
+                            "balance": "163.57"
+                        },
+                        {
+                            "date": "14/11/2023",
+                            "description": "ALDI STORES LIMITED BICESTER GBR",
+                            "amount": "-30.68",
+                            "balance": "63.57"
+                        },
+                        {
+                            "date": "14/11/2023",
+                            "description": "Amazon.co.uk AMAZON.CO.UK GBR",
+                            "amount": "-7.99",
+                            "balance": "94.25"
+                        },
+                        {
+                            "date": "13/11/2023",
+                            "description": "Trainline.com Ltd London GBR",
+                            "amount": "-2.60",
                             "balance": "102.24"
                         },
                         {
                             "date": "",
-                            "type": "",
-                            "description": "TFL TRAVEL",
-                            "money_out": "-5.30",
-                            "money_in": "GBR",
+                            "description": "TFL TRAVEL CH\\VICTORIA",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "13/11/2023",
+                            "description": "STREET\\TFL.GOV.UK/CP\\SW1H 0TL GBR",
+                            "amount": "-5.30",
                             "balance": "104.84"
                         },
                         {
                             "date": "",
-                            "type": "",
-                            "description": "This relates to a previous",
-                            "money_out": "",
-                            "money_in": "",
+                            "description": "This relates to a previous transaction",
+                            "amount": "",
                             "balance": ""
                         },
                         {
                             "date": "",
-                            "type": "",
-                            "description": "OXFORD BUS",
-                            "money_out": "",
-                            "money_in": "HOUSE,",
+                            "description": "OXFORD BUS COMPANY\\COWLEY HOUSE,",
+                            "amount": "",
                             "balance": ""
                         },
                         {
-                            "date": "",
-                            "type": "",
-                            "description": "WATLIN\\OXFORD\\OX4",
-                            "money_out": "-1.90",
-                            "money_in": "",
+                            "date": "12/11/2023",
+                            "description": "WATLIN\\OXFORD\\OX4 6GA GBRGBR",
+                            "amount": "-1.90",
                             "balance": "110.14"
                         },
                         {
                             "date": "",
-                            "type": "",
-                            "description": "This relates to a previous",
-                            "money_out": "",
-                            "money_in": "",
+                            "description": "This relates to a previous transaction",
+                            "amount": "",
                             "balance": ""
                         },
                         {
-                            "date": "",
-                            "type": "",
+                            "date": "12/11/2023",
                             "description": "Transfer from Pot",
-                            "money_out": "100.00",
-                            "money_in": "",
+                            "amount": "100.00",
                             "balance": "112.04"
                         },
                         {
-                            "date": "",
-                            "type": "",
-                            "description": "CO-OP GROUP FOOD",
-                            "money_out": "-4.90",
-                            "money_in": "GBR",
+                            "date": "12/11/2023",
+                            "description": "CO-OP GROUP FOOD LONDON GBR",
+                            "amount": "-4.90",
                             "balance": "12.04"
                         },
                         {
-                            "date": "",
-                            "type": "",
-                            "description": "TESCO STORES 2097",
-                            "money_out": "-1.10",
-                            "money_in": "",
+                            "date": "12/11/2023",
+                            "description": "TESCO STORES 2097 LONDON GBR",
+                            "amount": "-1.10",
                             "balance": "16.94"
                         },
                         {
-                            "date": "",
-                            "type": "",
-                            "description": "Ennismore Internationa",
-                            "money_out": "-39.38",
-                            "money_in": "",
+                            "date": "12/11/2023",
+                            "description": "Ennismore Internationa London GBR",
+                            "amount": "-39.38",
                             "balance": "18.04"
                         },
                         {
-                            "date": "",
-                            "type": "",
-                            "description": "TfL Travel Charge",
-                            "money_out": "-0.10",
-                            "money_in": "GBR",
+                            "date": "12/11/2023",
+                            "description": "TfL Travel Charge TFL.gov.uk/CP GBR",
+                            "amount": "-0.10",
                             "balance": "57.42"
                         },
                         {
-                            "date": "",
-                            "type": "GBR",
-                            "description": "Trainline.com Ltd London",
-                            "money_out": "-20.90",
-                            "money_in": "",
+                            "date": "12/11/2023",
+                            "description": "Trainline.com Ltd London GBR",
+                            "amount": "-20.90",
                             "balance": "57.52"
                         },
                         {
-                            "date": "",
-                            "type": "",
-                            "description": "OXFORD BUS",
-                            "money_out": "-0.10",
-                            "money_in": "GBR",
+                            "date": "11/11/2023",
+                            "description": "OXFORD BUS COMPANY OXFORD GBR",
+                            "amount": "-0.10",
                             "balance": "78.42"
                         },
                         {
-                            "date": "",
-                            "type": "",
-                            "description": "The Tasty Kitchen 2",
-                            "money_out": "-14.00",
-                            "money_in": "GBR",
+                            "date": "11/11/2023",
+                            "description": "The Tasty Kitchen 2 South Ockendo GBR",
+                            "amount": "-14.00",
                             "balance": "78.52"
                         },
                         {
-                            "date": "",
-                            "type": "",
-                            "description": "Amazon Prime",
-                            "money_out": "-8.99",
-                            "money_in": "",
+                            "date": "11/11/2023",
+                            "description": "Amazon Prime amzn.co.uk/pm GBR",
+                            "amount": "-8.99",
                             "balance": "92.52"
-                        }
-                    ]
-                },
-                {
-                    "data": [
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "Trainline.com Ltd London",
-                            "money_out": "",
-                            "money_in": "",
-                            "balance": ""
                         },
                         {
-                            "date": "",
-                            "type": "",
-                            "description": "ESSO BAYNARDS GN",
-                            "money_out": "-58.86",
-                            "money_in": "",
-                            "balance": "56.45"
-                        },
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "GBR",
-                            "money_out": "",
-                            "money_in": "",
-                            "balance": ""
-                        },
-                        {
-                            "date": "",
-                            "type": "",
+                            "date": "11/11/2023",
                             "description": "Transfer from Pot",
-                            "money_out": "80.00",
-                            "money_in": "",
-                            "balance": "115.31"
+                            "amount": "100.00",
+                            "balance": "101.51"
                         },
                         {
-                            "date": "",
-                            "type": "",
-                            "description": "ALDI STORES LIMITED",
-                            "money_out": "-6.47",
-                            "money_in": "GBR",
-                            "balance": "35.31"
+                            "date": "11/11/2023",
+                            "description": "Trainline.com Ltd London GBR",
+                            "amount": "-2.60",
+                            "balance": "1.51"
                         },
                         {
-                            "date": "",
-                            "type": "PA",
-                            "description": "WESTGATE OXFORD",
-                            "money_out": "-3.80",
-                            "money_in": "GBR",
-                            "balance": "41.78"
+                            "date": "10/11/2023",
+                            "description": "Helosh Ltd Watford GBR",
+                            "amount": "-14.50",
+                            "balance": "4.11"
                         },
                         {
-                            "date": "",
-                            "type": "GBR",
-                            "description": "SAINSBURYS BICESTER",
-                            "money_out": "-10.00",
-                            "money_in": "",
-                            "balance": "45.58"
-                        },
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "ALDI STORES LIMITED",
-                            "money_out": "-29.34",
-                            "money_in": "GBR",
-                            "balance": "55.58"
-                        },
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "AMZNMktplace",
-                            "money_out": "-85.59",
-                            "money_in": "",
-                            "balance": "84.92"
-                        },
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "Transfer from Pot",
-                            "money_out": "50.00",
-                            "money_in": "",
-                            "balance": "170.51"
-                        },
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "Transfer from Pot",
-                            "money_out": "30.00",
-                            "money_in": "",
-                            "balance": "120.51"
-                        },
-                        {
-                            "date": "",
-                            "type": "PA",
-                            "description": "WESTGATE OXFORD",
-                            "money_out": "-4.40",
-                            "money_in": "GBR",
-                            "balance": "90.51"
-                        },
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "Zettle_*Oxford Univers",
-                            "money_out": "-50.00",
-                            "money_in": "",
-                            "balance": "94.91"
-                        },
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "AMZNMktplace",
-                            "money_out": "-38.99",
-                            "money_in": "",
-                            "balance": "144.91"
-                        },
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "EB *Unified Dating-Mee",
-                            "money_out": "-13.99",
-                            "money_in": "GBR",
-                            "balance": "183.90"
-                        },
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "Transfer to Pot",
-                            "money_out": "-200.00",
-                            "money_in": "",
-                            "balance": "197.89"
-                        },
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "Transfer to Pot",
-                            "money_out": "-50.00",
-                            "money_in": "",
-                            "balance": "397.89"
-                        }
-                    ]
-                },
-                {
-                    "data": [
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "",
-                            "money_out": "",
-                            "money_in": "",
-                            "balance": ""
-                        }
-                    ]
-                },
-                {
-                    "data": [
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "",
-                            "money_out": "",
-                            "money_in": "",
-                            "balance": ""
-                        },
-                        {
-                            "date": "First",
-                            "type": "",
-                            "description": "Michael Little",
-                            "money_out": "",
-                            "money_in": "",
-                            "balance": "\u00a30.00 Pot balance"
-                        },
-                        {
-                            "date": "137 Kings London WC1X 9BJ United",
-                            "type": "",
-                            "description": "Road",
-                            "money_out": "Pot",
-                            "money_in": "",
-                            "balance": "-\u00a380.00 Total outgoings +\u00a380.00 Total deposits by Monzo Pot type Car Pot name"
-                        },
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "This Pot",
-                            "money_out": "",
-                            "money_in": "on 17/04/2024",
-                            "balance": ""
-                        },
-                        {
-                            "date": "Date",
-                            "type": "",
-                            "description": "Description",
-                            "money_out": "Amount",
-                            "money_in": "",
-                            "balance": "Balance"
-                        },
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "Withdrawal",
-                            "money_out": "-80.00",
-                            "money_in": "",
-                            "balance": "0.00"
-                        },
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "Deposit",
-                            "money_out": "80.00",
-                            "money_in": "",
-                            "balance": "80.00"
-                        },
-                        {
-                            "date": "Monzo Bank",
-                            "type": "",
-                            "description": "Limited (https://monzo.com) is a",
-                            "money_out": "Registered",
-                            "money_in": "in England No.",
-                            "balance": "Broadwalk"
-                        },
-                        {
-                            "date": "House, 5",
-                            "type": "Ltd is",
-                            "description": "Street, London EC2A 2AG. Monzo",
-                            "money_out": "Regulation",
-                            "money_in": "by the",
-                            "balance": "and"
-                        },
-                        {
-                            "date": "regulated by is 730427.",
-                            "type": "",
-                            "description": "the Financial Conduct Authority and the",
-                            "money_out": "Financial Services",
-                            "money_in": "Authority.",
-                            "balance": "number"
-                        }
-                    ]
-                },
-                {
-                    "data": [
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "",
-                            "money_out": "",
-                            "money_in": "",
-                            "balance": ""
-                        },
-                        {
-                            "date": "First",
-                            "type": "",
-                            "description": "Michael Little",
-                            "money_out": "",
-                            "money_in": "",
-                            "balance": "\u00a30.00 Pot balance"
-                        },
-                        {
-                            "date": "137 Kings London WC1X 9BJ United",
-                            "type": "",
-                            "description": "Road",
-                            "money_out": "Pot",
-                            "money_in": "",
-                            "balance": "-\u00a350.00 Total outgoings +\u00a350.00 Total deposits by Monzo Pot type Eating Out Pot name"
-                        },
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "This Pot",
-                            "money_out": "",
-                            "money_in": "on 17/04/2024",
-                            "balance": ""
-                        },
-                        {
-                            "date": "Date",
-                            "type": "",
-                            "description": "Description",
-                            "money_out": "Amount",
-                            "money_in": "",
-                            "balance": "Balance"
-                        },
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "Withdrawal",
-                            "money_out": "-45.00",
-                            "money_in": "",
-                            "balance": "0.00"
-                        },
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "Withdrawal",
-                            "money_out": "-5.00",
-                            "money_in": "",
-                            "balance": "45.00"
-                        },
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "Deposit",
-                            "money_out": "50.00",
-                            "money_in": "",
-                            "balance": "50.00"
-                        },
-                        {
-                            "date": "Monzo Bank",
-                            "type": "",
-                            "description": "Limited (https://monzo.com) is a",
-                            "money_out": "Registered",
-                            "money_in": "in England No.",
-                            "balance": "Broadwalk"
-                        },
-                        {
-                            "date": "House, 5",
-                            "type": "Ltd is",
-                            "description": "Street, London EC2A 2AG. Monzo",
-                            "money_out": "Regulation",
-                            "money_in": "by the",
-                            "balance": "and"
-                        },
-                        {
-                            "date": "regulated by is 730427.",
-                            "type": "",
-                            "description": "the Financial Conduct Authority and the",
-                            "money_out": "Financial Services",
-                            "money_in": "Authority.",
-                            "balance": "number"
-                        }
-                    ]
-                },
-                {
-                    "data": [
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "",
-                            "money_out": "",
-                            "money_in": "",
-                            "balance": ""
-                        },
-                        {
-                            "date": "First",
-                            "type": "",
-                            "description": "Michael Little",
-                            "money_out": "",
-                            "money_in": "",
-                            "balance": "\u00a30.00 Pot balance"
-                        },
-                        {
-                            "date": "137 Kings London WC1X 9BJ United",
-                            "type": "",
-                            "description": "Road",
-                            "money_out": "Pot",
-                            "money_in": "",
-                            "balance": "-\u00a3250.00 Total outgoings +\u00a3250.00 Total deposits by Monzo Pot type Groceries Pot name"
-                        },
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "This Pot",
-                            "money_out": "",
-                            "money_in": "on 17/04/2024",
-                            "balance": ""
-                        },
-                        {
-                            "date": "Date",
-                            "type": "",
-                            "description": "Description",
-                            "money_out": "Amount",
-                            "money_in": "",
-                            "balance": "Balance"
-                        },
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "Withdrawal",
-                            "money_out": "-100.00",
-                            "money_in": "",
-                            "balance": "0.00"
-                        },
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "Withdrawal",
-                            "money_out": "-100.00",
-                            "money_in": "",
-                            "balance": "100.00"
-                        },
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "Withdrawal",
-                            "money_out": "-50.00",
-                            "money_in": "",
-                            "balance": "200.00"
-                        },
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "Deposit",
-                            "money_out": "250.00",
-                            "money_in": "",
-                            "balance": "250.00"
-                        },
-                        {
-                            "date": "Monzo Bank",
-                            "type": "",
-                            "description": "Limited (https://monzo.com) is a",
-                            "money_out": "Registered",
-                            "money_in": "in England No.",
-                            "balance": "Broadwalk"
-                        },
-                        {
-                            "date": "House, 5",
-                            "type": "Ltd is",
-                            "description": "Street, London EC2A 2AG. Monzo",
-                            "money_out": "Regulation",
-                            "money_in": "by the",
-                            "balance": "and"
-                        },
-                        {
-                            "date": "regulated by is 730427.",
-                            "type": "",
-                            "description": "the Financial Conduct Authority and the",
-                            "money_out": "Financial Services",
-                            "money_in": "Authority.",
-                            "balance": "number"
-                        }
-                    ]
-                },
-                {
-                    "data": [
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "",
-                            "money_out": "",
-                            "money_in": "",
-                            "balance": ""
-                        },
-                        {
-                            "date": "First",
-                            "type": "",
-                            "description": "Michael Little",
-                            "money_out": "",
-                            "money_in": "",
-                            "balance": "\u00a30.00 Pot balance"
-                        },
-                        {
-                            "date": "137 Kings London WC1X 9BJ United",
-                            "type": "",
-                            "description": "Road",
-                            "money_out": "Pot",
-                            "money_in": "",
-                            "balance": "-\u00a330.00 Total outgoings +\u00a330.00 Total deposits by Monzo Pot type Health Pot name"
-                        },
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "This Pot",
-                            "money_out": "",
-                            "money_in": "on 17/04/2024",
-                            "balance": ""
-                        },
-                        {
-                            "date": "Date",
-                            "type": "",
-                            "description": "Description",
-                            "money_out": "Amount",
-                            "money_in": "",
-                            "balance": "Balance"
-                        },
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "Withdrawal",
-                            "money_out": "-30.00",
-                            "money_in": "",
-                            "balance": "0.00"
-                        },
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "Deposit",
-                            "money_out": "30.00",
-                            "money_in": "",
-                            "balance": "30.00"
-                        },
-                        {
-                            "date": "Monzo Bank",
-                            "type": "",
-                            "description": "Limited (https://monzo.com) is a",
-                            "money_out": "Registered",
-                            "money_in": "in England No.",
-                            "balance": "Broadwalk"
-                        },
-                        {
-                            "date": "House, 5",
-                            "type": "Ltd is",
-                            "description": "Street, London EC2A 2AG. Monzo",
-                            "money_out": "Regulation",
-                            "money_in": "by the",
-                            "balance": "and"
-                        },
-                        {
-                            "date": "regulated by is 730427.",
-                            "type": "",
-                            "description": "the Financial Conduct Authority and the",
-                            "money_out": "Financial Services",
-                            "money_in": "Authority.",
-                            "balance": "number"
-                        }
-                    ]
-                },
-                {
-                    "data": [
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "",
-                            "money_out": "",
-                            "money_in": "",
-                            "balance": ""
-                        },
-                        {
-                            "date": "First",
-                            "type": "",
-                            "description": "Michael Little",
-                            "money_out": "",
-                            "money_in": "",
-                            "balance": "\u00a30.00 Pot balance"
-                        },
-                        {
-                            "date": "137 Kings London WC1X 9BJ United",
-                            "type": "",
-                            "description": "Road",
-                            "money_out": "Pot",
-                            "money_in": "",
-                            "balance": "-\u00a3100.00 Total outgoings +\u00a3100.00 Total deposits by Monzo Pot type Pot name"
-                        },
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "This Pot",
-                            "money_out": "",
-                            "money_in": "on 17/04/2024",
-                            "balance": ""
-                        },
-                        {
-                            "date": "Date",
-                            "type": "",
-                            "description": "Description",
-                            "money_out": "Amount",
-                            "money_in": "",
-                            "balance": "Balance"
-                        },
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "Withdrawal",
-                            "money_out": "-100.00",
-                            "money_in": "",
-                            "balance": "0.00"
-                        },
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "Deposit",
-                            "money_out": "100.00",
-                            "money_in": "",
-                            "balance": "100.00"
-                        },
-                        {
-                            "date": "Monzo Bank",
-                            "type": "",
-                            "description": "Limited (https://monzo.com) is a",
-                            "money_out": "Registered",
-                            "money_in": "in England No.",
-                            "balance": "Broadwalk"
-                        },
-                        {
-                            "date": "House, 5",
-                            "type": "Ltd is",
-                            "description": "Street, London EC2A 2AG. Monzo",
-                            "money_out": "Regulation",
-                            "money_in": "by the",
-                            "balance": "and"
-                        },
-                        {
-                            "date": "regulated by is 730427.",
-                            "type": "",
-                            "description": "the Financial Conduct Authority and the",
-                            "money_out": "Financial Services",
-                            "money_in": "Authority.",
-                            "balance": "number"
-                        }
-                    ]
-                },
-                {
-                    "data": [
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "",
-                            "money_out": "",
-                            "money_in": "",
-                            "balance": ""
-                        },
-                        {
-                            "date": "First",
-                            "type": "",
-                            "description": "Michael Little",
-                            "money_out": "",
-                            "money_in": "",
-                            "balance": "\u00a30.00 Pot balance"
-                        },
-                        {
-                            "date": "137 Kings London WC1X 9BJ United",
-                            "type": "",
-                            "description": "Road",
-                            "money_out": "Pot",
-                            "money_in": "",
-                            "balance": "-\u00a3200.00 Total outgoings +\u00a3200.00 Total deposits by Monzo Pot type Misc Pot name"
-                        },
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "This Pot",
-                            "money_out": "",
-                            "money_in": "on 17/04/2024",
-                            "balance": ""
-                        },
-                        {
-                            "date": "Date",
-                            "type": "",
-                            "description": "Description",
-                            "money_out": "Amount",
-                            "money_in": "",
-                            "balance": "Balance"
-                        },
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "Withdrawal",
-                            "money_out": "-200.00",
-                            "money_in": "",
-                            "balance": "0.00"
-                        },
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "Deposit",
-                            "money_out": "200.00",
-                            "money_in": "",
-                            "balance": "200.00"
-                        },
-                        {
-                            "date": "Monzo Bank",
-                            "type": "",
-                            "description": "Limited (https://monzo.com) is a",
-                            "money_out": "Registered",
-                            "money_in": "in England No.",
-                            "balance": "Broadwalk"
-                        },
-                        {
-                            "date": "House, 5",
-                            "type": "Ltd is",
-                            "description": "Street, London EC2A 2AG. Monzo",
-                            "money_out": "Regulation",
-                            "money_in": "by the",
-                            "balance": "and"
-                        },
-                        {
-                            "date": "regulated by is 730427.",
-                            "type": "",
-                            "description": "the Financial Conduct Authority and the",
-                            "money_out": "Financial Services",
-                            "money_in": "Authority.",
-                            "balance": "number"
-                        }
-                    ]
-                },
-                {
-                    "data": [
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "",
-                            "money_out": "",
-                            "money_in": "",
-                            "balance": ""
-                        },
-                        {
-                            "date": "First",
-                            "type": "",
-                            "description": "Michael Little",
-                            "money_out": "",
-                            "money_in": "",
-                            "balance": "\u00a30.00 Pot balance"
-                        },
-                        {
-                            "date": "137 Kings London WC1X 9BJ United",
-                            "type": "",
-                            "description": "Road",
-                            "money_out": "Pot",
-                            "money_in": "",
-                            "balance": "\u00a30.00 Total outgoings +\u00a30.00 Total deposits by Monzo Pot type Holidays Pot name"
-                        },
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "This Pot",
-                            "money_out": "",
-                            "money_in": "on 17/04/2024",
-                            "balance": ""
-                        },
-                        {
-                            "date": "There",
-                            "type": "",
-                            "description": "no transactions during this",
-                            "money_out": "",
-                            "money_in": "",
-                            "balance": ""
-                        },
-                        {
-                            "date": "Monzo Bank",
-                            "type": "",
-                            "description": "Limited (https://monzo.com) is a",
-                            "money_out": "Registered",
-                            "money_in": "in England No.",
-                            "balance": "Broadwalk"
-                        },
-                        {
-                            "date": "House, 5",
-                            "type": "Ltd is",
-                            "description": "Street, London EC2A 2AG. Monzo",
-                            "money_out": "Regulation",
-                            "money_in": "by the",
-                            "balance": "and"
-                        },
-                        {
-                            "date": "regulated by is 730427.",
-                            "type": "",
-                            "description": "the Financial Conduct Authority and the",
-                            "money_out": "Financial Services",
-                            "money_in": "Authority.",
-                            "balance": "number"
-                        }
-                    ]
-                },
-                {
-                    "data": [
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "",
-                            "money_out": "",
-                            "money_in": "",
-                            "balance": ""
-                        },
-                        {
-                            "date": "First",
-                            "type": "",
-                            "description": "Michael Little",
-                            "money_out": "",
-                            "money_in": "",
-                            "balance": "\u00a30.00 Pot balance"
-                        },
-                        {
-                            "date": "137 Kings London WC1X 9BJ United",
-                            "type": "",
-                            "description": "Road",
-                            "money_out": "Pot",
-                            "money_in": "",
-                            "balance": "\u00a30.00 Total outgoings +\u00a30.00 Total deposits by Monzo Pot type Shopping Pot name"
-                        },
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "This Pot",
-                            "money_out": "",
-                            "money_in": "on 17/04/2024",
-                            "balance": ""
-                        },
-                        {
-                            "date": "There",
-                            "type": "",
-                            "description": "no transactions during this",
-                            "money_out": "",
-                            "money_in": "",
-                            "balance": ""
-                        },
-                        {
-                            "date": "Monzo Bank",
-                            "type": "",
-                            "description": "Limited (https://monzo.com) is a",
-                            "money_out": "Registered",
-                            "money_in": "in England No.",
-                            "balance": "Broadwalk"
-                        },
-                        {
-                            "date": "House, 5",
-                            "type": "Ltd is",
-                            "description": "Street, London EC2A 2AG. Monzo",
-                            "money_out": "Regulation",
-                            "money_in": "by the",
-                            "balance": "and"
-                        },
-                        {
-                            "date": "regulated by is 730427.",
-                            "type": "",
-                            "description": "the Financial Conduct Authority and the",
-                            "money_out": "Financial Services",
-                            "money_in": "Authority.",
-                            "balance": "number"
-                        }
-                    ]
-                },
-                {
-                    "data": [
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "",
-                            "money_out": "",
-                            "money_in": "",
-                            "balance": ""
-                        },
-                        {
-                            "date": "First",
-                            "type": "",
-                            "description": "Michael Little",
-                            "money_out": "",
-                            "money_in": "",
-                            "balance": "\u00a30.00 Pot balance"
-                        },
-                        {
-                            "date": "137 Kings London WC1X 9BJ United",
-                            "type": "",
-                            "description": "Road",
-                            "money_out": "Pot",
-                            "money_in": "",
-                            "balance": "\u00a30.00 Total outgoings +\u00a30.00 Total deposits by Monzo Pot type Transport Pot name"
-                        },
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "This Pot",
-                            "money_out": "",
-                            "money_in": "on 17/04/2024",
-                            "balance": ""
-                        },
-                        {
-                            "date": "There",
-                            "type": "",
-                            "description": "no transactions during this",
-                            "money_out": "",
-                            "money_in": "",
-                            "balance": ""
-                        },
-                        {
-                            "date": "Monzo Bank",
-                            "type": "",
-                            "description": "Limited (https://monzo.com) is a",
-                            "money_out": "Registered",
-                            "money_in": "in England No.",
-                            "balance": "Broadwalk"
-                        },
-                        {
-                            "date": "House, 5",
-                            "type": "Ltd is",
-                            "description": "Street, London EC2A 2AG. Monzo",
-                            "money_out": "Regulation",
-                            "money_in": "by the",
-                            "balance": "and"
-                        },
-                        {
-                            "date": "regulated by is 730427.",
-                            "type": "",
-                            "description": "the Financial Conduct Authority and the",
-                            "money_out": "Financial Services",
-                            "money_in": "Authority.",
-                            "balance": "number"
-                        }
-                    ]
-                },
-                {
-                    "data": [
-                        {
-                            "date": "",
-                            "type": "",
-                            "description": "",
-                            "money_out": "",
-                            "money_in": "",
-                            "balance": ""
-                        },
-                        {
-                            "date": "The Scheme",
-                            "type": "",
-                            "description": "information",
-                            "money_out": "Services",
-                            "money_in": "",
-                            "balance": ""
-                        },
-                        {
-                            "date": "",
-                            "type": "for",
-                            "description": "listed in this statement are",
-                            "money_out": "if a bank",
-                            "money_in": "under the",
-                            "balance": "meet its"
-                        },
-                        {
-                            "date": "",
-                            "type": "FSCS",
-                            "description": "We're covered by the FSCS.",
-                            "money_out": "and",
-                            "money_in": "compensate",
-                            "balance": "\u2013 are"
-                        },
-                        {
-                            "date": "",
-                            "type": "\u2013",
-                            "description": "financial obligations. Most",
-                            "money_out": "sheet and",
-                            "money_in": "including most",
-                            "balance": "list"
-                        },
-                        {
-                            "date": "",
-                            "type": "you",
-                            "description": "covered by the scheme. We'll",
-                            "money_out": "FSCS in lots of",
-                            "money_in": "FSCS",
-                            "balance": "detail."
-                        },
-                        {
-                            "date": "The FSCS",
-                            "type": "is and",
-                            "description": "once a year. This tells you what",
-                            "money_out": "apply this limit",
-                            "money_in": "covered by",
-                            "balance": "to each person,"
-                        },
-                        {
-                            "date": "and to the",
-                            "type": "per",
-                            "description": "eligible deposits up to",
-                            "money_out": "For joint",
-                            "money_in": "person. The",
-                            "balance": "each"
-                        },
-                        {
-                            "date": "account",
-                            "type": "you",
-                            "description": "combined amount of any",
-                            "money_out": "a joint account",
-                            "money_in": "with the",
-                            "balance": "by two"
-                        },
-                        {
-                            "date": "eligible \u00a3170,000).",
-                            "type": "",
-                            "description": "has a claim to their share",
-                            "money_out": "each (for a",
-                            "money_in": "means that in",
-                            "balance": "total of"
-                        },
-                        {
-                            "date": "For more",
-                            "type": "person",
-                            "description": "the maximum amount",
-                            "money_out": "at",
-                            "money_in": "could claim is",
-                            "balance": ""
-                        },
-                        {
-                            "type": "",
-                            "description": "about FSCS",
-                            "money_in": "to the FSCS"
+                            "date": "10/11/2023",
+                            "description": "ALDI STORES LIMITED BICESTER GBR",
+                            "amount": "-29.42",
+                            "balance": "18.61"
                         }
                     ]
                 }
