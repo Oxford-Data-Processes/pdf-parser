@@ -10,6 +10,7 @@
         },
         "required": ["template_id", "version"]
       },
+      "extraction_method": { "type": "string" },
       "rules": {
         "type": "array",
         "items": {

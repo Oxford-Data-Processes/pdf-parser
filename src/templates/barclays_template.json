@@ -3,12 +3,16 @@
         "template_id": "barclays",
         "version": "1.0.0"
     },
+    "extraction_method": "extraction",
     "rules": [
         {
             "rule_id": "sort_code",
             "type": "form",
             "config": {
                 "field_name": "sort_code",
+                "type": "text",
+                "search_type": "regex",
+                "regex": "Sort code\\s*\\d{2}-\\d{2}-\\d{2}",
                 "coordinates": {
                     "top_left": {
                         "x": 0.798,
@@ -18,8 +22,7 @@
                         "x": 0.86,
                         "y": 0.138
                     }
-                },
-                "type": "text"
+                }
             }
         },
         {
@@ -27,6 +30,9 @@
             "type": "form",
             "config": {
                 "field_name": "account_number",
+                "type": "text",
+                "search_type": "regex",
+                "regex": "Account\\s*no\\.\\s*(\\d+)",
                 "coordinates": {
                     "top_left": {
                         "x": 0.811,
@@ -36,8 +42,7 @@
                         "x": 0.904,
                         "y": 0.149
                     }
-                },
-                "type": "text"
+                }
             }
         },
         {
@@ -45,6 +50,9 @@
             "type": "form",
             "config": {
                 "field_name": "customer_name",
+                "type": "text",
+                "search_type": "coordinates",
+                "regex": null,
                 "coordinates": {
                     "top_left": {
                         "x": 0.724,
@@ -54,8 +62,7 @@
                         "x": 0.96,
                         "y": 0.121
                     }
-                },
-                "type": "text"
+                }
             }
         },
         {
@@ -63,7 +70,10 @@
             "type": "form",
             "config": {
                 "field_name": "start_balance",
-                "coordinates":  {
+                "type": "text",
+                "search_type": "regex",
+                "regex": "Start\\s*balance\\s*£?([0-9.,]+)",
+                "coordinates": {
                     "top_left": {
                         "x": 0.863,
                         "y": 0.208
@@ -72,8 +82,7 @@
                         "x": 0.952,
                         "y": 0.226
                     }
-                },
-                "type": "text"
+                }
             }
         },
         {
@@ -81,7 +90,10 @@
             "type": "form",
             "config": {
                 "field_name": "money_in",
-                "coordinates":  {
+                "type": "text",
+                "search_type": "regex",
+                "regex": "Money\\s*in\\s*£?([0-9.,]+)",
+                "coordinates": {
                     "top_left": {
                         "x": 0.864,
                         "y": 0.226
@@ -90,8 +102,7 @@
                         "x": 0.958,
                         "y": 0.244
                     }
-                },
-                "type": "text"
+                }
             }
         },
         {
@@ -99,6 +110,9 @@
             "type": "form",
             "config": {
                 "field_name": "money_out",
+                "type": "text",
+                "search_type": "regex",
+                "regex": "Money\\s*out\\s*£?([0-9.,]+)",
                 "coordinates": {
                     "top_left": {
                         "x": 0.869,
@@ -108,8 +122,7 @@
                         "x": 0.954,
                         "y": 0.259
                     }
-                },
-                "type": "text"
+                }
             }
         },
         {
@@ -117,7 +130,10 @@
             "type": "form",
             "config": {
                 "field_name": "end_balance",
-                "coordinates":{
+                "type": "text",
+                "search_type": "regex",
+                "regex": "End\\s*balance\\s*£?([0-9.,]+)",
+                "coordinates": {
                     "top_left": {
                         "x": 0.87,
                         "y": 0.263
@@ -126,8 +142,7 @@
                         "x": 0.953,
                         "y": 0.278
                     }
-                },
-                "type": "text"
+                }
             }
         },
         {
@@ -151,7 +166,7 @@
                     },
                     {
                         "field_name": "description",
-                        "coordinates":  {
+                        "coordinates": {
                             "top_left": {
                                 "x": 0.151,
                                 "y": 0.483
@@ -180,20 +195,20 @@
                     {
                         "field_name": "money_in",
                         "coordinates": {
-                        "top_left": {
-                            "x": 0.511,
-                            "y": 0.463
-                        },
-                        "bottom_right": {
-                            "x": 0.605,
-                            "y": 1
-                        }
+                            "top_left": {
+                                "x": 0.511,
+                                "y": 0.463
+                            },
+                            "bottom_right": {
+                                "x": 0.605,
+                                "y": 1
+                            }
                         },
                         "type": "text"
                     },
                     {
                         "field_name": "balance",
-                        "coordinates":  {
+                        "coordinates": {
                             "top_left": {
                                 "x": 0.604,
                                 "y": 0.465
@@ -275,7 +290,7 @@
                     },
                     {
                         "field_name": "balance",
-                        "coordinates":  {
+                        "coordinates": {
                             "top_left": {
                                 "x": 0.606,
                                 "y": 0.095
@@ -298,7 +313,15 @@
     "pages": [
         {
             "page_numbers": "1",
-            "forms": ["sort_code", "account_number", "customer_name", "start_balance", "money_in", "money_out", "end_balance"],
+            "forms": [
+                "sort_code",
+                "account_number",
+                "customer_name",
+                "start_balance",
+                "money_in",
+                "money_out",
+                "end_balance"
+            ],
             "tables": ["transactions_first_page"]
         },
         {
