@@ -12,8 +12,8 @@ ROOT_DIR = os.path.dirname(SRC_DIR)
 
 FORMS_PAGE_NUMBER = 1
 
-template_name: str = "monzo"
-identifier: str = "3_months"
+template_name: str = "payslip"
+identifier: str = "jake"
 template_path: str = os.path.join(
     SRC_DIR, "templates", f"{template_name}_template.json"
 )
@@ -25,6 +25,16 @@ pdf_path: str = os.path.join(
     "pdf",
     f"{template_name}_{identifier}.pdf",
 )
+
+pdf_path = os.path.join(
+    ROOT_DIR,
+    "data",
+    "payslips",
+    template_name,
+    "pdf",
+    f"{template_name}_{identifier}.pdf",
+)
+
 pdf_data_path: str = os.path.join(
     SRC_DIR, "pdf_data", f"{template_name}_{identifier}_pdf_data.json"
 )

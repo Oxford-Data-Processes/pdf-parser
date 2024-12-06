@@ -5,36 +5,18 @@
     },
     "rules": [
         {
-            "rule_id": "customer_name",
+            "rule_id": "name",
             "type": "form",
             "config": {
-                "field_name": "customer_name",
+                "field_name": "name",
                 "coordinates": {
                     "top_left": {
-                        "x": 0.096,
-                        "y": 0.211
+                        "x": 0.154,
+                        "y": 0.068
                     },
                     "bottom_right": {
-                        "x": 0.321,
-                        "y": 0.231
-                    }
-                },
-                "type": "text"
-            }
-        },
-        {
-            "rule_id": "basic_salary",
-            "type": "form",
-            "config": {
-                "field_name": "basic_salary",
-                "coordinates": {
-                    "top_left": {
-                        "x": 0.096,
-                        "y": 0.241
-                    },
-                    "bottom_right": {
-                        "x": 0.321,
-                        "y": 0.261
+                        "x": 0.291,
+                        "y": 0.084
                     }
                 },
                 "type": "text"
@@ -47,48 +29,30 @@
                 "field_name": "total_gross",
                 "coordinates": {
                     "top_left": {
-                        "x": 0.096,
-                        "y": 0.271
+                        "x": 0.603,
+                        "y": 0.509
                     },
                     "bottom_right": {
-                        "x": 0.321,
-                        "y": 0.291
+                        "x": 0.662,
+                        "y": 0.52
                     }
                 },
                 "type": "text"
             }
         },
         {
-            "rule_id": "overtime",
+            "rule_id": "tax",
             "type": "form",
             "config": {
-                "field_name": "overtime",
+                "field_name": "tax",
                 "coordinates": {
                     "top_left": {
-                        "x": 0.096,
-                        "y": 0.301
+                        "x": 0.61,
+                        "y": 0.531
                     },
                     "bottom_right": {
-                        "x": 0.321,
-                        "y": 0.321
-                    }
-                },
-                "type": "text"
-            }
-        },
-        {
-            "rule_id": "paye",
-            "type": "form",
-            "config": {
-                "field_name": "paye",
-                "coordinates": {
-                    "top_left": {
-                        "x": 0.096,
-                        "y": 0.331
-                    },
-                    "bottom_right": {
-                        "x": 0.321,
-                        "y": 0.351
+                        "x": 0.66,
+                        "y": 0.544
                     }
                 },
                 "type": "text"
@@ -101,12 +65,12 @@
                 "field_name": "national_insurance",
                 "coordinates": {
                     "top_left": {
-                        "x": 0.096,
-                        "y": 0.361
+                        "x": 0.61,
+                        "y": 0.555
                     },
                     "bottom_right": {
-                        "x": 0.321,
-                        "y": 0.381
+                        "x": 0.663,
+                        "y": 0.568
                     }
                 },
                 "type": "text"
@@ -117,32 +81,32 @@
             "type": "form",
             "config": {
                 "field_name": "pension",
-                "coordinates": {
+                "coordinates":  {
                     "top_left": {
-                        "x": 0.096,
-                        "y": 0.391
+                        "x": 0.615,
+                        "y": 0.566
                     },
                     "bottom_right": {
-                        "x": 0.321,
-                        "y": 0.411
+                        "x": 0.659,
+                        "y": 0.578
                     }
                 },
                 "type": "text"
             }
         },
         {
-            "rule_id": "gross_ytd",
+            "rule_id": "total_gross_ytd",
             "type": "form",
             "config": {
-                "field_name": "gross_ytd",
+                "field_name": "total_gross_ytd",
                 "coordinates": {
                     "top_left": {
-                        "x": 0.096,
-                        "y": 0.421
+                        "x": 0.861,
+                        "y": 0.51
                     },
                     "bottom_right": {
-                        "x": 0.321,
-                        "y": 0.441
+                        "x": 0.914,
+                        "y": 0.52
                     }
                 },
                 "type": "text"
@@ -155,12 +119,12 @@
                 "field_name": "tax_ytd",
                 "coordinates": {
                     "top_left": {
-                        "x": 0.096,
-                        "y": 0.451
+                        "x": 0.865,
+                        "y": 0.531
                     },
                     "bottom_right": {
-                        "x": 0.321,
-                        "y": 0.471
+                        "x": 0.916,
+                        "y": 0.544
                     }
                 },
                 "type": "text"
@@ -173,102 +137,30 @@
                 "field_name": "national_insurance_ytd",
                 "coordinates": {
                     "top_left": {
-                        "x": 0.096,
-                        "y": 0.481
+                        "x": 0.861,
+                        "y": 0.555
                     },
                     "bottom_right": {
-                        "x": 0.321,
-                        "y": 0.501
+                        "x": 0.92,
+                        "y": 0.568
                     }
                 },
                 "type": "text"
             }
         },
         {
-            "rule_id": "name",
+            "rule_id": "pension_ytd",
             "type": "form",
             "config": {
-                "field_name": "name",
-                "coordinates": {
+                "field_name": "pension_ytd",
+                "coordinates":  {
                     "top_left": {
-                        "x": 0.096,
-                        "y": 0.511
+                        "x": 0.873,
+                        "y": 0.59
                     },
                     "bottom_right": {
-                        "x": 0.321,
-                        "y": 0.531
-                    }
-                },
-                "type": "text"
-            }
-        },
-        {
-            "rule_id": "employee_number",
-            "type": "form",
-            "config": {
-                "field_name": "employee_number",
-                "coordinates": {
-                    "top_left": {
-                        "x": 0.096,
-                        "y": 0.541
-                    },
-                    "bottom_right": {
-                        "x": 0.321,
-                        "y": 0.561
-                    }
-                },
-                "type": "text"
-            }
-        },
-        {
-            "rule_id": "tax_code",
-            "type": "form",
-            "config": {
-                "field_name": "tax_code",
-                "coordinates": {
-                    "top_left": {
-                        "x": 0.096,
-                        "y": 0.571
-                    },
-                    "bottom_right": {
-                        "x": 0.321,
-                        "y": 0.591
-                    }
-                },
-                "type": "text"
-            }
-        },
-        {
-            "rule_id": "process_date",
-            "type": "form",
-            "config": {
-                "field_name": "process_date",
-                "coordinates": {
-                    "top_left": {
-                        "x": 0.096,
-                        "y": 0.601
-                    },
-                    "bottom_right": {
-                        "x": 0.321,
-                        "y": 0.621
-                    }
-                },
-                "type": "text"
-            }
-        },
-        {
-            "rule_id": "company",
-            "type": "form",
-            "config": {
-                "field_name": "company",
-                "coordinates": {
-                    "top_left": {
-                        "x": 0.096,
-                        "y": 0.631
-                    },
-                    "bottom_right": {
-                        "x": 0.321,
-                        "y": 0.651
+                        "x": 0.919,
+                        "y": 0.603
                     }
                 },
                 "type": "text"
@@ -281,12 +173,84 @@
                 "field_name": "net_pay",
                 "coordinates": {
                     "top_left": {
-                        "x": 0.096,
+                        "x": 0.857,
                         "y": 0.661
                     },
                     "bottom_right": {
-                        "x": 0.321,
-                        "y": 0.681
+                        "x": 0.918,
+                        "y": 0.68
+                    }
+                },
+                "type": "text"
+            }
+        },
+        {
+            "rule_id": "employee_number",
+            "type": "form",
+            "config": {
+                "field_name": "employee_number",
+                "coordinates": {
+                    "top_left": {
+                        "x": 0.075,
+                        "y": 0.067
+                    },
+                    "bottom_right": {
+                        "x": 0.115,
+                        "y": 0.084
+                    }
+                },
+                "type": "text"
+            }
+        },
+        {
+            "rule_id": "tax_code",
+            "type": "form",
+            "config": {
+                "field_name": "tax_code",
+                "coordinates": {
+                    "top_left": {
+                        "x": 0.277,
+                        "y": 0.539
+                    },
+                    "bottom_right": {
+                        "x": 0.341,
+                        "y": 0.558
+                    }
+                },
+                "type": "text"
+            }
+        },
+        {
+            "rule_id": "process_date",
+            "type": "form",
+            "config": {
+                "field_name": "process_date",
+                "coordinates": {
+                    "top_left": {
+                        "x": 0.568,
+                        "y": 0.067
+                    },
+                    "bottom_right": {
+                        "x": 0.676,
+                        "y": 0.083
+                    }
+                },
+                "type": "text"
+            }
+        },
+        {
+            "rule_id": "company",
+            "type": "form",
+            "config": {
+                "field_name": "company",
+                "coordinates": {
+                    "top_left": {
+                        "x": 0.075,
+                        "y": 0.499
+                    },
+                    "bottom_right": {
+                        "x": 0.194,
+                        "y": 0.518
                     }
                 },
                 "type": "text"
@@ -296,7 +260,7 @@
     "pages": [
         {
             "page_numbers": "1",
-            "forms": ["customer_name", "basic_salary", "total_gross", "overtime", "paye", "national_insurance", "pension", "gross_ytd", "tax_ytd", "national_insurance_ytd", "name", "employee_number", "tax_code", "process_date", "company", "net_pay"]
+            "forms": ["name", "total_gross", "tax", "national_insurance", "pension", "total_gross_ytd", "tax_ytd", "national_insurance_ytd", "pension_ytd", "net_pay", "employee_number", "tax_code", "process_date", "company"]
         },
         {
             "page_numbers": "2:3",
