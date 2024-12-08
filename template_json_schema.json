@@ -10,7 +10,7 @@
         },
         "required": ["template_id", "version"]
       },
-      "extraction_method": { "type": "string" },
+      "extraction_method": { "type": "string", "enum": ["extraction", "ocr"] },
       "rules": {
         "type": "array",
         "items": {

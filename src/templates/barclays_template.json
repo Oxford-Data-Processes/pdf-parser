@@ -10,7 +10,6 @@
             "type": "form",
             "config": {
                 "field_name": "sort_code",
-                
                 "search_type": "regex",
                 "regex": "Sort code\\s*\\d{2}-\\d{2}-\\d{2}",
                 "coordinates": {
@@ -30,7 +29,6 @@
             "type": "form",
             "config": {
                 "field_name": "account_number",
-                
                 "search_type": "regex",
                 "regex": "Account\\s*no\\.\\s*(\\d+)",
                 "coordinates": {
@@ -50,7 +48,6 @@
             "type": "form",
             "config": {
                 "field_name": "customer_name",
-                
                 "search_type": "coordinates",
                 "regex": null,
                 "coordinates": {
@@ -70,7 +67,6 @@
             "type": "form",
             "config": {
                 "field_name": "start_balance",
-                
                 "search_type": "regex",
                 "regex": "Start\\s*balance\\s*£?([0-9.,]+)",
                 "coordinates": {
@@ -90,7 +86,6 @@
             "type": "form",
             "config": {
                 "field_name": "money_in",
-                
                 "search_type": "regex",
                 "regex": "Money\\s*in\\s*£?([0-9.,]+)",
                 "coordinates": {
@@ -110,7 +105,6 @@
             "type": "form",
             "config": {
                 "field_name": "money_out",
-                
                 "search_type": "regex",
                 "regex": "Money\\s*out\\s*£?([0-9.,]+)",
                 "coordinates": {
@@ -130,7 +124,6 @@
             "type": "form",
             "config": {
                 "field_name": "end_balance",
-                
                 "search_type": "regex",
                 "regex": "End\\s*balance\\s*£?([0-9.,]+)",
                 "coordinates": {
