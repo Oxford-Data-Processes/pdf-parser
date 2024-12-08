@@ -120,15 +120,17 @@
                 "columns": [
                     {
                         "field_name": "date",
-                        "coordinates":  {
+                        "coordinates": {
                             "top_left": {
-                                "x": 0.106,
-                                "y": 0.546
+                                "x": 0.107,
+                                "y": 0.3
                             },
                             "bottom_right": {
-                                "x": 0.234,
+                                "x": 0.202,
                                 "y": 1
-                            }
+                            },
+                            "search_type": "coordinates",
+                            "regex": null
                         },
                         "type": "text"
                     },

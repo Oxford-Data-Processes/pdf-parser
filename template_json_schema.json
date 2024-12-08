@@ -42,7 +42,10 @@
                             "y": { "type": "number" }
                           },
                           "required": ["x", "y"]
-                        }
+                        },
+                        "type": { "type": "string" },
+                        "search_type": { "type": "string" },
+                        "regex": { "type": ["string", "null"] }
                       },
                       "required": ["top_left", "bottom_right"]
                     },
@@ -76,13 +79,15 @@
                                   "y": { "type": "number" }
                                 },
                                 "required": ["x", "y"]
-                              }
+                              },
+                              "type": { "type": "string" },
+                              "search_type": { "type": "string" },
+                              "regex": { "type": ["string", "null"] }
                             },
                             "required": ["top_left", "bottom_right"]
-                          },
-                          "type": { "type": "string" }
+                          }
                         },
-                        "required": ["field_name", "coordinates", "type"]
+                        "required": ["field_name", "coordinates"]
                       }
                     },
                     "row_delimiter": {
