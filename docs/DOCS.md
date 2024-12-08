@@ -13,3 +13,5 @@ Allow combinations of ranges and negative indices:
 
 
 Coordinates: Decimal coordinates starting from top left corner of the image.
+
+Brew: Needs 'brew install tesseract'

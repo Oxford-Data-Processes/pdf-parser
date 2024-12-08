@@ -1,9 +1,12 @@
-from typing import List, Dict
+from typing import List, Dict, Any
 from forms import FormProcessor
 from tables import TableProcessor, TableSplitter
+from datetime import datetime
+import uuid
 
 
 class Parser:
+
     def page_number_converter(
         self, page_numbers: str, number_of_pages: int
     ) -> List[int]:
@@ -105,3 +108,50 @@ class Parser:
         ordered_data = [data[row_index] for row_index in sorted(data.keys())]
 
         return ordered_data
+
+    @staticmethod
+    def parse_pdf(template: Dict[str, Any], pdf_data: Dict[str, Any]) -> Dict[str, Any]:
+
+        forms = []
+        tables = []
+        number_of_pages = len(pdf_data["pages"])
+
+        for page_rule in template["pages"]:
+            page_indexes = Parser().page_number_converter(
+                page_rule["page_numbers"], number_of_pages
+            )
+            for page_index in page_indexes:
+                if "forms" in page_rule and len(page_rule["forms"]) > 0:
+                    for rule_id in page_rule["forms"]:
+                        try:
+                            form = Parser().get_output_data_from_form_rule(
+                                rule_id, page_index, pdf_data, template
+                            )
+                            forms.append(form)
+                        except IndexError:
+                            print(
+                                f"Rule ID '{rule_id}' not found in template rules or page index '{page_index}' is out of range."
+                            )
+                if "tables" in page_rule and len(page_rule["tables"]) > 0:
+                    for rule_id in page_rule["tables"]:
+                        try:
+                            table_data = Parser().get_output_data_from_table_rule(
+                                rule_id, page_index, pdf_data, template
+                            )
+
+                            tables.append({"data": table_data})
+                        except IndexError:
+                            print(
+                                f"Rule ID '{rule_id}' not found in template rules or page index '{page_index}' is out of range."
+                            )
+
+        output = {
+            "metadata": {
+                "document_id": str(uuid.uuid4()),
+                "parsed_at": datetime.now().strftime("%Y-%m-%dT%H:%M:%S"),
+                "number_of_pages": number_of_pages,
+            },
+            "pages": [{"forms": forms, "tables": tables}],
+        }
+
+        return output
