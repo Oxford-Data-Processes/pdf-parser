@@ -3,6 +3,7 @@
         "template_id": "halifax",
         "version": "1.0.0"
     },
+    "extraction_method": "ocr",
     "rules": [
         {
             "rule_id": "customer_name",
@@ -167,7 +168,7 @@
                     }
                 ],
                 "row_delimiter": {
-                    "type": "field",
+                    "type": "line",
                     "field_name": "description"
                 }
             }
@@ -263,7 +264,7 @@
                     }
                 ],
                 "row_delimiter": {
-                    "type": "field",
+                    "type": "line",
                     "field_name": "description"
                 }
             }

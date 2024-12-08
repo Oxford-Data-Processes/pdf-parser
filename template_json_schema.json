@@ -89,14 +89,10 @@
                       "type": "object",
                       "properties": {
                         "type": { "type": "string" },
-                        "config": {
-                          "type": "object",
-                          "properties": {
-                            "delimiter_field": { "type": "string", "field_name": "string" }
-                          }
-                        }
+                        "field_name": { "type": "string" },
+                        "max_pixel_value": { "type": "number" }
                       },
-                      "required": ["type"]
+                      "required": ["type", "field_name"]
                     }
                   },
                   "required": ["columns", "row_delimiter"]

@@ -3,6 +3,7 @@
         "template_id": "monzo",
         "version": "1.0.0"
     },
+    "extraction_method": "extraction",
     "rules": [
         {
             "rule_id": "customer_name",

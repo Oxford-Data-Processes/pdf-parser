@@ -223,7 +223,8 @@
                 ],
                 "row_delimiter": {
                     "type": "line",
-                    "field_name": "description"
+                    "field_name": "description",
+                    "max_pixel_value": 100
                 }
             }
         },
@@ -305,7 +306,8 @@
                 ],
                 "row_delimiter": {
                     "type": "line",
-                    "field_name": "description"
+                    "field_name": "description",
+                    "max_pixel_value": 100
                 }
             }
         }
