@@ -1,7 +1,7 @@
 {
     "metadata": {
         "template_id": "first_direct", 
-        "version": "1.0.1"
+        "version": "1.0.0"
     },
     "rules": [
         {
@@ -9,6 +9,8 @@
             "type": "form",
             "config": {
                 "field_name": "customer_name",
+                "search_type": "coordinates",
+                "regex": null,
                 "coordinates": {
                     "top_left": {
                         "x": 0.105,
@@ -27,6 +29,8 @@
             "type": "form",
             "config": {
                 "field_name": "sort_code",
+                "search_type": "coordinates",
+                "regex": null,
                 "coordinates": {
                     "top_left": {
                         "x": 0.618,
@@ -45,6 +49,8 @@
             "type": "form",
             "config": {
                 "field_name": "account_number",
+                "search_type": "coordinates",
+                "regex": null,
                 "coordinates": {
                     "top_left": {
                         "x": 0.713,
@@ -63,6 +69,8 @@
             "type": "form",
             "config": {
                 "field_name": "opening_balance",
+                "search_type": "coordinates",
+                "regex": null,
                 "coordinates": {
                     "top_left": {
                         "x": 0.86,
@@ -81,6 +89,8 @@
             "type": "form",
             "config": {
                 "field_name": "payments_in",
+                "search_type": "coordinates",
+                "regex": null,
                 "coordinates": {
                     "top_left": {
                         "x": 0.871,
@@ -99,6 +109,8 @@
             "type": "form",
             "config": {
                 "field_name": "payments_out",
+                "search_type": "coordinates",
+                "regex": null,
                 "coordinates": {
                     "top_left": {
                         "x": 0.868,
@@ -117,6 +129,8 @@
             "type": "form",
             "config": {
                 "field_name": "closing_balance",
+                "search_type": "coordinates",
+                "regex": null,
                 "coordinates": {
                     "top_left": {
                         "x": 0.855,
@@ -135,6 +149,8 @@
             "type": "form",
             "config": {
                 "field_name": "overdraft_limit",
+                "search_type": "coordinates",
+                "regex": null,
                 "coordinates": {
                     "top_left": {
                         "x": 0.883,
@@ -163,9 +179,11 @@
                             "bottom_right": {
                                 "x": 0.202,
                                 "y": 1
-                            }
-                        },
-                        "type": "text"
+                            },
+                            "type": "text",
+                            "search_type": "coordinates",
+                            "regex": null
+                        }
                     },
                     {
                         "field_name": "payment_type",
@@ -178,7 +196,9 @@
                                 "x": 0.253,
                                 "y": 1
                             },
-                            "type": "text"
+                            "type": "text",
+                            "search_type": "coordinates",
+                            "regex": null
                         }
                     },
                     {
@@ -192,7 +212,9 @@
                                 "x": 0.621,
                                 "y": 1
                             },
-                            "type": "text"
+                            "type": "text",
+                            "search_type": "coordinates",
+                            "regex": null
                         }
                     },
                     {
@@ -206,7 +228,9 @@
                                 "x": 0.71,
                                 "y": 1
                             },
-                            "type": "text"
+                            "type": "text",
+                            "search_type": "coordinates",
+                            "regex": null
                         }
                     },
                     {
@@ -220,7 +244,9 @@
                                 "x": 0.86,
                                 "y": 1
                             },
-                            "type": "text"
+                            "type": "text",
+                            "search_type": "coordinates",
+                            "regex": null
                         }
                     },
                     {
@@ -234,7 +260,9 @@
                                 "x": 0.99,
                                 "y": 1
                             },
-                            "type": "text"
+                            "type": "text",
+                            "search_type": "coordinates",
+                            "regex": null
                         }
                     }
                 ],
@@ -259,9 +287,11 @@
                             "bottom_right": {
                                 "x": 0.202,
                                 "y": 1
-                            }
-                        },
-                        "type": "text"
+                            },
+                            "type": "text",
+                            "search_type": "coordinates",
+                            "regex": null
+                        }
                     },
                     {
                         "field_name": "payment_type",
@@ -274,7 +304,9 @@
                                 "x": 0.253,
                                 "y": 1
                             },
-                            "type": "text"
+                            "type": "text",
+                            "search_type": "coordinates",
+                            "regex": null
                         }
                     },
                     {
@@ -288,7 +320,9 @@
                                 "x": 0.621,
                                 "y": 1
                             },
-                            "type": "text"
+                            "type": "text",
+                            "search_type": "coordinates",
+                            "regex": null
                         }
                     },
                     {
@@ -302,7 +336,9 @@
                                 "x": 0.71,
                                 "y": 1
                             },
-                            "type": "text"
+                            "type": "text",
+                            "search_type": "coordinates",
+                            "regex": null
                         }
                     },
                     {
@@ -316,7 +352,9 @@
                                 "x": 0.86,
                                 "y": 1
                             },
-                            "type": "text"
+                            "type": "text",
+                            "search_type": "coordinates",
+                            "regex": null
                         }
                     },
                     {
@@ -330,7 +368,9 @@
                                 "x": 0.99,
                                 "y": 1
                             },
-                            "type": "text"
+                            "type": "text",
+                            "search_type": "coordinates",
+                            "regex": null
                         }
                     }
                 ],
