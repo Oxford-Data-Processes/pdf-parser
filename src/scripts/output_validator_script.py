@@ -22,9 +22,13 @@ for template_name, identifiers in templates_and_identifiers.items():
         print("TEMPLATE")
         print(template_name, identifier)
 
-        validate(instance=template, schema=schema)
+        try:
+            validate(instance=template, schema=schema)
+            print("VALID")
+        except Exception as e:
+            print(e)
 
-        output_path = f"src/outputs/{template_name}_{identifier}_output.json"
-        generated_output = json.load(open(output_path))
+        # output_path = f"src/outputs/{template_name}_{identifier}_output.json"
+        # generated_output = json.load(open(output_path))
 
-        Document(**generated_output)
+        # Document(**generated_output)

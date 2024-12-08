@@ -19,8 +19,7 @@
                         "x": 0.321,
                         "y": 0.231
                     }
-                },
-                "type": "text"
+                }
             }
         },
         {
@@ -37,8 +36,7 @@
                         "x": 0.266,
                         "y": 0.428
                     }
-                },
-                "type": "text"
+                }
             }
         },
         {
@@ -55,8 +53,7 @@
                         "x": 0.334,
                         "y": 0.446
                     }
-                },
-                "type": "text"
+                }
             }
         },
         {
@@ -73,8 +70,7 @@
                         "x": 0.907,
                         "y": 0.239
                     }
-                },
-                "type": "text"
+                }
             }
         },
         {
@@ -91,8 +87,7 @@
                         "x": 0.908,
                         "y": 0.384
                     }
-                },
-                "type": "text"
+                }
             }
         },
         {
@@ -109,8 +104,7 @@
                         "x": 0.907,
                         "y": 0.433
                     }
-                },
-                "type": "text"
+                }
             }
         },
         {
@@ -131,8 +125,7 @@
                             },
                             "search_type": "coordinates",
                             "regex": null
-                        },
-                        "type": "text"
+                        }
                     },
                     {
                         "field_name": "description",
@@ -145,8 +138,7 @@
                                 "x": 0.623,
                                 "y": 1
                             }
-                        },
-                        "type": "text"
+                        }
                     },
                     {
                         "field_name": "amount",
@@ -159,8 +151,7 @@
                                 "x": 0.772,
                                 "y": 1
                             }
-                        },
-                        "type": "text"
+                        }
                     },
                     {
                         "field_name": "balance",
@@ -173,12 +164,11 @@
                                 "x": 0.927,
                                 "y": 1
                             }
-                        },
-                        "type": "text"
+                        }
                     }
                 ],
                 "row_delimiter": {
-                    "type": "field",
+                    "type": "line",
                     "field_name": "description"
                 }
             }
@@ -187,10 +177,10 @@
             "rule_id": "transactions_last_page",
             "type": "table",
             "config": {
-                "columns":[
+                "columns": [
                     {
                         "field_name": "date",
-                        "coordinates":  {
+                        "coordinates": {
                             "top_left": {
                                 "x": 0.106,
                                 "y": 0
@@ -199,8 +189,7 @@
                                 "x": 0.234,
                                 "y": 1
                             }
-                        },
-                        "type": "text"
+                        }
                     },
                     {
                         "field_name": "description",
@@ -213,8 +202,7 @@
                                 "x": 0.623,
                                 "y": 1
                             }
-                        },
-                        "type": "text"
+                        }
                     },
                     {
                         "field_name": "amount",
@@ -227,8 +215,7 @@
                                 "x": 0.772,
                                 "y": 1
                             }
-                        },
-                        "type": "text"
+                        }
                     },
                     {
                         "field_name": "balance",
@@ -241,12 +228,11 @@
                                 "x": 0.927,
                                 "y": 1
                             }
-                        },
-                        "type": "text"
+                        }
                     }
                 ],
                 "row_delimiter": {
-                    "type": "field",
+                    "type": "line",
                     "field_name": "description"
                 }
             }
@@ -255,7 +241,7 @@
     "pages": [
         {
             "page_numbers": "1",
-            "forms": ["customer_name", "sort_code", "account_number", "start_balance"],
+            "forms": ["customer_name", "sort_code", "account_number", "account_balance"],
             "tables": ["transactions_first_page"]
         },
         {

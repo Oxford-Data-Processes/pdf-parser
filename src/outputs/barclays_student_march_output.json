@@ -1,32 +1,32 @@
 {
     "metadata": {
-        "document_id": "900ec832-a16c-426f-984a-be0293b6c8c4",
-        "parsed_at": "2024-12-03T14:35:45",
+        "document_id": "d432384f-2c83-4796-87ff-53a79428c97d",
+        "parsed_at": "2024-12-08T10:49:51",
         "number_of_pages": 5
     },
     "pages": [
         {
             "forms": [
                 {
-                    "sort_code": "20-44-51"
+                    "sort_code": "BUKBGB22"
                 },
                 {
-                    "account_number": "13415759"
+                    "account_number": "2044 5113"
                 },
                 {
-                    "customer_name": "Miss Meghan Victoria Thorneloe"
+                    "customer_name": "\u2022 Sort Code 20-44-51"
                 },
                 {
-                    "start_balance": "-\u00a3195.38"
+                    "start_balance": "\u00a3836.00"
                 },
                 {
-                    "money_in": "\u00a3836.00"
+                    "money_in": "\u00a3566.90"
                 },
                 {
-                    "money_out": "\u00a3566.90"
+                    "money_out": "\u00a373.72"
                 },
                 {
-                    "end_balance": "\u00a373.72"
+                    "end_balance": ""
                 },
                 {
                     "overdraft_limit": "\u00a3500"
@@ -113,10 +113,10 @@
                             "balance": "238.62"
                         },
                         {
-                            "date": "Barclays and the Registered in",
-                            "description": "Bank UK PLC. Authorised by the Prudential Regulation Regulation Authority (Financial Services Register in England. Registered No. 9740322. Registered Office: 1",
+                            "date": "Barclays and the Registered",
+                            "description": "UK PLC. Authorised by the Prudential Regulation Regulation Authority (Financial Services Register in England. Registered No. 9740322. Registered Office:",
                             "money_out": "and No. 759676). 1 Churchill Place,",
-                            "money_in": "by the Financial London E14 5HP.",
+                            "money_in": "by the London E14 5HP.",
                             "balance": "Continued Conduct"
                         }
                     ]
@@ -251,19 +251,19 @@
                         },
                         {
                             "date": "31 Mar u the Page",
-                            "description": "End balance Wrong? If you\u2019ve spotted any next page for how to get in touch Barclays Bank UK PLC. Authorised by 2 Regulation Authority (Financial Registered in England. Registered No.",
+                            "description": "End balance Wrong? If you\u2019ve spotted any next page for how to get in touch Barclays Bank UK PLC. Authorised by 2 Regulation Authority (Financial Registered in England. Registered",
                             "money_out": "incorrect or us. the Prudential Register No. 9740322.",
                             "money_in": "unusual Authority Office: 1",
-                            "balance": "73.72 see and regulated by the Place, London"
+                            "balance": "73.72 see and regulated by Place, London"
                         }
                     ]
                 },
                 {
                     "data": [
                         {
-                            "date": "This Barclays Regulation Registered",
-                            "description": "does not pay credit interest UK PLC. Authorised by the Prudential Regulation Authority (Financial Services Register No. 759676). in England. Registered No. 9740322. Registered Office:",
-                            "money_out": "Authority and 1 Churchill Place,",
+                            "date": "Barclays Regulation Registered",
+                            "description": "UK PLC. Authorised by the Prudential Regulation Authority (Financial Services Register No. 759676). in England. Registered No. 9740322. Registered",
+                            "money_out": "and 1 Churchill Place,",
                             "money_in": "by the Financial London E14 5HP.",
                             "balance": "Conduct"
                         }

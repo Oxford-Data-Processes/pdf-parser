@@ -10,9 +10,10 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 SRC_DIR = os.path.dirname(SCRIPT_DIR)
 ROOT_DIR = os.path.dirname(SRC_DIR)
 
-FORMS_PAGE_NUMBER = 2
+FORMS_PAGE_NUMBER = 1
 
-template_name: str = "barclays_student"
+document_type = "bank_statements"
+template_name: str = "halifax"
 identifier: str = "march"
 template_path: str = os.path.join(
     SRC_DIR, "templates", f"{template_name}_template.json"
@@ -20,20 +21,11 @@ template_path: str = os.path.join(
 pdf_path: str = os.path.join(
     ROOT_DIR,
     "data",
-    "bank_statements",
+    document_type,
     template_name,
     "pdf",
     f"{template_name}_{identifier}.pdf",
 )
-
-# pdf_path = os.path.join(
-#     ROOT_DIR,
-#     "data",
-#     "payslips",
-#     template_name,
-#     "pdf",
-#     f"{template_name}_{identifier}.pdf",
-# )
 
 pdf_data_path: str = os.path.join(
     SRC_DIR, "pdf_data", f"{template_name}_{identifier}_pdf_data.json"
@@ -231,13 +223,13 @@ if __name__ == "__main__":
 
         if not results:
             print("No tables were found in the PDF")
-            exit(1)
 
         print(f"Found {len(results)} tables")
 
-        # Visualize each table
-        for result in results:
-            visualize_table_data(result, pdf_path)
+        if len(results) > 0:
+            # Visualize each table
+            for result in results:
+                visualize_table_data(result, pdf_path)
 
         # Visualize each form
         for form_rule in template["rules"]:

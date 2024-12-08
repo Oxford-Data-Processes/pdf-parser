@@ -24,6 +24,8 @@
                 {
                   "properties": {
                     "field_name": { "type": "string" },
+                    "search_type": { "type": "string", "enum": ["regex", "coordinates"] },
+                    "regex": { "type": ["string", "null"] },
                     "coordinates": {
                       "type": "object",
                       "properties": {
@@ -42,16 +44,13 @@
                             "y": { "type": "number" }
                           },
                           "required": ["x", "y"]
-                        },
-                        "type": { "type": "string" },
-                        "search_type": { "type": "string" },
-                        "regex": { "type": ["string", "null"] }
+                        }
                       },
                       "required": ["top_left", "bottom_right"]
                     },
                     "type": { "type": "string" }
                   },
-                  "required": ["field_name", "coordinates", "type"]
+                  "required": ["field_name", "coordinates"]
                 },
                 {
                   "properties": {
@@ -81,7 +80,6 @@
                                 "required": ["x", "y"]
                               },
                               "type": { "type": "string" },
-                              "search_type": { "type": "string" },
                               "regex": { "type": ["string", "null"] }
                             },
                             "required": ["top_left", "bottom_right"]
