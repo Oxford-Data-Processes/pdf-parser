@@ -34,8 +34,11 @@ class TableProcessor:
         table_splitter = TableSplitter(self.template, self.parser)
 
         if delimiter_type == "line":
+            max_pixel_value = table_rule["config"]["row_delimiter"].get(
+                "max_pixel_value", 255
+            )
             lines_y_coordinates = table_splitter.split_table(
-                delimiter_type, page_content
+                delimiter_type, page_content, max_pixel_value=max_pixel_value
             )
 
         if delimiter_type == "field":
@@ -49,7 +52,6 @@ class TableProcessor:
         if not delimiter_coordinates:
             raise ValueError("Delimiter coordinates not found")
 
-        # Process each column
         processed_columns = []
         for column in table_rule["config"]["columns"]:
             processed_columns.append(
@@ -110,18 +112,16 @@ class TableSplitter:
 
         return split_boxes
 
-    def filter_lines_by_pixel_value(self, lines, max_pixel_value=(255, 255, 255)):
+    def filter_lines_by_pixel_value(self, lines, max_pixel_value=None):
         """Filter lines based on their average pixel value."""
         filtered_lines = []
         for line in lines:
             if "average_pixel_value" in line:
                 avg_red, avg_green, avg_blue = line["average_pixel_value"]
-                max_red, max_green, max_blue = max_pixel_value
-
                 if (
-                    avg_red <= max_red
-                    and avg_green <= max_green
-                    and avg_blue <= max_blue
+                    avg_red <= max_pixel_value
+                    and avg_green <= max_pixel_value
+                    and avg_blue <= max_pixel_value
                 ):
                     filtered_lines.append(line)
         return filtered_lines
@@ -172,8 +172,8 @@ class TableSplitter:
 
         return averaged_y_coordinates
 
-    def split_table_by_line(self, lines):
-        filtered_lines = self.filter_lines_by_pixel_value(lines)
+    def split_table_by_line(self, lines, max_pixel_value=None):
+        filtered_lines = self.filter_lines_by_pixel_value(lines, max_pixel_value)
         lines_y_coordinates = [
             line["decimal_coordinates"]["top_left"]["y"] for line in filtered_lines
         ]
@@ -185,9 +185,12 @@ class TableSplitter:
         page_content,
         delimiter_field_name=None,
         rule_id=None,
+        max_pixel_value=None,
     ):
         if row_delimiter_type == "line":
-            return self.split_table_by_line(page_content["lines"])
+            return self.split_table_by_line(
+                page_content["lines"], max_pixel_value=max_pixel_value
+            )
         elif row_delimiter_type == "field":
             return self.split_table_by_field(
                 page_content, delimiter_field_name, rule_id
