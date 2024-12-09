@@ -4,13 +4,13 @@ from typing import Dict, Any
 from parser import Parser
 
 templates_and_identifiers = {
-    # "barclays_student": ["march", "april", "may"],
-    # "barclays": ["march", "april", "may"],
-    # "first_direct": ["march", "april", "may"],
+    "barclays_student": ["march", "april", "may"],
+    "barclays": ["march", "april", "may"],
+    "first_direct": ["march", "april", "may"],
     "halifax": ["march", "april", "may"],
-    # "lloyds": ["september"],
-    # "monzo": ["november", "3_months"],
-    # "payslip": ["jake"],
+    "lloyds": ["september"],
+    "monzo": ["november", "3_months"],
+    "payslip": ["jake"],
 }
 
 # Loop through all templates and identifiers

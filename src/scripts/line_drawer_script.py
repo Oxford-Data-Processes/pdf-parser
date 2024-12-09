@@ -8,14 +8,18 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 from src.scripts.pdf_utils import ImageDrawer
 from PIL import Image
 
+template_name = "halifax"
+identifier = "april"
 # Load the PDF data
-pdf_data_path = os.path.join("src", "pdf_data", "halifax_april_pdf_data.json")
+pdf_data_path = os.path.join(
+    "src", "pdf_data", f"{template_name}_{identifier}_pdf_data.json"
+)
 with open(pdf_data_path, "r") as f:
     pdf_data = json.load(f)
 
 # PDF path (assuming same naming convention)
 pdf_path = os.path.join(
-    "data", "bank_statements", "halifax", "pdf", "halifax_april.pdf"
+    "data", "bank_statements", template_name, "pdf", f"{template_name}_{identifier}.pdf"
 )
 
 # Process each page
