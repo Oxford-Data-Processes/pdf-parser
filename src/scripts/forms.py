@@ -14,13 +14,21 @@ class FormProcessor:
         jpg_bytes: List[bytes],
     ) -> Dict:
         form_rule = self.parser.get_rule_from_id(form_rule_id, template)
-        coordinates = form_rule["config"]["coordinates"]
+        config = form_rule["config"]
+        coordinates = config.get("coordinates")
         page_content = pdf_data["pages"][page_index]["content"]
         extraction_method = template["extraction_method"]
         jpg_bytes_page = jpg_bytes[page_index]
+        search_type = config.get("search_type")
+        regex = config.get("regex")
 
         return {
-            form_rule["config"]["field_name"]: self.parser.get_text_from_page(
-                page_content, coordinates, extraction_method, jpg_bytes_page
+            config["field_name"]: self.parser.get_text_from_page(
+                page_content,
+                coordinates,
+                extraction_method,
+                jpg_bytes_page,
+                search_type=search_type,
+                regex=regex,
             )
         }

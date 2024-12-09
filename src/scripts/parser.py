@@ -4,6 +4,7 @@ from tables import TableProcessor, TableSplitter
 from datetime import datetime
 import uuid
 from ocr import ImageExtractor
+import re
 
 
 class Parser:
@@ -67,8 +68,44 @@ class Parser:
         return image_extractor.extract_text()
 
     def get_text_from_page(
-        self, page_content, coordinates, extraction_method, jpg_bytes_page
+        self,
+        page_content,
+        coordinates,
+        extraction_method,
+        jpg_bytes_page,
+        search_type=None,
+        regex=None,
     ):
+        """Extract text using either coordinates, OCR, or regex"""
+        if search_type == "regex" and regex:
+            try:
+                # Join all text from the page with spaces
+                full_page_text = " ".join([item["text"] for item in page_content])
+
+                # Use regex to find matches
+                matches = re.findall(regex, full_page_text)
+
+                # Handle different match types
+                if matches:
+                    if isinstance(matches[0], tuple):
+                        # If regex has capture groups, return first group
+                        return matches[0][0]
+                    else:
+                        # If no capture groups, return full match
+                        return matches[0]
+                return ""
+
+            except re.error as e:
+                print(f"Invalid regex pattern: {regex}")
+                print(f"Error: {str(e)}")
+                return ""
+            except Exception as e:
+                print(f"Error processing regex: {str(e)}")
+                return ""
+
+        if coordinates is None:
+            return ""
+
         if extraction_method == "extraction":
             items_within_coordinates = self.get_items_in_bounding_box(
                 page_content, coordinates

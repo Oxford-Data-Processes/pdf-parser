@@ -1,7 +1,7 @@
 {
     "metadata": {
-        "document_id": "59df5d89-27c4-44fe-a3ea-97a259354b55",
-        "parsed_at": "2024-12-09T17:39:29",
+        "document_id": "61d4238d-6e74-4ab1-b9dd-dc8da84c4133",
+        "parsed_at": "2024-12-09T18:05:27",
         "number_of_pages": 8
     },
     "pages": [
@@ -11,13 +11,19 @@
                     "customer_name": "Jake Charles Holmes"
                 },
                 {
-                    "sort_code": ""
+                    "sort_code": "04-00-04"
                 },
                 {
-                    "account_number": ""
+                    "account_number": "99309784"
                 },
                 {
-                    "account_balance": "\u00a31,705.47 Total balance"
+                    "total_balance": "\u00a31,705.47"
+                },
+                {
+                    "total_outgoings": "-\u00a37,249.18"
+                },
+                {
+                    "total_deposits": "\u00a37,296.34"
                 }
             ],
             "tables": [
