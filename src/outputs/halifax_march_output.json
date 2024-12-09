@@ -1,155 +1,155 @@
 {
     "metadata": {
-        "document_id": "9c7eac48-d71d-44e5-8ac3-e9e2bbb84048",
-        "parsed_at": "2024-12-09T09:38:11",
+        "document_id": "5e554575-5214-4da9-8987-a1b988089043",
+        "parsed_at": "2024-12-09T15:54:47",
         "number_of_pages": 2
     },
     "pages": [
         {
             "forms": [
                 {
-                    "customer_name": "Mr Jake Holmes"
+                    "customer_name": "Mr Jake Holmes\n"
                 },
                 {
-                    "sort_code": "11-00-56"
+                    "sort_code": "11-00-56\n"
                 },
                 {
-                    "account_number": "11980162"
+                    "account_number": "11980162\n"
                 },
                 {
-                    "start_balance": "\u00a3410.22 ."
+                    "start_balance": "\u00a3410.22\n"
                 }
             ],
             "tables": [
                 {
                     "data": [
                         {
-                            "date": "D0ate 1 Mar 23 .",
-                            "type": "TDype D .",
-                            "description": "DUescription NIVERSITY OF NOTT .",
-                            "money_out": "22.90Money Out (\u00a3) .",
-                            "money_in": "Moneyb Ilna n(k\u00a3.)",
-                            "balance": "410.22Balance (\u00a3) ."
+                            "date": "01 Mar 23\n",
+                            "type": "DD\n",
+                            "description": "UNIVERSITY OF NOTT\n",
+                            "money_out": "22.90\n",
+                            "money_in": "",
+                            "balance": "410.22\n"
                         },
                         {
-                            "date": "D0ate 1 Mar 23 .",
-                            "type": "TType FR .",
-                            "description": "DFescription ORGN PYT266644037 .",
-                            "money_out": "87.27Money Out (\u00a3) .",
-                            "money_in": "Moneyb Ilna n(k\u00a3.)",
-                            "balance": "322.95Balance (\u00a3) ."
+                            "date": "01 Mar 23\n",
+                            "type": "TFR\n",
+                            "description": "FORGN PYT266644037\n",
+                            "money_out": "87.27\n",
+                            "money_in": "",
+                            "balance": "322.95\n"
                         },
                         {
-                            "date": "D0ate 1 Mar 23 .",
-                            "type": "TDype EB .",
-                            "description": "DGescription OOGLE Domains .",
-                            "money_out": "8.28Money Out (\u00a3) .",
-                            "money_in": "Moneyb Ilna n(k\u00a3.)",
-                            "balance": "314.67Balance (\u00a3) ."
+                            "date": "01 Mar 23\n",
+                            "type": "DEB\n",
+                            "description": "GOOGLE Domains\n",
+                            "money_out": "8.28\n",
+                            "money_in": "",
+                            "balance": "314.67\n"
                         },
                         {
-                            "date": "D0ate 2 Mar 23 .",
-                            "type": "TFype PI .",
-                            "description": "DHescription IYACAR LTD .",
-                            "money_out": "Money Obulat n(\u00a3k).",
-                            "money_in": "48.00Money In (\u00a3) .",
-                            "balance": "362.67Balance (\u00a3) ."
+                            "date": "02 Mar 23\n",
+                            "type": "FPI\n",
+                            "description": "HIYACAR LTD\n",
+                            "money_out": "",
+                            "money_in": "48.00\n",
+                            "balance": "362.67\n"
                         },
                         {
-                            "date": "D0ate 2 Mar 23 .",
-                            "type": "TFype PI .",
-                            "description": "DHescription IYACAR LTD .",
-                            "money_out": "Money Obulat n(\u00a3k).",
-                            "money_in": "152.80Money In (\u00a3) .",
-                            "balance": "515.47Balance (\u00a3) ."
+                            "date": "02 Mar 23\n",
+                            "type": "FPI\n",
+                            "description": "HIYACAR LTD\n",
+                            "money_out": "",
+                            "money_in": "152.80\n",
+                            "balance": "515.47\n"
                         },
                         {
-                            "date": "D0ate 9 Mar 23 .",
-                            "type": "TFype PI .",
-                            "description": "DHescription IYACAR LTD .",
-                            "money_out": "Money Obulat n(\u00a3k).",
-                            "money_in": "81.59Money In (\u00a3) .",
-                            "balance": "597.06Balance (\u00a3) ."
+                            "date": "09 Mar 23\n",
+                            "type": "FPI\n",
+                            "description": "HIYACAR LTD\n",
+                            "money_out": "",
+                            "money_in": "81.59\n",
+                            "balance": "597.06\n"
                         },
                         {
-                            "date": "D0ate 9 Mar 23 .",
-                            "type": "TFype PI .",
-                            "description": "DHescription IYACAR LTD .",
-                            "money_out": "Money Obulat n(\u00a3k).",
-                            "money_in": "46.40Money In (\u00a3) .",
-                            "balance": "643.46Balance (\u00a3) ."
+                            "date": "09 Mar 23\n",
+                            "type": "FPI\n",
+                            "description": "HIYACAR LTD\n",
+                            "money_out": "",
+                            "money_in": "46.40\n",
+                            "balance": "643.46\n"
                         },
                         {
-                            "date": "D1ate 0 Mar 23 .",
-                            "type": "TDype EB .",
-                            "description": "DHescription EROKU FEB-7910926 .",
-                            "money_out": "21.99Money Out (\u00a3) .",
-                            "money_in": "Moneyb Ilna n(k\u00a3.)",
-                            "balance": "621.47Balance (\u00a3) ."
+                            "date": "10 Mar 23\n",
+                            "type": "DEB\n",
+                            "description": "HEROKU FEB-7910926\n",
+                            "money_out": "21.99\n",
+                            "money_in": "",
+                            "balance": "621.47\n"
                         },
                         {
-                            "date": "D1ate 0 Mar 23 .",
-                            "type": "TDype EB .",
-                            "description": "DNescription ON-GBP TRANS FEE .",
-                            "money_out": "0.65Money Out (\u00a3) .",
-                            "money_in": "Moneyb Ilna n(k\u00a3.)",
-                            "balance": "620.82Balance (\u00a3) ."
+                            "date": "10 Mar 23\n",
+                            "type": "DEB\n",
+                            "description": "NON-GBP TRANS FEE\n",
+                            "money_out": "0.65\n",
+                            "money_in": "",
+                            "balance": "620.82\n"
                         },
                         {
-                            "date": "D1ate 0 Mar 23 .",
-                            "type": "TDype EB .",
-                            "description": "DNescription ON-GBP PURCH FEE .",
-                            "money_out": "0.50Money Out (\u00a3) .",
-                            "money_in": "Moneyb Ilna n(k\u00a3.)",
-                            "balance": "620.32Balance (\u00a3) ."
+                            "date": "10 Mar 23\n",
+                            "type": "DEB\n",
+                            "description": "NON-GBP PURCH FEE\n",
+                            "money_out": "0.50\n",
+                            "money_in": "",
+                            "balance": "620.32\n"
                         },
                         {
-                            "date": "D1ate 3 Mar 23 .",
-                            "type": "TDype EB .",
-                            "description": "DGescription OOGLE Domains .",
-                            "money_out": "4.14Money Out (\u00a3) .",
-                            "money_in": "Moneyb Ilna n(k\u00a3.)",
-                            "balance": "616.18Balance (\u00a3) ."
+                            "date": "13 Mar 23\n",
+                            "type": "DEB\n",
+                            "description": "GOOGLE Domains\n",
+                            "money_out": "4.14\n",
+                            "money_in": "",
+                            "balance": "616.18\n"
                         },
                         {
-                            "date": "D1ate 4 Mar 23 .",
-                            "type": "TDype EB .",
-                            "description": "DGescription OOGLE Domains .",
-                            "money_out": "4.60Money Out (\u00a3) .",
-                            "money_in": "Moneyb Ilna n(k\u00a3.)",
-                            "balance": "611.58Balance (\u00a3) ."
+                            "date": "14 Mar 23\n",
+                            "type": "DEB\n",
+                            "description": "GOOGLE Domains\n",
+                            "money_out": "4.60\n",
+                            "money_in": "",
+                            "balance": "611.58\n"
                         },
                         {
-                            "date": "D1ate 6 Mar 23 .",
-                            "type": "TFype PI .",
-                            "description": "DHescription IYACAR LTD .",
-                            "money_out": "Money Obulat n(\u00a3k).",
-                            "money_in": "68.80Money In (\u00a3) .",
-                            "balance": "680.38Balance (\u00a3) ."
+                            "date": "16 Mar 23\n",
+                            "type": "FPI\n",
+                            "description": "HIYACAR LTD\n",
+                            "money_out": "",
+                            "money_in": "68.80\n",
+                            "balance": "680.38\n"
                         },
                         {
-                            "date": "D1ate 6 Mar 23 .",
-                            "type": "TFype PI .",
-                            "description": "DHescription IYACAR LTD .",
-                            "money_out": "Money Obulat n(\u00a3k).",
-                            "money_in": "25.60Money In (\u00a3) .",
-                            "balance": "705.98Balance (\u00a3) ."
+                            "date": "16 Mar 23\n",
+                            "type": "FPI\n",
+                            "description": "HIYACAR LTD\n",
+                            "money_out": "",
+                            "money_in": "25.60\n",
+                            "balance": "705.98\n"
                         },
                         {
-                            "date": "D2ate 0 Mar 23 .",
-                            "type": "TDype EB .",
-                            "description": "DGescription OOGLE Domains .",
-                            "money_out": "16.56Money Out (\u00a3) .",
-                            "money_in": "Moneyb Ilna n(k\u00a3.)",
-                            "balance": "689.42Balance (\u00a3) ."
+                            "date": "20 Mar 23\n",
+                            "type": "DEB\n",
+                            "description": "GOOGLE Domains\n",
+                            "money_out": "16.56\n",
+                            "money_in": "",
+                            "balance": "689.42\n"
                         },
                         {
-                            "date": "D2ate 1 Mar 23 .",
-                            "type": "TFype PO .",
-                            "description": "DTescription ESCO BANK .",
-                            "money_out": "68.70Money Out (\u00a3) .",
-                            "money_in": "Moneyb Ilna n(k\u00a3.)",
-                            "balance": "620.72Balance (\u00a3) ."
+                            "date": "21 Mar 23\n",
+                            "type": "FPO\n",
+                            "description": "TESCO BANK\n",
+                            "money_out": "68.70\n",
+                            "money_in": "",
+                            "balance": "620.72\n"
                         },
                         {
                             "date": "",
@@ -164,68 +164,68 @@
                 {
                     "data": [
                         {
-                            "date": "D2ate 3 Mar 23 .",
-                            "type": "TFype PI .",
-                            "description": "DHescription IYACAR LTD .",
-                            "money_out": "Money Obulat n(\u00a3k).",
-                            "money_in": "69.59Money In (\u00a3) .",
-                            "balance": "690.31Balance (\u00a3) ."
+                            "date": "23 Mar 23\n",
+                            "type": "FPI\n",
+                            "description": "HIYACAR LTD\n",
+                            "money_out": "",
+                            "money_in": "69.59\n",
+                            "balance": "690.31\n"
                         },
                         {
-                            "date": "D2ate 3 Mar 23 .",
-                            "type": "TFype PI .",
-                            "description": "DHescription IYACAR LTD .",
-                            "money_out": "Money Obulat n(\u00a3k).",
-                            "money_in": "48.00Money In (\u00a3) .",
-                            "balance": "738.31Balance (\u00a3) ."
+                            "date": "23 Mar 23\n",
+                            "type": "FPI\n",
+                            "description": "HIYACAR LTD\n",
+                            "money_out": "",
+                            "money_in": "48.00\n",
+                            "balance": "738.31\n"
                         },
                         {
-                            "date": "D2ate 3 Mar 23 .",
-                            "type": "TFype PO .",
-                            "description": "DRescription AJ .",
-                            "money_out": "200.00Money Out (\u00a3) .",
-                            "money_in": "Moneyb Ilna n(k\u00a3.)",
-                            "balance": "538.31Balance (\u00a3) ."
+                            "date": "23 Mar 23\n",
+                            "type": "FPO\n",
+                            "description": "RAJ\n",
+                            "money_out": "200.00\n",
+                            "money_in": "",
+                            "balance": "538.31\n"
                         },
                         {
-                            "date": "D2ate 9 Mar 23 .",
-                            "type": "TDype EB .",
-                            "description": "DGescription OOGLE Domains .",
-                            "money_out": "8.28Money Out (\u00a3) .",
-                            "money_in": "Moneyb Ilna n(k\u00a3.)",
-                            "balance": "530.03Balance (\u00a3) ."
+                            "date": "29 Mar 23\n",
+                            "type": "DEB\n",
+                            "description": "GOOGLE Domains\n",
+                            "money_out": "8.28\n",
+                            "money_in": "",
+                            "balance": "530.03\n"
                         },
                         {
-                            "date": "D2ate 9 Mar 23 .",
-                            "type": "TFype PO .",
-                            "description": "DSescription AMMY MALOUMI .",
-                            "money_out": "70.00Money Out (\u00a3) .",
-                            "money_in": "Moneyb Ilna n(k\u00a3.)",
-                            "balance": "460.03Balance (\u00a3) ."
+                            "date": "29 Mar 23\n",
+                            "type": "FPO\n",
+                            "description": "SAMMY MALOUMI\n",
+                            "money_out": "70.00\n",
+                            "money_in": "",
+                            "balance": "460.03\n"
                         },
                         {
-                            "date": "D3ate 0 Mar 23 .",
-                            "type": "TFype PI .",
-                            "description": "DHescription IYACAR LTD .",
-                            "money_out": "Money Obulat n(\u00a3k).",
-                            "money_in": "23.20Money In (\u00a3) .",
-                            "balance": "483.23Balance (\u00a3) ."
+                            "date": "30 Mar 23\n",
+                            "type": "FPI\n",
+                            "description": "HIYACAR LTD\n",
+                            "money_out": "",
+                            "money_in": "23.20\n",
+                            "balance": "483.23\n"
                         },
                         {
-                            "date": "D3ate 0 Mar 23 .",
-                            "type": "TFype PI .",
-                            "description": "DHescription IYACAR LTD .",
-                            "money_out": "Money Obulat n(\u00a3k).",
-                            "money_in": "48.00Money In (\u00a3) .",
-                            "balance": "531.23Balance (\u00a3) ."
+                            "date": "30 Mar 23\n",
+                            "type": "FPI\n",
+                            "description": "HIYACAR LTD\n",
+                            "money_out": "",
+                            "money_in": "48.00\n",
+                            "balance": "531.23\n"
                         },
                         {
-                            "date": "D3ate 1 Mar 23 .",
-                            "type": "TDype EB .",
-                            "description": "DGescription OOGLE Domains .",
-                            "money_out": "10.00Money Out (\u00a3) .",
-                            "money_in": "Moneyb Ilna n(k\u00a3.)",
-                            "balance": "521.23Balance (\u00a3) ."
+                            "date": "31 Mar 23\n",
+                            "type": "DEB\n",
+                            "description": "GOOGLE Domains\n",
+                            "money_out": "10.00\n",
+                            "money_in": "",
+                            "balance": "521.23\n"
                         },
                         {
                             "date": "",
@@ -233,7 +233,7 @@
                             "description": "",
                             "money_out": "",
                             "money_in": "",
-                            "balance": "blank."
+                            "balance": ""
                         }
                     ]
                 }

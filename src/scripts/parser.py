@@ -71,12 +71,10 @@ class Parser:
     ):
         if extraction_method == "extraction":
             items_within_coordinates = self.get_items_in_bounding_box(
-                page_content, coordinates
+                text_coordinates=page_content, coordinates=coordinates
             )
             return self.get_text_from_items(items_within_coordinates)
         elif extraction_method == "ocr":
-            print("Using OCR")
-            print(coordinates)
             import os
 
             # Create a directory for storing images if it doesn't exist
@@ -87,9 +85,12 @@ class Parser:
             coordinates_str = f"{coordinates['top_left']['x']}_{coordinates['top_left']['y']}_{coordinates['bottom_right']['x']}_{coordinates['bottom_right']['y']}"
             file_path = os.path.join(output_dir, f"{coordinates_str}.jpg")
 
-            # Save the jpg_bytes_page as a jpg file
-            with open(file_path, "wb") as jpg_file:
-                jpg_file.write(jpg_bytes_page)
+            image_extractor = ImageExtractor(jpg_bytes_page, coordinates)
+
+            # Save only the section of the jpg specified by coordinates
+            section_image = image_extractor.extract_section()
+            section_image.save(file_path, "JPEG")
+
             return self.get_text_from_ocr(jpg_bytes_page, coordinates)
 
     def get_output_data_from_form_rule(

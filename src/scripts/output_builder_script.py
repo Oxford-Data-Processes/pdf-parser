@@ -7,8 +7,8 @@ templates_and_identifiers = {
     # "barclays_student": ["march", "april", "may"],
     # "barclays": ["march", "april", "may"],
     # "first_direct": ["march", "april", "may"],
-    # "halifax": ["march", "april", "may"],
-    "lloyds": ["september"],
+    "halifax": ["march", "april", "may"],
+    # "lloyds": ["september"],
     # "monzo": ["november", "3_months"],
     # "payslip": ["jake"],
 }
@@ -32,9 +32,12 @@ for template_name, identifiers in templates_and_identifiers.items():
         images_dir = os.path.join("src", "images", f"{template_name}_{identifier}")
         jpg_files = [
             os.path.join(images_dir, f)
-            for f in os.listdir(images_dir)
+            for f in sorted(
+                os.listdir(images_dir), key=lambda x: int(x[-5])
+            )  # Assuming the page number is the final character before the file extension
             if f.endswith(".jpg")
         ]
+
         jpg_bytes = [open(jpg_file, "rb").read() for jpg_file in jpg_files]
 
         output = Parser.parse_pdf(template, pdf_data, jpg_bytes)

@@ -13,11 +13,11 @@
                 "coordinates": {
                     "top_left": {
                         "x": 0.086,
-                        "y": 0.122
+                        "y": 0.115
                     },
                     "bottom_right": {
                         "x": 0.313,
-                        "y": 0.135
+                        "y": 0.134
                     }
                 }
             }
@@ -30,11 +30,11 @@
                 "coordinates": {
                     "top_left": {
                         "x": 0.654,
-                        "y": 0.134
+                        "y": 0.125
                     },
                     "bottom_right": {
                         "x": 0.739,
-                        "y": 0.15
+                        "y": 0.148
                     }
                 }
             }
@@ -47,7 +47,7 @@
                 "coordinates": {
                     "top_left": {
                         "x": 0.655,
-                        "y": 0.149
+                        "y": 0.145
                     },
                     "bottom_right": {
                         "x": 0.761,
@@ -64,7 +64,7 @@
                 "coordinates": {
                     "top_left": {
                         "x": 0.816,
-                        "y": 0.276
+                        "y": 0.27
                     },
                     "bottom_right": {
                         "x": 0.938,
