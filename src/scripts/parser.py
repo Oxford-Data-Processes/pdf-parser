@@ -75,6 +75,21 @@ class Parser:
             )
             return self.get_text_from_items(items_within_coordinates)
         elif extraction_method == "ocr":
+            print("Using OCR")
+            print(coordinates)
+            import os
+
+            # Create a directory for storing images if it doesn't exist
+            output_dir = "extracted_images"
+            os.makedirs(output_dir, exist_ok=True)
+
+            # Generate a filename based on the coordinates
+            coordinates_str = f"{coordinates['top_left']['x']}_{coordinates['top_left']['y']}_{coordinates['bottom_right']['x']}_{coordinates['bottom_right']['y']}"
+            file_path = os.path.join(output_dir, f"{coordinates_str}.jpg")
+
+            # Save the jpg_bytes_page as a jpg file
+            with open(file_path, "wb") as jpg_file:
+                jpg_file.write(jpg_bytes_page)
             return self.get_text_from_ocr(jpg_bytes_page, coordinates)
 
     def get_output_data_from_form_rule(
