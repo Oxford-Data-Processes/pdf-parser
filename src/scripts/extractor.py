@@ -23,6 +23,7 @@ class Extractor:
         pdf_jpg_files = ImageExtractor(self.pdf_bytes).convert_pdf_to_jpg_files(
             prefix=prefix
         )
+
         images_dir = os.path.join("src", "images", prefix)
         os.makedirs(images_dir, exist_ok=True)
         for jpg_file, jpg_bytes in pdf_jpg_files.items():

@@ -1,155 +1,155 @@
 {
     "metadata": {
-        "document_id": "e4ab6ddc-a0cc-45d0-a6b2-3aba0d0a9c87",
-        "parsed_at": "2024-12-09T09:38:11",
+        "document_id": "34cd099d-a76c-49e4-a25e-1fe04f5a5cbb",
+        "parsed_at": "2024-12-09T14:17:20",
         "number_of_pages": 2
     },
     "pages": [
         {
             "forms": [
                 {
-                    "customer_name": "Mr Christopher Little"
+                    "customer_name": ""
                 },
                 {
-                    "sort_code": "30-90-42"
+                    "sort_code": ""
                 },
                 {
-                    "account_number": "30336468"
+                    "account_number": ""
                 },
                 {
-                    "start_balance": "\u00a31,075.21 ."
+                    "start_balance": "1,273.29\n"
                 }
             ],
             "tables": [
                 {
                     "data": [
                         {
-                            "date": "D0ate 2 Sep 24 .",
-                            "type": "TSype O .",
-                            "description": "DJescription ACKIE LITTLE .",
-                            "money_out": "300.00Money Out (\u00a3) .",
-                            "money_in": "Moneyb Ilna n(k\u00a3.)",
-                            "balance": "775.21Balance (\u00a3) ."
+                            "date": "",
+                            "type": "",
+                            "description": "",
+                            "money_out": "",
+                            "money_in": "",
+                            "balance": ""
                         },
                         {
-                            "date": "D0ate 2 Sep 24 .",
-                            "type": "TDype D .",
-                            "description": "DDescription VLA-EK11EAY .",
-                            "money_out": "14.00Money Out (\u00a3) .",
-                            "money_in": "Moneyb Ilna n(k\u00a3.)",
-                            "balance": "761.21Balance (\u00a3) ."
+                            "date": "",
+                            "type": "",
+                            "description": "",
+                            "money_out": "",
+                            "money_in": "",
+                            "balance": ""
                         },
                         {
-                            "date": "D0ate 2 Sep 24 .",
-                            "type": "TDype D .",
-                            "description": "DBescription ARCLAYS UK MTGES .",
-                            "money_out": "597.55Money Out (\u00a3) .",
-                            "money_in": "Moneyb Ilna n(k\u00a3.)",
-                            "balance": "163.66Balance (\u00a3) ."
+                            "date": "",
+                            "type": "",
+                            "description": "",
+                            "money_out": "",
+                            "money_in": "",
+                            "balance": ""
                         },
                         {
-                            "date": "D0ate 2 Sep 24 .",
-                            "type": "Tblyapnek.",
-                            "description": "DIescriptionNTEREST (GROSS) .",
-                            "money_out": "Money Obulat n(\u00a3k).",
-                            "money_in": "2.73Money In (\u00a3) .",
-                            "balance": "166.39Balance (\u00a3) ."
+                            "date": "",
+                            "type": "",
+                            "description": "",
+                            "money_out": "",
+                            "money_in": "",
+                            "balance": ""
                         },
                         {
-                            "date": "D0ate 3 Sep 24 .",
-                            "type": "TDype EB .",
-                            "description": "DAescription WS EMEA .",
-                            "money_out": "0.20Money Out (\u00a3) .",
-                            "money_in": "Moneyb Ilna n(k\u00a3.)",
-                            "balance": "166.19Balance (\u00a3) ."
+                            "date": "",
+                            "type": "",
+                            "description": "",
+                            "money_out": "",
+                            "money_in": "",
+                            "balance": ""
                         },
                         {
-                            "date": "D0ate 3 Sep 24 .",
-                            "type": "TPype AY .",
-                            "description": "DCescription LUB LLOYDS FEE .",
-                            "money_out": "3.00Money Out (\u00a3) .",
-                            "money_in": "Moneyb Ilna n(k\u00a3.)",
-                            "balance": "163.19Balance (\u00a3) ."
+                            "date": "",
+                            "type": "",
+                            "description": "",
+                            "money_out": "",
+                            "money_in": "",
+                            "balance": ""
                         },
                         {
-                            "date": "D0ate 3 Sep 24 .",
-                            "type": "TDype EP .",
-                            "description": "DCescription LUB LLOYDS WAIVED .",
-                            "money_out": "Money Obulat n(\u00a3k).",
-                            "money_in": "3.00Money In (\u00a3) .",
-                            "balance": "166.19Balance (\u00a3) ."
+                            "date": "",
+                            "type": "",
+                            "description": "",
+                            "money_out": "",
+                            "money_in": "",
+                            "balance": ""
                         },
                         {
-                            "date": "D0ate 6 Sep 24 .",
-                            "type": "TDype EB .",
-                            "description": "DAescription IRBNB * HM8Y5A4RR .",
-                            "money_out": "11.00Money Out (\u00a3) .",
-                            "money_in": "Moneyb Ilna n(k\u00a3.)",
-                            "balance": "155.19Balance (\u00a3) ."
+                            "date": "",
+                            "type": "",
+                            "description": "",
+                            "money_out": "",
+                            "money_in": "",
+                            "balance": ""
                         },
                         {
-                            "date": "D1ate 6 Sep 24 .",
-                            "type": "TDype EB .",
-                            "description": "DGescription OOGLE Google One .",
-                            "money_out": "1.59Money Out (\u00a3) .",
-                            "money_in": "Moneyb Ilna n(k\u00a3.)",
-                            "balance": "153.60Balance (\u00a3) ."
+                            "date": "",
+                            "type": "",
+                            "description": "",
+                            "money_out": "",
+                            "money_in": "",
+                            "balance": ""
                         },
                         {
-                            "date": "D1ate 6 Sep 24 .",
-                            "type": "TFype PI .",
-                            "description": "DVescription ANGUARD ASSET MAN .",
-                            "money_out": "Money Obulat n(\u00a3k).",
-                            "money_in": "4,042.65Money In (\u00a3) .",
-                            "balance": "4,196.25Balance (\u00a3) ."
+                            "date": "",
+                            "type": "",
+                            "description": "",
+                            "money_out": "",
+                            "money_in": "",
+                            "balance": ""
                         },
                         {
-                            "date": "D1ate 7 Sep 24 .",
-                            "type": "TType FR .",
-                            "description": "DCescription LITTLE .",
-                            "money_out": "3,800.00Money Out (\u00a3) .",
-                            "money_in": "Moneyb Ilna n(k\u00a3.)",
-                            "balance": "396.25Balance (\u00a3) ."
+                            "date": "",
+                            "type": "",
+                            "description": "",
+                            "money_out": "",
+                            "money_in": "",
+                            "balance": ""
                         },
                         {
-                            "date": "D1ate 8 Sep 24 .",
-                            "type": "TDype D .",
-                            "description": "DLescription VIC .",
-                            "money_out": "67.85Money Out (\u00a3) .",
-                            "money_in": "Moneyb Ilna n(k\u00a3.)",
-                            "balance": "328.40Balance (\u00a3) ."
+                            "date": "",
+                            "type": "",
+                            "description": "",
+                            "money_out": "",
+                            "money_in": "",
+                            "balance": ""
                         },
                         {
-                            "date": "D1ate 9 Sep 24 .",
-                            "type": "TSype O .",
-                            "description": "DMescription AURICIO JIMENEZ M .",
-                            "money_out": "45.00Money Out (\u00a3) .",
-                            "money_in": "Moneyb Ilna n(k\u00a3.)",
-                            "balance": "283.40Balance (\u00a3) ."
+                            "date": "Transactic\n",
+                            "type": "",
+                            "description": "n types\n\n",
+                            "money_out": "",
+                            "money_in": "",
+                            "balance": ""
                         },
                         {
-                            "date": "D2ate 0 Sep 24 .",
-                            "type": "TDype D .",
-                            "description": "DHescription 3G .",
-                            "money_out": "13.12Money Out (\u00a3) .",
-                            "money_in": "Moneyb Ilna n(k\u00a3.)",
-                            "balance": "270.28Balance (\u00a3) ."
+                            "date": "BGC Bank G\n",
+                            "type": "",
+                            "description": "ro Credit BP _ Bill Payments\n",
+                            "money_out": "",
+                            "money_in": "SHG Charge\n",
+                            "balance": "eque\n\n"
                         },
                         {
-                            "date": "D2ate 0 Sep 24 .",
-                            "type": "TFype PO .",
-                            "description": "DCescription HRISTOPHER LITTLE .",
-                            "money_out": "50.00Money Out (\u00a3) .",
-                            "money_in": "Moneyb Ilna n(k\u00a3.)",
-                            "balance": "220.28Balance (\u00a3) ."
+                            "date": "VYNM VUITCU\n\nDEP Deposi\n",
+                            "type": "",
+                            "description": "UIT\n\nVP tl UdolipOnit\n\nFEE Fixed Service\n",
+                            "money_out": "nt In FPO Fe\n",
+                            "money_in": "Jiy VHeCl VOvIL\n\n-PI Faster Paym\n",
+                            "balance": "Vil Vald\n\nster Payment Out\n"
                         },
                         {
-                            "date": "D2ate 3 Sep 24 .",
-                            "type": "TDype EB .",
-                            "description": "DSescription potify Limited .",
-                            "money_out": "11.99Money Out (\u00a3) .",
-                            "money_in": "Moneyb Ilna n(k\u00a3.)",
-                            "balance": "208.29Balance (\u00a3) ."
+                            "date": "MPI Mobile\n\nTOLD Trancfz\n",
+                            "type": "it Out\n",
+                            "description": ">ayment In MPO Mobile Payme\n\n.\n",
+                            "money_out": "so St\n",
+                            "money_in": ">AY Payment\n",
+                            "balance": "anding Order\n"
                         },
                         {
                             "date": "",
@@ -164,44 +164,44 @@
                 {
                     "data": [
                         {
-                            "date": "D2ate 3 Sep 24 .",
-                            "type": "TFype PI .",
-                            "description": "DSescription IONITA .",
-                            "money_out": "Money Obulat n(\u00a3k).",
-                            "money_in": "1,100.00Money In (\u00a3) .",
-                            "balance": "1,308.29Balance (\u00a3) ."
-                        },
-                        {
-                            "date": "D2ate 4 Sep 24 .",
-                            "type": "TDype D .",
-                            "description": "DAescription SHBOURNE MANAGEME .",
-                            "money_out": "44.00Money Out (\u00a3) .",
-                            "money_in": "Moneyb Ilna n(k\u00a3.)",
-                            "balance": "1,264.29Balance (\u00a3) ."
-                        },
-                        {
-                            "date": "D3ate 0 Sep 24 .",
-                            "type": "TFype PI .",
-                            "description": "DCescription LARA BUENO LOPEZ .",
-                            "money_out": "Money Obulat n(\u00a3k).",
-                            "money_in": "9.00Money In (\u00a3) .",
-                            "balance": "1,273.29Balance (\u00a3) ."
-                        },
-                        {
-                            "date": "D3ate 0 Sep 24 .",
-                            "type": "TDype EB .",
-                            "description": "DAescription IRBNB * HM8Y5A4RR .",
-                            "money_out": "43.97Money Out (\u00a3) .",
-                            "money_in": "Moneyb Ilna n(k\u00a3.)",
-                            "balance": "1,229.32Balance (\u00a3) ."
-                        },
-                        {
-                            "date": "",
+                            "date": "CLIIIRITA\n",
                             "type": "",
-                            "description": "",
-                            "money_out": "",
-                            "money_in": "",
-                            "balance": "blank."
+                            "description": "VHaQ\n",
+                            "money_out": "yr INNOA tr 2N C,\n",
+                            "money_in": "NA Cantamhea\n",
+                            "balance": "Intambhar ON9OA\n"
+                        },
+                        {
+                            "date": "es eee\n",
+                            "type": "",
+                            "description": "=\n\n",
+                            "money_out": "=a ees\n\n=\n",
+                            "money_in": "TF\n\n",
+                            "balance": "he a aca re\n"
+                        },
+                        {
+                            "date": "Money In\n",
+                            "type": "|57.38\n",
+                            "description": "\u00a35,\n",
+                            "money_out": "tember 2024\n",
+                            "money_in": "Balance on 01 Sexy\n",
+                            "balance": "\u00a31,075.21\n"
+                        },
+                        {
+                            "date": "Money Out\n",
+                            "type": ")03.27\n",
+                            "description": "\u00a35,\n",
+                            "money_out": "tember 2024\n",
+                            "money_in": "Balance on 30 Sey\n",
+                            "balance": "\u00a31,229.32\n"
+                        },
+                        {
+                            "date": "Your Tran:\n\nDate\n\n02 Sep 24\n02 Sep 24\n02 Sep 24\n02 Sep 24\n03 Sep 24\n03 Sep 24\n03 Sep 24\n06 Sep 24\n16 Sep 24\n16 Sep 24\n17 Sep 24\n\n18 Sep 24\n",
+                            "type": "Type\nso\nDD\n\nDD\n\nDEB\nPAY\nDEP\nDEB\nDEB\nFPI\n\nTFR\n\nDD\n",
+                            "description": "sactions\n\nDescription\n\nJACKIE LITTLE\nDVLA-EK11EAY\nBARCLAYS UK MTGES\nINTEREST (GROSS)\nAWS EMEA\n\nCLUB LLOYDS FEE\nCLUB LLOYDS WAIVED\nAIRBNB * HM8Y5A4RR\nGOOGLE Google One\nVANGUARD ASSET MAN\nC LITTLE\n\nLVIC\n",
+                            "money_out": "Money Out (\u00a3)\n300.00\n14.00\n\n597.55\n\n0.20\n\n3.00\n\n11.00\n\n1.59\n\n3,800.00\n\n67.85\n",
+                            "money_in": "Money In (\u00a3)\n\n2.73\n\n3.00\n\n4,042.65\n",
+                            "balance": "Balance (\u00a3)\n775.21\n761.21\n163.66\n166.39\n166.19\n163.19\n166.19\n155.19\n153.60\n\n4,196.25\n396.25\n\n328.40\n"
                         }
                     ]
                 }

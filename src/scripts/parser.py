@@ -3,6 +3,7 @@ from forms import FormProcessor
 from tables import TableProcessor, TableSplitter
 from datetime import datetime
 import uuid
+from ocr import ImageExtractor
 
 
 class Parser:
@@ -61,22 +62,35 @@ class Parser:
     def get_text_from_items(self, items):
         return " ".join([item["text"] for item in items])
 
-    def get_text_from_page(self, page_content, coordinates):
-        items_within_coordinates = self.get_items_in_bounding_box(
-            page_content, coordinates
-        )
-        return self.get_text_from_items(items_within_coordinates)
+    def get_text_from_ocr(self, jpg_bytes_page, coordinates):
+        image_extractor = ImageExtractor(jpg_bytes_page, coordinates)
+        return image_extractor.extract_text()
+
+    def get_text_from_page(
+        self, page_content, coordinates, extraction_method, jpg_bytes_page
+    ):
+        if extraction_method == "extraction":
+            items_within_coordinates = self.get_items_in_bounding_box(
+                page_content, coordinates
+            )
+            return self.get_text_from_items(items_within_coordinates)
+        elif extraction_method == "ocr":
+            return self.get_text_from_ocr(jpg_bytes_page, coordinates)
 
     def get_output_data_from_form_rule(
-        self, form_rule_id, page_index, pdf_data, template
+        self, form_rule_id, page_index, pdf_data, template, jpg_bytes
     ):
         form_processor = FormProcessor(self)
         return form_processor.get_output_data_from_form_rule(
-            form_rule_id, page_index, pdf_data, template
+            form_rule_id,
+            page_index,
+            pdf_data,
+            template,
+            jpg_bytes,
         )
 
     def get_output_data_from_table_rule(
-        self, table_rule_id, page_index, pdf_data, template
+        self, table_rule_id, page_index, pdf_data, template, jpg_bytes
     ):
         table_processor = TableProcessor(template, self)
         table_splitter = TableSplitter(template, self)
@@ -92,13 +106,19 @@ class Parser:
 
         data = {}
 
+        jpg_bytes_page = jpg_bytes[page_index]
+
+        extraction_method = template["extraction_method"]
         for column in processed_columns:
             split_boxes = table_splitter.split_bounding_box_by_lines(
                 column["coordinates"], column["lines_y_coordinates"]
             )
             for row_index, box in enumerate(split_boxes):
                 text_value = self.get_text_from_page(
-                    pdf_data["pages"][page_index]["content"], box
+                    pdf_data["pages"][page_index]["content"],
+                    box,
+                    extraction_method,
+                    jpg_bytes_page,
                 )
                 if row_index not in data:
                     data[row_index] = {}
@@ -110,7 +130,9 @@ class Parser:
         return ordered_data
 
     @staticmethod
-    def parse_pdf(template: Dict[str, Any], pdf_data: Dict[str, Any]) -> Dict[str, Any]:
+    def parse_pdf(
+        template: Dict[str, Any], pdf_data: Dict[str, Any], jpg_bytes: List[bytes]
+    ) -> Dict[str, Any]:
 
         forms = []
         tables = []
@@ -125,7 +147,7 @@ class Parser:
                     for rule_id in page_rule["forms"]:
                         try:
                             form = Parser().get_output_data_from_form_rule(
-                                rule_id, page_index, pdf_data, template
+                                rule_id, page_index, pdf_data, template, jpg_bytes
                             )
                             forms.append(form)
                         except IndexError:
@@ -136,7 +158,7 @@ class Parser:
                     for rule_id in page_rule["tables"]:
                         try:
                             table_data = Parser().get_output_data_from_table_rule(
-                                rule_id, page_index, pdf_data, template
+                                rule_id, page_index, pdf_data, template, jpg_bytes
                             )
 
                             tables.append({"data": table_data})
