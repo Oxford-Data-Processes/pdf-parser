@@ -3,6 +3,7 @@ import numpy as np
 from PIL import Image
 import io
 from pdf2image import convert_from_bytes
+import os
 
 
 class Extractor:
@@ -22,6 +23,12 @@ class Extractor:
         pdf_jpg_files = ImageExtractor(self.pdf_bytes).convert_pdf_to_jpg_files(
             prefix=prefix
         )
+        images_dir = os.path.join("src", "images", prefix)
+        os.makedirs(images_dir, exist_ok=True)
+        for jpg_file, jpg_bytes in pdf_jpg_files.items():
+            with open(os.path.join(images_dir, jpg_file), "wb") as image_file:
+                image_file.write(jpg_bytes)
+
         with pdfplumber.open(io.BytesIO(self.pdf_bytes)) as pdf:
             data = {
                 "pages": [],
