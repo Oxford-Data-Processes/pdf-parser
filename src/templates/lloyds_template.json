@@ -10,6 +10,8 @@
             "type": "form", 
             "config": {
                 "field_name": "customer_name",
+                "search_type": "coordinates",
+                "regex": null,
                 "coordinates": {
                     "top_left": {
                         "x": 0.086,
@@ -27,6 +29,8 @@
             "type": "form",
             "config": {
                 "field_name": "sort_code", 
+                "search_type": "coordinates",
+                "regex": null,
                 "coordinates": {
                     "top_left": {
                         "x": 0.654,
@@ -44,6 +48,8 @@
             "type": "form",
             "config": {
                 "field_name": "account_number",
+                "search_type": "coordinates",
+                "regex": null,
                 "coordinates": {
                     "top_left": {
                         "x": 0.655,
@@ -57,10 +63,32 @@
             }
         },
         {
+            "rule_id": "money_in",
+            "type": "form",
+            "config": {
+                "field_name": "money_in",
+                "search_type": "coordinates",
+                "regex": null,
+                "coordinates": {
+                    "top_left": {
+                        "x": 0.409,
+                        "y": 0.27
+                    },
+                    "bottom_right": {
+                        "x": 0.497,
+                        "y": 0.29
+                    }
+                },
+                "type": "text"
+            }
+        },
+        {
             "rule_id": "start_balance",
             "type": "form",
             "config": {
                 "field_name": "start_balance",
+                "search_type": "coordinates",
+                "regex": null,
                 "coordinates": {
                     "top_left": {
                         "x": 0.816,
@@ -71,6 +99,46 @@
                         "y": 0.294
                     }
                 }
+            }
+        },
+        {
+            "rule_id": "money_out",
+            "type": "form",
+            "config": {
+                "field_name": "money_out",
+                "search_type": "coordinates",
+                "regex": null,
+                "coordinates": {
+                    "top_left": {
+                        "x": 0.404,
+                        "y": 0.291
+                    },
+                    "bottom_right": {
+                        "x": 0.5,
+                        "y": 0.309
+                    }
+                },
+                "type": "text"
+            }
+        },
+        {
+            "rule_id": "end_balance",
+            "type": "form",
+            "config": {
+                "field_name": "end_balance",
+                "search_type": "coordinates",
+                "regex": null,
+                "coordinates": {
+                    "top_left": {
+                        "x": 0.828,
+                        "y": 0.291
+                    },
+                    "bottom_right": {
+                        "x": 0.91,
+                        "y": 0.308
+                    }
+                },
+                "type": "text"
             }
         },
         {

@@ -278,8 +278,8 @@ class PDFCoordinateFinder:
 
 if __name__ == "__main__":
     document_type = "bank_statements"
-    template_name = "first_direct"
-    identifier = "april"
+    template_name = "lloyds"
+    identifier = "september"
     pdf_path = (
         f"data/{document_type}/{template_name}/pdf/{template_name}_{identifier}.pdf"
     )

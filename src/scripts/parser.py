@@ -71,7 +71,7 @@ class Parser:
     ):
         if extraction_method == "extraction":
             items_within_coordinates = self.get_items_in_bounding_box(
-                text_coordinates=page_content, coordinates=coordinates
+                page_content, coordinates
             )
             return self.get_text_from_items(items_within_coordinates)
         elif extraction_method == "ocr":

@@ -1,7 +1,7 @@
 {
     "metadata": {
-        "document_id": "fda05f3d-d618-4ba2-a5d7-d401cb17820d",
-        "parsed_at": "2024-12-09T09:38:11",
+        "document_id": "b5cc564c-436f-41a4-ba49-fa0ef85ed3b7",
+        "parsed_at": "2024-12-09T17:39:29",
         "number_of_pages": 4
     },
     "pages": [
@@ -17,14 +17,14 @@
                     "account_number": "60397861"
                 },
                 {
-                    "account_balance": "\u00a31,030.16"
+                    "account_balance": "\u00a31,030.16 balance"
                 }
             ],
             "tables": [
                 {
                     "data": [
                         {
-                            "date": "United Sort code: Account BIC: IBAN: GB71 Date 30/11/2023",
+                            "date": "30/11/2023",
                             "description": "Trainline +443332022222 GBR",
                             "amount": "-2.60",
                             "balance": "1,030.16"

@@ -13,8 +13,8 @@ ROOT_DIR = os.path.dirname(SRC_DIR)
 FORMS_PAGE_NUMBER = 1
 
 document_type = "bank_statements"
-template_name: str = "barclays"
-identifier: str = "march"
+template_name: str = "monzo"
+identifier: str = "3_months"
 template_path: str = os.path.join(
     SRC_DIR, "templates", f"{template_name}_template.json"
 )

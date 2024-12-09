@@ -1,7 +1,7 @@
 {
     "metadata": {
-        "document_id": "fa89188d-1452-4fb5-98f6-6f6936416d4d",
-        "parsed_at": "2024-12-09T09:38:11",
+        "document_id": "59df5d89-27c4-44fe-a3ea-97a259354b55",
+        "parsed_at": "2024-12-09T17:39:29",
         "number_of_pages": 8
     },
     "pages": [
@@ -17,14 +17,14 @@
                     "account_number": ""
                 },
                 {
-                    "account_balance": "\u00a31,705.47"
+                    "account_balance": "\u00a31,705.47 Total balance"
                 }
             ],
             "tables": [
                 {
                     "data": [
                         {
-                            "date": "Sort code: Account BIC: IBAN: GB88 Date 31/05/2023",
+                            "date": "Date 31/05/2023",
                             "description": "Description Transfer to Pot",
                             "amount": "(GBP) Amount -0.77",
                             "balance": "(GBP) Balance 252.58"
