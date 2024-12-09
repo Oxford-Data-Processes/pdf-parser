@@ -175,7 +175,7 @@
                         "coordinates": {
                             "top_left": {
                                 "x": 0.107,
-                                "y": 0.51
+                                "y": 0.541
                             },
                             "bottom_right": {
                                 "x": 0.202,
@@ -191,7 +191,7 @@
                         "coordinates": {
                             "top_left": {
                                 "x": 0.199,
-                                "y": 0.514
+                                "y": 0.541
                             },
                             "bottom_right": {
                                 "x": 0.253,
@@ -207,7 +207,7 @@
                         "coordinates": {
                             "top_left": {
                                 "x": 0.256,
-                                "y": 0.511
+                                "y": 0.541
                             },
                             "bottom_right": {
                                 "x": 0.621,
@@ -223,7 +223,7 @@
                         "coordinates": {
                             "top_left": {
                                 "x": 0.61,
-                                "y": 0.51
+                                "y": 0.541
                             },
                             "bottom_right": {
                                 "x": 0.71,
@@ -239,7 +239,7 @@
                         "coordinates": {
                             "top_left": {
                                 "x": 0.758,
-                                "y": 0.511
+                                "y": 0.541
                             },
                             "bottom_right": {
                                 "x": 0.86,
@@ -255,7 +255,7 @@
                         "coordinates": {
                             "top_left": {
                                 "x": 0.893,
-                                "y": 0.515
+                                "y": 0.541
                             },
                             "bottom_right": {
                                 "x": 0.99,
@@ -283,7 +283,7 @@
                         "coordinates": {
                             "top_left": {
                                 "x": 0.107,
-                                "y": 0.3
+                                "y": 0.318
                             },
                             "bottom_right": {
                                 "x": 0.202,
@@ -299,7 +299,7 @@
                         "coordinates": {
                             "top_left": {
                                 "x": 0.199,
-                                "y": 0.3
+                                "y": 0.318
                             },
                             "bottom_right": {
                                 "x": 0.253,
@@ -315,7 +315,7 @@
                         "coordinates": {
                             "top_left": {
                                 "x": 0.256,
-                                "y": 0.3
+                                "y": 0.318
                             },
                             "bottom_right": {
                                 "x": 0.621,
@@ -331,7 +331,7 @@
                         "coordinates": {
                             "top_left": {
                                 "x": 0.61,
-                                "y": 0.3
+                                "y": 0.318
                             },
                             "bottom_right": {
                                 "x": 0.71,
@@ -347,7 +347,7 @@
                         "coordinates": {
                             "top_left": {
                                 "x": 0.758,
-                                "y": 0.3
+                                "y": 0.318
                             },
                             "bottom_right": {
                                 "x": 0.86,
@@ -363,7 +363,7 @@
                         "coordinates": {
                             "top_left": {
                                 "x": 0.893,
-                                "y": 0.3
+                                "y": 0.318
                             },
                             "bottom_right": {
                                 "x": 0.99,

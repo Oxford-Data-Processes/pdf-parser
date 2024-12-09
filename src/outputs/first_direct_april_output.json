@@ -1,7 +1,7 @@
 {
     "metadata": {
-        "document_id": "e81660f5-90ee-4b0e-86fb-5178b721ba5f",
-        "parsed_at": "2024-12-08T10:49:51",
+        "document_id": "4c767d0e-3ab3-42b7-be64-b0f3585d19bc",
+        "parsed_at": "2024-12-09T09:38:11",
         "number_of_pages": 3
     },
     "pages": [
@@ -36,12 +36,12 @@
                 {
                     "data": [
                         {
-                            "date": "A 28 Mar 23",
+                            "date": "",
                             "payment_type": "",
-                            "description": "Balancebrought forward .",
+                            "description": "",
                             "paid_out": "",
                             "paid_in": "",
-                            "balance": "352.19"
+                            "balance": ""
                         },
                         {
                             "date": "30 Mar 23",
@@ -194,10 +194,10 @@
                         {
                             "date": "",
                             "payment_type": "",
-                            "description": "Balancebroughtforward",
+                            "description": "",
                             "paid_out": "",
                             "paid_in": "",
-                            "balance": "76.55D"
+                            "balance": ""
                         },
                         {
                             "date": "27 Apr 23",

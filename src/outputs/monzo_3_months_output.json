@@ -1,7 +1,7 @@
 {
     "metadata": {
-        "document_id": "1a16f506-3099-473c-83e5-f3cff531db5d",
-        "parsed_at": "2024-12-06T11:30:11",
+        "document_id": "fa89188d-1452-4fb5-98f6-6f6936416d4d",
+        "parsed_at": "2024-12-09T09:38:11",
         "number_of_pages": 8
     },
     "pages": [
@@ -15,11 +15,20 @@
                 },
                 {
                     "account_number": ""
+                },
+                {
+                    "account_balance": "\u00a31,705.47"
                 }
             ],
             "tables": [
                 {
                     "data": [
+                        {
+                            "date": "Sort code: Account BIC: IBAN: GB88 Date 31/05/2023",
+                            "description": "Description Transfer to Pot",
+                            "amount": "(GBP) Amount -0.77",
+                            "balance": "(GBP) Balance 252.58"
+                        },
                         {
                             "date": "",
                             "description": "",
@@ -27,26 +36,14 @@
                             "balance": ""
                         },
                         {
-                            "date": "Date",
-                            "description": "Description",
-                            "amount": "(GBP) Amount",
-                            "balance": "(GBP) Balance"
-                        },
-                        {
                             "date": "31/05/2023",
-                            "description": "Transfer to Pot",
-                            "amount": "-0.77",
-                            "balance": "252.58"
-                        },
-                        {
-                            "date": "31/05/2023",
-                            "description": "PADDY & SCOTTS AMBITIO IPSWICH IP4",
+                            "description": "PADDY & SCOTTS AMBITIO IPSWICH IP4 GBR",
                             "amount": "-4.23",
                             "balance": "253.35"
                         },
                         {
                             "date": "",
-                            "description": "GBR",
+                            "description": "",
                             "amount": "",
                             "balance": ""
                         },
@@ -57,10 +54,22 @@
                             "balance": "257.58"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "28/05/2023",
                             "description": "Trainline London GBR",
                             "amount": "-26.79",
                             "balance": "257.79"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "28/05/2023",
@@ -69,14 +78,32 @@
                             "balance": "284.58"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "28/05/2023",
-                            "description": "TFL TRAVEL CH\\VICTORIA",
+                            "description": "TFL TRAVEL CH\\VICTORIA STREET\\TFL.GOV.UK/CP\\SW1H 0TL GBR",
                             "amount": "-5.40",
                             "balance": "285.18"
                         },
                         {
                             "date": "",
-                            "description": "STREET\\TFL.GOV.UK/CP\\SW1H 0TL GBR",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "",
                             "amount": "",
                             "balance": ""
                         }
@@ -97,10 +124,22 @@
                             "balance": "290.58"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "28/05/2023",
                             "description": "Transfer from Pot",
                             "amount": "1,400.00",
                             "balance": "1,790.58"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "27/05/2023",
@@ -109,10 +148,22 @@
                             "balance": "390.58"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "27/05/2023",
                             "description": "TESCO BANK (Faster Payments)",
                             "amount": "-224.29",
                             "balance": "614.87"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "27/05/2023",
@@ -121,10 +172,22 @@
                             "balance": "839.16"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "27/05/2023",
                             "description": "Transfer to Pot",
                             "amount": "-0.70",
                             "balance": "3,539.16"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "27/05/2023",
@@ -133,10 +196,22 @@
                             "balance": "3,539.86"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "26/05/2023",
                             "description": "Transfer from Pot",
                             "amount": "3,250.00",
                             "balance": "3,546.16"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "25/05/2023",
@@ -145,10 +220,22 @@
                             "balance": "296.16"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "25/05/2023",
                             "description": "HOLMES J (Faster Payments)",
                             "amount": "400.00",
                             "balance": "406.16"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "25/05/2023",
@@ -157,10 +244,22 @@
                             "balance": "6.16"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "25/05/2023",
                             "description": "THE GRIFFIN LONDON GBR",
                             "amount": "-4.50",
                             "balance": "6.66"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "25/05/2023",
@@ -169,14 +268,20 @@
                             "balance": "11.16"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "25/05/2023",
-                            "description": "Zettle_*THE WACKA WAGO Hampton Hill",
+                            "description": "Zettle_*THE WACKA WAGO Hampton Hill GBR",
                             "amount": "-3.55",
                             "balance": "11.61"
                         },
                         {
                             "date": "",
-                            "description": "GBR",
+                            "description": "",
                             "amount": "",
                             "balance": ""
                         },
@@ -187,10 +292,22 @@
                             "balance": "15.16"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "23/05/2023",
                             "description": "Transfer to Pot",
                             "amount": "-140.00",
                             "balance": "22.41"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "21/05/2023",
@@ -199,10 +316,22 @@
                             "balance": "162.41"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "21/05/2023",
                             "description": "SAINSBURYS BICESTER BICESTER GBR",
                             "amount": "-1.70",
                             "balance": "162.71"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "20/05/2023",
@@ -211,14 +340,20 @@
                             "balance": "164.41"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "20/05/2023",
-                            "description": "TFL TRAVEL CH\\VICTORIA",
+                            "description": "TFL TRAVEL CH\\VICTORIA STREET\\TFL.GOV.UK/CP\\SW1H 0TL GBR",
                             "amount": "-5.50",
                             "balance": "164.91"
                         },
                         {
                             "date": "",
-                            "description": "STREET\\TFL.GOV.UK/CP\\SW1H 0TL GBR",
+                            "description": "",
                             "amount": "",
                             "balance": ""
                         },
@@ -229,16 +364,46 @@
                             "balance": "170.41"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "20/05/2023",
                             "description": "Vue Entertainment Ltd Chiswick, Lon GBR",
                             "amount": "-6.89",
                             "balance": "170.52"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "18/05/2023",
                             "description": "Transfer to Pot",
                             "amount": "-0.92",
                             "balance": "177.41"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         }
                     ]
                 },
@@ -257,10 +422,22 @@
                             "balance": "178.33"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "18/05/2023",
                             "description": "HAMILTON HALL LONDON GBR",
                             "amount": "-0.70",
                             "balance": "189.41"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "18/05/2023",
@@ -269,10 +446,22 @@
                             "balance": "190.11"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "18/05/2023",
                             "description": "THE GRIFFIN LONDON GBR",
                             "amount": "-1.50",
                             "balance": "190.61"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "18/05/2023",
@@ -281,10 +470,22 @@
                             "balance": "192.11"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "18/05/2023",
                             "description": "Zettle_*ORIGIN COFFEE Porthleven GBR",
                             "amount": "-3.60",
                             "balance": "192.51"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "18/05/2023",
@@ -293,14 +494,20 @@
                             "balance": "196.11"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "18/05/2023",
-                            "description": "ITSU 034 GRT EASTRN ST LONDON EC2A",
+                            "description": "ITSU 034 GRT EASTRN ST LONDON EC2A GBR",
                             "amount": "-4.99",
                             "balance": "196.12"
                         },
                         {
                             "date": "",
-                            "description": "GBR",
+                            "description": "",
                             "amount": "",
                             "balance": ""
                         },
@@ -311,10 +518,22 @@
                             "balance": "201.11"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "18/05/2023",
                             "description": "Zettle_*LITTLE ITALY E Long Crendon GBR",
                             "amount": "-3.80",
                             "balance": "201.31"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "18/05/2023",
@@ -323,10 +542,22 @@
                             "balance": "205.11"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "16/05/2023",
                             "description": "Transfer to Pot",
                             "amount": "-0.45",
                             "balance": "226.11"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "16/05/2023",
@@ -335,10 +566,22 @@
                             "balance": "226.56"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "14/05/2023",
                             "description": "Transfer to Pot",
                             "amount": "-0.70",
                             "balance": "229.11"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "14/05/2023",
@@ -347,10 +590,22 @@
                             "balance": "229.81"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "14/05/2023",
                             "description": "Transfer to Pot",
                             "amount": "-0.50",
                             "balance": "233.11"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "14/05/2023",
@@ -359,10 +614,22 @@
                             "balance": "233.61"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "11/05/2023",
                             "description": "ONE STOP STORES BICESTER GBR",
                             "amount": "-5.00",
                             "balance": "242.11"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "11/05/2023",
@@ -371,14 +638,20 @@
                             "balance": "247.11"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "11/05/2023",
-                            "description": "Zettle_*THE WACKA WAGO Hampton Hill",
+                            "description": "Zettle_*THE WACKA WAGO Hampton Hill GBR",
                             "amount": "-3.20",
                             "balance": "247.91"
                         },
                         {
                             "date": "",
-                            "description": "GBR",
+                            "description": "",
                             "amount": "",
                             "balance": ""
                         },
@@ -389,20 +662,44 @@
                             "balance": "251.11"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "05/05/2023",
                             "description": "Transfer to Pot",
                             "amount": "-0.50",
                             "balance": "256.61"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "05/05/2023",
-                            "description": "TFL TRAVEL CH\\VICTORIA",
+                            "description": "TFL TRAVEL CH\\VICTORIA STREET\\TFL.GOV.UK/CP\\SW1H 0TL GBR",
                             "amount": "-5.50",
                             "balance": "257.11"
                         },
                         {
                             "date": "",
-                            "description": "STREET\\TFL.GOV.UK/CP\\SW1H 0TL GBR",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "",
                             "amount": "",
                             "balance": ""
                         }
@@ -423,10 +720,22 @@
                             "balance": "262.61"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "04/05/2023",
                             "description": "trainline +443332022222 GBR",
                             "amount": "-22.75",
                             "balance": "262.86"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "04/05/2023",
@@ -435,10 +744,22 @@
                             "balance": "285.61"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "04/05/2023",
                             "description": "THE GRIFFIN LONDON GBR",
                             "amount": "-1.50",
                             "balance": "286.11"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "04/05/2023",
@@ -447,10 +768,22 @@
                             "balance": "287.61"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "04/05/2023",
                             "description": "Zettle_*SMALL SQUARE C London GBR",
                             "amount": "-3.80",
                             "balance": "287.81"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "30/04/2023",
@@ -459,10 +792,22 @@
                             "balance": "291.61"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "30/04/2023",
                             "description": "SAINSBURYS BICESTER GBR",
                             "amount": "-4.50",
                             "balance": "292.11"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "28/04/2023",
@@ -471,14 +816,20 @@
                             "balance": "296.61"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "28/04/2023",
-                            "description": "TFL TRAVEL CH\\VICTORIA",
+                            "description": "TFL TRAVEL CH\\VICTORIA STREET\\TFL.GOV.UK/CP\\SW1H 0TL GBR",
                             "amount": "-2.80",
                             "balance": "296.81"
                         },
                         {
                             "date": "",
-                            "description": "STREET\\TFL.GOV.UK/CP\\SW1H 0TL GBR",
+                            "description": "",
                             "amount": "",
                             "balance": ""
                         },
@@ -489,10 +840,22 @@
                             "balance": "299.61"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "28/04/2023",
                             "description": "Transfer to Pot",
                             "amount": "-100.00",
                             "balance": "329.61"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "28/04/2023",
@@ -501,10 +864,22 @@
                             "balance": "429.61"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "28/04/2023",
                             "description": "HOLMES J (Faster Payments)",
                             "amount": "600.00",
                             "balance": "629.61"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "27/04/2023",
@@ -513,14 +888,20 @@
                             "balance": "29.61"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "27/04/2023",
-                            "description": "Zettle_*THE WACKA WAGO Hampton Hill",
+                            "description": "Zettle_*THE WACKA WAGO Hampton Hill GBR",
                             "amount": "-6.40",
                             "balance": "30.21"
                         },
                         {
                             "date": "",
-                            "description": "GBR",
+                            "description": "",
                             "amount": "",
                             "balance": ""
                         },
@@ -531,32 +912,44 @@
                             "balance": "36.61"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "27/04/2023",
                             "description": "Zettle_*SMALL SQUARE C London GBR",
                             "amount": "-3.80",
                             "balance": "36.81"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "25/04/2023",
-                            "description": "Trainline.COM\\120 Holburn\\London\\EC1N",
+                            "description": "Trainline.COM\\120 Holburn\\London\\EC1N 2TD GBRGBR",
                             "amount": "23.44",
                             "balance": "40.61"
                         },
                         {
                             "date": "",
-                            "description": "2TD GBRGBR",
+                            "description": "",
                             "amount": "",
                             "balance": ""
                         },
                         {
                             "date": "24/04/2023",
-                            "description": "trainline\\Holborn 120\\+443332022222\\EC1N",
+                            "description": "trainline\\Holborn 120\\+443332022222\\EC1N 2TD GBRGBR",
                             "amount": "15.80",
                             "balance": "17.17"
                         },
                         {
                             "date": "",
-                            "description": "2TD GBRGBR",
+                            "description": "",
                             "amount": "",
                             "balance": ""
                         },
@@ -565,6 +958,24 @@
                             "description": "Transfer to Pot",
                             "amount": "-0.71",
                             "balance": "1.37"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         }
                     ]
                 },
@@ -583,10 +994,22 @@
                             "balance": "2.08"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "23/04/2023",
                             "description": "Transfer from Pot",
                             "amount": "10.00",
                             "balance": "25.37"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "23/04/2023",
@@ -595,10 +1018,22 @@
                             "balance": "15.37"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "23/04/2023",
                             "description": "Trainline London GBR",
                             "amount": "-24.39",
                             "balance": "15.98"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "23/04/2023",
@@ -607,20 +1042,32 @@
                             "balance": "40.37"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "23/04/2023",
                             "description": "TfL Travel Charge TFL.gov.uk/CP GBR",
                             "amount": "-17.50",
                             "balance": "40.87"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "22/04/2023",
-                            "description": "TooGoodToG os94b1oh5bi toogoodtogo.c",
+                            "description": "TooGoodToG os94b1oh5bi toogoodtogo.c DNK",
                             "amount": "-5.00",
                             "balance": "58.37"
                         },
                         {
                             "date": "",
-                            "description": "DNK",
+                            "description": "",
                             "amount": "",
                             "balance": ""
                         },
@@ -631,10 +1078,22 @@
                             "balance": "63.37"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "22/04/2023",
                             "description": "Transfer to Pot",
                             "amount": "-0.56",
                             "balance": "73.37"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "22/04/2023",
@@ -643,10 +1102,22 @@
                             "balance": "73.93"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "20/04/2023",
                             "description": "TfL Travel Charge TFL.gov.uk/CP GBR",
                             "amount": "-2.70",
                             "balance": "97.37"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "15/04/2023",
@@ -655,10 +1126,22 @@
                             "balance": "100.07"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "14/04/2023",
                             "description": "Transfer to Pot",
                             "amount": "-0.80",
                             "balance": "105.07"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "14/04/2023",
@@ -667,20 +1150,32 @@
                             "balance": "105.87"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "14/04/2023",
                             "description": "Transfer to Pot",
                             "amount": "-0.50",
                             "balance": "109.07"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "14/04/2023",
-                            "description": "TFL TRAVEL CH\\VICTORIA",
+                            "description": "TFL TRAVEL CH\\VICTORIA STREET\\TFL.GOV.UK/CP\\SW1H 0TL GBR",
                             "amount": "-5.50",
                             "balance": "109.57"
                         },
                         {
                             "date": "",
-                            "description": "STREET\\TFL.GOV.UK/CP\\SW1H 0TL GBR",
+                            "description": "",
                             "amount": "",
                             "balance": ""
                         },
@@ -691,10 +1186,22 @@
                             "balance": "115.07"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "11/04/2023",
                             "description": "COSTA COFFEE 43011506 BICESTER GBR",
                             "amount": "-3.40",
                             "balance": "115.67"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "08/04/2023",
@@ -703,10 +1210,22 @@
                             "balance": "119.07"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "08/04/2023",
                             "description": "TESCO-STORES 2305 BICESTER GBR",
                             "amount": "-3.40",
                             "balance": "119.67"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "07/04/2023",
@@ -715,16 +1234,46 @@
                             "balance": "123.07"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "07/04/2023",
                             "description": "IKEA LTD 185 MILTON KE BLETCHLEY GBR",
                             "amount": "-1.75",
                             "balance": "123.32"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "07/04/2023",
                             "description": "WARWICKSHIRE PARKING WARWICK GBR",
                             "amount": "-3.00",
                             "balance": "125.07"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         }
                     ]
                 },
@@ -743,10 +1292,22 @@
                             "balance": "128.07"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "07/04/2023",
                             "description": "STARBUCKS COFFEE BANBURY GBR",
                             "amount": "-8.95",
                             "balance": "128.12"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "06/04/2023",
@@ -755,14 +1316,20 @@
                             "balance": "137.07"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "06/04/2023",
-                            "description": "SUPERPEDESTRIAN\\27 Greville",
+                            "description": "SUPERPEDESTRIAN\\27 Greville Street\\LONDON\\EC1N 8TN LNDGBR",
                             "amount": "2.50",
                             "balance": "139.87"
                         },
                         {
                             "date": "",
-                            "description": "Street\\LONDON\\EC1N 8TN LNDGBR",
+                            "description": "",
                             "amount": "",
                             "balance": ""
                         },
@@ -773,10 +1340,22 @@
                             "balance": "137.37"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "05/04/2023",
                             "description": "Transfer to Pot",
                             "amount": "-0.71",
                             "balance": "145.37"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "05/04/2023",
@@ -785,10 +1364,22 @@
                             "balance": "146.08"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "05/04/2023",
                             "description": "Transfer to Pot",
                             "amount": "-0.61",
                             "balance": "169.37"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "05/04/2023",
@@ -797,10 +1388,22 @@
                             "balance": "169.98"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "31/03/2023",
                             "description": "Transfer to Pot",
                             "amount": "-0.26",
                             "balance": "186.37"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "31/03/2023",
@@ -809,10 +1412,22 @@
                             "balance": "186.63"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "31/03/2023",
                             "description": "Transfer to Pot",
                             "amount": "-0.46",
                             "balance": "191.37"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "31/03/2023",
@@ -821,20 +1436,32 @@
                             "balance": "191.83"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "30/03/2023",
                             "description": "Transfer to Pot",
                             "amount": "-0.50",
                             "balance": "196.37"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "30/03/2023",
-                            "description": "TFL TRAVEL CH\\VICTORIA",
+                            "description": "TFL TRAVEL CH\\VICTORIA STREET\\TFL.GOV.UK/CP\\SW1H 0TL GBR",
                             "amount": "-5.50",
                             "balance": "196.87"
                         },
                         {
                             "date": "",
-                            "description": "STREET\\TFL.GOV.UK/CP\\SW1H 0TL GBR",
+                            "description": "",
                             "amount": "",
                             "balance": ""
                         },
@@ -845,10 +1472,22 @@
                             "balance": "202.37"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "29/03/2023",
                             "description": "BOLT.EU/O/2303292010 London GBR",
                             "amount": "-5.90",
                             "balance": "202.47"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "29/03/2023",
@@ -857,10 +1496,22 @@
                             "balance": "208.37"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "29/03/2023",
                             "description": "ISLAND POKE LONDON EC2A GBR",
                             "amount": "-7.95",
                             "balance": "208.42"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "28/03/2023",
@@ -869,10 +1520,22 @@
                             "balance": "216.37"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "28/03/2023",
                             "description": "HOLMES J (Faster Payments)",
                             "amount": "1,500.00",
                             "balance": "1,516.37"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "23/03/2023",
@@ -881,10 +1544,34 @@
                             "balance": "16.37"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "21/03/2023",
                             "description": "TESCO BANK (Faster Payments)",
                             "amount": "-30.00",
                             "balance": "21.87"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         }
                     ]
                 },
@@ -903,10 +1590,22 @@
                             "balance": "51.87"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "21/03/2023",
                             "description": "Transfer to Pot",
                             "amount": "-0.01",
                             "balance": "21.87"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "21/03/2023",
@@ -915,10 +1614,22 @@
                             "balance": "21.88"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "13/03/2023",
                             "description": "Transfer to Pot",
                             "amount": "-0.41",
                             "balance": "35.87"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "13/03/2023",
@@ -927,10 +1638,22 @@
                             "balance": "36.28"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "13/03/2023",
                             "description": "Transfer to Pot",
                             "amount": "-0.41",
                             "balance": "59.87"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "13/03/2023",
@@ -939,10 +1662,22 @@
                             "balance": "60.28"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "12/03/2023",
                             "description": "TESCO BANK (Faster Payments)",
                             "amount": "-39.73",
                             "balance": "83.87"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "10/03/2023",
@@ -951,14 +1686,20 @@
                             "balance": "123.60"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "10/03/2023",
-                            "description": "TFL TRAVEL CH\\VICTORIA",
+                            "description": "TFL TRAVEL CH\\VICTORIA STREET\\TFL.GOV.UK/CP\\SW1H 0TL GBR",
                             "amount": "-6.50",
                             "balance": "124.10"
                         },
                         {
                             "date": "",
-                            "description": "STREET\\TFL.GOV.UK/CP\\SW1H 0TL GBR",
+                            "description": "",
                             "amount": "",
                             "balance": ""
                         },
@@ -969,10 +1710,22 @@
                             "balance": "130.60"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "08/03/2023",
                             "description": "TESCO PAY AT PUMP 3744 BRACKLEY GBR",
                             "amount": "-31.07",
                             "balance": "137.60"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "08/03/2023",
@@ -981,10 +1734,22 @@
                             "balance": "168.67"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "08/03/2023",
                             "description": "SUPERPEDESTRIAN +18447018163 GBR",
                             "amount": "-5.00",
                             "balance": "166.77"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "08/03/2023",
@@ -993,10 +1758,22 @@
                             "balance": "171.77"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "08/03/2023",
                             "description": "SUPERPEDESTRIAN +18447018163 GBR",
                             "amount": "-5.00",
                             "balance": "168.47"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "07/03/2023",
@@ -1005,10 +1782,22 @@
                             "balance": "173.47"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "07/03/2023",
                             "description": "Transfer to Pot",
                             "amount": "-0.75",
                             "balance": "173.82"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "07/03/2023",
@@ -1017,10 +1806,22 @@
                             "balance": "174.57"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "06/03/2023",
                             "description": "Transfer to Pot",
                             "amount": "-50.00",
                             "balance": "179.82"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "06/03/2023",
@@ -1029,10 +1830,22 @@
                             "balance": "229.82"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "06/03/2023",
                             "description": "SUPERPEDESTRIAN +18447018163 GBR",
                             "amount": "2.50",
                             "balance": "179.82"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         },
                         {
                             "date": "06/03/2023",
@@ -1041,10 +1854,34 @@
                             "balance": "177.32"
                         },
                         {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
                             "date": "05/03/2023",
                             "description": "TESCO STORES 5628 NOTTINGHAM GBR",
                             "amount": "-6.00",
                             "balance": "182.32"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         }
                     ]
                 }

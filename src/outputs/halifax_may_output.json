@@ -1,0 +1,187 @@
+{
+    "metadata": {
+        "document_id": "6a331107-dc1c-4315-97e4-966e26baae40",
+        "parsed_at": "2024-12-09T09:38:11",
+        "number_of_pages": 2
+    },
+    "pages": [
+        {
+            "forms": [
+                {
+                    "customer_name": "Mr Jake Holmes"
+                },
+                {
+                    "sort_code": "11-00-56"
+                },
+                {
+                    "account_number": "11980162"
+                },
+                {
+                    "start_balance": "\u00a3505.10 ."
+                }
+            ],
+            "tables": [
+                {
+                    "data": [
+                        {
+                            "date": "D0ate 2 May 23 .",
+                            "type": "TDype EB .",
+                            "description": "DGescription OOGLE Domains .",
+                            "money_out": "8.28Money Out (\u00a3) .",
+                            "money_in": "Moneyb Ilna n(k\u00a3.)",
+                            "balance": "496.82Balance (\u00a3) ."
+                        },
+                        {
+                            "date": "D0ate 2 May 23 .",
+                            "type": "TDype D .",
+                            "description": "DUescription NIVERSITY OF NOTT .",
+                            "money_out": "22.90Money Out (\u00a3) .",
+                            "money_in": "Moneyb Ilna n(k\u00a3.)",
+                            "balance": "473.92Balance (\u00a3) ."
+                        },
+                        {
+                            "date": "D0ate 4 May 23 .",
+                            "type": "TDype EB .",
+                            "description": "DHescription IYACAR-CHARGE.COM .",
+                            "money_out": "84.99Money Out (\u00a3) .",
+                            "money_in": "Moneyb Ilna n(k\u00a3.)",
+                            "balance": "388.93Balance (\u00a3) ."
+                        },
+                        {
+                            "date": "D0ate 5 May 23 .",
+                            "type": "TFype PI .",
+                            "description": "DHescription IYACAR LTD .",
+                            "money_out": "Money Obulat n(\u00a3k).",
+                            "money_in": "29.00Money In (\u00a3) .",
+                            "balance": "417.93Balance (\u00a3) ."
+                        },
+                        {
+                            "date": "D1ate 1 May 23 .",
+                            "type": "TFype PI .",
+                            "description": "DHescription IYACAR LTD .",
+                            "money_out": "Money Obulat n(\u00a3k).",
+                            "money_in": "165.50Money In (\u00a3) .",
+                            "balance": "583.43Balance (\u00a3) ."
+                        },
+                        {
+                            "date": "D1ate 1 May 23 .",
+                            "type": "TDype EB .",
+                            "description": "DGescription OOGLE Domains .",
+                            "money_out": "4.14Money Out (\u00a3) .",
+                            "money_in": "Moneyb Ilna n(k\u00a3.)",
+                            "balance": "579.29Balance (\u00a3) ."
+                        },
+                        {
+                            "date": "D1ate 2 May 23 .",
+                            "type": "TDype EB .",
+                            "description": "DHescription EROKU APR-8131529 .",
+                            "money_out": "11.57Money Out (\u00a3) .",
+                            "money_in": "Moneyb Ilna n(k\u00a3.)",
+                            "balance": "567.72Balance (\u00a3) ."
+                        },
+                        {
+                            "date": "D1ate 2 May 23 .",
+                            "type": "TDype EB .",
+                            "description": "DNescription ON-GBP TRANS FEE .",
+                            "money_out": "0.34Money Out (\u00a3) .",
+                            "money_in": "Moneyb Ilna n(k\u00a3.)",
+                            "balance": "567.38Balance (\u00a3) ."
+                        },
+                        {
+                            "date": "D1ate 2 May 23 .",
+                            "type": "TDype EB .",
+                            "description": "DNescription ON-GBP PURCH FEE .",
+                            "money_out": "0.50Money Out (\u00a3) .",
+                            "money_in": "Moneyb Ilna n(k\u00a3.)",
+                            "balance": "566.88Balance (\u00a3) ."
+                        },
+                        {
+                            "date": "D1ate 5 May 23 .",
+                            "type": "TFype PI .",
+                            "description": "DHescription IYACAR LTD .",
+                            "money_out": "Money Obulat n(\u00a3k).",
+                            "money_in": "167.30Money In (\u00a3) .",
+                            "balance": "734.18Balance (\u00a3) ."
+                        },
+                        {
+                            "date": "D1ate 5 May 23 .",
+                            "type": "TFype PI .",
+                            "description": "DAescription A SEC 1 .",
+                            "money_out": "Money Obulat n(\u00a3k).",
+                            "money_in": "156.00Money In (\u00a3) .",
+                            "balance": "890.18Balance (\u00a3) ."
+                        },
+                        {
+                            "date": "D1ate 5 May 23 .",
+                            "type": "TDype EB .",
+                            "description": "DGescription OOGLE Domains .",
+                            "money_out": "4.60Money Out (\u00a3) .",
+                            "money_in": "Moneyb Ilna n(k\u00a3.)",
+                            "balance": "885.58Balance (\u00a3) ."
+                        },
+                        {
+                            "date": "D1ate 6 May 23 .",
+                            "type": "TFype PI .",
+                            "description": "DHescription IYACAR LTD .",
+                            "money_out": "Money Obulat n(\u00a3k).",
+                            "money_in": "172.40Money In (\u00a3) .",
+                            "balance": "1,057.98Balance (\u00a3) ."
+                        },
+                        {
+                            "date": "D1ate 9 May 23 .",
+                            "type": "TFype PO .",
+                            "description": "DTescription ESCO BANK .",
+                            "money_out": "252.74Money Out (\u00a3) .",
+                            "money_in": "Moneyb Ilna n(k\u00a3.)",
+                            "balance": "805.24Balance (\u00a3) ."
+                        },
+                        {
+                            "date": "D1ate 9 May 23 .",
+                            "type": "TDype EB .",
+                            "description": "DGescription OOGLE Domains .",
+                            "money_out": "26.56Money Out (\u00a3) .",
+                            "money_in": "Moneyb Ilna n(k\u00a3.)",
+                            "balance": "778.68Balance (\u00a3) ."
+                        },
+                        {
+                            "date": "D2ate 2 May 23 .",
+                            "type": "TFype PO .",
+                            "description": "DTescription ESCO BANK .",
+                            "money_out": "224.29Money Out (\u00a3) .",
+                            "money_in": "Moneyb Ilna n(k\u00a3.)",
+                            "balance": "554.39Balance (\u00a3) ."
+                        },
+                        {
+                            "date": "",
+                            "type": "",
+                            "description": "",
+                            "money_out": "",
+                            "money_in": "",
+                            "balance": ""
+                        }
+                    ]
+                },
+                {
+                    "data": [
+                        {
+                            "date": "D3ate 0 May 23 .",
+                            "type": "TDype EB .",
+                            "description": "DGescription OOGLE *Domains .",
+                            "money_out": "9.20Money Out (\u00a3) .",
+                            "money_in": "Moneyb Ilna n(k\u00a3.)",
+                            "balance": "545.19Balance (\u00a3) ."
+                        },
+                        {
+                            "date": "",
+                            "type": "",
+                            "description": "",
+                            "money_out": "",
+                            "money_in": "",
+                            "balance": "blank."
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

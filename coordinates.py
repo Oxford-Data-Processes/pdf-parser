@@ -277,8 +277,10 @@ class PDFCoordinateFinder:
 
 
 if __name__ == "__main__":
-    template_name = "monzo"
-    identifier = "november"
-    pdf_path = f"data/payslips/{template_name}/pdf/{template_name}_{identifier}.pdf"
-    pdf_path = f"data/payslips/payslip.pdf"
+    document_type = "bank_statements"
+    template_name = "first_direct"
+    identifier = "april"
+    pdf_path = (
+        f"data/{document_type}/{template_name}/pdf/{template_name}_{identifier}.pdf"
+    )
     app = PDFCoordinateFinder(pdf_path)

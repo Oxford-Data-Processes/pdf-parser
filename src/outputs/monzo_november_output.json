@@ -1,7 +1,7 @@
 {
     "metadata": {
-        "document_id": "3cf59181-7502-4f65-b537-7a26c957d503",
-        "parsed_at": "2024-12-04T10:40:09",
+        "document_id": "fda05f3d-d618-4ba2-a5d7-d401cb17820d",
+        "parsed_at": "2024-12-09T09:38:11",
         "number_of_pages": 4
     },
     "pages": [
@@ -15,34 +15,25 @@
                 },
                 {
                     "account_number": "60397861"
+                },
+                {
+                    "account_balance": "\u00a31,030.16"
                 }
             ],
             "tables": [
                 {
                     "data": [
                         {
-                            "date": "",
-                            "description": "",
-                            "amount": "",
-                            "balance": ""
-                        },
-                        {
-                            "date": "30/11/2023",
+                            "date": "United Sort code: Account BIC: IBAN: GB71 Date 30/11/2023",
                             "description": "Trainline +443332022222 GBR",
                             "amount": "-2.60",
                             "balance": "1,030.16"
                         },
                         {
                             "date": "30/11/2023",
-                            "description": "C LITTLE (Faster Payments) Reference:",
+                            "description": "C LITTLE (Faster Payments) Reference: MONZO CASH",
                             "amount": "950.00",
                             "balance": "1,032.76"
-                        },
-                        {
-                            "date": "",
-                            "description": "MONZO CASH",
-                            "amount": "",
-                            "balance": ""
                         },
                         {
                             "date": "29/11/2023",
@@ -70,15 +61,9 @@
                         },
                         {
                             "date": "28/11/2023",
-                            "description": "DAMIRA DENTAL STUDIO BICESTER OX26",
+                            "description": "DAMIRA DENTAL STUDIO BICESTER OX26 GBR",
                             "amount": "-15.00",
                             "balance": "119.46"
-                        },
-                        {
-                            "date": "",
-                            "description": "GBR",
-                            "amount": "",
-                            "balance": ""
                         },
                         {
                             "date": "27/11/2023",
@@ -91,6 +76,18 @@
                             "description": "ALDI STORES LIMITED BICESTER GBR",
                             "amount": "-34.97",
                             "balance": "150.45"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         }
                     ]
                 },
@@ -110,15 +107,9 @@
                         },
                         {
                             "date": "26/11/2023",
-                            "description": "C Little (Faster Payments) Reference:",
+                            "description": "C Little (Faster Payments) Reference: MONZO CASH",
                             "amount": "200.00",
                             "balance": "242.37"
-                        },
-                        {
-                            "date": "",
-                            "description": "MONZO CASH",
-                            "amount": "",
-                            "balance": ""
                         },
                         {
                             "date": "26/11/2023",
@@ -128,15 +119,9 @@
                         },
                         {
                             "date": "25/11/2023",
-                            "description": "M&S SIMPLY FOOD - SSP M/BONE STN",
+                            "description": "M&S SIMPLY FOOD - SSP M/BONE STN GBR",
                             "amount": "-6.15",
                             "balance": "50.47"
-                        },
-                        {
-                            "date": "",
-                            "description": "GBR",
-                            "amount": "",
-                            "balance": ""
                         },
                         {
                             "date": "25/11/2023",
@@ -175,34 +160,16 @@
                             "balance": "159.24"
                         },
                         {
-                            "date": "",
-                            "description": "TFL TRAVEL CH\\VICTORIA",
-                            "amount": "",
-                            "balance": ""
-                        },
-                        {
                             "date": "19/11/2023",
-                            "description": "STREET\\TFL.GOV.UK/CP\\SW1H 0TL GBR",
+                            "description": "TFL TRAVEL CH\\VICTORIA STREET\\TFL.GOV.UK/CP\\SW1H 0TL GBR This relates to a previous transaction",
                             "amount": "-5.40",
                             "balance": "162.43"
                         },
                         {
-                            "date": "",
-                            "description": "This relates to a previous transaction",
-                            "amount": "",
-                            "balance": ""
-                        },
-                        {
                             "date": "19/11/2023",
-                            "description": "SAINSBURY S BANBURY BANBURY GBR",
+                            "description": "SAINSBURY S BANBURY BANBURY GBR This relates to a previous transaction",
                             "amount": "48.85",
                             "balance": "167.83"
-                        },
-                        {
-                            "date": "",
-                            "description": "This relates to a previous transaction",
-                            "amount": "",
-                            "balance": ""
                         },
                         {
                             "date": "19/11/2023",
@@ -263,6 +230,18 @@
                             "description": "Troxy London GBR",
                             "amount": "-10.00",
                             "balance": "123.42"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         }
                     ]
                 },
@@ -282,15 +261,9 @@
                         },
                         {
                             "date": "17/11/2023",
-                            "description": "M&S SIMPLY FOOD - SSP M/BONE STN",
+                            "description": "M&S SIMPLY FOOD - SSP M/BONE STN GBR",
                             "amount": "-8.15",
                             "balance": "134.52"
-                        },
-                        {
-                            "date": "",
-                            "description": "GBR",
-                            "amount": "",
-                            "balance": ""
                         },
                         {
                             "date": "17/11/2023",
@@ -323,40 +296,16 @@
                             "balance": "102.24"
                         },
                         {
-                            "date": "",
-                            "description": "TFL TRAVEL CH\\VICTORIA",
-                            "amount": "",
-                            "balance": ""
-                        },
-                        {
                             "date": "13/11/2023",
-                            "description": "STREET\\TFL.GOV.UK/CP\\SW1H 0TL GBR",
+                            "description": "TFL TRAVEL CH\\VICTORIA STREET\\TFL.GOV.UK/CP\\SW1H 0TL GBR This relates to a previous transaction",
                             "amount": "-5.30",
                             "balance": "104.84"
                         },
                         {
-                            "date": "",
-                            "description": "This relates to a previous transaction",
-                            "amount": "",
-                            "balance": ""
-                        },
-                        {
-                            "date": "",
-                            "description": "OXFORD BUS COMPANY\\COWLEY HOUSE,",
-                            "amount": "",
-                            "balance": ""
-                        },
-                        {
                             "date": "12/11/2023",
-                            "description": "WATLIN\\OXFORD\\OX4 6GA GBRGBR",
+                            "description": "OXFORD BUS COMPANY\\COWLEY HOUSE, WATLIN\\OXFORD\\OX4 6GA GBRGBR This relates to a previous transaction",
                             "amount": "-1.90",
                             "balance": "110.14"
-                        },
-                        {
-                            "date": "",
-                            "description": "This relates to a previous transaction",
-                            "amount": "",
-                            "balance": ""
                         },
                         {
                             "date": "12/11/2023",
@@ -435,6 +384,18 @@
                             "description": "ALDI STORES LIMITED BICESTER GBR",
                             "amount": "-29.42",
                             "balance": "18.61"
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
+                        },
+                        {
+                            "date": "",
+                            "description": "",
+                            "amount": "",
+                            "balance": ""
                         }
                     ]
                 }
