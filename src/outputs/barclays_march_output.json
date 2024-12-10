@@ -1,7 +1,7 @@
 {
     "metadata": {
-        "document_id": "81542b51-9efc-42c5-8c19-c5ff5b4b2762",
-        "parsed_at": "2024-12-09T09:38:11",
+        "document_id": "add15f4c-afc5-4f30-863d-137ac3738fc6",
+        "parsed_at": "2024-12-10T16:29:18",
         "number_of_pages": 5
     },
     "pages": [
@@ -17,16 +17,16 @@
                     "customer_name": "Miss Meghan Victoria Thorneloe"
                 },
                 {
-                    "start_balance": "\u00a336.30"
+                    "money_in": "667.92"
                 },
                 {
-                    "money_in": "\u00a3667.92"
+                    "start_balance": "36.30"
                 },
                 {
-                    "money_out": "\u00a3659.98"
+                    "money_out": "659.98"
                 },
                 {
-                    "end_balance": "\u00a344.24"
+                    "end_balance": "44.24"
                 }
             ],
             "tables": [
@@ -35,9 +35,9 @@
                         {
                             "date": "01 Mar",
                             "description": "Start balance",
-                            "money_out": "Money out",
-                            "money_in": "Money in",
-                            "balance": "Balance 36.30"
+                            "money_out": "",
+                            "money_in": "",
+                            "balance": "36.30"
                         },
                         {
                             "date": "01 Mar",

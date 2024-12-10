@@ -312,8 +312,8 @@
                 "sort_code",
                 "account_number",
                 "customer_name",
-                "start_balance",
                 "money_in",
+                "start_balance",
                 "money_out",
                 "end_balance"
             ],
