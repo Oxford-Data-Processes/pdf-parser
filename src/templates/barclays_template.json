@@ -11,7 +11,7 @@
             "config": {
                 "field_name": "sort_code",
                 "search_type": "regex",
-                "regex": "Sort code\\s*\\d{2}-\\d{2}-\\d{2}",
+                "regex": "Sort Code\\s*(\\d{2}-\\d{2}-\\d{2})",
                 "coordinates": {
                     "top_left": {
                         "x": 0.798,
@@ -176,7 +176,7 @@
                         "coordinates": {
                             "top_left": {
                                 "x": 0.425,
-                                "y": 0.464
+                                "y": 0.483
                             },
                             "bottom_right": {
                                 "x": 0.512,
@@ -190,7 +190,7 @@
                         "coordinates": {
                             "top_left": {
                                 "x": 0.511,
-                                "y": 0.463
+                                "y": 0.483
                             },
                             "bottom_right": {
                                 "x": 0.605,
@@ -204,7 +204,7 @@
                         "coordinates": {
                             "top_left": {
                                 "x": 0.604,
-                                "y": 0.465
+                                "y": 0.483
                             },
                             "bottom_right": {
                                 "x": 0.695,
