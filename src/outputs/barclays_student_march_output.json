@@ -1,35 +1,35 @@
 {
     "metadata": {
-        "document_id": "5a12f997-da08-48d4-89c1-2acb1937f9ae",
-        "parsed_at": "2024-12-09T09:38:11",
+        "document_id": "c4795dc1-3d2a-4ae2-96e7-71a0318c18c2",
+        "parsed_at": "2024-12-10T16:18:48",
         "number_of_pages": 5
     },
     "pages": [
         {
             "forms": [
                 {
-                    "sort_code": "BUKBGB22"
+                    "sort_code": "20-44-51"
                 },
                 {
-                    "account_number": "2044 5113"
+                    "account_number": "13415759"
                 },
                 {
-                    "customer_name": "\u2022 Sort Code 20-44-51"
+                    "customer_name": "Miss Meghan Victoria Thorneloe"
                 },
                 {
-                    "start_balance": "\u00a3836.00"
+                    "money_in": "836.00"
                 },
                 {
-                    "money_in": "\u00a3566.90"
+                    "start_balance": "-195.38"
                 },
                 {
-                    "money_out": "\u00a373.72"
+                    "money_out": "566.90"
                 },
                 {
-                    "end_balance": ""
+                    "end_balance": "73.72"
                 },
                 {
-                    "overdraft_limit": "\u00a3500"
+                    "overdraft_limit": "500"
                 }
             ],
             "tables": [

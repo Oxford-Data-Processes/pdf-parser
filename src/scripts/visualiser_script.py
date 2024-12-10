@@ -10,11 +10,11 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 SRC_DIR = os.path.dirname(SCRIPT_DIR)
 ROOT_DIR = os.path.dirname(SRC_DIR)
 
-FORMS_PAGE_NUMBER = 1
+FORMS_PAGE_NUMBER = 2
 
 document_type = "bank_statements"
-template_name: str = "monzo"
-identifier: str = "3_months"
+template_name: str = "barclays_student"
+identifier: str = "may"
 template_path: str = os.path.join(
     SRC_DIR, "templates", f"{template_name}_template.json"
 )
@@ -183,10 +183,11 @@ def visualize_form_data(form_data: Dict, pdf_path: str, template: Dict) -> None:
         f"\nVisualizing form {form_data['rule_id']} on page {form_data['page_number']}:"
     )
 
+    rule = Parser().get_rule_from_id(form_data["rule_id"], template)
+    search_type = rule["config"]["search_type"]
+
     # Get the coordinates for the form using the parser
-    coordinates = Parser().get_rule_from_id(form_data["rule_id"], template)["config"][
-        "coordinates"
-    ]
+    coordinates = rule["config"]["coordinates"]
 
     # Create a bounding box for the form
     form_box = {
@@ -197,9 +198,14 @@ def visualize_form_data(form_data: Dict, pdf_path: str, template: Dict) -> None:
     # Create image and draw the form box
     jpg_image = ImageDrawer.create_jpg_image(pdf_path, form_data["page_number"])
     image_drawer = ImageDrawer(jpg_image, jpg_image.size[0], jpg_image.size[1])
-    image_with_form = image_drawer.draw_coordinates([form_box])
-    print("Showing form boundary")
-    image_with_form.show()
+
+    print("Search type: ", search_type)
+    if search_type == "coordinates":
+        image_with_form = image_drawer.draw_coordinates([form_box])
+        print("Showing form boundary")
+        image_with_form.show()
+    elif search_type == "regex":
+        pass
 
 
 if __name__ == "__main__":

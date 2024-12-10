@@ -341,7 +341,7 @@
     "pages": [
         {
             "page_numbers": "1",
-            "forms": ["customer_name", "sort_code", "account_number", "start_balance"],
+            "forms": ["customer_name", "sort_code", "account_number", "money_in", "start_balance", "money_out", "end_balance"],
             "tables": ["transactions_first_page"]
         },
         {

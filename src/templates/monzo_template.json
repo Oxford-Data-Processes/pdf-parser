@@ -45,10 +45,10 @@
             }
         },
         {
-            "rule_id": "total_balance",
+            "rule_id": "end_balance",
             "type": "form",
             "config": {
-                "field_name": "total_balance",
+                "field_name": "end_balance",
                 "search_type": "coordinates",
                 "regex": null,
                 "coordinates": {
@@ -218,7 +218,7 @@
     "pages": [
         {
             "page_numbers": "1",
-            "forms": ["customer_name", "sort_code", "account_number", "total_balance", "total_outgoings", "total_deposits"],
+            "forms": ["customer_name", "sort_code", "account_number", "end_balance", "total_outgoings", "total_deposits"],
             "tables": ["transactions_first_page"]
         },
         {
