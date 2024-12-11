@@ -10,6 +10,10 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/Oxford-Data-Processes/pdf-parser",
     packages=find_packages(include=["pdf_parser", "pdf_parser.*"]),
+    package_data={
+        "pdf_parser": ["schema/*.json"],
+    },
+    include_package_data=True,
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
@@ -19,11 +23,10 @@ setup(
     install_requires=[
         "pdf2image",
         "pdfplumber",
-        "python-multipart",
-        "pydantic",
-        "numpy",
         "pytesseract",
         "Pillow",
+        "python-multipart",
+        "pydantic",
         "jsonschema",
     ],
 )
