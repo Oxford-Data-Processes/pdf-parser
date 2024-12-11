@@ -1,14 +1,14 @@
 {
     "metadata": {
-        "document_id": "21262613-0fca-4c1e-b730-30d663eeea69",
-        "parsed_at": "2024-12-11T15:45:25",
+        "document_id": "a540e6d4-173a-456a-acd7-2bf6bb61a571",
+        "parsed_at": "2024-12-11T17:11:37",
         "number_of_pages": 2
     },
     "pages": [
         {
             "forms": [
                 {
-                    "customer_name": "Mr Christopher Little"
+                    "customer_name": "Mr Christopher Little."
                 },
                 {
                     "sort_code": "30-90-42"
@@ -26,7 +26,7 @@
                     "money_out": "\u00a35,003.27"
                 },
                 {
-                    "end_balance": "\u00a31,229.32"
+                    "end_balance": "\u00a31 ,229.32"
                 }
             ],
             "tables": [
@@ -34,7 +34,7 @@
                     "data": [
                         {
                             "date": "02 Sep 24",
-                            "type": "sO",
+                            "type": "Je)",
                             "description": "JACKIE LITTLE",
                             "money_out": "300.00",
                             "money_in": "",
@@ -123,7 +123,7 @@
                         {
                             "date": "18 Sep 24",
                             "type": "DD",
-                            "description": "LVIC",
+                            "description": "LVvIC",
                             "money_out": "67.85",
                             "money_in": "",
                             "balance": "328.40"
@@ -161,7 +161,7 @@
                             "balance": "208.29"
                         },
                         {
-                            "date": "HitSscszas\n\nSee es",
+                            "date": "1 nat}\n\nandar",
                             "type": "",
                             "description": "",
                             "money_out": "",
@@ -175,7 +175,7 @@
                         {
                             "date": "23 Sep 24",
                             "type": "FPI",
-                            "description": "SIONITA",
+                            "description": "S IONITA",
                             "money_out": "",
                             "money_in": "1,100.00",
                             "balance": "1,308.29"

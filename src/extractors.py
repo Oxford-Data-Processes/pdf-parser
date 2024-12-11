@@ -1,7 +1,7 @@
 import io
 import os
 import re
-from typing import Dict, List, Tuple, Any, Optional
+from typing import Dict, List, Tuple, Any, Optional, Union
 
 import numpy as np
 import pdfplumber
@@ -137,8 +137,14 @@ class DataExtractor:
 
 
 class ImageExtractor:
-    def __init__(self, pdf_bytes: bytes):
-        self.pdf_bytes = pdf_bytes
+    def __init__(self, image_data: Union[bytes, Image.Image]):
+        self.image_data = image_data
+
+    def get_image(self) -> Image.Image:
+        """Get PIL Image object from the image data."""
+        if isinstance(self.image_data, Image.Image):
+            return self.image_data
+        return Image.open(io.BytesIO(self.image_data)).convert("RGB")
 
     def convert_pdf_to_jpg_files(self, prefix: str) -> Dict[str, bytes]:
         """Convert the PDF into several JPG files, one for each page.
@@ -149,7 +155,10 @@ class ImageExtractor:
         Returns:
             dict: Dictionary with file names as keys and JPEG bytes as values.
         """
-        images = convert_from_bytes(self.pdf_bytes)
+        if not isinstance(self.image_data, bytes):
+            raise ValueError("PDF conversion requires bytes input")
+
+        images = convert_from_bytes(self.image_data)
         jpg_files = {}
         for page_num, image in enumerate(images):
             jpg_file_name = f"{prefix}_page_{page_num + 1}.jpg"
@@ -160,7 +169,7 @@ class ImageExtractor:
 
     def extract_text_from_coordinates(self, coordinates: Dict[str, Any]) -> str:
         """Extract text from specific coordinates in an image using OCR."""
-        image = Image.open(io.BytesIO(self.pdf_bytes)).convert("RGB")
+        image = self.get_image()
         x_min = int(coordinates["top_left"]["x"] * image.width)
         y_min = int(coordinates["top_left"]["y"] * image.height)
         x_max = int(coordinates["bottom_right"]["x"] * image.width)
@@ -169,7 +178,7 @@ class ImageExtractor:
         return pytesseract.image_to_string(cropped_image).strip()
 
     def calculate_average_pixel_value(
-        self, jpg_bytes: bytes, coordinates: Dict
+        self, jpg_bytes: bytes, coordinates: Dict[str, Dict[str, float]]
     ) -> Tuple[List[int], np.ndarray, Image.Image, Tuple[int, int, int, int]]:
         # Load the image from bytes
         image = Image.open(io.BytesIO(jpg_bytes)).convert("RGB")
@@ -192,6 +201,10 @@ class ImageExtractor:
             # Extract the region of interest
             region = pixels[y_min:y_max, x_min:x_max]
 
+        # Handle empty regions
+        if region.size == 0:
+            return ([0, 0, 0], np.array([]), image, (x_min, y_min, x_max, y_max))
+
         # Calculate the average pixel value
         average_pixel_value = list(
             np.round(np.mean(region, axis=(0, 1))).astype(int).tolist()
@@ -206,14 +219,14 @@ class ImageExtractor:
 
 
 class TextExtractor:
-    def __init__(self, coordinate_utils: CoordinateUtils):
+    def __init__(self, coordinate_utils):
         self.coordinate_utils = coordinate_utils
 
     def get_text_from_items(self, items: List[Dict[str, Any]]) -> str:
         return " ".join([item["text"] for item in items])
 
     def get_text_from_ocr(
-        self, jpg_bytes_page: bytes, coordinates: Dict[str, Any]
+        self, jpg_bytes_page: Union[bytes, Image.Image], coordinates: Dict[str, Any]
     ) -> str:
         image_extractor = ImageExtractor(jpg_bytes_page)
         return image_extractor.extract_text_from_coordinates(coordinates)
@@ -233,7 +246,7 @@ class TextExtractor:
         page_content: List[Dict[str, Any]],
         coordinates: Optional[Dict[str, Dict[str, float]]],
         extraction_method: str,
-        jpg_bytes_page: bytes,
+        jpg_bytes_page: Union[bytes, Image.Image],
         search_type: Optional[str] = None,
         regex: Optional[str] = None,
     ) -> str:

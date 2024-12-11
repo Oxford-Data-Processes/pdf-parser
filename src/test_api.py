@@ -33,7 +33,6 @@ def test_parse_pdf(test_pdf_path: str, template_name: str, identifier: str):
         )
 
         assert response.status_code == 200
-        print(response.json())
 
         with open(
             os.path.join("src", "outputs", f"{template_name}_{identifier}_output.json"),
@@ -73,10 +72,16 @@ def main():
                     f"{template_name}_{identifier}.pdf",
                 )
 
+                import time
+
                 # Run the test
-                print("Running API test...")
+                print(
+                    f"Running API test for {document_type} {template_name} {identifier}"
+                )
+                start_time = time.time()  # Start timing
                 test_parse_pdf(test_pdf_path, template_name, identifier)
-                print("Test completed successfully!")
+                elapsed_time = time.time() - start_time  # Calculate elapsed time
+                print(f"Test completed successfully in {elapsed_time:.2f} seconds!")
 
 
 if __name__ == "__main__":
