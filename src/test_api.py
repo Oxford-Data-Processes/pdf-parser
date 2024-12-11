@@ -36,6 +36,7 @@ def test_parse_pdf():
         )
 
         assert response.status_code == 200
+        print(response.json())
 
 
 def main():

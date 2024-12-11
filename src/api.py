@@ -19,27 +19,25 @@ async def parse_pdf(template: str, pdf: UploadFile = File(...)) -> JSONResponse:
 
     # Save the uploaded PDF file
     pdf_path = os.path.join(output_dir, pdf.filename)
+    pdf_bytes = await pdf.read()  # Read the PDF bytes here
     with open(pdf_path, "wb") as buffer:
-        buffer.write(await pdf.read())
+        buffer.write(pdf_bytes)
 
-    print(template)
-    print(type(template))
     template_dict = json.loads(template)
-    print(template_dict)
-    print(type(template_dict))
 
     template_name = template_dict["metadata"]["template_id"]
 
     identifier = "test"
 
-    data_extractor = DataExtractor(buffer.read(), template_name, identifier)
+    data_extractor = DataExtractor(pdf_bytes, template_name, identifier)
     pdf_data = data_extractor.extract_data()
 
+    number_of_pages = pdf_data["number_of_pages"]
     jpg_bytes = []
-    for page_number in pdf_data["page_numbers"]:
+    for page_number in range(1, number_of_pages + 1):
         jpg_image = ImageDrawer.create_jpg_image(pdf_path, page_number)
         jpg_bytes.append(jpg_image)
 
-    output = Parser.parse_pdf(template, pdf_data, jpg_bytes)
+    output = Parser.parse_pdf(template_dict, pdf_data, jpg_bytes)
 
     return JSONResponse(status_code=200, content=output)
