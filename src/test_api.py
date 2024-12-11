@@ -2,12 +2,8 @@ import os
 import json
 import requests
 from pathlib import Path
-import pytest
-from fastapi.testclient import TestClient
-from api import app
 
-# Create a test client
-client = TestClient(app)
+api_url = "http://localhost:8000"
 
 
 def test_parse_pdf(test_pdf_path: str, template_name: str, identifier: str):
@@ -28,8 +24,10 @@ def test_parse_pdf(test_pdf_path: str, template_name: str, identifier: str):
         files = {"pdf": ("sample.pdf", pdf_file, "application/pdf")}
 
         # Make the request to the API
-        response = client.post(
-            "/parse-pdf/", params={"template": json.dumps(template)}, files=files
+        response = requests.post(
+            f"{api_url}/parse-pdf/",
+            params={"template": json.dumps(template)},
+            files=files,
         )
 
         assert response.status_code == 200
@@ -47,11 +45,11 @@ def main():
     config = {
         "bank_statements": {
             "barclays_student": ["march", "april", "may"],
-            # "barclays": ["march", "april", "may"],
-            # "first_direct": ["march", "april", "may"],
-            # "halifax": ["march", "april", "may"],
-            # "lloyds": ["september"],
-            # "monzo": ["november", "3_months"],
+            "barclays": ["march", "april", "may"],
+            "first_direct": ["march", "april", "may"],
+            "halifax": ["march", "april", "may"],
+            "lloyds": ["september"],
+            "monzo": ["november", "3_months"],
         },
         "payslips": {
             "payslip": ["jake"],
