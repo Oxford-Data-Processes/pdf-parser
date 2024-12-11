@@ -54,11 +54,11 @@ def main():
     config = {
         "bank_statements": {
             "barclays_student": ["march", "april", "may"],
-            # "barclays": ["march", "april", "may"],
-            # "first_direct": ["march", "april", "may"],
-            # "halifax": ["march", "april", "may"],
-            # "lloyds": ["september"],
-            # "monzo": ["november", "3_months"],
+            "barclays": ["march", "april", "may"],
+            "first_direct": ["march", "april", "may"],
+            "halifax": ["march", "april", "may"],
+            "lloyds": ["september"],
+            "monzo": ["november", "3_months"],
         },
         "payslips": {
             "payslip": ["jake"],
