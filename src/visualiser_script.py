@@ -7,16 +7,15 @@ from typing import Dict, List, Optional
 
 # Update paths to be relative to src directory
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-SRC_DIR = os.path.dirname(SCRIPT_DIR)
-ROOT_DIR = os.path.dirname(SRC_DIR)
+ROOT_DIR = os.path.dirname(SCRIPT_DIR)
 
 FORMS_PAGE_NUMBER = 1
 
 document_type = "bank_statements"
 template_name: str = "first_direct"
-identifier: str = "march"
+identifier: str = "may"
 template_path: str = os.path.join(
-    SRC_DIR, "templates", f"{template_name}_template.json"
+    ROOT_DIR, "src", "templates", f"{template_name}_template.json"
 )
 pdf_path: str = os.path.join(
     ROOT_DIR,
@@ -28,7 +27,7 @@ pdf_path: str = os.path.join(
 )
 
 pdf_data_path: str = os.path.join(
-    SRC_DIR, "pdf_data", f"{template_name}_{identifier}_pdf_data.json"
+    ROOT_DIR, "src", "pdf_data", f"{template_name}_{identifier}_pdf_data.json"
 )
 
 

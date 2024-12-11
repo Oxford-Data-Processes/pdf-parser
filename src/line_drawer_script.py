@@ -5,7 +5,7 @@ import sys
 # Add the project root to the Python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
-from src.scripts.pdf_utils import ImageDrawer
+from pdf_utils import ImageDrawer
 from PIL import Image
 
 template_name = "halifax"

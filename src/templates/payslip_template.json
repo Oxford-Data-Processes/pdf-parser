@@ -10,6 +10,7 @@
             "type": "form",
             "config": {
                 "field_name": "name",
+                "search_type": "coordinates",
                 "coordinates": {
                     "top_left": {
                         "x": 0.154,
@@ -27,6 +28,7 @@
             "type": "form",
             "config": {
                 "field_name": "total_gross",
+                "search_type": "coordinates",
                 "coordinates": {
                     "top_left": {
                         "x": 0.603,
@@ -44,6 +46,7 @@
             "type": "form",
             "config": {
                 "field_name": "tax",
+                "search_type": "coordinates",
                 "coordinates": {
                     "top_left": {
                         "x": 0.61,
@@ -61,6 +64,7 @@
             "type": "form",
             "config": {
                 "field_name": "national_insurance",
+                "search_type": "coordinates",
                 "coordinates": {
                     "top_left": {
                         "x": 0.61,
@@ -78,6 +82,7 @@
             "type": "form",
             "config": {
                 "field_name": "pension",
+                "search_type": "coordinates",
                 "coordinates": {
                     "top_left": {
                         "x": 0.615,
@@ -95,6 +100,7 @@
             "type": "form",
             "config": {
                 "field_name": "total_gross_ytd",
+                "search_type": "coordinates",
                 "coordinates": {
                     "top_left": {
                         "x": 0.861,
@@ -112,6 +118,7 @@
             "type": "form",
             "config": {
                 "field_name": "tax_ytd",
+                "search_type": "coordinates",
                 "coordinates": {
                     "top_left": {
                         "x": 0.865,
@@ -129,6 +136,7 @@
             "type": "form",
             "config": {
                 "field_name": "national_insurance_ytd",
+                "search_type": "coordinates",
                 "coordinates": {
                     "top_left": {
                         "x": 0.861,
@@ -146,6 +154,7 @@
             "type": "form",
             "config": {
                 "field_name": "pension_ytd",
+                "search_type": "coordinates",
                 "coordinates": {
                     "top_left": {
                         "x": 0.873,
@@ -163,6 +172,7 @@
             "type": "form",
             "config": {
                 "field_name": "net_pay",
+                "search_type": "coordinates",
                 "coordinates": {
                     "top_left": {
                         "x": 0.857,
@@ -180,6 +190,7 @@
             "type": "form",
             "config": {
                 "field_name": "employee_number",
+                "search_type": "coordinates",
                 "coordinates": {
                     "top_left": {
                         "x": 0.075,
@@ -197,6 +208,7 @@
             "type": "form",
             "config": {
                 "field_name": "tax_code",
+                "search_type": "coordinates",
                 "coordinates": {
                     "top_left": {
                         "x": 0.277,
@@ -214,6 +226,7 @@
             "type": "form",
             "config": {
                 "field_name": "process_date",
+                "search_type": "coordinates",
                 "coordinates": {
                     "top_left": {
                         "x": 0.568,
@@ -231,6 +244,7 @@
             "type": "form",
             "config": {
                 "field_name": "company",
+                "search_type": "coordinates",
                 "coordinates": {
                     "top_left": {
                         "x": 0.075,

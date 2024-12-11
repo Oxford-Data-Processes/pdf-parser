@@ -54,7 +54,7 @@ class Extractor:
 
             return data
 
-    def get_dimensions(self, pdf) -> Dict[str, float]:
+    def get_dimensions(self, pdf: pdfplumber.pdf) -> Dict[str, float]:
         """Get the dimensions of the first page of the PDF."""
         return {
             "width": round(pdf.pages[0].width, 2),
@@ -62,7 +62,7 @@ class Extractor:
         }
 
     def extract_page_line_data(
-        self, page: pdfplumber.Page, jpg_bytes: bytes
+        self, page: pdfplumber.page, jpg_bytes: bytes
     ) -> List[Dict]:
         """Extract line data from a page."""
         image_extractor = ImageExtractor(self.pdf_bytes)
@@ -94,7 +94,7 @@ class Extractor:
                 )
         return line_data
 
-    def extract_page_text_data(self, page: pdfplumber.Page) -> List[Dict]:
+    def extract_page_text_data(self, page: pdfplumber.page) -> List[Dict]:
         """Extract text and bounding box information from a page."""
         page_data = []
         for element in page.extract_words():

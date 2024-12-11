@@ -47,10 +47,9 @@
                         }
                       },
                       "required": ["top_left", "bottom_right"]
-                    },
-                    "type": { "type": "string" }
+                    }
                   },
-                  "required": ["field_name", "coordinates"]
+                  "required": ["field_name", "search_type"]
                 },
                 {
                   "properties": {
