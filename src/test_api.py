@@ -30,13 +30,20 @@ def test_parse_pdf(test_pdf_path: str, template_name: str, identifier: str):
             files=files,
         )
 
+        print(response.json())
+
         assert response.status_code == 200
+
+        if isinstance(response.json(), str):
+            response_json = json.loads(response.json())
+        else:
+            response_json = response.json()
 
         with open(
             os.path.join("src", "outputs", f"{template_name}_{identifier}_output.json"),
             "w",
         ) as f:
-            json.dump(json.loads(response.json()), f, indent=4)
+            json.dump(response_json, f, indent=4)
 
 
 def main():
