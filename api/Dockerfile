@@ -1,11 +1,11 @@
-# Start of Selection
 FROM python:3.11-slim
 
 # Install system dependencies
 RUN apt-get update && \
     apt-get install -y \
     git \
-    poppler-utils
+    poppler-utils \
+    tesseract-ocr
 
 WORKDIR /app
 
@@ -22,4 +22,3 @@ ENV PYTHONPATH=/app
 
 # Command to run the application
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
-# End of Selection
