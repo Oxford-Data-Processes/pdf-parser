@@ -16,5 +16,12 @@ setup(
         "Operating System :: OS Independent",
     ],
     python_requires=">=3.11",
-    install_requires=["pdf2image", "pdfplumber", "pytesseract", "Pillow", "jsonschema"],
+    install_requires=[
+        "pdf2image",
+        "pdfplumber",
+        "numpy",
+        "pytesseract",
+        "Pillow",
+        "jsonschema",
+    ],
 )
