@@ -1,6 +1,5 @@
 TO DO:
 
-- Clean up code
 - Create FASTAPI endpoints (local)
 - Add unit tests
 - Create end to end tests (using fastapi endpoints)
@@ -27,6 +26,11 @@ Start up:
 python -m venv venv
 source venv/bin/activate
 pip install -r requirements_dev.txt
+
+API:
+
+cd src/
+uvicorn api:app --host 0.0.0.0 --port 8000 --reload
 
 Checks:
 

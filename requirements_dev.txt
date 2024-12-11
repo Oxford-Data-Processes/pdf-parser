@@ -9,3 +9,7 @@ pytesseract
 Pillow
 mypy
 types-Pillow
+fastapi
+uvicorn
+python-multipart
+httpx
