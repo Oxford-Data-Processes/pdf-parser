@@ -19,6 +19,8 @@ setup(
     install_requires=[
         "pdf2image",
         "pdfplumber",
+        "python-multipart",
+        "pydantic",
         "numpy",
         "pytesseract",
         "Pillow",
