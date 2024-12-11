@@ -16,5 +16,5 @@ setup(
         "Operating System :: OS Independent",
     ],
     python_requires=">=3.11",
-    install_requires=["pdfplumber", "pytesseract", "Pillow"],
+    install_requires=["pdf2image", "pdfplumber", "pytesseract", "Pillow"],
 )
