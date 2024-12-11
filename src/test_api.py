@@ -45,23 +45,38 @@ def test_parse_pdf(test_pdf_path: str, template_name: str, identifier: str):
 def main():
     """Run the test directly"""
 
-    ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    document_type = "bank_statements"
-    template_name = "monzo"
-    identifier = "november"
-    test_pdf_path: str = os.path.join(
-        ROOT_DIR,
-        "data",
-        document_type,
-        template_name,
-        "pdf",
-        f"{template_name}_{identifier}.pdf",
-    )
+    config = {
+        "bank_statements": {
+            "barclays_student": ["march", "april", "may"],
+            "barclays": ["march", "april", "may"],
+            "first_direct": ["march", "april", "may"],
+            "halifax": ["march", "april", "may"],
+            "lloyds": ["september"],
+            "monzo": ["november", "3_months"],
+        },
+        "payslips": {
+            "payslip": ["jake"],
+        },
+    }
 
-    # Run the test
-    print("Running API test...")
-    test_parse_pdf(test_pdf_path, template_name, identifier)
-    print("Test completed successfully!")
+    ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+    for document_type, templates_and_identifiers in config.items():
+        for template_name, identifiers in templates_and_identifiers.items():
+            for identifier in identifiers:
+                test_pdf_path: str = os.path.join(
+                    ROOT_DIR,
+                    "data",
+                    document_type,
+                    template_name,
+                    "pdf",
+                    f"{template_name}_{identifier}.pdf",
+                )
+
+                # Run the test
+                print("Running API test...")
+                test_parse_pdf(test_pdf_path, template_name, identifier)
+                print("Test completed successfully!")
 
 
 if __name__ == "__main__":
