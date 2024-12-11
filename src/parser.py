@@ -1,7 +1,7 @@
 import re
 import uuid
 from datetime import datetime
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
 from forms import FormProcessor
 from extractors import TextExtractor
@@ -12,7 +12,7 @@ from tables import TableProcessor, TableSplitter
 class Parser:
     def __init__(self) -> None:
         self.coordinate_utils = CoordinateUtils()
-        self.text_extractor = TextExtractor()
+        self.text_extractor = TextExtractor(self.coordinate_utils)
 
     def page_number_converter(
         self, page_numbers: str, number_of_pages: int
@@ -47,6 +47,24 @@ class Parser:
         self, rule_id: str, template: Dict[str, Any]
     ) -> Dict[str, Any]:
         return self.coordinate_utils.get_rule_from_id(rule_id, template)
+
+    def get_text_from_page(
+        self,
+        page_content: List[Dict[str, Any]],
+        coordinates: Optional[Dict[str, Dict[str, float]]],
+        extraction_method: str,
+        jpg_bytes_page: bytes,
+        search_type: Optional[str] = None,
+        regex: Optional[str] = None,
+    ) -> str:
+        return self.text_extractor.get_text_from_page(
+            page_content,
+            coordinates,
+            extraction_method,
+            jpg_bytes_page,
+            search_type=search_type,
+            regex=regex,
+        )
 
     def get_output_data_from_form_rule(
         self,
@@ -95,7 +113,7 @@ class Parser:
                 column["coordinates"], column["lines_y_coordinates"]
             )
             for row_index, box in enumerate(split_boxes):
-                text_value = self.text_extractor.get_text_from_page(
+                text_value = self.get_text_from_page(
                     pdf_data["pages"][page_index]["content"],
                     box,
                     extraction_method,

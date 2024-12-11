@@ -5,6 +5,7 @@ from typing import Dict, List, Tuple, Any, Optional
 
 import numpy as np
 import pdfplumber
+import pytesseract  # type: ignore
 from pdf2image import convert_from_bytes
 from PIL import Image
 
@@ -156,6 +157,16 @@ class ImageExtractor:
             jpg_files[jpg_file_name] = img_byte_arr.getvalue()
         return jpg_files
 
+    def extract_text_from_coordinates(self, coordinates: Dict[str, Any]) -> str:
+        """Extract text from specific coordinates in an image using OCR."""
+        image = Image.open(io.BytesIO(self.pdf_bytes)).convert("RGB")
+        x_min = int(coordinates["top_left"]["x"] * image.width)
+        y_min = int(coordinates["top_left"]["y"] * image.height)
+        x_max = int(coordinates["bottom_right"]["x"] * image.width)
+        y_max = int(coordinates["bottom_right"]["y"] * image.height)
+        cropped_image = image.crop((x_min, y_min, x_max, y_max))
+        return pytesseract.image_to_string(cropped_image).strip()
+
     def calculate_average_pixel_value(
         self, jpg_bytes: bytes, coordinates: Dict
     ) -> Tuple[List[int], np.ndarray, Image.Image, Tuple[int, int, int, int]]:
@@ -194,14 +205,17 @@ class ImageExtractor:
 
 
 class TextExtractor:
+    def __init__(self, coordinate_utils):
+        self.coordinate_utils = coordinate_utils
+
     def get_text_from_items(self, items: List[Dict[str, Any]]) -> str:
         return " ".join([item["text"] for item in items])
 
     def get_text_from_ocr(
         self, jpg_bytes_page: bytes, coordinates: Dict[str, Any]
     ) -> str:
-        image_extractor = ImageExtractor(jpg_bytes_page, coordinates)
-        return image_extractor.extract_text()
+        image_extractor = ImageExtractor(jpg_bytes_page)
+        return image_extractor.extract_text_from_coordinates(coordinates)
 
     def get_items_in_bounding_box(
         self,
