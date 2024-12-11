@@ -1,7 +1,7 @@
 import os
 import json
 import requests
-from pathlib import Path
+
 
 api_url = "http://localhost:8000"
 
@@ -21,7 +21,7 @@ def test_parse_pdf(test_pdf_path: str, template_name: str, identifier: str):
     # Open the PDF file
     with open(test_pdf_path, "rb") as pdf_file:
         # Create the files dictionary for the request
-        files = {"pdf": ("sample.pdf", pdf_file, "application/pdf")}
+        files = {"pdf": (test_pdf_path, pdf_file, "application/pdf")}
 
         # Make the request to the API
         response = requests.post(
@@ -36,7 +36,7 @@ def test_parse_pdf(test_pdf_path: str, template_name: str, identifier: str):
             os.path.join("src", "outputs", f"{template_name}_{identifier}_output.json"),
             "w",
         ) as f:
-            json.dump(response.json(), f, indent=4)
+            json.dump(json.loads(response.json()), f, indent=4)
 
 
 def main():
@@ -72,7 +72,6 @@ def main():
 
                 import time
 
-                # Run the test
                 print(
                     f"Running API test for {document_type} {template_name} {identifier}"
                 )

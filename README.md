@@ -29,8 +29,9 @@ pip install -r requirements_dev.txt
 
 API:
 
-cd src/
-uvicorn api:app --host 0.0.0.0 --port 8000 --reload
+docker build -t pdf-parser-api ./api
+docker run -p 8000:8000 pdf-parser-api
+
 
 Checks:
 
