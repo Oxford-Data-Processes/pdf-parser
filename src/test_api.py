@@ -38,6 +38,12 @@ def test_parse_pdf():
         assert response.status_code == 200
         print(response.json())
 
+        with open(
+            os.path.join("src", "outputs", f"{template_name}_test_output.json"),
+            "w",
+        ) as f:
+            json.dump(response.json(), f, indent=4)
+
 
 def main():
     """Run the test directly"""
