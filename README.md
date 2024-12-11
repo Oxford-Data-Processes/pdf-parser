@@ -30,8 +30,7 @@ pip install -r requirements_dev.txt
 API:
 
 docker build -t pdf-parser-api ./api
-docker run -p 8000:8000 pdf-parser-api
-
+docker run -p 8000:8000 -v $(pwd)/src:/app/src pdf-parser-api
 
 Checks:
 

@@ -1,5 +1,6 @@
-import re
+import json
 import uuid
+from jsonschema import validate
 from datetime import datetime
 from typing import Any, Dict, List, Optional
 
@@ -133,6 +134,11 @@ class Parser:
     def parse_pdf(
         template: Dict[str, Any], pdf_data: Dict[str, Any], jpg_bytes: List[bytes]
     ) -> Dict[str, Any]:
+        with open("schema/template_json_schema.json") as schema_file:
+            template_json_schema = json.load(schema_file)
+
+        validate(instance=template, schema=template_json_schema)
+
         forms = []
         tables = []
         number_of_pages = len(pdf_data["pages"])
