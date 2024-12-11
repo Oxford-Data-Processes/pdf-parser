@@ -1,16 +1,15 @@
-from typing import Dict, List, Optional
-
+from typing import Dict, List, Any, Optional
 from coordinate_utils import CoordinateUtils
 
 
 class TableProcessor:
-    def __init__(self, template: Dict):
+    def __init__(self, template: Dict[str, Any]) -> None:
         self.template = template
         self.coordinate_utils = CoordinateUtils()
 
     def get_delimiter_column_coordinates(
-        self, template: Dict, delimiter_field_name: str, rule_id: str
-    ) -> Optional[Dict]:
+        self, template: Dict[str, Any], delimiter_field_name: str, rule_id: str
+    ) -> Optional[Dict[str, Dict[str, float]]]:
         """Get the coordinates of the description column from the template."""
         delimiter_coordinates = None
         rule = self.coordinate_utils.get_rule_from_id(rule_id, template)
@@ -25,11 +24,11 @@ class TableProcessor:
 
     def process_table_data(
         self,
-        table_rule: Dict,
-        page_content: Dict,
+        table_rule: Dict[str, Any],
+        page_content: Dict[str, Any],
         delimiter_field_name: str,
         delimiter_type: str,
-    ) -> List[Dict]:
+    ) -> List[Dict[str, Any]]:
         """Process a single table's data."""
         delimiter_coordinates = self.get_delimiter_column_coordinates(
             self.template, delimiter_field_name, table_rule["rule_id"]
@@ -49,8 +48,8 @@ class TableProcessor:
             lines_y_coordinates = table_splitter.split_table(
                 delimiter_type,
                 page_content,
-                delimiter_field_name,
-                table_rule["rule_id"],
+                delimiter_field_name=delimiter_field_name,
+                rule_id=table_rule["rule_id"],
             )
 
         if not delimiter_coordinates:
@@ -70,13 +69,15 @@ class TableProcessor:
 
 
 class TableSplitter:
-    def __init__(self, template: Dict):
+    def __init__(self, template: Dict[str, Any]) -> None:
         self.template = template
         self.coordinate_utils = CoordinateUtils()
 
     def split_bounding_box_by_lines(
-        self, bounding_box: Dict, lines_y_coordinates: List[float]
-    ) -> List[Dict]:
+        self,
+        bounding_box: Dict[str, Dict[str, float]],
+        lines_y_coordinates: List[float],
+    ) -> List[Dict[str, Dict[str, float]]]:
         """Split a bounding box by given y-coordinates."""
         split_boxes = []
         top_left_y = bounding_box["top_left"]["y"]
@@ -117,8 +118,8 @@ class TableSplitter:
         return split_boxes
 
     def filter_lines_by_pixel_value(
-        self, lines: List[Dict], max_pixel_value: Optional[int] = None
-    ) -> List[Dict]:
+        self, lines: List[Dict[str, Any]], max_pixel_value: Optional[int] = None
+    ) -> List[Dict[str, Any]]:
         """Filter lines based on their average pixel value."""
         filtered_lines = []
         for line in lines:
@@ -133,7 +134,7 @@ class TableSplitter:
         return filtered_lines
 
     def split_table_by_field(
-        self, page_content: Dict, delimiter_field_name: str, rule_id: str
+        self, page_content: Dict[str, Any], delimiter_field_name: str, rule_id: str
     ) -> List[float]:
         text_coordinates = page_content["content"]
 
@@ -181,7 +182,7 @@ class TableSplitter:
         return averaged_y_coordinates
 
     def split_table_by_line(
-        self, lines: List[Dict], max_pixel_value: Optional[int] = None
+        self, lines: List[Dict[str, Any]], max_pixel_value: Optional[int] = None
     ) -> List[float]:
         filtered_lines = self.filter_lines_by_pixel_value(lines, max_pixel_value)
         lines_y_coordinates = [
@@ -192,7 +193,7 @@ class TableSplitter:
     def split_table(
         self,
         row_delimiter_type: str,
-        page_content: Dict,
+        page_content: Dict[str, Any],
         delimiter_field_name: Optional[str] = None,
         rule_id: Optional[str] = None,
         max_pixel_value: Optional[int] = None,
@@ -202,6 +203,11 @@ class TableSplitter:
                 page_content["lines"], max_pixel_value=max_pixel_value
             )
         elif row_delimiter_type == "field":
+            if delimiter_field_name is None or rule_id is None:
+                raise ValueError(
+                    "delimiter_field_name and rule_id are required for field delimiter type"
+                )
             return self.split_table_by_field(
                 page_content, delimiter_field_name, rule_id
             )
+        return []

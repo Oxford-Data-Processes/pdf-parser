@@ -1,18 +1,19 @@
-from typing import Dict, List
+from typing import Dict, List, Any
+from parser import Parser
 
 
 class FormProcessor:
-    def __init__(self, parser):
+    def __init__(self, parser: Parser) -> None:
         self.parser = parser
 
     def get_output_data_from_form_rule(
         self,
         form_rule_id: str,
         page_index: int,
-        pdf_data: Dict,
-        template: Dict,
+        pdf_data: Dict[str, Any],
+        template: Dict[str, Any],
         jpg_bytes: List[bytes],
-    ) -> Dict:
+    ) -> Dict[str, str]:
         form_rule = self.parser.get_rule_from_id(form_rule_id, template)
         config = form_rule["config"]
         coordinates = config.get("coordinates")

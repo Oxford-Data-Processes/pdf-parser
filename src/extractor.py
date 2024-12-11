@@ -1,6 +1,6 @@
 import io
 import os
-from typing import Dict, List, Tuple
+from typing import Dict, List, Tuple, Any
 
 import numpy as np
 import pdfplumber
@@ -14,7 +14,7 @@ class Extractor:
         self.template_name = template_name
         self.identifier = identifier
 
-    def extract_data(self) -> Dict:
+    def extract_data(self) -> Dict[str, Any]:
         """
         Extract text, bounding box information, and line coordinates from the PDF file.
 
@@ -33,7 +33,7 @@ class Extractor:
                 image_file.write(jpg_bytes)
 
         with pdfplumber.open(io.BytesIO(self.pdf_bytes)) as pdf:
-            data = {
+            data: Dict[str, Any] = {
                 "pages": [],
                 "number_of_pages": len(pdf.pages),
                 "dimensions": self.get_dimensions(pdf),
@@ -55,7 +55,7 @@ class Extractor:
 
             return data
 
-    def get_dimensions(self, pdf: pdfplumber.pdf) -> Dict[str, float]:
+    def get_dimensions(self, pdf: Any) -> Dict[str, float]:
         """Get the dimensions of the first page of the PDF."""
         return {
             "width": round(pdf.pages[0].width, 2),
@@ -63,11 +63,11 @@ class Extractor:
         }
 
     def extract_page_line_data(
-        self, page: pdfplumber.page, jpg_bytes: bytes
-    ) -> List[Dict]:
+        self, page: Any, jpg_bytes: bytes
+    ) -> List[Dict[str, Any]]:
         """Extract line data from a page."""
         image_extractor = ImageExtractor(self.pdf_bytes)
-        line_data = []
+        line_data: List[Dict[str, Any]] = []
         for line in page.lines:
             # Ensure line has the necessary keys before proceeding
             if "x0" in line and "y0" in line and "x1" in line and "y1" in line:
@@ -98,9 +98,9 @@ class Extractor:
                 )
         return line_data
 
-    def extract_page_text_data(self, page: pdfplumber.page) -> List[Dict]:
+    def extract_page_text_data(self, page: Any) -> List[Dict[str, Any]]:
         """Extract text and bounding box information from a page."""
-        page_data = []
+        page_data: List[Dict[str, Any]] = []
         for element in page.extract_words():
             text = element["text"]
             x0, y0, x1, y1 = (

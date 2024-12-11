@@ -8,3 +8,4 @@ PyMuPDF
 pytesseract
 Pillow
 mypy
+types-Pillow
