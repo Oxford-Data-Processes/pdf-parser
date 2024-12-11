@@ -20,14 +20,13 @@ def test_parse_pdf(test_pdf_path: str, template_name: str, identifier: str):
 
     # Open the PDF file
     with open(test_pdf_path, "rb") as pdf_file:
-        # Create the files dictionary for the request
-        files = {"pdf": (test_pdf_path, pdf_file, "application/pdf")}
+        pdf_bytes = pdf_file.read()  # Read PDF as bytes
 
         # Make the request to the API
         response = requests.post(
             f"{api_url}/parse-pdf/",
             params={"template": json.dumps(template)},
-            files=files,
+            files={"pdf": pdf_bytes},  # Pass PDF as bytes using files
         )
 
         print(response.json())
