@@ -112,22 +112,6 @@ class Parser:
             )
             return self.get_text_from_items(items_within_coordinates)
         elif extraction_method == "ocr":
-            import os
-
-            # Create a directory for storing images if it doesn't exist
-            output_dir = "extracted_images"
-            os.makedirs(output_dir, exist_ok=True)
-
-            # Generate a filename based on the coordinates
-            coordinates_str = f"{coordinates['top_left']['x']}_{coordinates['top_left']['y']}_{coordinates['bottom_right']['x']}_{coordinates['bottom_right']['y']}"
-            file_path = os.path.join(output_dir, f"{coordinates_str}.jpg")
-
-            image_extractor = ImageExtractor(jpg_bytes_page, coordinates)
-
-            # Save only the section of the jpg specified by coordinates
-            section_image = image_extractor.extract_section()
-            section_image.save(file_path, "JPEG")
-
             return self.get_text_from_ocr(jpg_bytes_page, coordinates)
 
     def get_output_data_from_form_rule(
