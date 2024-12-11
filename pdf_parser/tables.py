@@ -1,5 +1,5 @@
 from typing import Dict, List, Any, Optional
-from coordinate_utils import CoordinateUtils
+from pdf_parser.coordinate_utils import CoordinateUtils
 
 
 class TableProcessor:

@@ -3,10 +3,10 @@ import uuid
 from datetime import datetime
 from typing import Any, Dict, List, Optional
 
-from forms import FormProcessor
-from extractors import TextExtractor
-from coordinate_utils import CoordinateUtils
-from tables import TableProcessor, TableSplitter
+from pdf_parser.forms import FormProcessor
+from pdf_parser.extractors import TextExtractor
+from pdf_parser.coordinate_utils import CoordinateUtils
+from pdf_parser.tables import TableProcessor, TableSplitter
 
 
 class Parser:

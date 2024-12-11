@@ -1,6 +1,6 @@
 from typing import Dict, List, Any
-from coordinate_utils import CoordinateUtils
-from extractors import TextExtractor
+from pdf_parser.coordinate_utils import CoordinateUtils
+from pdf_parser.extractors import TextExtractor
 
 
 class FormProcessor:

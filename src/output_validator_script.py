@@ -2,7 +2,7 @@ import json
 
 from jsonschema import validate
 
-from pydantic_models import Document
+from pdf_parser.pydantic_models import Document
 
 templates_and_identifiers = {
     "barclays_student": ["march", "april", "may"],

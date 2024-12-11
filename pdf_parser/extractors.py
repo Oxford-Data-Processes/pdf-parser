@@ -8,7 +8,7 @@ import pdfplumber
 import pytesseract  # type: ignore
 from pdf2image import convert_from_bytes
 from PIL import Image
-from coordinate_utils import CoordinateUtils
+from pdf_parser.coordinate_utils import CoordinateUtils
 
 
 class DataExtractor:

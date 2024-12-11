@@ -3,13 +3,23 @@ from fastapi.responses import JSONResponse
 from typing import Dict, Any
 import json
 import os
-from parser import Parser
-from extractors import DataExtractor
-from pdf_utils import ImageDrawer
+from pdf2image import convert_from_path
 from jsonschema import validate
-from pydantic_models import Document
+
+
+from pdf_parser.parser import Parser
+from pdf_parser.extractors import DataExtractor
+from pdf_parser.pydantic_models import Document
 
 app = FastAPI()
+
+
+def create_jpg_image(pdf_path: str, page_number: int) -> Any:
+    """Convert the PDF page to a JPG."""
+    images = convert_from_path(pdf_path)
+    jpg_image_original = images[page_number - 1]
+
+    return jpg_image_original
 
 
 @app.post("/parse-pdf/")
@@ -49,7 +59,7 @@ async def parse_pdf(template: str, pdf: UploadFile = File(...)) -> JSONResponse:
     number_of_pages = pdf_data["number_of_pages"]
     jpg_bytes = []
     for page_number in range(1, number_of_pages + 1):
-        jpg_image = ImageDrawer.create_jpg_image(pdf_path, page_number)
+        jpg_image = create_jpg_image(pdf_path, page_number)
         jpg_bytes.append(jpg_image)
 
     output = Parser.parse_pdf(template_dict, pdf_data, jpg_bytes)
