@@ -6,10 +6,13 @@ import os
 from pdf2image import convert_from_path
 from jsonschema import validate
 
+import sys
+import os
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from pdf_parser.parser import Parser
 from pdf_parser.extractors import DataExtractor
-from pdf_parser.pydantic_models import Document
 
 app = FastAPI()
 
@@ -63,7 +66,4 @@ async def parse_pdf(template: str, pdf: UploadFile = File(...)) -> JSONResponse:
         jpg_bytes.append(jpg_image)
 
     output = Parser.parse_pdf(template_dict, pdf_data, jpg_bytes)
-    validated_output = Document(**output)  # Validate output using Pydantic
-    return JSONResponse(
-        status_code=200, content=validated_output.model_dump_json()
-    )  # Return validated output as JSON
+    return JSONResponse(status_code=200, content=output)

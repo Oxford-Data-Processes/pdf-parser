@@ -7,6 +7,7 @@ from pdf_parser.forms import FormProcessor
 from pdf_parser.extractors import TextExtractor
 from pdf_parser.coordinate_utils import CoordinateUtils
 from pdf_parser.tables import TableProcessor, TableSplitter
+from pdf_parser.pydantic_models import Document
 
 
 class Parser:
@@ -174,4 +175,6 @@ class Parser:
             "pages": [{"forms": forms, "tables": tables}],
         }
 
-        return output
+        output_document = Document(**output)
+
+        return output_document.model_dump_json()
