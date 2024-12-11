@@ -1,6 +1,5 @@
 TO DO:
 
-- Fix bugs
 - Clean up code
 - Create FASTAPI endpoints (local)
 - Add unit tests

@@ -4,6 +4,7 @@ from PIL import Image
 import io
 from pdf2image import convert_from_bytes
 import os
+from typing import Dict, List, Tuple
 
 
 class Extractor:
@@ -12,7 +13,7 @@ class Extractor:
         self.template_name = template_name
         self.identifier = identifier
 
-    def extract_data(self):
+    def extract_data(self) -> Dict:
         """
         Extract text, bounding box information, and line coordinates from the PDF file.
 
@@ -53,14 +54,16 @@ class Extractor:
 
             return data
 
-    def get_dimensions(self, pdf):
+    def get_dimensions(self, pdf) -> Dict[str, float]:
         """Get the dimensions of the first page of the PDF."""
         return {
             "width": round(pdf.pages[0].width, 2),
             "height": round(pdf.pages[0].height, 2),
         }
 
-    def extract_page_line_data(self, page, jpg_bytes):
+    def extract_page_line_data(
+        self, page: pdfplumber.Page, jpg_bytes: bytes
+    ) -> List[Dict]:
         """Extract line data from a page."""
         image_extractor = ImageExtractor(self.pdf_bytes)
         line_data = []
@@ -91,7 +94,7 @@ class Extractor:
                 )
         return line_data
 
-    def extract_page_text_data(self, page):
+    def extract_page_text_data(self, page: pdfplumber.Page) -> List[Dict]:
         """Extract text and bounding box information from a page."""
         page_data = []
         for element in page.extract_words():
@@ -130,7 +133,7 @@ class ImageExtractor:
     def __init__(self, pdf_bytes: bytes):
         self.pdf_bytes = pdf_bytes
 
-    def convert_pdf_to_jpg_files(self, prefix: str):
+    def convert_pdf_to_jpg_files(self, prefix: str) -> Dict[str, bytes]:
         """Convert the PDF into several JPG files, one for each page.
 
         Args:
@@ -148,7 +151,9 @@ class ImageExtractor:
             jpg_files[jpg_file_name] = img_byte_arr.getvalue()
         return jpg_files
 
-    def calculate_average_pixel_value(self, jpg_bytes, coordinates):
+    def calculate_average_pixel_value(
+        self, jpg_bytes: bytes, coordinates: Dict
+    ) -> Tuple[List[int], np.ndarray, Image.Image, Tuple[int, int, int, int]]:
         # Load the image from bytes
         image = Image.open(io.BytesIO(jpg_bytes)).convert("RGB")
         pixels = np.array(image)
