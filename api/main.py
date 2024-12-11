@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, UploadFile, File
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from typing import Dict, Any
@@ -20,10 +20,10 @@ app = FastAPI()
 # Configure CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allows all origins
+    allow_origins=["*"],
     allow_credentials=True,
-    allow_methods=["*"],  # Allows all methods
-    allow_headers=["*"],  # Allows all headers
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # Create necessary directories
@@ -37,34 +37,46 @@ def create_jpg_image(pdf_bytes: bytes, page_number: int) -> Any:
         temp_pdf.write(pdf_bytes)
     images = convert_from_path("temp.pdf")
     jpg_image_original = images[page_number - 1]
+    os.remove("temp.pdf")  # Clean up temporary file
     return jpg_image_original
 
 
 @app.post("/parse-pdf/")
-async def parse_pdf(template: str, pdf: bytes) -> JSONResponse:
+async def parse_pdf(template: str, pdf: UploadFile = File(...)) -> JSONResponse:
     try:
+        print(f"Processing PDF: {pdf.filename}")
         template_dict = json.loads(template)
 
         # Create the output directory if it doesn't exist
         output_dir = os.path.join("src", "outputs")
         os.makedirs(output_dir, exist_ok=True)
 
+        # Read the PDF bytes
+        pdf_bytes = await pdf.read()
+        print(f"Read {len(pdf_bytes)} bytes from PDF")
+
         template_name = template_dict["metadata"]["template_id"]
         identifier = "test"
 
-        data_extractor = DataExtractor(pdf, template_name, identifier)
+        print(f"Extracting data with template: {template_name}")
+        data_extractor = DataExtractor(pdf_bytes, template_name, identifier)
         pdf_data = data_extractor.extract_data()
 
         number_of_pages = pdf_data["number_of_pages"]
+        print(f"Processing {number_of_pages} pages")
+
         jpg_bytes = []
         for page_number in range(1, number_of_pages + 1):
-            jpg_image = create_jpg_image(pdf, page_number)
+            print(f"Converting page {page_number} to JPG")
+            jpg_image = create_jpg_image(pdf_bytes, page_number)
             jpg_bytes.append(jpg_image)
 
+        print("Parsing PDF with template")
         output = Parser.parse_pdf(template_dict, pdf_data, jpg_bytes)
         return JSONResponse(status_code=200, content=json.loads(output))
 
     except Exception as e:
+        print(f"Error processing PDF: {str(e)}")
         return JSONResponse(
             status_code=500,
             content={"error": "Processing failed", "details": str(e)},
