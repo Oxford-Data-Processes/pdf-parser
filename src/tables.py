@@ -1,4 +1,4 @@
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 from coordinate_utils import CoordinateUtils
 
@@ -8,7 +8,9 @@ class TableProcessor:
         self.template = template
         self.coordinate_utils = CoordinateUtils()
 
-    def get_delimiter_column_coordinates(self, template, delimiter_field_name, rule_id):
+    def get_delimiter_column_coordinates(
+        self, template: Dict, delimiter_field_name: str, rule_id: str
+    ) -> Optional[Dict]:
         """Get the coordinates of the description column from the template."""
         delimiter_coordinates = None
         rule = self.coordinate_utils.get_rule_from_id(rule_id, template)
@@ -68,7 +70,7 @@ class TableProcessor:
 
 
 class TableSplitter:
-    def __init__(self, template):
+    def __init__(self, template: Dict):
         self.template = template
         self.coordinate_utils = CoordinateUtils()
 
@@ -114,7 +116,9 @@ class TableSplitter:
 
         return split_boxes
 
-    def filter_lines_by_pixel_value(self, lines, max_pixel_value=None):
+    def filter_lines_by_pixel_value(
+        self, lines: List[Dict], max_pixel_value: Optional[int] = None
+    ) -> List[Dict]:
         """Filter lines based on their average pixel value."""
         filtered_lines = []
         for line in lines:
@@ -128,7 +132,9 @@ class TableSplitter:
                     filtered_lines.append(line)
         return filtered_lines
 
-    def split_table_by_field(self, page_content, delimiter_field_name, rule_id):
+    def split_table_by_field(
+        self, page_content: Dict, delimiter_field_name: str, rule_id: str
+    ) -> List[float]:
         text_coordinates = page_content["content"]
 
         table_processor = TableProcessor(self.template)
@@ -156,7 +162,7 @@ class TableSplitter:
 
         return line_separation_y_coordinates
 
-    def average_y_coordinates(self, y_coordinates):
+    def average_y_coordinates(self, y_coordinates: List[float]) -> List[float]:
         threshold = 0.01
         averaged_y_coordinates = []
         while y_coordinates:
@@ -174,7 +180,9 @@ class TableSplitter:
 
         return averaged_y_coordinates
 
-    def split_table_by_line(self, lines, max_pixel_value=None):
+    def split_table_by_line(
+        self, lines: List[Dict], max_pixel_value: Optional[int] = None
+    ) -> List[float]:
         filtered_lines = self.filter_lines_by_pixel_value(lines, max_pixel_value)
         lines_y_coordinates = [
             line["decimal_coordinates"]["top_left"]["y"] for line in filtered_lines
@@ -184,11 +192,11 @@ class TableSplitter:
     def split_table(
         self,
         row_delimiter_type: str,
-        page_content,
-        delimiter_field_name=None,
-        rule_id=None,
-        max_pixel_value=None,
-    ):
+        page_content: Dict,
+        delimiter_field_name: Optional[str] = None,
+        rule_id: Optional[str] = None,
+        max_pixel_value: Optional[int] = None,
+    ) -> List[float]:
         if row_delimiter_type == "line":
             return self.split_table_by_line(
                 page_content["lines"], max_pixel_value=max_pixel_value
