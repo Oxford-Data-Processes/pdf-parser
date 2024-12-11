@@ -1,25 +1,30 @@
 import io
-
-import pytesseract
+from typing import Dict, Any
+import pytesseract  # type: ignore
 from PIL import Image
 
 
 class ImageExtractor:
-    def __init__(self, jpg_bytes, decimal_coordinates):
-        self.image = Image.open(io.BytesIO(jpg_bytes))
-        self.coordinates = decimal_coordinates
+    def __init__(self, jpg_bytes: bytes, coordinates: Dict[str, Any]) -> None:
+        self.jpg_bytes = jpg_bytes
+        self.coordinates = coordinates
 
-    def extract_section(self):
-        # Convert decimal coordinates to pixel values
-        width, height = self.image.size
-        top_left_x = int(self.coordinates["top_left"]["x"] * width)
-        top_left_y = int(self.coordinates["top_left"]["y"] * height)
-        bottom_right_x = int(self.coordinates["bottom_right"]["x"] * width)
-        bottom_right_y = int(self.coordinates["bottom_right"]["y"] * height)
+    def extract_text(self) -> str:
+        """Extract text from an image using OCR."""
+        image = Image.open(io.BytesIO(self.jpg_bytes))
+        x_min = int(self.coordinates["top_left"]["x"] * image.width)
+        y_min = int(self.coordinates["top_left"]["y"] * image.height)
+        x_max = int(self.coordinates["bottom_right"]["x"] * image.width)
+        y_max = int(self.coordinates["bottom_right"]["y"] * image.height)
+        cropped_image = image.crop((x_min, y_min, x_max, y_max))
+        return pytesseract.image_to_string(cropped_image).strip()
 
-        # Crop the image to the specified coordinates
-        return self.image.crop((top_left_x, top_left_y, bottom_right_x, bottom_right_y))
-
-    def extract_text(self):
-        section_image = self.extract_section()
-        return pytesseract.image_to_string(section_image, lang="eng")
+    def extract_text_from_coordinates(self, coordinates: Dict[str, Any]) -> str:
+        """Extract text from specific coordinates in an image using OCR."""
+        image = Image.open(io.BytesIO(self.jpg_bytes))
+        x_min = int(coordinates["top_left"]["x"] * image.width)
+        y_min = int(coordinates["top_left"]["y"] * image.height)
+        x_max = int(coordinates["bottom_right"]["x"] * image.width)
+        y_max = int(coordinates["bottom_right"]["y"] * image.height)
+        cropped_image = image.crop((x_min, y_min, x_max, y_max))
+        return pytesseract.image_to_string(cropped_image).strip()

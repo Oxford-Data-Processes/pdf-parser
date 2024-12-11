@@ -144,6 +144,9 @@ class TableSplitter:
             self.template, delimiter_field_name, rule_id
         )
 
+        if delimiter_coordinates is None:
+            raise ValueError("Delimiter coordinates not found")
+
         items_within_coordinates = self.coordinate_utils.get_items_in_bounding_box(
             text_coordinates, delimiter_coordinates
         )

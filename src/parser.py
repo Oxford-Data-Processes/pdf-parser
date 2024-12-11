@@ -1,7 +1,7 @@
 import re
 import uuid
 from datetime import datetime
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional, Union
 
 from forms import FormProcessor
 from ocr import ImageExtractor
@@ -10,7 +10,7 @@ from tables import TableProcessor, TableSplitter
 
 
 class Parser:
-    def __init__(self):
+    def __init__(self) -> None:
         self.coordinate_utils = CoordinateUtils()
 
     def page_number_converter(
@@ -42,32 +42,39 @@ class Parser:
 
         return list(range(left_index, right_index))
 
-    def get_rule_from_id(self, rule_id, template):
+    def get_rule_from_id(
+        self, rule_id: str, template: Dict[str, Any]
+    ) -> Dict[str, Any]:
         return self.coordinate_utils.get_rule_from_id(rule_id, template)
 
     def get_items_in_bounding_box(
-        self, text_coordinates, box_coordinates, threshold=0.005
-    ):
+        self,
+        text_coordinates: List[Dict[str, Any]],
+        box_coordinates: Dict[str, Dict[str, float]],
+        threshold: float = 0.005,
+    ) -> List[Dict[str, Any]]:
         return self.coordinate_utils.get_items_in_bounding_box(
             text_coordinates, box_coordinates, threshold
         )
 
-    def get_text_from_items(self, items):
+    def get_text_from_items(self, items: List[Dict[str, Any]]) -> str:
         return " ".join([item["text"] for item in items])
 
-    def get_text_from_ocr(self, jpg_bytes_page, coordinates):
+    def get_text_from_ocr(
+        self, jpg_bytes_page: bytes, coordinates: Dict[str, Any]
+    ) -> str:
         image_extractor = ImageExtractor(jpg_bytes_page, coordinates)
         return image_extractor.extract_text()
 
     def get_text_from_page(
         self,
-        page_content,
-        coordinates,
-        extraction_method,
-        jpg_bytes_page,
-        search_type=None,
-        regex=None,
-    ):
+        page_content: List[Dict[str, Any]],
+        coordinates: Optional[Dict[str, Dict[str, float]]],
+        extraction_method: str,
+        jpg_bytes_page: bytes,
+        search_type: Optional[str] = None,
+        regex: Optional[str] = None,
+    ) -> str:
         """Extract text using either coordinates, OCR, or regex"""
         if search_type == "regex" and regex:
             try:
@@ -105,10 +112,16 @@ class Parser:
             return self.get_text_from_items(items_within_coordinates)
         elif extraction_method == "ocr":
             return self.get_text_from_ocr(jpg_bytes_page, coordinates)
+        return ""
 
     def get_output_data_from_form_rule(
-        self, form_rule_id, page_index, pdf_data, template, jpg_bytes
-    ):
+        self,
+        form_rule_id: str,
+        page_index: int,
+        pdf_data: Dict[str, Any],
+        template: Dict[str, Any],
+        jpg_bytes: List[bytes],
+    ) -> Dict[str, str]:
         form_processor = FormProcessor(self)
         return form_processor.get_output_data_from_form_rule(
             form_rule_id,
@@ -119,8 +132,13 @@ class Parser:
         )
 
     def get_output_data_from_table_rule(
-        self, table_rule_id, page_index, pdf_data, template, jpg_bytes
-    ):
+        self,
+        table_rule_id: str,
+        page_index: int,
+        pdf_data: Dict[str, Any],
+        template: Dict[str, Any],
+        jpg_bytes: List[bytes],
+    ) -> List[Dict[str, Any]]:
         table_processor = TableProcessor(template)
         table_splitter = TableSplitter(template)
         table_rule = self.get_rule_from_id(table_rule_id, template)
@@ -133,7 +151,7 @@ class Parser:
             delimiter_type,
         )
 
-        data = {}
+        data: Dict[int, Dict[str, str]] = {}
 
         jpg_bytes_page = jpg_bytes[page_index]
 
