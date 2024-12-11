@@ -1,164 +1,164 @@
 {
     "metadata": {
-        "document_id": "ad194d81-ad03-4645-ba8a-0a758627eb70",
-        "parsed_at": "2024-12-11T14:52:39",
+        "document_id": "88664f73-ad28-4e88-a029-856b6785a95e",
+        "parsed_at": "2024-12-11T15:14:47",
         "number_of_pages": 2
     },
     "pages": [
         {
             "forms": [
                 {
-                    "customer_name": "Mr Jake Holmes\n"
+                    "customer_name": "Mr Jake Holmes"
                 },
                 {
-                    "sort_code": "11-00-56\n"
+                    "sort_code": "11-00-56"
                 },
                 {
-                    "account_number": "11980162\n"
+                    "account_number": "11980162"
                 },
                 {
-                    "money_in": "\u00a3761.80\n"
+                    "money_in": "\u00a3761.80"
                 },
                 {
-                    "start_balance": "\u00a3521.23\n"
+                    "start_balance": "\u00a3521.23"
                 },
                 {
-                    "money_out": "\u00a3777.93\n"
+                    "money_out": "\u00a3777.93"
                 },
                 {
-                    "end_balance": "\u00a3505.10\n"
+                    "end_balance": "\u00a3505.10"
                 }
             ],
             "tables": [
                 {
                     "data": [
                         {
-                            "date": "03 Apr 23\n",
-                            "type": "DD\n",
-                            "description": "UNIVERSITY OF NOTT\n",
-                            "money_out": "22.90\n",
+                            "date": "03 Apr 23",
+                            "type": "DD",
+                            "description": "UNIVERSITY OF NOTT",
+                            "money_out": "22.90",
                             "money_in": "",
-                            "balance": "498.33\n"
+                            "balance": "498.33"
                         },
                         {
-                            "date": "06 Apr 23\n",
-                            "type": "FPI\n",
-                            "description": "HIYACAR LTD\n",
+                            "date": "06 Apr 23",
+                            "type": "FPI",
+                            "description": "HIYACAR LTD",
                             "money_out": "",
-                            "money_in": "59.50\n",
-                            "balance": "557.83\n"
+                            "money_in": "59.50",
+                            "balance": "557.83"
                         },
                         {
-                            "date": "06 Apr 23\n",
-                            "type": "DEB\n",
-                            "description": "PAYPAL *FIVERR COM\n",
-                            "money_out": "28.46\n",
+                            "date": "06 Apr 23",
+                            "type": "DEB",
+                            "description": "PAYPAL *FIVERR COM",
+                            "money_out": "28.46",
                             "money_in": "",
-                            "balance": "529.37\n"
+                            "balance": "529.37"
                         },
                         {
-                            "date": "11 Apr 23\n",
-                            "type": "DEB\n",
-                            "description": "PAYPAL *ALABIOPEYE\n",
-                            "money_out": "202.99\n",
+                            "date": "11 Apr 23",
+                            "type": "DEB",
+                            "description": "PAYPAL *ALABIOPEYE",
+                            "money_out": "202.99",
                             "money_in": "",
-                            "balance": "326.38\n"
+                            "balance": "326.38"
                         },
                         {
-                            "date": "11 Apr 23\n",
-                            "type": "FPI\n",
-                            "description": "HIYACAR LTD\n",
+                            "date": "11 Apr 23",
+                            "type": "FPI",
+                            "description": "HIYACAR LTD",
                             "money_out": "",
-                            "money_in": "51.30\n",
-                            "balance": "377.68\n"
+                            "money_in": "51.30",
+                            "balance": "377.68"
                         },
                         {
-                            "date": "11 Apr 23\n",
-                            "type": "DEB\n",
-                            "description": "HEROKU MAR-8020346\n",
-                            "money_out": "21.06\n",
+                            "date": "11 Apr 23",
+                            "type": "DEB",
+                            "description": "HEROKU MAR-8020346",
+                            "money_out": "21.06",
                             "money_in": "",
-                            "balance": "356.62\n"
+                            "balance": "356.62"
                         },
                         {
-                            "date": "11 Apr 23\n",
-                            "type": "DEB\n",
-                            "description": "NON-GBP TRANS FEE\n",
-                            "money_out": "0.62\n",
+                            "date": "11 Apr 23",
+                            "type": "DEB",
+                            "description": "NON-GBP TRANS FEE",
+                            "money_out": "0.62",
                             "money_in": "",
-                            "balance": "356.00\n"
+                            "balance": "356.00"
                         },
                         {
-                            "date": "11 Apr 23\n",
-                            "type": "DEB\n",
-                            "description": "NON-GBP PURCH FEE\n",
-                            "money_out": "0.50\n",
+                            "date": "11 Apr 23",
+                            "type": "DEB",
+                            "description": "NON-GBP PURCH FEE",
+                            "money_out": "0.50",
                             "money_in": "",
-                            "balance": "355.50\n"
+                            "balance": "355.50"
                         },
                         {
-                            "date": "11 Apr 23\n",
-                            "type": "DEB\n",
-                            "description": "GOOGLE Domains\n",
-                            "money_out": "4.14\n",
+                            "date": "11 Apr 23",
+                            "type": "DEB",
+                            "description": "GOOGLE Domains",
+                            "money_out": "4.14",
                             "money_in": "",
-                            "balance": "351.36\n"
+                            "balance": "351.36"
                         },
                         {
-                            "date": "12 Apr 23\n",
-                            "type": "DEB\n",
-                            "description": "PAYPAL *ROOSTERSAI\n",
-                            "money_out": "35.45\n",
+                            "date": "12 Apr 23",
+                            "type": "DEB",
+                            "description": "PAYPAL *ROOSTERSAI",
+                            "money_out": "35.45",
                             "money_in": "",
-                            "balance": "315.91\n"
+                            "balance": "315.91"
                         },
                         {
-                            "date": "12 Apr 23\n",
-                            "type": "DEB\n",
-                            "description": "DVLA VEHICLE TAX\n",
-                            "money_out": "35.00\n",
+                            "date": "12 Apr 23",
+                            "type": "DEB",
+                            "description": "DVLA VEHICLE TAX",
+                            "money_out": "35.00",
                             "money_in": "",
-                            "balance": "280.91\n"
+                            "balance": "280.91"
                         },
                         {
-                            "date": "12 Apr 23\n",
-                            "type": "DEB\n",
-                            "description": "AA B2B\n",
-                            "money_out": "78.00\n",
+                            "date": "12 Apr 23",
+                            "type": "DEB",
+                            "description": "AA B2B",
+                            "money_out": "78.00",
                             "money_in": "",
-                            "balance": "202.91\n"
+                            "balance": "202.91"
                         },
                         {
-                            "date": "12 Apr 23\n",
-                            "type": "DEB\n",
-                            "description": "AA B2B\n",
-                            "money_out": "78.00\n",
+                            "date": "12 Apr 23",
+                            "type": "DEB",
+                            "description": "AA B2B",
+                            "money_out": "78.00",
                             "money_in": "",
-                            "balance": "124.91\n"
+                            "balance": "124.91"
                         },
                         {
-                            "date": "12 Apr 23\n",
-                            "type": "DEB\n",
-                            "description": "AA B2B\n",
-                            "money_out": "78.00\n",
+                            "date": "12 Apr 23",
+                            "type": "DEB",
+                            "description": "AA B2B",
+                            "money_out": "78.00",
                             "money_in": "",
-                            "balance": "46.91\n"
+                            "balance": "46.91"
                         },
                         {
-                            "date": "13 Apr 23\n",
-                            "type": "FPI\n",
-                            "description": "HIYACAR LTD\n",
+                            "date": "13 Apr 23",
+                            "type": "FPI",
+                            "description": "HIYACAR LTD",
                             "money_out": "",
-                            "money_in": "30.40\n",
-                            "balance": "77.31\n"
+                            "money_in": "30.40",
+                            "balance": "77.31"
                         },
                         {
-                            "date": "14 Apr 23\n",
-                            "type": "FPI\n",
-                            "description": "HIYACAR LTD\n",
+                            "date": "14 Apr 23",
+                            "type": "FPI",
+                            "description": "HIYACAR LTD",
                             "money_out": "",
-                            "money_in": "92.80\n",
-                            "balance": "170.11\n"
+                            "money_in": "92.80",
+                            "balance": "170.11"
                         },
                         {
                             "date": "",
@@ -173,76 +173,76 @@
                 {
                     "data": [
                         {
-                            "date": "14 Apr 23\n",
-                            "type": "FPI\n",
-                            "description": "HIYACAR LTD\n",
+                            "date": "14 Apr 23",
+                            "type": "FPI",
+                            "description": "HIYACAR LTD",
                             "money_out": "",
-                            "money_in": "79.50\n",
-                            "balance": "249.61\n"
+                            "money_in": "79.50",
+                            "balance": "249.61"
                         },
                         {
-                            "date": "17 Apr 23\n",
-                            "type": "DEB\n",
-                            "description": "GOOGLE Domains\n",
-                            "money_out": "4.60\n",
+                            "date": "17 Apr 23",
+                            "type": "DEB",
+                            "description": "GOOGLE Domains",
+                            "money_out": "4.60",
                             "money_in": "",
-                            "balance": "245.01\n"
+                            "balance": "245.01"
                         },
                         {
-                            "date": "18 Apr 23\n",
-                            "type": "DEB\n",
-                            "description": "GOOGLE Domains\n",
-                            "money_out": "16.56\n",
+                            "date": "18 Apr 23",
+                            "type": "DEB",
+                            "description": "GOOGLE Domains",
+                            "money_out": "16.56",
                             "money_in": "",
-                            "balance": "228.45\n"
+                            "balance": "228.45"
                         },
                         {
-                            "date": "19 Apr 23\n",
-                            "type": "FPI\n",
-                            "description": "HIYACAR LTD\n",
+                            "date": "19 Apr 23",
+                            "type": "FPI",
+                            "description": "HIYACAR LTD",
                             "money_out": "",
-                            "money_in": "162.10\n",
-                            "balance": "390.55\n"
+                            "money_in": "162.10",
+                            "balance": "390.55"
                         },
                         {
-                            "date": "20 Apr 23\n",
-                            "type": "FPI\n",
-                            "description": "HIYACAR LTD\n",
+                            "date": "20 Apr 23",
+                            "type": "FPI",
+                            "description": "HIYACAR LTD",
                             "money_out": "",
-                            "money_in": "62.00\n",
-                            "balance": "452.55\n"
+                            "money_in": "62.00",
+                            "balance": "452.55"
                         },
                         {
-                            "date": "20 Apr 23\n",
-                            "type": "FPI\n",
-                            "description": "HIYACAR LTD\n",
+                            "date": "20 Apr 23",
+                            "type": "FPI",
+                            "description": "HIYACAR LTD",
                             "money_out": "",
-                            "money_in": "38.10\n",
-                            "balance": "490.65\n"
+                            "money_in": "38.10",
+                            "balance": "490.65"
                         },
                         {
-                            "date": "25 Apr 23\n",
-                            "type": "TFR\n",
-                            "description": "FORGN PYT270511457\n",
-                            "money_out": "171.65\n",
+                            "date": "25 Apr 23",
+                            "type": "TFR",
+                            "description": "FORGN PYT270511457",
+                            "money_out": "171.65",
                             "money_in": "",
-                            "balance": "319.00\n"
+                            "balance": "319.00"
                         },
                         {
-                            "date": "27 Apr 23\n",
-                            "type": "FPI\n",
-                            "description": "HIYACAR LTD\n",
+                            "date": "27 Apr 23",
+                            "type": "FPI",
+                            "description": "HIYACAR LTD",
                             "money_out": "",
-                            "money_in": "58.00\n",
-                            "balance": "377.00\n"
+                            "money_in": "58.00",
+                            "balance": "377.00"
                         },
                         {
-                            "date": "27 Apr 23\n",
-                            "type": "FPI\n",
-                            "description": "HIYACAR LTD\n",
+                            "date": "27 Apr 23",
+                            "type": "FPI",
+                            "description": "HIYACAR LTD",
                             "money_out": "",
-                            "money_in": "128.10\n",
-                            "balance": "505.10\n"
+                            "money_in": "128.10",
+                            "balance": "505.10"
                         },
                         {
                             "date": "",

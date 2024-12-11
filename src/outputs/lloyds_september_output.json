@@ -1,167 +1,167 @@
 {
     "metadata": {
-        "document_id": "3bf78032-9e7d-4005-ad64-974cb87be5df",
-        "parsed_at": "2024-12-11T14:53:00",
+        "document_id": "da468587-34c7-4058-aaef-89fa98508917",
+        "parsed_at": "2024-12-11T15:15:10",
         "number_of_pages": 2
     },
     "pages": [
         {
             "forms": [
                 {
-                    "customer_name": "Mr Christopher Little\n"
+                    "customer_name": "Mr Christopher Little"
                 },
                 {
-                    "sort_code": "30-90-42\n"
+                    "sort_code": "30-90-42"
                 },
                 {
-                    "account_number": "30336468\n"
+                    "account_number": "30336468"
                 },
                 {
-                    "money_in": "\u00a35,157.38\n"
+                    "money_in": "\u00a35,157.38"
                 },
                 {
-                    "start_balance": "\u00a31,075.21\n"
+                    "start_balance": "\u00a31,075.21"
                 },
                 {
-                    "money_out": "\u00a35,003.27\n"
+                    "money_out": "\u00a35,003.27"
                 },
                 {
-                    "end_balance": "\u00a31,229.32\n"
+                    "end_balance": "\u00a31,229.32"
                 }
             ],
             "tables": [
                 {
                     "data": [
                         {
-                            "date": "02 Sep 24\n",
-                            "type": "sO\n",
-                            "description": "JACKIE LITTLE\n",
-                            "money_out": "300.00\n",
+                            "date": "02 Sep 24",
+                            "type": "sO",
+                            "description": "JACKIE LITTLE",
+                            "money_out": "300.00",
                             "money_in": "",
-                            "balance": "775.21\n"
+                            "balance": "775.21"
                         },
                         {
-                            "date": "02 Sep 24\n",
-                            "type": "DD\n",
-                            "description": "DVLA-EK11EAY\n",
-                            "money_out": "14.00\n",
+                            "date": "02 Sep 24",
+                            "type": "DD",
+                            "description": "DVLA-EK11EAY",
+                            "money_out": "14.00",
                             "money_in": "",
-                            "balance": "761.21\n"
+                            "balance": "761.21"
                         },
                         {
-                            "date": "02 Sep 24\n",
-                            "type": "DD\n",
-                            "description": "BARCLAYS UK MTGES\n",
-                            "money_out": "597.55\n",
+                            "date": "02 Sep 24",
+                            "type": "DD",
+                            "description": "BARCLAYS UK MTGES",
+                            "money_out": "597.55",
                             "money_in": "",
-                            "balance": "163.66\n"
+                            "balance": "163.66"
                         },
                         {
-                            "date": "02 Sep 24\n",
+                            "date": "02 Sep 24",
                             "type": "",
-                            "description": "INTEREST (GROSS)\n",
+                            "description": "INTEREST (GROSS)",
                             "money_out": "",
-                            "money_in": "2.73\n",
-                            "balance": "166.39\n"
+                            "money_in": "2.73",
+                            "balance": "166.39"
                         },
                         {
-                            "date": "03 Sep 24\n",
-                            "type": "DEB\n",
-                            "description": "AWS EMEA\n",
-                            "money_out": "0.20\n",
+                            "date": "03 Sep 24",
+                            "type": "DEB",
+                            "description": "AWS EMEA",
+                            "money_out": "0.20",
                             "money_in": "",
-                            "balance": "166.19\n"
+                            "balance": "166.19"
                         },
                         {
-                            "date": "03 Sep 24\n",
-                            "type": "PAY\n",
-                            "description": "CLUB LLOYDS FEE\n",
-                            "money_out": "3.00\n",
+                            "date": "03 Sep 24",
+                            "type": "PAY",
+                            "description": "CLUB LLOYDS FEE",
+                            "money_out": "3.00",
                             "money_in": "",
-                            "balance": "163.19\n"
+                            "balance": "163.19"
                         },
                         {
-                            "date": "03 Sep 24\n",
-                            "type": "DEP\n",
-                            "description": "CLUB LLOYDS WAIVED\n",
+                            "date": "03 Sep 24",
+                            "type": "DEP",
+                            "description": "CLUB LLOYDS WAIVED",
                             "money_out": "",
-                            "money_in": "3.00\n",
-                            "balance": "166.19\n"
+                            "money_in": "3.00",
+                            "balance": "166.19"
                         },
                         {
-                            "date": "06 Sep 24\n",
-                            "type": "DEB\n",
-                            "description": "AIRBNB * HM8Y5A4RR\n",
-                            "money_out": "11.00\n",
+                            "date": "06 Sep 24",
+                            "type": "DEB",
+                            "description": "AIRBNB * HM8Y5A4RR",
+                            "money_out": "11.00",
                             "money_in": "",
-                            "balance": "155.19\n"
+                            "balance": "155.19"
                         },
                         {
-                            "date": "16 Sep 24\n",
-                            "type": "DEB\n",
-                            "description": "GOOGLE Google One\n",
-                            "money_out": "1.59\n",
+                            "date": "16 Sep 24",
+                            "type": "DEB",
+                            "description": "GOOGLE Google One",
+                            "money_out": "1.59",
                             "money_in": "",
-                            "balance": "153.60\n"
+                            "balance": "153.60"
                         },
                         {
-                            "date": "16 Sep 24\n",
-                            "type": "FPI\n",
-                            "description": "VANGUARD ASSET MAN\n",
+                            "date": "16 Sep 24",
+                            "type": "FPI",
+                            "description": "VANGUARD ASSET MAN",
                             "money_out": "",
-                            "money_in": "4,042.65\n",
-                            "balance": "4,196.25\n"
+                            "money_in": "4,042.65",
+                            "balance": "4,196.25"
                         },
                         {
-                            "date": "17 Sep 24\n",
-                            "type": "TFR\n",
-                            "description": "C LITTLE\n",
-                            "money_out": "3,800.00\n",
+                            "date": "17 Sep 24",
+                            "type": "TFR",
+                            "description": "C LITTLE",
+                            "money_out": "3,800.00",
                             "money_in": "",
-                            "balance": "396.25\n"
+                            "balance": "396.25"
                         },
                         {
-                            "date": "18 Sep 24\n",
-                            "type": "DD\n",
-                            "description": "LVIC\n",
-                            "money_out": "67.85\n",
+                            "date": "18 Sep 24",
+                            "type": "DD",
+                            "description": "LVIC",
+                            "money_out": "67.85",
                             "money_in": "",
-                            "balance": "328.40\n"
+                            "balance": "328.40"
                         },
                         {
-                            "date": "19 Sep 24\n",
-                            "type": "Je)\n",
-                            "description": "MAURICIO JIMENEZ M\n",
-                            "money_out": "45.00\n",
+                            "date": "19 Sep 24",
+                            "type": "Je)",
+                            "description": "MAURICIO JIMENEZ M",
+                            "money_out": "45.00",
                             "money_in": "",
-                            "balance": "283.40\n"
+                            "balance": "283.40"
                         },
                         {
-                            "date": "20 Sep 24\n",
-                            "type": "DD\n",
-                            "description": "H3G\n",
-                            "money_out": "13.12\n",
+                            "date": "20 Sep 24",
+                            "type": "DD",
+                            "description": "H3G",
+                            "money_out": "13.12",
                             "money_in": "",
-                            "balance": "270.28\n"
+                            "balance": "270.28"
                         },
                         {
-                            "date": "20 Sep 24\n",
-                            "type": "FPO\n",
-                            "description": "CHRISTOPHER LITTLE\n",
-                            "money_out": "50.00\n",
+                            "date": "20 Sep 24",
+                            "type": "FPO",
+                            "description": "CHRISTOPHER LITTLE",
+                            "money_out": "50.00",
                             "money_in": "",
-                            "balance": "220.28\n"
+                            "balance": "220.28"
                         },
                         {
-                            "date": "23 Sep 24\n",
-                            "type": "DEB\n",
-                            "description": "Spotify Limited\n",
-                            "money_out": "11.99\n",
+                            "date": "23 Sep 24",
+                            "type": "DEB",
+                            "description": "Spotify Limited",
+                            "money_out": "11.99",
                             "money_in": "",
-                            "balance": "208.29\n"
+                            "balance": "208.29"
                         },
                         {
-                            "date": "HitSscszas\n\nSee es\n",
+                            "date": "HitSscszas\n\nSee es",
                             "type": "",
                             "description": "",
                             "money_out": "",
@@ -173,36 +173,36 @@
                 {
                     "data": [
                         {
-                            "date": "23 Sep 24\n",
-                            "type": "FPI\n",
-                            "description": "SIONITA\n",
+                            "date": "23 Sep 24",
+                            "type": "FPI",
+                            "description": "SIONITA",
                             "money_out": "",
-                            "money_in": "1,100.00\n",
-                            "balance": "1,308.29\n"
+                            "money_in": "1,100.00",
+                            "balance": "1,308.29"
                         },
                         {
-                            "date": "24 Sep 24\n",
-                            "type": "DD\n",
-                            "description": "ASHBOURNE MANAGEME\n",
-                            "money_out": "44.00\n",
+                            "date": "24 Sep 24",
+                            "type": "DD",
+                            "description": "ASHBOURNE MANAGEME",
+                            "money_out": "44.00",
                             "money_in": "",
-                            "balance": "1,264.29\n"
+                            "balance": "1,264.29"
                         },
                         {
-                            "date": "30 Sep 24\n",
-                            "type": "FPI\n",
-                            "description": "CLARA BUENO LOPEZ\n",
+                            "date": "30 Sep 24",
+                            "type": "FPI",
+                            "description": "CLARA BUENO LOPEZ",
                             "money_out": "",
-                            "money_in": "9.00\n",
-                            "balance": "1,273.29\n"
+                            "money_in": "9.00",
+                            "balance": "1,273.29"
                         },
                         {
-                            "date": "30 Sep 24\n",
-                            "type": "DEB\n",
-                            "description": "AIRBNB * HM8Y5A4RR\n",
-                            "money_out": "43.97\n",
+                            "date": "30 Sep 24",
+                            "type": "DEB",
+                            "description": "AIRBNB * HM8Y5A4RR",
+                            "money_out": "43.97",
                             "money_in": "",
-                            "balance": "1,229.32\n"
+                            "balance": "1,229.32"
                         },
                         {
                             "date": "",

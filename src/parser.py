@@ -1,7 +1,7 @@
 import re
 import uuid
 from datetime import datetime
-from typing import Any, Dict, List, Optional, Union
+from typing import Any, Dict, List, Optional
 
 from forms import FormProcessor
 from ocr import ImageExtractor
@@ -46,73 +46,6 @@ class Parser:
         self, rule_id: str, template: Dict[str, Any]
     ) -> Dict[str, Any]:
         return self.coordinate_utils.get_rule_from_id(rule_id, template)
-
-    def get_items_in_bounding_box(
-        self,
-        text_coordinates: List[Dict[str, Any]],
-        box_coordinates: Dict[str, Dict[str, float]],
-        threshold: float = 0.005,
-    ) -> List[Dict[str, Any]]:
-        return self.coordinate_utils.get_items_in_bounding_box(
-            text_coordinates, box_coordinates, threshold
-        )
-
-    def get_text_from_items(self, items: List[Dict[str, Any]]) -> str:
-        return " ".join([item["text"] for item in items])
-
-    def get_text_from_ocr(
-        self, jpg_bytes_page: bytes, coordinates: Dict[str, Any]
-    ) -> str:
-        image_extractor = ImageExtractor(jpg_bytes_page, coordinates)
-        return image_extractor.extract_text()
-
-    def get_text_from_page(
-        self,
-        page_content: List[Dict[str, Any]],
-        coordinates: Optional[Dict[str, Dict[str, float]]],
-        extraction_method: str,
-        jpg_bytes_page: bytes,
-        search_type: Optional[str] = None,
-        regex: Optional[str] = None,
-    ) -> str:
-        """Extract text using either coordinates, OCR, or regex"""
-        if search_type == "regex" and regex:
-            try:
-                # Join all text from the page with spaces
-                full_page_text = " ".join([item["text"] for item in page_content])
-
-                # Use regex to find matches
-                matches = re.findall(regex, full_page_text)
-
-                # Handle different match types
-                if matches:
-                    if isinstance(matches[0], tuple):
-                        # If regex has capture groups, return first group
-                        return matches[0][0]
-                    else:
-                        # If no capture groups, return full match
-                        return matches[0]
-                return ""
-
-            except re.error as e:
-                print(f"Invalid regex pattern: {regex}")
-                print(f"Error: {str(e)}")
-                return ""
-            except Exception as e:
-                print(f"Error processing regex: {str(e)}")
-                return ""
-
-        if coordinates is None:
-            return ""
-
-        if extraction_method == "extraction":
-            items_within_coordinates = self.get_items_in_bounding_box(
-                page_content, coordinates
-            )
-            return self.get_text_from_items(items_within_coordinates)
-        elif extraction_method == "ocr":
-            return self.get_text_from_ocr(jpg_bytes_page, coordinates)
-        return ""
 
     def get_output_data_from_form_rule(
         self,

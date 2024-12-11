@@ -1,10 +1,12 @@
 from typing import Dict, List, Any
-from parser import Parser
+from coordinate_utils import CoordinateUtils
+from parser import TextExtractor
 
 
 class FormProcessor:
-    def __init__(self, parser: Parser) -> None:
-        self.parser = parser
+    def __init__(self, text_extractor: TextExtractor) -> None:
+        self.text_extractor = text_extractor
+        self.coordinate_utils = CoordinateUtils()
 
     def get_output_data_from_form_rule(
         self,
@@ -14,7 +16,7 @@ class FormProcessor:
         template: Dict[str, Any],
         jpg_bytes: List[bytes],
     ) -> Dict[str, str]:
-        form_rule = self.parser.get_rule_from_id(form_rule_id, template)
+        form_rule = self.coordinate_utils.get_rule_from_id(form_rule_id, template)
         config = form_rule["config"]
         coordinates = config.get("coordinates")
         page_content = pdf_data["pages"][page_index]["content"]
@@ -24,7 +26,7 @@ class FormProcessor:
         regex = config.get("regex")
 
         return {
-            config["field_name"]: self.parser.get_text_from_page(
+            config["field_name"]: self.text_extractor.get_text_from_page(
                 page_content,
                 coordinates,
                 extraction_method,

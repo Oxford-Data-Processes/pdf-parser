@@ -3,7 +3,7 @@ import os
 from parser import Parser, TableProcessor
 from typing import Dict, List
 
-from extractor import Extractor
+from extractors import DataExtractor
 from pdf_utils import ImageDrawer
 
 # Update paths to be relative to src directory
@@ -40,8 +40,8 @@ def extract_data_from_pdf(pdf_path: str, template_name: str, identifier: str) ->
     os.makedirs(os.path.dirname(pdf_data_path), exist_ok=True)
 
     with open(pdf_path, "rb") as pdf_file:
-        text_extractor = Extractor(pdf_file.read(), template_name, identifier)
-        extracted_data = text_extractor.extract_data()
+        data_extractor = DataExtractor(pdf_file.read(), template_name, identifier)
+        extracted_data = data_extractor.extract_data()
         with open(pdf_data_path, "w") as f:
             json.dump(extracted_data, f, indent=4, sort_keys=True)
     print(f"Data extracted and saved to: {pdf_data_path}")
