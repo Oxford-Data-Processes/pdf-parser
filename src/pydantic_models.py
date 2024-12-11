@@ -1,5 +1,6 @@
+from typing import List, Optional
+
 from pydantic import BaseModel, RootModel
-from typing import List, Optional, Dict, Any
 
 
 class Metadata(BaseModel):

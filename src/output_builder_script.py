@@ -1,7 +1,7 @@
 import json
 import os
-from typing import Dict, Any
 from parser import Parser
+from typing import Any, Dict
 
 templates_and_identifiers = {
     "barclays_student": ["march", "april", "may"],

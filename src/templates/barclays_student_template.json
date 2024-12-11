@@ -67,7 +67,7 @@
             "type": "form",
             "config": {
                 "field_name": "start_balance",
-                
+
                 "search_type": "regex",
                 "regex": "Start\\s*balance\\s*£?([-]?[0-9.,]+)",
                 "coordinates": {
@@ -87,7 +87,7 @@
             "type": "form",
             "config": {
                 "field_name": "money_in",
-                
+
                 "search_type": "regex",
                 "regex": "Money\\s*in\\s*£?([0-9.,]+)",
                 "coordinates": {
@@ -107,7 +107,7 @@
             "type": "form",
             "config": {
                 "field_name": "money_out",
-                
+
                 "search_type": "regex",
                 "regex": "Money\\s*out\\s*£?([0-9.,]+)",
                 "coordinates": {
@@ -127,7 +127,7 @@
             "type": "form",
             "config": {
                 "field_name": "end_balance",
-                
+
                 "search_type": "regex",
                 "regex": "End\\s*balance\\s*£?([0-9.,]+)",
                 "coordinates": {

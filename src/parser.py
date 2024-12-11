@@ -1,14 +1,14 @@
-from typing import List, Dict, Any
-from forms import FormProcessor
-from tables import TableProcessor, TableSplitter
-from datetime import datetime
-import uuid
-from ocr import ImageExtractor
 import re
+import uuid
+from datetime import datetime
+from typing import Any, Dict, List
+
+from forms import FormProcessor
+from ocr import ImageExtractor
+from tables import TableProcessor, TableSplitter
 
 
 class Parser:
-
     def page_number_converter(
         self, page_numbers: str, number_of_pages: int
     ) -> List[int]:
@@ -186,7 +186,6 @@ class Parser:
     def parse_pdf(
         template: Dict[str, Any], pdf_data: Dict[str, Any], jpg_bytes: List[bytes]
     ) -> Dict[str, Any]:
-
         forms = []
         tables = []
         number_of_pages = len(pdf_data["pages"])

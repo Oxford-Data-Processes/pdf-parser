@@ -1,0 +1,7 @@
+[tool.ruff]
+extend-ignore = ["E501", "E402", "E999"]
+
+[tool.mypy]
+files = "src"
+ignore_missing_imports = false
+allow_untyped_defs = false

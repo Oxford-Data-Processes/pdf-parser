@@ -1,9 +1,10 @@
-import fitz  # PyMuPDF
-import matplotlib.pyplot as plt
-import matplotlib.patches as patches
-from PIL import Image
 import json
+
+import fitz  # PyMuPDF
+import matplotlib.patches as patches
+import matplotlib.pyplot as plt
 import numpy as np
+from PIL import Image
 
 
 class PDFCoordinateFinder:
@@ -149,7 +150,6 @@ class PDFCoordinateFinder:
 
             print(f"\nPage: {self.current_page + 1}")
             print(f"Field: {field_name}")
-            print(f"Coordinates:")
             print(f"top_left: {top_left}")
             print(f"bottom_right: {bottom_right}")
             print("\nTemplate JSON snippet:")

@@ -1,8 +1,7 @@
-from PIL import Image
 import io
+
 import pytesseract
-import easyocr
-import numpy as np
+from PIL import Image
 
 
 class ImageExtractor:

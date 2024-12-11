@@ -1,9 +1,10 @@
 import json
 import os
-from extractor import Extractor
 from parser import Parser, TableProcessor
+from typing import Dict, List
+
+from extractor import Extractor
 from pdf_utils import ImageDrawer
-from typing import Dict, List, Optional
 
 # Update paths to be relative to src directory
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -238,7 +239,6 @@ if __name__ == "__main__":
 
         # Visualize each form
         for form_rule in template["rules"]:
-
             if form_rule["type"] == "form":
                 rule_id = form_rule.get("rule_id")
                 print(form_rule)

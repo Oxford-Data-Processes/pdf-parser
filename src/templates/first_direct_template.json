@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "template_id": "first_direct", 
+        "template_id": "first_direct",
         "version": "1.0.0"
     },
     "extraction_method": "extraction",
@@ -181,7 +181,7 @@
                                 "x": 0.202,
                                 "y": 1
                             },
-                            
+
                             "search_type": "coordinates",
                             "regex": null
                         }
@@ -197,7 +197,7 @@
                                 "x": 0.253,
                                 "y": 1
                             },
-                            
+
                             "search_type": "coordinates",
                             "regex": null
                         }
@@ -213,7 +213,7 @@
                                 "x": 0.621,
                                 "y": 1
                             },
-                            
+
                             "search_type": "coordinates",
                             "regex": null
                         }
@@ -229,7 +229,7 @@
                                 "x": 0.71,
                                 "y": 1
                             },
-                            
+
                             "search_type": "coordinates",
                             "regex": null
                         }
@@ -245,7 +245,7 @@
                                 "x": 0.86,
                                 "y": 1
                             },
-                            
+
                             "search_type": "coordinates",
                             "regex": null
                         }
@@ -261,7 +261,7 @@
                                 "x": 0.99,
                                 "y": 1
                             },
-                            
+
                             "search_type": "coordinates",
                             "regex": null
                         }
@@ -289,7 +289,7 @@
                                 "x": 0.202,
                                 "y": 1
                             },
-                            
+
                             "search_type": "coordinates",
                             "regex": null
                         }
@@ -305,7 +305,7 @@
                                 "x": 0.253,
                                 "y": 1
                             },
-                            
+
                             "search_type": "coordinates",
                             "regex": null
                         }
@@ -321,7 +321,7 @@
                                 "x": 0.621,
                                 "y": 1
                             },
-                            
+
                             "search_type": "coordinates",
                             "regex": null
                         }
@@ -337,7 +337,7 @@
                                 "x": 0.71,
                                 "y": 1
                             },
-                            
+
                             "search_type": "coordinates",
                             "regex": null
                         }
@@ -353,7 +353,7 @@
                                 "x": 0.86,
                                 "y": 1
                             },
-                            
+
                             "search_type": "coordinates",
                             "regex": null
                         }
@@ -369,7 +369,7 @@
                                 "x": 0.99,
                                 "y": 1
                             },
-                            
+
                             "search_type": "coordinates",
                             "regex": null
                         }

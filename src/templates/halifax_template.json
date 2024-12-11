@@ -7,7 +7,7 @@
     "rules": [
         {
             "rule_id": "customer_name",
-            "type": "form", 
+            "type": "form",
             "config": {
                 "field_name": "customer_name",
                 "search_type": "coordinates",
@@ -29,7 +29,7 @@
             "rule_id": "sort_code",
             "type": "form",
             "config": {
-                "field_name": "sort_code", 
+                "field_name": "sort_code",
                 "search_type": "coordinates",
                 "regex": null,
                 "coordinates": {

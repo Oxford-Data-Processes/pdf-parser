@@ -20,3 +20,16 @@ For template builder, run through OCR and Extraction and compare the words, see 
 Only convert to jpg if the OCR method is used or if there is a max pixel value for lines.
 
 Provide jpeg bytes in the pdf_data object for the OCR method.
+
+
+Start up:
+
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements_dev.txt
+
+Checks:
+
+pre-commit run --all-files
+
+mypy {path_to_file_or_directory} --explicit-package-bases

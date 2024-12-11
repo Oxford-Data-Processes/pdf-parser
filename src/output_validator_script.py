@@ -1,5 +1,7 @@
 import json
+
 from jsonschema import validate
+
 from pydantic_models import Document
 
 templates_and_identifiers = {
@@ -28,7 +30,7 @@ for template_name, identifiers in templates_and_identifiers.items():
         except Exception as e:
             print(e)
 
-        # output_path = f"src/outputs/{template_name}_{identifier}_output.json"
-        # generated_output = json.load(open(output_path))
+        output_path = f"src/outputs/{template_name}_{identifier}_output.json"
+        generated_output = json.load(open(output_path))
 
-        # Document(**generated_output)
+        Document(**generated_output)

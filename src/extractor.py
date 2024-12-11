@@ -1,10 +1,11 @@
-import pdfplumber
-import numpy as np
-from PIL import Image
 import io
-from pdf2image import convert_from_bytes
 import os
 from typing import Dict, List, Tuple
+
+import numpy as np
+import pdfplumber
+from pdf2image import convert_from_bytes
+from PIL import Image
 
 
 class Extractor:
@@ -80,11 +81,14 @@ class Extractor:
                         "y": round(1 - (line["y1"] / page.height), 6),
                     },
                 }
-                average_pixel_value, _, _, _ = (
-                    image_extractor.calculate_average_pixel_value(
-                        jpg_bytes,
-                        coordinates,
-                    )
+                (
+                    average_pixel_value,
+                    _,
+                    _,
+                    _,
+                ) = image_extractor.calculate_average_pixel_value(
+                    jpg_bytes,
+                    coordinates,
                 )
                 line_data.append(
                     {

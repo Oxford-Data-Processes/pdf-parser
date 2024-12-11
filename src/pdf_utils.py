@@ -1,6 +1,5 @@
-from typing import Optional
-from PIL import ImageDraw
 from pdf2image import convert_from_path
+from PIL import ImageDraw
 
 
 class ImageDrawer:
