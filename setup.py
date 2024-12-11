@@ -23,6 +23,7 @@ setup(
     install_requires=[
         "pdf2image",
         "pdfplumber",
+        "numpy",
         "pytesseract",
         "Pillow",
         "python-multipart",
