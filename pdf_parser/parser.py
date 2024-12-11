@@ -139,7 +139,7 @@ class Parser:
 
         print("Current path:", os.getcwd())
         schema_path = os.path.join(
-            os.path.dirname(os.path.dirname(__file__)),
+            os.path.dirname(__file__),
             "schema",
             "template_json_schema.json",
         )

@@ -1,11 +1,10 @@
 from fastapi import FastAPI, UploadFile, File
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
-from typing import Dict, Any
+from typing import Any
 import json
 import os
 from pdf2image import convert_from_path
-from jsonschema import validate
 
 import sys
 import os
