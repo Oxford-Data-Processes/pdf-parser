@@ -14,8 +14,6 @@ class ImageDrawer:
         images = convert_from_path(pdf_path)
         jpg_image_original = images[page_number - 1]
 
-        # Save the JPG image
-        jpg_image_original.save("output.jpeg", "JPEG")
         return jpg_image_original
 
     def draw_coordinates(self, coordinates):

@@ -57,9 +57,6 @@ for page_number, page_data in enumerate(pdf_data["pages"], start=1):
 
             # Save the modified image
             output_path = f"halifax_april_page_{page_number}_with_lines.jpg"
-            modified_image.save(output_path)
-            print(f"Saved image with lines to: {output_path}")
-
             # Display the image
             modified_image.show()
 
