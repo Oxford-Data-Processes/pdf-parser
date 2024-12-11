@@ -1,22 +1,23 @@
 from pdf2image import convert_from_path
 from PIL import ImageDraw
+from typing import List, Dict, Any
 
 
 class ImageDrawer:
-    def __init__(self, image, pdf_width, pdf_height):
+    def __init__(self, image: Any, pdf_width: int, pdf_height: int) -> None:
         self.image = image
         self.pdf_width = pdf_width
         self.pdf_height = pdf_height
 
     @staticmethod
-    def create_jpg_image(pdf_path, page_number):
+    def create_jpg_image(pdf_path: str, page_number: int) -> Any:
         """Convert the PDF page to a JPG."""
         images = convert_from_path(pdf_path)
         jpg_image_original = images[page_number - 1]
 
         return jpg_image_original
 
-    def draw_coordinates(self, coordinates):
+    def draw_coordinates(self, coordinates: List[Dict[str, Dict[str, float]]]) -> Any:
         """Draw the decimal coordinates on the image."""
         image_copy = self.image.copy()
         draw = ImageDraw.Draw(image_copy)
@@ -44,7 +45,7 @@ class ImageDrawer:
 
         return image_copy
 
-    def draw_horizontal_lines(self, pdf_lines_y_coordinates):
+    def draw_horizontal_lines(self, pdf_lines_y_coordinates: List[float]) -> Any:
         """Draw the extracted PDF lines on the image."""
         image_copy = self.image.copy()
         draw = ImageDraw.Draw(image_copy)
@@ -60,7 +61,9 @@ class ImageDrawer:
         print(f"Successfully drew {len(pdf_lines_y_coordinates)} lines")
         return image_copy
 
-    def draw_lines_and_coordinates(self, coordinates, lines_y_coordinates):
+    def draw_lines_and_coordinates(
+        self, coordinates: Dict[str, Dict[str, float]], lines_y_coordinates: List[float]
+    ) -> Any:
         """Draw coordinates and horizontal lines on the image."""
         x0 = coordinates["top_left"]["x"]
         x1 = coordinates["bottom_right"]["x"]
@@ -85,11 +88,11 @@ class ImageDrawer:
 
     @staticmethod
     def draw_column_box_and_lines(
-        pdf_path,
-        lines_y_coordinates,
-        coordinates,
-        page_number,
-    ):
+        pdf_path: str,
+        lines_y_coordinates: List[float],
+        coordinates: Dict[str, Dict[str, float]],
+        page_number: int,
+    ) -> Any:
         jpg_image = ImageDrawer.create_jpg_image(pdf_path, page_number)
         image_drawer = ImageDrawer(jpg_image, jpg_image.size[0], jpg_image.size[1])
         modified_image = image_drawer.draw_lines_and_coordinates(
