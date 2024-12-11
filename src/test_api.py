@@ -10,10 +10,7 @@ from api import app
 client = TestClient(app)
 
 
-def test_parse_pdf():
-    # Test data setup
-    test_pdf_path = os.path.join("tests", "data", "sample.pdf")
-    template_name = "monzo"
+def test_parse_pdf(test_pdf_path: str, template_name: str, identifier: str):
 
     # Ensure the template exists
     template_path = os.path.join("src", "templates", f"{template_name}_template.json")
@@ -39,7 +36,7 @@ def test_parse_pdf():
         print(response.json())
 
         with open(
-            os.path.join("src", "outputs", f"{template_name}_test_output.json"),
+            os.path.join("src", "outputs", f"{template_name}_{identifier}_output.json"),
             "w",
         ) as f:
             json.dump(response.json(), f, indent=4)
@@ -47,18 +44,23 @@ def test_parse_pdf():
 
 def main():
     """Run the test directly"""
-    # Create test PDF if it doesn't exist
-    test_data_dir = os.path.join("tests", "data")
-    os.makedirs(test_data_dir, exist_ok=True)
 
-    test_pdf_path = os.path.join(test_data_dir, "sample.pdf")
-    if not os.path.exists(test_pdf_path):
-        print(f"Please place a sample PDF file at: {test_pdf_path}")
-        return
+    ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    document_type = "bank_statements"
+    template_name = "monzo"
+    identifier = "november"
+    test_pdf_path: str = os.path.join(
+        ROOT_DIR,
+        "data",
+        document_type,
+        template_name,
+        "pdf",
+        f"{template_name}_{identifier}.pdf",
+    )
 
     # Run the test
     print("Running API test...")
-    test_parse_pdf()
+    test_parse_pdf(test_pdf_path, template_name, identifier)
     print("Test completed successfully!")
 
 
