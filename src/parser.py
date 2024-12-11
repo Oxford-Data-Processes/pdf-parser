@@ -5,10 +5,14 @@ from typing import Any, Dict, List
 
 from forms import FormProcessor
 from ocr import ImageExtractor
+from coordinate_utils import CoordinateUtils
 from tables import TableProcessor, TableSplitter
 
 
 class Parser:
+    def __init__(self):
+        self.coordinate_utils = CoordinateUtils()
+
     def page_number_converter(
         self, page_numbers: str, number_of_pages: int
     ) -> List[int]:
@@ -39,26 +43,14 @@ class Parser:
         return list(range(left_index, right_index))
 
     def get_rule_from_id(self, rule_id, template):
-        return [item for item in template["rules"] if item["rule_id"] == rule_id][0]
+        return self.coordinate_utils.get_rule_from_id(rule_id, template)
 
     def get_items_in_bounding_box(
         self, text_coordinates, box_coordinates, threshold=0.005
     ):
-        items_in_box = []
-        for item in text_coordinates:
-            bounding_box = item["bounding_box"]["decimal_coordinates"]
-            if (
-                bounding_box["top_left"]["x"]
-                >= box_coordinates["top_left"]["x"] - threshold
-                and bounding_box["top_left"]["y"]
-                >= box_coordinates["top_left"]["y"] - threshold
-                and bounding_box["bottom_right"]["x"]
-                <= box_coordinates["bottom_right"]["x"] + threshold
-                and bounding_box["bottom_right"]["y"]
-                <= box_coordinates["bottom_right"]["y"] + threshold
-            ):
-                items_in_box.append(item)
-        return items_in_box
+        return self.coordinate_utils.get_items_in_bounding_box(
+            text_coordinates, box_coordinates, threshold
+        )
 
     def get_text_from_items(self, items):
         return " ".join([item["text"] for item in items])
@@ -129,8 +121,8 @@ class Parser:
     def get_output_data_from_table_rule(
         self, table_rule_id, page_index, pdf_data, template, jpg_bytes
     ):
-        table_processor = TableProcessor(template, self)
-        table_splitter = TableSplitter(template, self)
+        table_processor = TableProcessor(template)
+        table_splitter = TableSplitter(template)
         table_rule = self.get_rule_from_id(table_rule_id, template)
         delimiter_field_name = table_rule["config"]["row_delimiter"]["field_name"]
         delimiter_type = table_rule["config"]["row_delimiter"]["type"]

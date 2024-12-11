@@ -1,15 +1,17 @@
 from typing import Dict, List
 
+from coordinate_utils import CoordinateUtils
+
 
 class TableProcessor:
-    def __init__(self, template, parser):
+    def __init__(self, template: Dict):
         self.template = template
-        self.parser = parser
+        self.coordinate_utils = CoordinateUtils()
 
     def get_delimiter_column_coordinates(self, template, delimiter_field_name, rule_id):
         """Get the coordinates of the description column from the template."""
         delimiter_coordinates = None
-        rule = self.parser.get_rule_from_id(rule_id, template)
+        rule = self.coordinate_utils.get_rule_from_id(rule_id, template)
 
         if rule["type"] == "table":
             for column in rule["config"]["columns"]:
@@ -31,7 +33,7 @@ class TableProcessor:
             self.template, delimiter_field_name, table_rule["rule_id"]
         )
 
-        table_splitter = TableSplitter(self.template, self.parser)
+        table_splitter = TableSplitter(self.template)
 
         if delimiter_type == "line":
             max_pixel_value = table_rule["config"]["row_delimiter"].get(
@@ -66,9 +68,9 @@ class TableProcessor:
 
 
 class TableSplitter:
-    def __init__(self, template, parser):
+    def __init__(self, template):
         self.template = template
-        self.parser = parser
+        self.coordinate_utils = CoordinateUtils()
 
     def split_bounding_box_by_lines(
         self, bounding_box: Dict, lines_y_coordinates: List[float]
@@ -129,13 +131,13 @@ class TableSplitter:
     def split_table_by_field(self, page_content, delimiter_field_name, rule_id):
         text_coordinates = page_content["content"]
 
-        table_processor = TableProcessor(self.template, self.parser)
+        table_processor = TableProcessor(self.template)
 
         delimiter_coordinates = table_processor.get_delimiter_column_coordinates(
             self.template, delimiter_field_name, rule_id
         )
 
-        items_within_coordinates = self.parser.get_items_in_bounding_box(
+        items_within_coordinates = self.coordinate_utils.get_items_in_bounding_box(
             text_coordinates, delimiter_coordinates
         )
 
