@@ -1,7 +1,7 @@
 {
     "metadata": {
-        "document_id": "6f9db144-2f31-43a6-90b7-95ecaadfaafa",
-        "parsed_at": "2024-12-09T17:23:44",
+        "document_id": "523ebe49-2126-477e-8260-bea7cab28b2c",
+        "parsed_at": "2024-12-11T14:28:14",
         "number_of_pages": 2
     },
     "pages": [
@@ -17,7 +17,16 @@
                     "account_number": "11980162\n"
                 },
                 {
+                    "money_in": "\u00a3761.80\n"
+                },
+                {
                     "start_balance": "\u00a3521.23\n"
+                },
+                {
+                    "money_out": "\u00a3777.93\n"
+                },
+                {
+                    "end_balance": "\u00a3505.10\n"
                 }
             ],
             "tables": [

@@ -1,7 +1,7 @@
 {
     "metadata": {
-        "document_id": "252233eb-4d9d-42ba-b639-8394a30e1ef9",
-        "parsed_at": "2024-12-09T17:24:06",
+        "document_id": "c5614f1d-1be9-4f3d-9cab-8bb6b8308cc4",
+        "parsed_at": "2024-12-11T14:28:41",
         "number_of_pages": 2
     },
     "pages": [
@@ -17,7 +17,16 @@
                     "account_number": "30336468\n"
                 },
                 {
+                    "money_in": "\u00a35,157.38\n"
+                },
+                {
                     "start_balance": "\u00a31,075.21\n"
+                },
+                {
+                    "money_out": "\u00a35,003.27\n"
+                },
+                {
+                    "end_balance": "\u00a31,229.32\n"
                 }
             ],
             "tables": [

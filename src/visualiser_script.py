@@ -11,9 +11,9 @@ ROOT_DIR = os.path.dirname(SCRIPT_DIR)
 
 FORMS_PAGE_NUMBER = 1
 
-document_type = "bank_statements"
-template_name: str = "first_direct"
-identifier: str = "may"
+document_type = "payslips"
+template_name: str = "payslip"
+identifier: str = "jake"
 template_path: str = os.path.join(
     ROOT_DIR, "src", "templates", f"{template_name}_template.json"
 )
