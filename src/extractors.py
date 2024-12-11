@@ -8,6 +8,7 @@ import pdfplumber
 import pytesseract  # type: ignore
 from pdf2image import convert_from_bytes
 from PIL import Image
+from coordinate_utils import CoordinateUtils
 
 
 class DataExtractor:
@@ -205,7 +206,7 @@ class ImageExtractor:
 
 
 class TextExtractor:
-    def __init__(self, coordinate_utils):
+    def __init__(self, coordinate_utils: CoordinateUtils):
         self.coordinate_utils = coordinate_utils
 
     def get_text_from_items(self, items: List[Dict[str, Any]]) -> str:
