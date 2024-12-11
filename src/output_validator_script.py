@@ -18,7 +18,7 @@ for template_name, identifiers in templates_and_identifiers.items():
     for identifier in identifiers:
         template = json.load(open(f"src/templates/{template_name}_template.json"))
 
-        with open("template_json_schema.json") as schema_file:
+        with open("src/schema/template_json_schema.json") as schema_file:
             schema = json.load(schema_file)
 
         print("TEMPLATE")

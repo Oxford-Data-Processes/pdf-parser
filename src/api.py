@@ -6,12 +6,26 @@ import os
 from parser import Parser
 from extractors import DataExtractor
 from pdf_utils import ImageDrawer
+from jsonschema import validate
+from pydantic_models import Document
 
 app = FastAPI()
 
 
 @app.post("/parse-pdf/")
 async def parse_pdf(template: str, pdf: UploadFile = File(...)) -> JSONResponse:
+
+    # Load the template schema for validation
+    template_schema = json.load(open("src/schema/template_json_schema.json"))
+
+    # Validate the incoming template against the schema
+    try:
+        validate(instance=json.loads(template), schema=template_schema)
+    except Exception as e:
+        return JSONResponse(
+            status_code=400,
+            content={"error": "Template validation failed", "details": str(e)},
+        )
 
     # Create the output directory if it doesn't exist
     output_dir = os.path.join("src", "outputs")
@@ -39,5 +53,7 @@ async def parse_pdf(template: str, pdf: UploadFile = File(...)) -> JSONResponse:
         jpg_bytes.append(jpg_image)
 
     output = Parser.parse_pdf(template_dict, pdf_data, jpg_bytes)
-
-    return JSONResponse(status_code=200, content=output)
+    validated_output = Document(**output)  # Validate output using Pydantic
+    return JSONResponse(
+        status_code=200, content=validated_output.model_dump_json()
+    )  # Return validated output as JSON
