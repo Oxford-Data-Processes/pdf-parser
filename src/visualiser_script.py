@@ -5,7 +5,6 @@ from typing import Dict, List, Any
 
 from pdf_parser.extractors import DataExtractor
 from pdf_utils import ImageDrawer
-from pdf2image import convert_from_path
 
 # Update paths to be relative to src directory
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -31,14 +30,6 @@ pdf_path: str = os.path.join(
 pdf_data_path: str = os.path.join(
     ROOT_DIR, "src", "pdf_data", f"{template_name}_{identifier}_pdf_data.json"
 )
-
-
-def create_jpg_image(pdf_path: str, page_number: int) -> Any:
-    """Convert the PDF page to a JPG."""
-    images = convert_from_path(pdf_path)
-    jpg_image_original = images[page_number - 1]
-
-    return jpg_image_original
 
 
 def extract_data_from_pdf(pdf_path: str, template_name: str, identifier: str) -> None:
@@ -154,7 +145,7 @@ def visualize_table_data(table_data: Dict, pdf_path: str) -> None:
         }
 
         # Create image and draw the full table box
-        jpg_image = create_jpg_image(pdf_path, table_data["page_number"])
+        jpg_image = ImageDrawer.create_jpg_image(pdf_path, table_data["page_number"])
         image_drawer = ImageDrawer(jpg_image, jpg_image.size[0], jpg_image.size[1])
         image_with_table = image_drawer.draw_coordinates([table_box])
         print("Showing full table boundary")

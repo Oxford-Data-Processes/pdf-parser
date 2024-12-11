@@ -9,6 +9,14 @@ class ImageDrawer:
         self.pdf_width = pdf_width
         self.pdf_height = pdf_height
 
+    @staticmethod
+    def create_jpg_image(pdf_path: str, page_number: int) -> Any:
+        """Convert the PDF page to a JPG."""
+        images = convert_from_path(pdf_path)
+        jpg_image_original = images[page_number - 1]
+
+        return jpg_image_original
+
     def draw_coordinates(self, coordinates: List[Dict[str, Dict[str, float]]]) -> Any:
         """Draw the decimal coordinates on the image."""
         image_copy = self.image.copy()
