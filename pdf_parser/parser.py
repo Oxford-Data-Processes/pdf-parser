@@ -134,7 +134,20 @@ class Parser:
     def parse_pdf(
         template: Dict[str, Any], pdf_data: Dict[str, Any], jpg_bytes: List[bytes]
     ) -> Dict[str, Any]:
-        with open("pdf_parser/schema/template_json_schema.json") as schema_file:
+
+        import os
+
+        print("Current path:", os.getcwd())
+        schema_path = os.path.join(
+            os.path.dirname(os.path.dirname(__file__)),
+            "schema",
+            "template_json_schema.json",
+        )
+
+        if not os.path.exists(schema_path):
+            raise FileNotFoundError(f"Schema file not found: {schema_path}")
+
+        with open(schema_path) as schema_file:
             template_json_schema = json.load(schema_file)
 
         validate(instance=template, schema=template_json_schema)
