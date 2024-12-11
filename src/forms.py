@@ -1,6 +1,6 @@
 from typing import Dict, List, Any
 from coordinate_utils import CoordinateUtils
-from parser import TextExtractor
+from extractors import TextExtractor
 
 
 class FormProcessor:

@@ -1,10 +1,10 @@
 import re
 import uuid
 from datetime import datetime
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 
 from forms import FormProcessor
-from ocr import ImageExtractor
+from extractors import TextExtractor
 from coordinate_utils import CoordinateUtils
 from tables import TableProcessor, TableSplitter
 
@@ -12,6 +12,7 @@ from tables import TableProcessor, TableSplitter
 class Parser:
     def __init__(self) -> None:
         self.coordinate_utils = CoordinateUtils()
+        self.text_extractor = TextExtractor()
 
     def page_number_converter(
         self, page_numbers: str, number_of_pages: int
@@ -94,7 +95,7 @@ class Parser:
                 column["coordinates"], column["lines_y_coordinates"]
             )
             for row_index, box in enumerate(split_boxes):
-                text_value = self.get_text_from_page(
+                text_value = self.text_extractor.get_text_from_page(
                     pdf_data["pages"][page_index]["content"],
                     box,
                     extraction_method,
