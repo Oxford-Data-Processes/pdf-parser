@@ -30,16 +30,6 @@ os.makedirs(os.path.join("src", "outputs"), exist_ok=True)
 os.makedirs(os.path.join("src", "schema"), exist_ok=True)
 
 
-def create_jpg_image(pdf_bytes: bytes, page_number: int) -> Any:
-    """Convert the PDF page to a JPG."""
-    with open("temp.pdf", "wb") as temp_pdf:
-        temp_pdf.write(pdf_bytes)
-    images = convert_from_path("temp.pdf")
-    jpg_image_original = images[page_number - 1]
-    os.remove("temp.pdf")  # Clean up temporary file
-    return jpg_image_original
-
-
 @app.post("/parse-pdf/")
 async def parse_pdf(template: str, pdf: UploadFile = File(...)) -> JSONResponse:
     try:
@@ -65,10 +55,6 @@ async def parse_pdf(template: str, pdf: UploadFile = File(...)) -> JSONResponse:
         print(f"Processing {number_of_pages} pages")
 
         jpg_bytes = []
-        for page_number in range(1, number_of_pages + 1):
-            print(f"Converting page {page_number} to JPG")
-            jpg_image = create_jpg_image(pdf_bytes, page_number)
-            jpg_bytes.append(jpg_image)
 
         print("Parsing PDF with template")
         output = Parser.parse_pdf(template_dict, pdf_data, jpg_bytes)

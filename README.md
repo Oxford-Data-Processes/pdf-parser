@@ -1,6 +1,6 @@
 TO DO:
 
-- Create FASTAPI endpoints (local)
+- Build get_template endpoint
 - Add unit tests
 - Create end to end tests (using fastapi endpoints)
 - Create automated template builder

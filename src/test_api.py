@@ -1,9 +1,31 @@
 import os
 import json
 import requests
-
+import base64
+from pdf2image import convert_from_path
+from typing import List
+import io
 
 api_url = "http://localhost:8000"
+
+
+def create_jpg_bytes(pdf_bytes: bytes) -> List[str]:
+    """Convert all PDF pages to JPG bytes and encode as base64."""
+    with open("temp.pdf", "wb") as temp_pdf:
+        temp_pdf.write(pdf_bytes)
+    images = convert_from_path("temp.pdf")
+
+    # Convert PIL Images to base64 encoded strings
+    jpg_bytes = []
+    for image in images:
+        img_byte_arr = io.BytesIO()
+        image.save(img_byte_arr, format="JPEG")
+        img_byte_arr = img_byte_arr.getvalue()
+        base64_encoded = base64.b64encode(img_byte_arr).decode("utf-8")
+        jpg_bytes.append(base64_encoded)
+
+    os.remove("temp.pdf")
+    return jpg_bytes
 
 
 def test_parse_pdf(test_pdf_path: str, template_name: str, identifier: str):
@@ -23,8 +45,20 @@ def test_parse_pdf(test_pdf_path: str, template_name: str, identifier: str):
 
     # Open the PDF file
     with open(test_pdf_path, "rb") as pdf_file:
-        # Create the files dictionary for the request
-        files = {"pdf": (os.path.basename(test_pdf_path), pdf_file, "application/pdf")}
+        pdf_bytes = pdf_file.read()
+        jpg_bytes = create_jpg_bytes(pdf_bytes)
+
+        files = {
+            "pdf": (os.path.basename(test_pdf_path), pdf_file, "application/pdf"),
+            **{
+                f"image_{i}": (
+                    f"image_{i}.jpg",
+                    io.BytesIO(base64.b64decode(image)),
+                    "image/jpeg",
+                )
+                for i, image in enumerate(jpg_bytes)
+            },
+        }
 
         # Make the request to the API
         response = requests.post(
