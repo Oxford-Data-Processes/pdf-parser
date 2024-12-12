@@ -48,11 +48,27 @@ def test_get_template(pdf_path: str):
 
     try:
         response = requests.post(f"{api_url}/get-template/", files=files)
+
+        result = response.json()
+        response_data = {
+            "pdf_plumber": result.get("pdf_plumber", []),
+            "pytesseract": result.get("pytesseract", []),
+        }
+
+        document_type = (
+            "bank_statements" if "bank_statements" in pdf_path else "payslips"
+        )
+        template_name = pdf_path.split("/")[-3]  # Extract template name from the path
+
+        output_path = f"/Users/chrislittle/GitHub/pdf-parser/src/text_extraction/{document_type}/{template_name}/{template_name}_{identifier}/pdfplumber"
+        os.makedirs(output_path, exist_ok=True)
+
+        with open(os.path.join(output_path, "response.json"), "w") as json_file:
+            json.dump(response_data, json_file, indent=4)
         print(f"Response status: {response.status_code}")
 
         if response.status_code == 200:
             result = response.json()
-            print(result)
         else:
             print(f"Error response: {response.text}")
     except Exception as e:
