@@ -1,73 +1,60 @@
 {
-    "metadata": {
-        "document_id": null,
-        "parsed_at": null,
-        "number_of_pages": null
-    },
-    "pages": {
-        "forms": {
-            "customer_name": {
-                "processor": "clean_text",
-                "options": {
-                    "remove_titles": true
-                }
-            },
-            "sort_code": {
-                "processor": "clean_numbers",
-                "options": {
-                    "allow_chars": "-",
-                    "format": "##-##-##"
-                }
-            },
-            "account_number": {
-                "processor": "clean_numbers",
-                "options": {
-                    "allow_chars": "",
-                    "min_length": 8
-                }
-            },
-            "money_in": {
-                "processor": "clean_currency",
-                "options": {
-                    "decimal_places": 2,
-                    "remove_symbols": ["£", "$", "€"]
-                }
-            },
-            "start_balance": {
-                "processor": "clean_currency",
-                "options": {
-                    "decimal_places": 2,
-                    "remove_symbols": ["£", "$", "€"]
-                }
+    "forms": {
+        "money_in": {
+            "processor": "clean_currency",
+            "options": {
+                "decimal_places": 2,
+                "remove_symbols": ["£", "$", "€"]
             }
         },
-        "tables": {
-            "data": {
-                "date": {
-                    "processor": "clean_date",
-                    "options": {
-                        "input_format": "%d %b %y",
-                        "output_format": "%Y-%m-%d"
-                    }
-                },
-                "type": {
-                    "processor": "clean_text",
-                    "options": {
-                        "uppercase": true
-                    }
-                },
-                "description": {
-                    "processor": "clean_text",
-                    "options": {
-                        "max_length": 100
-                    }
-                },
-                "money_out": {
-                    "processor": "clean_currency",
-                    "options": {
-                        "decimal_places": 2,
-                        "remove_symbols": ["£", "$", "€"]
-                    }
+        "start_balance": {
+            "processor": "clean_currency",
+            "options": {
+                "decimal_places": 2,
+                "remove_symbols": ["£", "$", "€"]
+            }
+        },
+        "money_out": {
+            "processor": "clean_currency",
+            "options": {
+                "decimal_places": 2,
+                "remove_symbols": ["£", "$", "€"]
+            }
+        },
+        "end_balance": {
+            "processor": "clean_currency",
+            "options": {
+                "decimal_places": 2,
+                "remove_symbols": ["£", "$", "€"]
+            }
+        }
+    },
+    "tables": {
+        "data": {
+            "date": {
+                "processor": "clean_date",
+                "options": {
+                    "input_format": "%d %b %y",
+                    "output_format": "%Y-%m-%d"
+                }
+            },
+            "type": {
+                "processor": "clean_text",
+                "options": {
+                    "uppercase": true
+                }
+            },
+            "description": {
+                "processor": "clean_text",
+                "options": {
+                    "max_length": 100
+                }
+            },
+            "money_out": {
+                "processor": "clean_currency",
+                "options": {
+                    "decimal_places": 2,
+                    "remove_symbols": ["£", "$", "€"]
                 }
             }
         }
