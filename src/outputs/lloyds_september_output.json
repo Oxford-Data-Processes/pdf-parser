@@ -1,7 +1,7 @@
 {
     "metadata": {
-        "document_id": "f8450792-d849-43b5-982c-ccf6e0668688",
-        "parsed_at": "2024-12-12T07:15:05",
+        "document_id": "db06d9a4-1a1c-4907-9459-c94aec71eccb",
+        "parsed_at": "2024-12-12T15:47:26",
         "number_of_pages": 2
     },
     "pages": [
@@ -34,7 +34,7 @@
                     "data": [
                         {
                             "date": "02 Sep 24",
-                            "type": "sO",
+                            "type": "SO",
                             "description": "JACKIE LITTLE",
                             "money_out": "300.00",
                             "money_in": "",
@@ -130,7 +130,7 @@
                         },
                         {
                             "date": "19 Sep 24",
-                            "type": "Je)",
+                            "type": "SO",
                             "description": "MAURICIO JIMENEZ M",
                             "money_out": "45.00",
                             "money_in": "",
@@ -161,7 +161,7 @@
                             "balance": "208.29"
                         },
                         {
-                            "date": "Bitscszas\n\nSee",
+                            "date": "Pax ARMA eK",
                             "type": "",
                             "description": "",
                             "money_out": "",
@@ -175,7 +175,7 @@
                         {
                             "date": "23 Sep 24",
                             "type": "FPI",
-                            "description": "SIONITA",
+                            "description": "S IONITA",
                             "money_out": "",
                             "money_in": "1,100.00",
                             "balance": "1,308.29"

@@ -1,7 +1,7 @@
 {
     "metadata": {
-        "document_id": "40c5b35a-4b42-4fa5-833d-60f140b904fe",
-        "parsed_at": "2024-12-12T07:14:31",
+        "document_id": "7895ae19-ac9a-424d-81be-6c68c06ebc83",
+        "parsed_at": "2024-12-12T15:46:37",
         "number_of_pages": 2
     },
     "pages": [
@@ -223,7 +223,7 @@
                         {
                             "date": "25 Apr 23",
                             "type": "TFR",
-                            "description": "FORGN PYT270511457",
+                            "description": "FORGN PYT27051 1457",
                             "money_out": "171.65",
                             "money_in": "",
                             "balance": "319.00"

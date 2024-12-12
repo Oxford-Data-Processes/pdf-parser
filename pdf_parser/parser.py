@@ -1,4 +1,5 @@
 import json
+import os
 import uuid
 from jsonschema import validate
 from datetime import datetime
@@ -135,9 +136,6 @@ class Parser:
         template: Dict[str, Any], pdf_data: Dict[str, Any], jpg_bytes: List[bytes]
     ) -> Dict[str, Any]:
 
-        import os
-
-        print("Current path:", os.getcwd())
         schema_path = os.path.join(
             os.path.dirname(__file__),
             "schema",

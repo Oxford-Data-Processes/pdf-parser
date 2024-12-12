@@ -41,35 +41,26 @@ async def parse_pdf(
     template: str = Form(...),
 ) -> JSONResponse:
     try:
-        print(f"Processing PDF: {pdf.filename}")
         template_dict = json.loads(template)
 
         # Read the PDF bytes
         pdf_bytes = await pdf.read()
-        print(f"Read {len(pdf_bytes)} bytes from PDF")
 
         # Read the image bytes
         jpg_bytes = [await image.read() for image in images]
-        print(f"Processed {len(jpg_bytes)} images")
 
         template_name = template_dict["metadata"]["template_name"]
         identifier = "test"
 
-        print(f"Extracting data with template: {template_name}")
         data_extractor = DataExtractor(pdf_bytes, template_name, identifier)
         pdf_data = data_extractor.extract_data()
 
-        pdf_data["number_of_pages"] = len(
-            jpg_bytes
-        )  # Use number of images instead of trying to read PDF
-        print(f"Processing {pdf_data['number_of_pages']} pages")
+        pdf_data["number_of_pages"] = len(jpg_bytes)
 
-        print("Parsing PDF with template")
         output = Parser.parse_pdf(template_dict, pdf_data, jpg_bytes)
         return JSONResponse(status_code=200, content=json.loads(output))
 
     except Exception as e:
-        print(f"Error processing PDF: {str(e)}")
         return JSONResponse(
             status_code=500,
             content={"error": "Processing failed", "details": str(e)},
