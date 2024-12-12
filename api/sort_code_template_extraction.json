@@ -1,0 +1,24 @@
+{
+    "metadata": {
+        "template_id": "sort_code",
+        "version": "1.0.0"
+    },
+    "extraction_method": "extraction",
+    "rules": [
+        {
+            "rule_id": "sort_code",
+            "type": "form",
+            "config": {
+                "field_name": "sort_code",
+                "search_type": "regex",
+                "regex": "code.*?(\\d{2}-\\d{2}-\\d{2})"
+            }
+        }
+    ],
+    "pages": [
+        {
+            "page_numbers": "1:-1",
+            "forms": ["sort_code"]
+        }
+    ]
+}

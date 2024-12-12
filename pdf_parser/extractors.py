@@ -8,7 +8,6 @@ import pdfplumber
 import pytesseract  # type: ignore
 from pdf2image import convert_from_bytes
 from PIL import Image
-from pdf_parser.coordinate_utils import CoordinateUtils
 
 
 class DataExtractor:
@@ -49,7 +48,6 @@ class DataExtractor:
                         "lines": line_data,
                     }
                 )
-
             return data
 
     def get_dimensions(self, pdf: Any) -> Dict[str, float]:

@@ -5,6 +5,8 @@ import json
 import os
 import sys
 
+from utils import extract_data_pdfplumber, extract_data_pytesseract
+
 # Add the parent directory to the system path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
@@ -25,6 +27,35 @@ app.add_middleware(
 # Create necessary directories
 os.makedirs(os.path.join("src", "outputs"), exist_ok=True)
 os.makedirs(os.path.join("src", "schema"), exist_ok=True)
+
+
+@app.post("/get-template/")
+async def get_template(
+    pdf: UploadFile = File(...),
+    images: list[UploadFile] = File(...),
+) -> JSONResponse:
+    try:
+        pdf_bytes = await pdf.read()
+        jpg_bytes = [await image.read() for image in images]
+
+        extracted_text_pdfplumber = extract_data_pdfplumber(pdf_bytes)
+
+        extracted_text_pytesseract = extract_data_pytesseract(jpg_bytes)
+
+        return JSONResponse(
+            status_code=200,
+            content={
+                "pdf_plumber": extracted_text_pdfplumber,
+                "pytesseract": extracted_text_pytesseract,
+            },
+        )
+
+    except Exception as e:
+        print(f"Error processing PDF: {str(e)}")
+        return JSONResponse(
+            status_code=500,
+            content={"error": "Processing failed", "details": str(e)},
+        )
 
 
 @app.post("/parse-pdf/")
