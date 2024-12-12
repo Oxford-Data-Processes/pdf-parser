@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "template_id": "barclays_student",
+        "template_name": "barclays_student",
         "version": "1.0.0"
     },
     "extraction_method": "extraction",

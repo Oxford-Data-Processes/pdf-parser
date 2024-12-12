@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "template_id": "monzo",
+        "template_name": "monzo",
         "version": "1.0.0"
     },
     "extraction_method": "extraction",

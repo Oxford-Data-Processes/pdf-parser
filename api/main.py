@@ -52,7 +52,7 @@ async def parse_pdf(
         jpg_bytes = [await image.read() for image in images]
         print(f"Processed {len(jpg_bytes)} images")
 
-        template_name = template_dict["metadata"]["template_id"]
+        template_name = template_dict["metadata"]["template_name"]
         identifier = "test"
 
         print(f"Extracting data with template: {template_name}")

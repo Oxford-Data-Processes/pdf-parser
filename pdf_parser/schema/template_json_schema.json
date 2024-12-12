@@ -5,10 +5,10 @@
       "metadata": {
         "type": "object",
         "properties": {
-          "template_id": { "type": "string" },
+          "template_name": { "type": "string" },
           "version": { "type": "string" }
         },
-        "required": ["template_id", "version"]
+        "required": ["template_name", "version"]
       },
       "extraction_method": { "type": "string", "enum": ["extraction", "ocr"] },
       "rules": {

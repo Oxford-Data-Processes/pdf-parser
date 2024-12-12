@@ -10,13 +10,21 @@ import pandas as pd
 api_url = "http://localhost:8000"
 
 
+def load_template(template_name: str) -> dict:
+    """Load the template from a JSON file."""
+    template_path = os.path.join("src", "templates", f"{template_name}_template.json")
+    assert os.path.exists(template_path), f"Template file not found: {template_path}"
+    with open(template_path, "r") as template_file:
+        return json.load(template_file)
+
+
 def get_sort_code_template_mapping() -> Dict[str, str]:
     ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     sort_code_template_mapping_path: str = os.path.join(
         ROOT_DIR, "src", "sort_code_template_mapping.csv"
     )
     mapping = pd.read_csv(sort_code_template_mapping_path)
-    return mapping.set_index("sort_code")["template_id"].to_dict()
+    return mapping.set_index("sort_code")["template_name"].to_dict()
 
 
 def prepare_files(pdf_bytes: bytes, jpg_bytes: List[bytes]) -> List[tuple]:
@@ -43,7 +51,6 @@ def create_jpg_bytes(pdf_bytes: bytes) -> List[bytes]:
     """Convert all PDF pages to JPG bytes."""
     with open("temp.pdf", "wb") as temp_pdf:
         temp_pdf.write(pdf_bytes)
-    # Convert with higher DPI for better OCR
     images = convert_from_path("temp.pdf", dpi=300)
     jpg_bytes = convert_images_to_bytes(images)
     os.remove("temp.pdf")
@@ -51,24 +58,18 @@ def create_jpg_bytes(pdf_bytes: bytes) -> List[bytes]:
 
 
 def convert_images_to_bytes(images) -> List[bytes]:
-    """Convert PIL Images to bytes for OCR."""
+    """Convert PIL Images to bytes."""
     jpg_bytes = []
     for image in images:
-        image = image.convert("RGB")  # Ensure RGB mode
-        if min(image.size) < 1800:  # Resize if too small
-            ratio = 1800 / min(image.size)
-            image = image.resize(
-                (int(dim * ratio) for dim in image.size), Image.Resampling.LANCZOS
-            )
         img_byte_arr = io.BytesIO()
-        image.save(img_byte_arr, format="JPEG", quality=95)
+        image.save(img_byte_arr, format="JPEG")
         jpg_bytes.append(img_byte_arr.getvalue())
     return jpg_bytes
 
 
 def get_sort_code(pdf_path: str) -> str:
     template = {
-        "metadata": {"template_id": "sort_code", "version": "1.0.0"},
+        "metadata": {"template_name": "sort_code", "version": "1.0.0"},
         "extraction_method": "extraction",
         "rules": [
             {
@@ -107,20 +108,53 @@ def get_sort_code(pdf_path: str) -> str:
         print(f"Error making request: {str(e)}")
 
 
-def main(pdf_path: str):
+def handle_response(response: requests.Response, template_name: str, identifier: str):
+    """Handle the API response."""
+    print(f"Response status: {response.status_code}")
+    if response.status_code != 200:
+        print(f"Error response: {response.text}")
+    assert response.status_code == 200, f"API request failed: {response.text}"
+
+    output_path = os.path.join(
+        "src", "outputs", f"{template_name}_{identifier}_output.json"
+    )
+    with open(output_path, "w") as f:
+        json.dump(response.json(), f, indent=4)
+        print(f"Output saved to: {output_path}")
+
+
+def parse_pdf(pdf_path: str, template_name: str, identifier: str):
+    template_dict = load_template(template_name)
+    with open(pdf_path, "rb") as pdf_file:
+        pdf_bytes = pdf_file.read()
+        jpg_bytes = create_jpg_bytes(pdf_bytes)
+        files = prepare_files(pdf_bytes, jpg_bytes)
+        response = send_request(files, template_dict)
+        handle_response(
+            response,
+            template_name,
+            identifier,
+        )
+
+
+def main(pdf_path: str, template_name: str, identifier: str):
     sort_code = get_sort_code(pdf_path)
-    template_id = get_sort_code_template_mapping().get(sort_code)
-    print(template_id)
+    template_name = get_sort_code_template_mapping().get(sort_code)
+    parse_pdf(pdf_path, template_name, identifier)
 
 
 if __name__ == "__main__":
     ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    document_type = "bank_statements"
+    template_name = "barclays_student"
+    identifier = "march"
+
     pdf_path: str = os.path.join(
         ROOT_DIR,
         "data",
-        "bank_statements",
-        "barclays",
+        document_type,
+        template_name,
         "pdf",
-        "barclays_march.pdf",
+        f"{template_name}_{identifier}.pdf",
     )
-    main(pdf_path)
+    main(pdf_path, template_name, identifier)
