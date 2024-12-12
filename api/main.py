@@ -4,8 +4,10 @@ from fastapi.middleware.cors import CORSMiddleware
 import json
 import os
 import sys
-
-from utils import extract_data_pdfplumber, extract_data_pytesseract
+import pdfplumber
+import pytesseract
+from typing import List
+import io
 
 # Add the parent directory to the system path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
@@ -29,16 +31,37 @@ os.makedirs(os.path.join("src", "outputs"), exist_ok=True)
 os.makedirs(os.path.join("src", "schema"), exist_ok=True)
 
 
+def extract_data_pdfplumber(pdf_bytes: bytes) -> List[str]:
+    """Extract all text data from a PDF using pdfplumber."""
+    extracted_text = []
+    with pdfplumber.open(io.BytesIO(pdf_bytes)) as pdf:
+        for page in pdf.pages:
+            extracted_text.append(page.extract_text())
+    return extracted_text
+
+
+def extract_data_pytesseract(jpg_bytes: List[bytes]) -> List[str]:
+    """Extract all text data from images using pytesseract."""
+    extracted_text = []
+    for image in jpg_bytes:
+        text = pytesseract.image_to_string(image)
+        extracted_text.append(text)
+    return extracted_text
+
+
 @app.post("/get-template/")
 async def get_template(
     pdf: UploadFile = File(...),
     images: list[UploadFile] = File(...),
 ) -> JSONResponse:
+    print("Getting template")
     try:
         pdf_bytes = await pdf.read()
         jpg_bytes = [await image.read() for image in images]
 
         extracted_text_pdfplumber = extract_data_pdfplumber(pdf_bytes)
+
+        print(extracted_text_pdfplumber)
 
         extracted_text_pytesseract = extract_data_pytesseract(jpg_bytes)
 
