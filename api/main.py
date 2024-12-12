@@ -8,6 +8,7 @@ import pdfplumber
 import pytesseract
 from typing import List
 import io
+from PIL import Image
 
 # Add the parent directory to the system path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
@@ -43,9 +44,14 @@ def extract_data_pdfplumber(pdf_bytes: bytes) -> List[str]:
 def extract_data_pytesseract(jpg_bytes: List[bytes]) -> List[str]:
     """Extract all text data from images using pytesseract."""
     extracted_text = []
-    for image in jpg_bytes:
-        text = pytesseract.image_to_string(image)
-        extracted_text.append(text)
+    for jpg in jpg_bytes:
+        try:
+            image = Image.open(io.BytesIO(jpg))
+            text = pytesseract.image_to_string(image)
+            extracted_text.append(text)
+        except Exception as e:
+            print(f"Error processing image: {str(e)}")
+            extracted_text.append("")
     return extracted_text
 
 
@@ -60,9 +66,6 @@ async def get_template(
         jpg_bytes = [await image.read() for image in images]
 
         extracted_text_pdfplumber = extract_data_pdfplumber(pdf_bytes)
-
-        print(extracted_text_pdfplumber)
-
         extracted_text_pytesseract = extract_data_pytesseract(jpg_bytes)
 
         return JSONResponse(
