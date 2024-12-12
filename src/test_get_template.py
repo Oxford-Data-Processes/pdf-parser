@@ -52,9 +52,36 @@ def prepare_files(pdf_bytes: bytes, jpg_bytes: List[bytes]) -> List[tuple]:
     return files
 
 
+def send_request(files: List[tuple], template: dict) -> requests.Response:
+    """Send the request to the API."""
+    response = requests.post(
+        f"{api_url}/parse-pdf/",
+        files=files,
+        data={"template": json.dumps(template)},
+    )
+    return response
+
+
 def test_get_template(pdf_path: str):
     """Test the get-template endpoint."""
     print(f"\nTesting PDF: {pdf_path}")
+
+    template = {
+        "metadata": {"template_id": "sort_code", "version": "1.0.0"},
+        "extraction_method": "extraction",
+        "rules": [
+            {
+                "rule_id": "sort_code",
+                "type": "form",
+                "config": {
+                    "field_name": "sort_code",
+                    "search_type": "regex",
+                    "regex": r"ode.*?(\d{2}-\d{2}-\d{2})",
+                },
+            }
+        ],
+        "pages": [{"page_numbers": "1:-1", "forms": ["sort_code"]}],
+    }
 
     with open(pdf_path, "rb") as pdf_file:
         pdf_bytes = pdf_file.read()
@@ -62,28 +89,9 @@ def test_get_template(pdf_path: str):
         files = prepare_files(pdf_bytes, jpg_bytes)
 
     try:
-        response = requests.post(f"{api_url}/get-template/", files=files)
-
-        result = response.json()
-        response_data = {
-            "pdf_plumber": result.get("pdf_plumber", []),
-            "pytesseract": result.get("pytesseract", []),
-        }
-
-        document_type = (
-            "bank_statements" if "bank_statements" in pdf_path else "payslips"
-        )
-        template_name = pdf_path.split("/")[-3]  # Extract template name from the path
-
-        output_path = f"/Users/chrislittle/GitHub/pdf-parser/src/text_extraction/{document_type}/{template_name}/{template_name}_{identifier}"
-        os.makedirs(output_path, exist_ok=True)
-
-        with open(os.path.join(output_path, "response.json"), "w") as json_file:
-            json.dump(response_data, json_file, indent=4)
-        print(f"Response status: {response.status_code}")
-
+        response = send_request(files, template)
         if response.status_code == 200:
-            result = response.json()
+            return response.json()
         else:
             print(f"Error response: {response.text}")
     except Exception as e:
@@ -100,9 +108,9 @@ if __name__ == "__main__":
             "lloyds": ["september"],
             "monzo": ["november", "3_months"],
         },
-        "payslips": {
-            "payslip": ["jake"],
-        },
+        # "payslips": {
+        #     "payslip": ["jake"],
+        # },
     }
 
     ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -118,4 +126,13 @@ if __name__ == "__main__":
                     "pdf",
                     f"{template_name}_{identifier}.pdf",
                 )
-                test_get_template(test_pdf_path)
+                response = test_get_template(test_pdf_path)
+                sort_code = next(
+                    (
+                        form["sort_code"]
+                        for form in response["pages"][0]["forms"]
+                        if form["sort_code"]
+                    ),
+                    None,
+                )
+                print(sort_code)
