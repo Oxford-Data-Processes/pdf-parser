@@ -75,7 +75,7 @@ def test_get_template(pdf_path: str):
         )
         template_name = pdf_path.split("/")[-3]  # Extract template name from the path
 
-        output_path = f"/Users/chrislittle/GitHub/pdf-parser/src/text_extraction/{document_type}/{template_name}/{template_name}_{identifier}/pdfplumber"
+        output_path = f"/Users/chrislittle/GitHub/pdf-parser/src/text_extraction/{document_type}/{template_name}/{template_name}_{identifier}"
         os.makedirs(output_path, exist_ok=True)
 
         with open(os.path.join(output_path, "response.json"), "w") as json_file:
