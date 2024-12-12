@@ -62,7 +62,7 @@ def send_request(files: List[tuple], template: dict) -> requests.Response:
     return response
 
 
-def test_get_template(pdf_path: str):
+def test_get_sort_code(pdf_path: str):
     """Test the get-template endpoint."""
     print(f"\nTesting PDF: {pdf_path}")
 
@@ -91,7 +91,15 @@ def test_get_template(pdf_path: str):
     try:
         response = send_request(files, template)
         if response.status_code == 200:
-            return response.json()
+            sort_code = next(
+                (
+                    form["sort_code"]
+                    for form in response.json()["pages"][0]["forms"]
+                    if form["sort_code"]
+                ),
+                None,
+            )
+            return sort_code
         else:
             print(f"Error response: {response.text}")
     except Exception as e:
@@ -126,13 +134,5 @@ if __name__ == "__main__":
                     "pdf",
                     f"{template_name}_{identifier}.pdf",
                 )
-                response = test_get_template(test_pdf_path)
-                sort_code = next(
-                    (
-                        form["sort_code"]
-                        for form in response["pages"][0]["forms"]
-                        if form["sort_code"]
-                    ),
-                    None,
-                )
+                sort_code = test_get_sort_code(test_pdf_path)
                 print(sort_code)
