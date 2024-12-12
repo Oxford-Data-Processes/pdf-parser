@@ -1,14 +1,14 @@
 {
     "metadata": {
-        "document_id": "c0a19172-ea86-407e-ab4d-6d7995dd5e47",
-        "parsed_at": "2024-12-11T21:07:01",
+        "document_id": "30bfce71-3fb8-401f-afd8-e80b2cfb2854",
+        "parsed_at": "2024-12-12T07:04:10",
         "number_of_pages": 2
     },
     "pages": [
         {
             "forms": [
                 {
-                    "customer_name": "MrJ ake Holmes"
+                    "customer_name": "Mr Jake Holmes"
                 },
                 {
                     "sort_code": "11-00-56"
@@ -115,7 +115,7 @@
                         {
                             "date": "15 May 23",
                             "type": "FPI",
-                            "description": "AASEC1",
+                            "description": "AA SEC 1",
                             "money_out": "",
                             "money_in": "156.00",
                             "balance": "890.18"

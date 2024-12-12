@@ -1,7 +1,7 @@
 {
     "metadata": {
-        "document_id": "2cb47356-3718-4530-8aab-869cf1cc479b",
-        "parsed_at": "2024-12-11T21:07:16",
+        "document_id": "6af234c7-9328-4000-a0b4-69c4d1f63e82",
+        "parsed_at": "2024-12-12T07:04:29",
         "number_of_pages": 2
     },
     "pages": [
@@ -34,7 +34,7 @@
                     "data": [
                         {
                             "date": "02 Sep 24",
-                            "type": "so",
+                            "type": "sO",
                             "description": "JACKIE LITTLE",
                             "money_out": "300.00",
                             "money_in": "",
@@ -130,8 +130,8 @@
                         },
                         {
                             "date": "19 Sep 24",
-                            "type": "so",
-                            "description": "MAURICIO J IMENEZ M",
+                            "type": "Je)",
+                            "description": "MAURICIO JIMENEZ M",
                             "money_out": "45.00",
                             "money_in": "",
                             "balance": "283.40"
@@ -155,13 +155,13 @@
                         {
                             "date": "23 Sep 24",
                             "type": "DEB",
-                            "description": "S potify Limited",
+                            "description": "Spotify Limited",
                             "money_out": "11.99",
                             "money_in": "",
                             "balance": "208.29"
                         },
                         {
-                            "date": "lo nntinunadan",
+                            "date": "HitSscszas\n\nSee es",
                             "type": "",
                             "description": "",
                             "money_out": "",
@@ -175,7 +175,7 @@
                         {
                             "date": "23 Sep 24",
                             "type": "FPI",
-                            "description": "S IONITA",
+                            "description": "SIONITA",
                             "money_out": "",
                             "money_in": "1,100.00",
                             "balance": "1,308.29"
