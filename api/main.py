@@ -49,10 +49,7 @@ async def parse_pdf(
         # Read the image bytes
         jpg_bytes = [await image.read() for image in images]
 
-        template_name = template_dict["metadata"]["template_name"]
-        identifier = "test"
-
-        data_extractor = DataExtractor(pdf_bytes, template_name, identifier)
+        data_extractor = DataExtractor(pdf_bytes)
         pdf_data = data_extractor.extract_data()
 
         pdf_data["number_of_pages"] = len(jpg_bytes)

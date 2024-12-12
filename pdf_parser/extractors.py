@@ -11,10 +11,8 @@ from PIL import Image
 
 
 class DataExtractor:
-    def __init__(self, pdf_bytes: bytes, template_name: str, identifier: str):
+    def __init__(self, pdf_bytes: bytes):
         self.pdf_bytes = pdf_bytes
-        self.template_name = template_name
-        self.identifier = identifier
 
     def extract_data(self) -> Dict[str, Any]:
         """
@@ -23,10 +21,7 @@ class DataExtractor:
         Returns:
             dict: Dictionary containing extracted text, bounding box information, line coordinates, number of pages, and dimensions.
         """
-        prefix = f"{self.template_name}_{self.identifier}"
-        pdf_jpg_files = ImageExtractor(self.pdf_bytes).convert_pdf_to_jpg_files(
-            prefix=prefix
-        )
+        pdf_jpg_files = ImageExtractor(self.pdf_bytes).convert_pdf_to_jpg_files()
 
         with pdfplumber.open(io.BytesIO(self.pdf_bytes)) as pdf:
             data: Dict[str, Any] = {
@@ -37,9 +32,7 @@ class DataExtractor:
             for page_num, page in enumerate(pdf.pages):
                 page_data = self.extract_page_text_data(page)
 
-                line_data = self.extract_page_line_data(
-                    page, pdf_jpg_files[f"{prefix}_page_{page_num + 1}.jpg"]
-                )
+                line_data = self.extract_page_line_data(page, pdf_jpg_files[page_num])
 
                 data["pages"].append(
                     {
@@ -138,25 +131,21 @@ class ImageExtractor:
             return self.image_data
         return Image.open(io.BytesIO(self.image_data)).convert("RGB")
 
-    def convert_pdf_to_jpg_files(self, prefix: str) -> Dict[str, bytes]:
+    def convert_pdf_to_jpg_files(self) -> List[bytes]:
         """Convert the PDF into several JPG files, one for each page.
 
-        Args:
-            prefix (str): Optional prefix for the JPG file names.
-
         Returns:
-            dict: Dictionary with file names as keys and JPEG bytes as values.
+            list: List of JPEG bytes for each page.
         """
         if not isinstance(self.image_data, bytes):
             raise ValueError("PDF conversion requires bytes input")
 
         images = convert_from_bytes(self.image_data)
-        jpg_files = {}
-        for page_num, image in enumerate(images):
-            jpg_file_name = f"{prefix}_page_{page_num + 1}.jpg"
+        jpg_files = []
+        for image in images:
             img_byte_arr = io.BytesIO()
             image.save(img_byte_arr, format="JPEG")
-            jpg_files[jpg_file_name] = img_byte_arr.getvalue()
+            jpg_files.append(img_byte_arr.getvalue())
         return jpg_files
 
     def extract_text_from_coordinates(self, coordinates: Dict[str, Any]) -> str:

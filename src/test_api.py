@@ -6,10 +6,10 @@ from pipeline import parse_pdf
 def main():
     config = {
         "bank_statements": {
-            "barclays_student": ["march", "april", "may"],
-            "barclays": ["march", "april", "may"],
-            "first_direct": ["march", "april", "may"],
-            "halifax": ["march", "april", "may"],
+            # "barclays_student": ["march", "april", "may"],
+            # "barclays": ["march", "april", "may"],
+            # "first_direct": ["march", "april", "may"],
+            # "halifax": ["march", "april", "may"],
             "lloyds": ["september"],
             "monzo": ["november", "3_months"],
         },
