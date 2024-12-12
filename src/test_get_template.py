@@ -4,6 +4,7 @@ import requests
 from pdf2image import convert_from_path
 import io
 from typing import List, Dict
+from PIL import Image
 
 api_url = "http://localhost:8000"
 
@@ -12,17 +13,31 @@ def create_jpg_bytes(pdf_bytes: bytes) -> List[bytes]:
     """Convert all PDF pages to JPG bytes."""
     with open("temp.pdf", "wb") as temp_pdf:
         temp_pdf.write(pdf_bytes)
-    jpg_bytes = convert_images_to_bytes(convert_from_path("temp.pdf"))
+    # Convert with higher DPI for better OCR
+    images = convert_from_path("temp.pdf", dpi=300)
+    jpg_bytes = convert_images_to_bytes(images)
     os.remove("temp.pdf")
     return jpg_bytes
 
 
 def convert_images_to_bytes(images) -> List[bytes]:
-    """Convert PIL Images to bytes."""
+    """Convert PIL Images to bytes with optimal settings for OCR."""
     jpg_bytes = []
     for image in images:
+        # Convert to RGB mode to ensure compatibility
+        if image.mode != "RGB":
+            image = image.convert("RGB")
+
+        # Resize image if too small (helps OCR accuracy)
+        min_size = 1800
+        ratio = min_size / min(image.size)
+        if ratio > 1:
+            new_size = tuple(int(dim * ratio) for dim in image.size)
+            image = image.resize(new_size, Image.Resampling.LANCZOS)
+
+        # Save with high quality
         img_byte_arr = io.BytesIO()
-        image.save(img_byte_arr, format="JPEG")
+        image.save(img_byte_arr, format="JPEG", quality=95, optimize=False)
         jpg_bytes.append(img_byte_arr.getvalue())
     return jpg_bytes
 

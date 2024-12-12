@@ -1,8 +1,8 @@
 TO DO:
 
 - Build get_template endpoint
-- Add unit tests
-- Create end to end tests (using fastapi endpoints)
+- Add unit tests (pytest)
+- Create API tests using jest/typescript
 - Create automated template builder
 - Auto generate project documentation (sphinx?)
 - Set up CI/CD to run tests on each pr or commit.

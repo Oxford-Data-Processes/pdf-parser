@@ -9,6 +9,8 @@ import pytesseract
 from typing import List
 import io
 from PIL import Image
+import numpy as np
+import cv2
 
 # Add the parent directory to the system path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
@@ -41,14 +43,51 @@ def extract_data_pdfplumber(pdf_bytes: bytes) -> List[str]:
     return extracted_text
 
 
+def preprocess_image_for_ocr(image: Image.Image) -> Image.Image:
+    """Preprocess image to improve OCR accuracy."""
+    # Convert PIL Image to OpenCV format
+    img = cv2.cvtColor(np.array(image), cv2.COLOR_RGB2BGR)
+
+    # Convert to grayscale
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+    # Apply thresholding to preprocess the image
+    gray = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
+
+    # Apply dilation to connect text components
+    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
+    gray = cv2.dilate(gray, kernel, iterations=1)
+
+    # Convert back to PIL Image
+    return Image.fromarray(gray)
+
+
 def extract_data_pytesseract(jpg_bytes: List[bytes]) -> List[str]:
-    """Extract all text data from images using pytesseract."""
+    """Extract all text data from images using pytesseract with improved preprocessing."""
     extracted_text = []
     for jpg in jpg_bytes:
         try:
+            # Open image
             image = Image.open(io.BytesIO(jpg))
-            text = pytesseract.image_to_string(image)
-            extracted_text.append(text)
+
+            # Preprocess the image
+            processed_image = preprocess_image_for_ocr(image)
+
+            # Configure pytesseract
+            custom_config = r"--oem 3 --psm 6"
+
+            # Extract text
+            text = pytesseract.image_to_string(
+                processed_image, config=custom_config, lang="eng"
+            )
+
+            # Clean up the text
+            text = text.strip()
+            if text:
+                extracted_text.append(text)
+            else:
+                extracted_text.append("")
+
         except Exception as e:
             print(f"Error processing image: {str(e)}")
             extracted_text.append("")
