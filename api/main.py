@@ -1,15 +1,11 @@
 from fastapi import FastAPI, UploadFile, File, Form
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
-from typing import Any
 import json
 import os
-from pdf2image import convert_from_path
-import base64
-
 import sys
-import os
 
+# Add the parent directory to the system path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from pdf_parser.parser import Parser
@@ -41,19 +37,12 @@ async def parse_pdf(
         print(f"Processing PDF: {pdf.filename}")
         template_dict = json.loads(template)
 
-        # Create the output directory if it doesn't exist
-        output_dir = os.path.join("src", "outputs")
-        os.makedirs(output_dir, exist_ok=True)
-
         # Read the PDF bytes
         pdf_bytes = await pdf.read()
         print(f"Read {len(pdf_bytes)} bytes from PDF")
 
         # Read the image bytes
-        jpg_bytes = []
-        for image in images:
-            image_data = await image.read()
-            jpg_bytes.append(image_data)  # Store raw bytes instead of base64
+        jpg_bytes = [await image.read() for image in images]
         print(f"Processed {len(jpg_bytes)} images")
 
         template_name = template_dict["metadata"]["template_id"]
@@ -63,11 +52,10 @@ async def parse_pdf(
         data_extractor = DataExtractor(pdf_bytes, template_name, identifier)
         pdf_data = data_extractor.extract_data()
 
-        number_of_pages = len(
+        pdf_data["number_of_pages"] = len(
             jpg_bytes
         )  # Use number of images instead of trying to read PDF
-        pdf_data["number_of_pages"] = number_of_pages
-        print(f"Processing {number_of_pages} pages")
+        print(f"Processing {pdf_data['number_of_pages']} pages")
 
         print("Parsing PDF with template")
         output = Parser.parse_pdf(template_dict, pdf_data, jpg_bytes)

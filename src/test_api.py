@@ -12,71 +12,78 @@ def create_jpg_bytes(pdf_bytes: bytes) -> List[bytes]:
     """Convert all PDF pages to JPG bytes."""
     with open("temp.pdf", "wb") as temp_pdf:
         temp_pdf.write(pdf_bytes)
-    images = convert_from_path("temp.pdf")
+    jpg_bytes = convert_images_to_bytes(convert_from_path("temp.pdf"))
+    os.remove("temp.pdf")
+    return jpg_bytes
 
-    # Convert PIL Images to bytes
+
+def convert_images_to_bytes(images) -> List[bytes]:
+    """Convert PIL Images to bytes."""
     jpg_bytes = []
     for image in images:
         img_byte_arr = io.BytesIO()
         image.save(img_byte_arr, format="JPEG")
         jpg_bytes.append(img_byte_arr.getvalue())
-
-    os.remove("temp.pdf")
     return jpg_bytes
+
+
+def load_template(template_name: str) -> dict:
+    """Load the template from a JSON file."""
+    template_path = os.path.join("src", "templates", f"{template_name}_template.json")
+    assert os.path.exists(template_path), f"Template file not found: {template_path}"
+    with open(template_path, "r") as template_file:
+        return json.load(template_file)
+
+
+def prepare_files(pdf_bytes: bytes, jpg_bytes: List[bytes]) -> List[tuple]:
+    """Prepare the files for the request."""
+    files = [("pdf", ("pdf_file.pdf", pdf_bytes, "application/pdf"))]
+    for i, image_bytes in enumerate(jpg_bytes):
+        files.append(("images", (f"image_{i}.jpg", image_bytes, "image/jpeg")))
+    return files
+
+
+def send_request(files: List[tuple], template: dict) -> requests.Response:
+    """Send the request to the API."""
+    response = requests.post(
+        f"{api_url}/parse-pdf/",
+        files=files,
+        data={"template": json.dumps(template)},
+    )
+    return response
+
+
+def handle_response(response: requests.Response, template_name: str, identifier: str):
+    """Handle the API response."""
+    print(f"Response status: {response.status_code}")
+    if response.status_code != 200:
+        print(f"Error response: {response.text}")
+    assert response.status_code == 200, f"API request failed: {response.text}"
+
+    output_path = os.path.join(
+        "src", "outputs", f"{template_name}_{identifier}_output.json"
+    )
+    with open(output_path, "w") as f:
+        json.dump(response.json(), f, indent=4)
+        print(f"Output saved to: {output_path}")
 
 
 def test_parse_pdf(test_pdf_path: str, template_name: str, identifier: str):
     print(f"\nTesting PDF: {test_pdf_path}")
     print(f"Template: {template_name}")
 
-    # Ensure the template exists
-    template_path = os.path.join("src", "templates", f"{template_name}_template.json")
-    assert os.path.exists(template_path), f"Template file not found: {template_path}"
-    print(f"Using template: {template_path}")
-
-    with open(template_path, "r") as template_file:
-        template = json.load(template_file)
-
-    # Create test directories if they don't exist
+    template = load_template(template_name)
     os.makedirs(os.path.join("src", "outputs"), exist_ok=True)
 
-    # Open the PDF file
     with open(test_pdf_path, "rb") as pdf_file:
         pdf_bytes = pdf_file.read()
         jpg_bytes = create_jpg_bytes(pdf_bytes)
-
-        # Prepare the files for the request
-        files = [("pdf", ("pdf_file.pdf", pdf_bytes, "application/pdf"))]
-
-        # Add images to the files list
-        for i, image_bytes in enumerate(jpg_bytes):
-            files.append(("images", (f"image_{i}.jpg", image_bytes, "image/jpeg")))
-
-        # Make the request to the API
-        response = requests.post(
-            f"{api_url}/parse-pdf/",
-            files=files,
-            data={"template": json.dumps(template)},
-        )
-
-        print(f"Response status: {response.status_code}")
-        if response.status_code != 200:
-            print(f"Error response: {response.text}")
-
-        assert response.status_code == 200, f"API request failed: {response.text}"
-
-        # Save the output
-        output_path = os.path.join(
-            "src", "outputs", f"{template_name}_{identifier}_output.json"
-        )
-        with open(output_path, "w") as f:
-            json.dump(response.json(), f, indent=4)
-            print(f"Output saved to: {output_path}")
+        files = prepare_files(pdf_bytes, jpg_bytes)
+        response = send_request(files, template)
+        handle_response(response, template_name, identifier)
 
 
 def main():
-    """Run the test directly"""
-
     config = {
         "bank_statements": {
             "barclays_student": ["march", "april", "may"],
