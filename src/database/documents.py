@@ -12,27 +12,33 @@ class DocumentStatus(str, Enum):
 
 
 class DocumentType(str, Enum):
-    MORTGAGE_APPLICATION = "Mortgage Application"
-    BANK_STATEMENT = "Bank Statement"
-    PAY_STUB = "Pay Stub"
-    TAX_RETURN = "Tax Return"
-    ID_DOCUMENT = "ID Document"
-    OTHER = "Other"
+    MORTGAGE_APPLICATION = "MORTGAGE_APPLICATION"
+    BANK_STATEMENT = "BANK_STATEMENT"
+    PAY_STUB = "PAY_STUB"
+    TAX_RETURN = "TAX_RETURN"
+    ID_DOCUMENT = "ID_DOCUMENT"
+    OTHER = "OTHER"
 
 
-class PDFName(constr):
-    __root__: str = Field(..., max_length=255, regex=r"\.pdf$")
+class FilePath(constr):
+    __root__: str = Field(
+        ..., max_length=255, regex=r"\.(pdf|doc|docx|txt|jpg|jpeg|png)$"
+    )
+
+
+class MimeType(Enum):
+    PDF = "application/pdf"
 
 
 class Document(BaseModel):
     id: Id
     client_id: Id
-    name: PDFName
-    type: str
-    status: DocumentStatus
-    file_path: str
+    name: FilePath
+    document_type: str
+    document_status: DocumentStatus
+    file_path: FilePath
     file_size: int
-    mime_type: str
+    mime_type: MimeType
     validation_errors: List[str] = []
     created_at: Datetime
     updated_at: Datetime
