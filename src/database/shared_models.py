@@ -60,3 +60,16 @@ class Address(BaseModel):
     postcode: Postcode
     country_name: CountryName
     country_code: CountryCode
+
+
+class SubscriptionStatus(str, Enum):
+    ACTIVE = "ACTIVE"
+    INACTIVE = "INACTIVE"
+    TRIALING = "TRIALING"
+    CANCELLED = "CANCELLED"
+
+
+class SubscriptionPlan(str, Enum):
+    BASIC = "BASIC"
+    PREMIUM = "PREMIUM"
+    ENTERPRISE = "ENTERPRISE"
