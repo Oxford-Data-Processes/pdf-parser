@@ -2,6 +2,7 @@ from pydantic import BaseModel
 from typing import Optional, Dict, Any, List, Union
 from shared_models import Datetime
 from documents import DocumentType
+from enum import Enum
 
 
 class Transaction(BaseModel):
@@ -26,9 +27,20 @@ class AnalysisResults(BaseModel):
     categorized_transactions: CategorizedTransactions
 
 
+class BankCode(str, Enum):
+    """
+    Bank codes for UK banks given by first 4 characters ofBIC/SWIFT codes
+    """
+
+    LOYD = "LOYD"
+    BARC = "BARC"
+    HSBC = "HSBC"
+    NWBK = "NWBK"
+
+
 class BankStatementData(BaseModel):
     bank_name: Optional[str] = None
-    bank_code: Optional[str] = None
+    bank_code: Optional[BankCode]
     account_type: Optional[str] = None
     statement_period: Optional[str] = None
     sort_code: Optional[str] = None
