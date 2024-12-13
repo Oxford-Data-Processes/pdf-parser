@@ -1,5 +1,5 @@
 from pydantic import BaseModel, EmailStr, constr, Field
-from shared_models import Id, Name
+from shared_models import Id, Name, Date, Address, Datetime
 from enum import Enum
 
 import phonenumbers
@@ -17,6 +17,12 @@ class PhoneNumber(constr):
     __root__: str = Field(..., max_length=20)
 
 
+class EmploymentStatus(str, Enum):
+    EMPLOYED = "employed"
+    SELF_EMPLOYED = "self_employed"
+    UNEMPLOYED = "unemployed"
+
+
 class Client(BaseModel):
     id: Id
     created_by: Id
@@ -25,9 +31,9 @@ class Client(BaseModel):
     email: EmailStr
     phone_country_code: PhoneCountryCode
     phone_number: PhoneNumber
-    date_of_birth: str
-    address: dict
-    employment_status: str
+    date_of_birth: Date
+    address: Address
+    employment_status: EmploymentStatus
     annual_income: float
-    created_at: str
-    updated_at: str
+    created_at: Datetime
+    updated_at: Datetime
