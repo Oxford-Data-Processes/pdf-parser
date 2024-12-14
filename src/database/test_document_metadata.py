@@ -211,6 +211,68 @@ def test_create_valid_document_metadata():
 
 
 def test_create_valid_document_metadata_bank_statement():
+    # Create sample transactions
+    salary = Transaction(
+        date=DateStr("2023-12-01"),
+        type=TransactionTypes.FPI,
+        amount=MonetaryAmount(amount=500000, currency=Currency.GBP),
+        balance=MonetaryAmount(amount=500000, currency=Currency.GBP),
+        category=TransactionCategory.INCOME,
+        subcategory=TransactionSubcategory.SALARY,
+        confidence=Decimal("0.95"),
+        description="ACME CORP SALARY",
+    )
+
+    rent = Transaction(
+        date=DateStr("2023-12-02"),
+        type=TransactionTypes.DD,
+        amount=MonetaryAmount(amount=200000, currency=Currency.GBP),
+        balance=MonetaryAmount(amount=300000, currency=Currency.GBP),
+        category=TransactionCategory.HOUSING,
+        subcategory=TransactionSubcategory.RENT,
+        confidence=Decimal("0.98"),
+        description="LANDLORD RENT PAYMENT",
+    )
+
+    savings = Transaction(
+        date=DateStr("2023-12-03"),
+        type=TransactionTypes.TFR,
+        amount=MonetaryAmount(amount=50000, currency=Currency.GBP),
+        balance=MonetaryAmount(amount=250000, currency=Currency.GBP),
+        category=TransactionCategory.TRANSFERS,
+        subcategory=TransactionSubcategory.AUTOMATED_SAVINGS,
+        confidence=Decimal("0.99"),
+        description="TRANSFER TO SAVINGS",
+    )
+
+    # Create categorised transactions
+    categorised = CategorisedTransactions(
+        income=[salary],
+        expenses=[rent],
+        savings=[savings],
+    )
+
+    # Create monthly averages
+    averages = MonthlyAverages(
+        income=MonetaryAmount(amount=500000, currency=Currency.GBP),
+        savings=MonetaryAmount(amount=50000, currency=Currency.GBP),
+        expenses=MonetaryAmount(amount=200000, currency=Currency.GBP),
+    )
+
+    # Create summary
+    summary = Summary(
+        total_income=MonetaryAmount(amount=500000, currency=Currency.GBP),
+        total_savings=MonetaryAmount(amount=50000, currency=Currency.GBP),
+        total_expenses=MonetaryAmount(amount=200000, currency=Currency.GBP),
+        monthly_averages=averages,
+    )
+
+    # Create analysis results
+    analysis = AnalysisResults(
+        summary=summary,
+        categorised_transactions=categorised,
+    )
+
     bank_statement = BankStatementData(
         type=DocumentType.BANK_STATEMENT,
         bank_identifier=BankIdentifier(
@@ -224,18 +286,12 @@ def test_create_valid_document_metadata_bank_statement():
         account_number="12345678",
         account_holder="John Doe",
         start_balance=MonetaryAmount(amount=500000, currency=Currency.GBP),
-        end_balance=MonetaryAmount(amount=450000, currency=Currency.GBP),
-        total_money_in=MonetaryAmount(amount=100000, currency=Currency.GBP),
-        total_money_out=MonetaryAmount(amount=150000, currency=Currency.GBP),
+        end_balance=MonetaryAmount(amount=250000, currency=Currency.GBP),
+        total_money_in=MonetaryAmount(amount=500000, currency=Currency.GBP),
+        total_money_out=MonetaryAmount(amount=250000, currency=Currency.GBP),
         overdraft_limit=MonetaryAmount(amount=200000, currency=Currency.GBP),
         currency=Currency.GBP,
-        exchange_rates=[
-            ExchangeRate(
-                from_currency=Currency.GBP,
-                to_currency=Currency.EUR,
-                rate=Decimal("1.16"),
-            )
-        ],
+        analysis_results=analysis,
     )
 
     metadata = DocumentMetadata(
@@ -247,11 +303,35 @@ def test_create_valid_document_metadata_bank_statement():
         updated_at=DatetimeStr(datetime.now().isoformat() + "Z"),
     )
     dump_json("document_metadata_bank_statement", metadata)
+
+    # Basic metadata assertions
     assert metadata.document_type == DocumentType.BANK_STATEMENT
     assert isinstance(metadata.document_metadata, BankStatementData)
     assert metadata.document_metadata.bank_identifier.swift_bic == "NWBKGB2L"
     assert metadata.document_metadata.account_type == AccountType.CURRENT
     assert metadata.document_metadata.currency == Currency.GBP
+
+    # Analysis results assertions
+    analysis_results = metadata.document_metadata.analysis_results
+    assert analysis_results is not None
+    assert len(analysis_results.categorised_transactions.income) == 1
+    assert len(analysis_results.categorised_transactions.expenses) == 1
+    assert len(analysis_results.categorised_transactions.savings) == 1
+    assert analysis_results.summary.total_income.amount == 500000
+    assert analysis_results.summary.total_expenses.amount == 200000
+    assert analysis_results.summary.total_savings.amount == 50000
+    assert (
+        analysis_results.categorised_transactions.income[0].subcategory
+        == TransactionSubcategory.SALARY
+    )
+    assert (
+        analysis_results.categorised_transactions.expenses[0].subcategory
+        == TransactionSubcategory.RENT
+    )
+    assert (
+        analysis_results.categorised_transactions.savings[0].subcategory
+        == TransactionSubcategory.AUTOMATED_SAVINGS
+    )
 
 
 def test_invalid_swift_bic():
