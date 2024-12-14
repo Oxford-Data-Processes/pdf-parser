@@ -1,6 +1,6 @@
 from pydantic import BaseModel, Field
 from typing import Optional, Dict, List, Union
-from .shared_models import DatetimeStr, DateStr, MonetaryAmount, Currency
+from .shared_models import DatetimeStr, DateStr, MonetaryAmount, Currency, IdStr
 from .documents import DocumentType
 from enum import Enum
 from decimal import Decimal
@@ -202,17 +202,17 @@ class BankStatementData(BaseModel):
 class TaxSystem(str, Enum):
     """Different tax systems"""
 
-    UK = "UK"  # National Insurance, PAYE
-    US = "US"  # Social Security, Medicare
-    EU = "EU"  # Social Security variations
+    UK = "UK"
+    US = "US"
+    EU = "EU"
     OTHER = "OTHER"
 
 
 class DeductionType(str, Enum):
     """Universal deduction types"""
 
-    TAX = "TAX"  # Generic income tax
-    SOCIAL_SECURITY = "SOCIAL_SECURITY"  # NI, Social Security, etc.
+    TAX = "TAX"
+    SOCIAL_SECURITY = "SOCIAL_SECURITY"
     PENSION = "PENSION"
     HEALTH_INSURANCE = "HEALTH_INSURANCE"
     OTHER = "OTHER"
@@ -266,7 +266,7 @@ class PayslipData(BaseModel):
 
 
 class DocumentMetadata(BaseModel):
-    id: str
+    id: IdStr
     document_id: str
     document_type: DocumentType
     document_metadata: Union[BankStatementData, PayslipData]

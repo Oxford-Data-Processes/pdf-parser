@@ -20,6 +20,9 @@ from .document_metadata import (
     PayslipData,
     DocumentMetadata,
     DocumentType,
+    BankCodeType,
+    SortCodeStr,
+    BicStr,
 )
 from .shared_models import (
     MonetaryAmount,
@@ -28,6 +31,7 @@ from .shared_models import (
     DatetimeStr,
     IdStr,
     dump_json,
+    CountryCode,
 )
 
 
@@ -109,9 +113,9 @@ def test_create_valid_bank_statement_data():
     bank_statement = BankStatementData(
         type=DocumentType.BANK_STATEMENT,
         bank_identifier=BankIdentifier(
-            swift_bic="NWBKGB2L",
-            local_bank_code="123456",
-            local_bank_code_type="SORT_CODE",
+            swift_bic=BicStr("NWBKGB2L"),
+            local_bank_code=SortCodeStr("123456"),
+            local_bank_code_type=BankCodeType.SORT_CODE,
         ),
         account_type=AccountType.CURRENT,
         statement_period_start=DateStr("2023-12-01"),
@@ -202,12 +206,12 @@ def test_create_valid_document_metadata():
             ),
         ],
         tax_system=TaxSystem.UK,
-        country_code="GB",
+        country_code=CountryCode.GB,
     )
 
     metadata = DocumentMetadata(
-        id="123e4567-e89b-12d3-a456-426614174000",
-        document_id="987fcdeb-51a2-43d7-9012-345678901234",
+        id=IdStr("123e4567-e89b-12d3-a456-426614174000"),
+        document_id=IdStr("987fcdeb-51a2-43d7-9012-345678901234"),
         document_type=DocumentType.PAYSLIP,
         document_metadata=payslip,
         created_at=DatetimeStr(datetime.now().isoformat() + "Z"),
@@ -221,7 +225,7 @@ def test_create_valid_document_metadata():
 def test_invalid_swift_bic():
     with pytest.raises(ValueError):
         BankIdentifier(
-            swift_bic="INVALID",  # Invalid SWIFT/BIC format
+            swift_bic="INVALID",
             local_bank_code="123456",
             local_bank_code_type="SORT_CODE",
         )
