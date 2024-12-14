@@ -147,7 +147,7 @@ BicStr = Annotated[str, Field(pattern=r"^[A-Z]{6}[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3}
 class BankCodeType(str, Enum):
     SORT_CODE = "SORT_CODE"
     ROUTING_NUMBER = "ROUTING_NUMBER"
-    BSB = "BSB"
+    BANK_STATE_BRANCH_NUMBER = "BANK_STATE_BRANCH_NUMBER"
 
 
 class BankIdentifier(BaseModel):
@@ -159,8 +159,7 @@ class BankIdentifier(BaseModel):
 
 
 class AccountType(str, Enum):
-    CHECKING = "CHECKING"  # US/International
-    CURRENT = "CURRENT"  # UK
+    CURRENT = "CURRENT"
     SAVINGS = "SAVINGS"
     MONEY_MARKET = "MONEY_MARKET"
     INVESTMENT = "INVESTMENT"
