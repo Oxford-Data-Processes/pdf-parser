@@ -113,7 +113,7 @@ def test_create_valid_bank_statement_data():
         type=DocumentType.BANK_STATEMENT,
         bank_identifier=BankIdentifier(
             swift_bic=BicStr("NWBKGB2L"),
-            local_bank_code=SortCodeStr("123456"),
+            local_bank_code=SortCodeStr("12-34-56"),
             local_bank_code_type=BankCodeType.SORT_CODE,
         ),
         account_type=AccountType.CURRENT,
@@ -157,18 +157,16 @@ def test_create_valid_payslip_data():
         net_ytd=MonetaryAmount(amount=2160000, currency=Currency.GBP),
         deductions=[
             PayrollDeduction(
-                type=DeductionType.TAX,
+                type=DeductionType.FEDERAL_INCOME_TAX,
                 amount=MonetaryAmount(amount=40000, currency=Currency.GBP),
                 year_to_date=MonetaryAmount(amount=360000, currency=Currency.GBP),
                 description="Income Tax",
-                local_type="PAYE",
             ),
             PayrollDeduction(
                 type=DeductionType.SOCIAL_SECURITY,
                 amount=MonetaryAmount(amount=20000, currency=Currency.GBP),
                 year_to_date=MonetaryAmount(amount=180000, currency=Currency.GBP),
                 description="National Insurance",
-                local_type="NI",
             ),
         ],
         country_code=CountryCode.GB,
@@ -195,15 +193,18 @@ def test_create_valid_document_metadata():
         currency=Currency.GBP,
         gross_pay=MonetaryAmount(amount=300000, currency=Currency.GBP),
         net_pay=MonetaryAmount(amount=240000, currency=Currency.GBP),
+        gross_ytd=MonetaryAmount(amount=2700000, currency=Currency.GBP),
+        net_ytd=MonetaryAmount(amount=2160000, currency=Currency.GBP),
         deductions=[
             PayrollDeduction(
-                type=DeductionType.TAX,
+                type=DeductionType.FEDERAL_INCOME_TAX,
                 amount=MonetaryAmount(amount=40000, currency=Currency.GBP),
                 description="Income Tax",
-                local_type="PAYE",
             ),
         ],
         country_code=CountryCode.GB,
+        pay_period_start=DateStr("2023-12-01"),
+        pay_period_end=DateStr("2023-12-31"),
     )
 
     metadata = DocumentMetadata(
@@ -222,9 +223,9 @@ def test_create_valid_document_metadata():
 def test_invalid_swift_bic():
     with pytest.raises(ValueError):
         BankIdentifier(
-            swift_bic="INVALID",
-            local_bank_code="123456",
-            local_bank_code_type="SORT_CODE",
+            swift_bic=BicStr("INVALID"),
+            local_bank_code=SortCodeStr("12-34-56"),
+            local_bank_code_type=BankCodeType.SORT_CODE,
         )
 
 

@@ -269,9 +269,6 @@ class PayslipData(BaseModel):
     # Country-specific metadata
     country_code: CountryCode
 
-    # Additional fields
-    payment_method: Optional[str] = None
-
 
 class DocumentMetadata(BaseModel):
     id: IdStr
