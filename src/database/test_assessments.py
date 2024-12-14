@@ -24,7 +24,7 @@ from database.assessments import (
     RiskLevel,
     RiskFactorTypes,
 )
-from database.shared_models import MonetaryAmount
+from database.shared_models import MonetaryAmount, DateStr, DatetimeStr
 from database.document_metadata import TransactionCategory, TransactionSubcategory
 
 
@@ -294,14 +294,14 @@ def test_create_valid_assessment_row():
                     )
                 ],
                 overall_risk_level=RiskLevel.LOW,
-                affordability_buffer=113446,
+                affordability_buffer=Decimal("11.46"),
                 income_stability_score=Decimal("98.96"),
             ),
         ),
-        created_at=datetime.now().isoformat() + "Z",
+        created_at=DatetimeStr(datetime.now().isoformat() + "Z"),
         analysis_period=AnalysisPeriod(
-            start_date="2023-01-01",
-            end_date="2023-12-31",
+            start_date=DateStr("2023-01-01"),
+            end_date=DateStr("2023-12-31"),
         ),
     )
     assert isinstance(row.assessment_data, AssessmentData)

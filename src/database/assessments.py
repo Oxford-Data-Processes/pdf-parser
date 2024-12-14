@@ -111,8 +111,8 @@ class RiskAssessment(BaseModel):
     risk_factors: List[str]
     positive_factors: List[PositiveFactor]
     overall_risk_level: RiskLevel
-    affordability_buffer: float
-    income_stability_score: float
+    affordability_buffer: Decimal = Field(..., decimal_places=2)
+    income_stability_score: Decimal = Field(..., decimal_places=2)
 
 
 class AssessmentData(BaseModel):
