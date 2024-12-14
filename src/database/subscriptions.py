@@ -1,7 +1,11 @@
 from pydantic import BaseModel
-from shared_models import Id, Datetime
+from .shared_models import (
+    IdStr as Id,
+    DatetimeStr as Datetime,
+    SubscriptionStatus,
+    SubscriptionPlan,
+)
 from typing import Optional
-from shared_models import SubscriptionStatus, SubscriptionPlan
 
 
 class Subscription(BaseModel):
