@@ -8,6 +8,7 @@ from .shared_models import (
     DatetimeStr,
     SubscriptionStatus,
     SubscriptionPlan,
+    dump_json,
 )
 
 
@@ -26,6 +27,7 @@ def test_create_valid_subscription():
         created_at=DatetimeStr(datetime.now().isoformat() + "Z"),
         updated_at=DatetimeStr(datetime.now().isoformat() + "Z"),
     )
+    dump_json("subscriptions_valid", subscription)
     assert subscription.subscription_plan == SubscriptionPlan.PREMIUM
     assert subscription.subscription_status == SubscriptionStatus.ACTIVE
     assert subscription.stripe_customer_id == "cus_123456789"
@@ -45,6 +47,7 @@ def test_create_valid_trial_subscription():
         created_at=DatetimeStr(datetime.now().isoformat() + "Z"),
         updated_at=DatetimeStr(datetime.now().isoformat() + "Z"),
     )
+    dump_json("subscriptions_trial", subscription)
     assert subscription.subscription_plan == SubscriptionPlan.BASIC
     assert subscription.subscription_status == SubscriptionStatus.TRIALING
     assert subscription.trial_start is not None
@@ -71,6 +74,7 @@ def test_create_valid_cancelled_subscription():
         created_at=DatetimeStr(datetime.now().isoformat() + "Z"),
         updated_at=DatetimeStr(datetime.now().isoformat() + "Z"),
     )
+    dump_json("subscriptions_cancelled", subscription)
     assert subscription.subscription_plan == SubscriptionPlan.ENTERPRISE
     assert subscription.subscription_status == SubscriptionStatus.CANCELLED
     assert subscription.canceled_at is not None

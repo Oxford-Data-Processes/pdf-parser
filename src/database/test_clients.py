@@ -19,6 +19,7 @@ from .shared_models import (
     CityStr,
     PostcodeStr,
     IdStr,
+    dump_json,
 )
 
 
@@ -45,6 +46,7 @@ def test_create_valid_client():
         created_at=DatetimeStr(datetime.now().isoformat() + "Z"),
         updated_at=DatetimeStr(datetime.now().isoformat() + "Z"),
     )
+    dump_json("clients_valid", client)
     assert client.first_name == "Jeff"
     assert client.last_name == "Marsters"
     assert client.email == "jeff.marsters@example.com"
@@ -76,6 +78,7 @@ def test_create_valid_client_self_employed():
         created_at=DatetimeStr(datetime.now().isoformat() + "Z"),
         updated_at=DatetimeStr(datetime.now().isoformat() + "Z"),
     )
+    dump_json("clients_self_employed", client)
     assert client.first_name == "Jane"
     assert client.last_name == "Smith"
     assert client.email == "jane.smith@example.com"
@@ -107,6 +110,7 @@ def test_create_valid_client_international():
         created_at=DatetimeStr(datetime.now().isoformat() + "Z"),
         updated_at=DatetimeStr(datetime.now().isoformat() + "Z"),
     )
+    dump_json("clients_international", client)
     assert client.first_name == "Hans"
     assert client.last_name == "Schmidt"
     assert client.email == "hans.schmidt@example.com"

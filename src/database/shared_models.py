@@ -3,6 +3,29 @@ import pycountry
 from typing import Optional, Annotated
 from decimal import Decimal
 from enum import Enum
+import json
+import os
+
+from json import JSONEncoder
+from decimal import Decimal
+
+
+class CustomJSONEncoder(JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, Decimal):
+            return float(obj)
+        if isinstance(obj, Enum):
+            return obj.value  # Convert enum to its value
+        return super().default(obj)
+
+
+def dump_json(name, pydantic_object):
+    os.makedirs("jsons", exist_ok=True)  # Create the directory if it doesn't exist
+    json_string = json.dumps(
+        pydantic_object.model_dump(), cls=CustomJSONEncoder, indent=4
+    )
+    with open(f"jsons/{name}.json", "w") as f:
+        f.write(json_string)
 
 
 DatetimeStr = Annotated[

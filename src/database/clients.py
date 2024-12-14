@@ -10,8 +10,6 @@ from .shared_models import (
 )
 from enum import Enum
 
-import phonenumbers
-
 
 class PhoneCountryCode(str, Enum):
     GB = "+44"  # United Kingdom
@@ -43,9 +41,9 @@ class PhoneNumber(str):
 
 
 class EmploymentStatus(str, Enum):
-    EMPLOYED = "employed"
-    SELF_EMPLOYED = "self_employed"
-    UNEMPLOYED = "unemployed"
+    EMPLOYED = "EMPLOYED"
+    SELF_EMPLOYED = "SELF_EMPLOYED"
+    UNEMPLOYED = "UNEMPLOYED"
 
 
 class Client(BaseModel):

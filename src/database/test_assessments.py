@@ -24,7 +24,13 @@ from database.assessments import (
     RiskLevel,
     RiskFactorTypes,
 )
-from database.shared_models import MonetaryAmount, DateStr, DatetimeStr, IdStr
+from database.shared_models import (
+    MonetaryAmount,
+    DateStr,
+    DatetimeStr,
+    IdStr,
+    dump_json,
+)
 from database.document_metadata import TransactionCategory, TransactionSubcategory
 
 
@@ -302,5 +308,6 @@ def test_create_valid_assessment_row():
             end_date=DateStr("2023-12-31"),
         ),
     )
+    dump_json("assessments_valid", row)
     assert isinstance(row.assessment_data, AssessmentData)
     assert isinstance(row.analysis_period, AnalysisPeriod)

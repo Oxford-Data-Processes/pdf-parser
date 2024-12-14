@@ -1,0 +1,25 @@
+{
+    "id": "123e4567-e89b-12d3-a456-426614174000",
+    "created_by": "987fcdeb-51a2-43d7-9012-345678901234",
+    "first_name": "Jeff",
+    "last_name": "Marsters",
+    "email": "jeff.marsters@example.com",
+    "phone_country_code": "+44",
+    "phone_number": "7700900123",
+    "date_of_birth": "1990-01-01",
+    "address": {
+        "address_line_1": "123 Main Street",
+        "address_line_2": "Apt 4B",
+        "city": "London",
+        "postcode": "SW1A 1AA",
+        "country_name": "United Kingdom",
+        "country_code": "GB"
+    },
+    "employment_status": "EMPLOYED",
+    "annual_income": {
+        "amount": 32000,
+        "currency": "GBP"
+    },
+    "created_at": "2024-12-14T09:17:50.768291Z",
+    "updated_at": "2024-12-14T09:17:50.768294Z"
+}
