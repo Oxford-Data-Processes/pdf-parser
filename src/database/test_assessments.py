@@ -76,14 +76,17 @@ def test_create_valid_expenses():
         variable_costs=Costs(
             total=MonetaryAmount(amount=77512, currency="GBP"),
             categories={
-                TransactionCategory.FOOD.value: MonetaryAmount(
-                    amount=62136, currency="GBP"
+                TransactionCategory.FOOD.value: CategoryBreakdown(
+                    total=MonetaryAmount(amount=62136, currency="GBP"),
+                    subcategories={},
                 ),
-                TransactionCategory.ENTERTAINMENT.value: MonetaryAmount(
-                    amount=480, currency="GBP"
+                TransactionCategory.ENTERTAINMENT.value: CategoryBreakdown(
+                    total=MonetaryAmount(amount=480, currency="GBP"),
+                    subcategories={},
                 ),
-                TransactionCategory.TRANSPORT.value: MonetaryAmount(
-                    amount=24087, currency="GBP"
+                TransactionCategory.TRANSPORT.value: CategoryBreakdown(
+                    total=MonetaryAmount(amount=24087, currency="GBP"),
+                    subcategories={},
                 ),
             },
         ),
@@ -140,14 +143,17 @@ def test_create_valid_assessment_data():
             variable_costs=Costs(
                 total=MonetaryAmount(amount=77512, currency="GBP"),
                 categories={
-                    TransactionCategory.FOOD.value: MonetaryAmount(
-                        amount=62136, currency="GBP"
+                    TransactionCategory.FOOD.value: CategoryBreakdown(
+                        total=MonetaryAmount(amount=62136, currency="GBP"),
+                        subcategories={},
                     ),
-                    TransactionCategory.ENTERTAINMENT.value: MonetaryAmount(
-                        amount=480, currency="GBP"
+                    TransactionCategory.ENTERTAINMENT.value: CategoryBreakdown(
+                        total=MonetaryAmount(amount=480, currency="GBP"),
+                        subcategories={},
                     ),
-                    TransactionCategory.TRANSPORT.value: MonetaryAmount(
-                        amount=24087, currency="GBP"
+                    TransactionCategory.TRANSPORT.value: CategoryBreakdown(
+                        total=MonetaryAmount(amount=24087, currency="GBP"),
+                        subcategories={},
                     ),
                 },
             ),
@@ -173,7 +179,7 @@ def test_create_valid_assessment_data():
             metrics=RiskAssessmentMetrics(
                 debt_to_income_ratio=Decimal("12.79"),
                 savings_ratio=Decimal("51.81"),
-                disposable_ratio=Decimal("51.81"),
+                disposable_income_ratio=Decimal("51.81"),
                 payment_to_income_ratio=Decimal("48.19"),
             ),
             risk_factors=[],
@@ -241,14 +247,17 @@ def test_create_valid_assessment_row():
                 variable_costs=Costs(
                     total=MonetaryAmount(amount=77512, currency="GBP"),
                     categories={
-                        TransactionCategory.FOOD.value: MonetaryAmount(
-                            amount=62136, currency="GBP"
+                        TransactionCategory.FOOD.value: CategoryBreakdown(
+                            total=MonetaryAmount(amount=62136, currency="GBP"),
+                            subcategories={},
                         ),
-                        TransactionCategory.ENTERTAINMENT.value: MonetaryAmount(
-                            amount=480, currency="GBP"
+                        TransactionCategory.ENTERTAINMENT.value: CategoryBreakdown(
+                            total=MonetaryAmount(amount=480, currency="GBP"),
+                            subcategories={},
                         ),
-                        TransactionCategory.TRANSPORT.value: MonetaryAmount(
-                            amount=24087, currency="GBP"
+                        TransactionCategory.TRANSPORT.value: CategoryBreakdown(
+                            total=MonetaryAmount(amount=24087, currency="GBP"),
+                            subcategories={},
                         ),
                     },
                 ),
@@ -272,21 +281,24 @@ def test_create_valid_assessment_row():
             ),
             risk_assessment=RiskAssessment(
                 metrics=RiskAssessmentMetrics(
-                    dti_ratio=12.79,
-                    savings_ratio=51.81,
-                    disposable_ratio=51.81,
-                    payment_to_income_ratio=48.19,
+                    debt_to_income_ratio=Decimal("12.79"),
+                    savings_ratio=Decimal("51.81"),
+                    disposable_income_ratio=Decimal("51.81"),
+                    payment_to_income_ratio=Decimal("48.19"),
                 ),
                 risk_factors=[],
                 positive_factors=[
-                    PositiveFactor(type="dti", message="Healthy debt-to-income ratio")
+                    PositiveFactor(
+                        type=RiskFactorTypes.DEBT_TO_INCOME_RATIO,
+                        message="Healthy debt-to-income ratio",
+                    )
                 ],
                 overall_risk_level=RiskLevel.LOW,
                 affordability_buffer=113446,
-                income_stability_score=98.96,
+                income_stability_score=Decimal("98.96"),
             ),
         ),
-        created_at=datetime.now().isoformat(),
+        created_at=datetime.now().isoformat() + "Z",
         analysis_period=AnalysisPeriod(
             start_date="2023-01-01",
             end_date="2023-12-31",
