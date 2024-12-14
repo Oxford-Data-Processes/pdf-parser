@@ -3,7 +3,12 @@ import * as fs from 'fs';
 
 const schemas = [
   "client_schema.json",
-  "financial_analysis_schema.json"
+  "financialanalysis_schema.json",
+  "assessment_schema.json",
+  "document_schema.json",
+  "documentmetadata_schema.json",
+  "subscription_schema.json",
+  "user_schema.json",
 ];
 
 async function generateTypes() {
