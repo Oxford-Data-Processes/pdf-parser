@@ -3,7 +3,7 @@ from typing import List, Dict, Any, Optional
 from .shared_models import MonetaryAmount, DateStr
 from enum import Enum
 from decimal import Decimal
-from .document_metadata import TransactionCategory
+from .document_metadata import TransactionCategory, TransactionSubcategory
 
 
 class IncomeSourceType(str, Enum):
@@ -25,9 +25,9 @@ class IncomeTrend(str, Enum):
 
 
 class TrendType(str, Enum):
-    STABLE = "stable"
-    INCREASING = "increasing"
-    DECREASING = "decreasing"
+    STABLE = "STABLE"
+    INCREASING = "INCREASING"
+    DECREASING = "DECREASING"
 
 
 class DisposableIncome(BaseModel):
@@ -59,45 +59,44 @@ class Income(BaseModel):
 
 class CategoryBreakdown(BaseModel):
     total: str
-    subcategories: Dict[str, str]
+    subcategories: Dict[TransactionSubcategory, MonetaryAmount]
 
 
-class FixedCosts(BaseModel):
+class Costs(BaseModel):
     total: MonetaryAmount
     categories: Dict[TransactionCategory, CategoryBreakdown]
 
 
-class VariableCosts(BaseModel):
-    total: MonetaryAmount
-    categories: Dict[TransactionCategory, str]
-
-
 class Expenses(BaseModel):
-    fixed_costs: FixedCosts
-    variable_costs: VariableCosts
+    fixed_costs: Costs
+    variable_costs: Costs
     monthly_averages: MonthlyAverages
 
 
 class AffordabilityMetrics(BaseModel):
-    savings_ratio: float
     disposable_income: DisposableIncome
-    payment_to_income_ratio: float
 
 
 class Affordability(BaseModel):
     metrics: AffordabilityMetrics
-    dti_ratio: float
 
 
 class RiskAssessmentMetrics(BaseModel):
-    dti_ratio: float
-    savings_ratio: float
-    disposable_ratio: float
-    payment_to_income_ratio: float
+    debt_to_income_ratio: Decimal = Field(..., decimal_places=2)
+    savings_ratio: Decimal = Field(..., decimal_places=2)
+    disposable_income_ratio: Decimal = Field(..., decimal_places=2)
+    payment_to_income_ratio: Decimal = Field(..., decimal_places=2)
+
+
+class RiskFactorTypes(Enum):
+    DEBT_TO_INCOME_RATIO = "DEBT_TO_INCOME_RATIO"
+    SAVINGS_RATIO = "SAVINGS_RATIO"
+    DISPOSABLE_INCOME_RATIO = "DISPOSABLE_INCOME_RATIO"
+    PAYMENT_TO_INCOME_RATIO = "PAYMENT_TO_INCOME_RATIO"
 
 
 class PositiveFactor(BaseModel):
-    type: str
+    type: RiskFactorTypes
     message: str
 
 
