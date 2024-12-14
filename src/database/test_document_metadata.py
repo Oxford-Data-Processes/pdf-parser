@@ -85,13 +85,13 @@ def test_create_valid_categorised_transactions():
     )
 
     categorised = CategorisedTransactions(
-        income={"salary": [salary_transaction]},
-        savings={"automated": [savings_transaction]},
-        expenses={"housing": [rent_transaction]},
+        income=[salary_transaction],
+        savings=[savings_transaction],
+        expenses=[rent_transaction],
     )
-    assert len(categorised.income["salary"]) == 1
-    assert len(categorised.savings["automated"]) == 1
-    assert len(categorised.expenses["housing"]) == 1
+    assert len(categorised.income) == 1
+    assert len(categorised.savings) == 1
+    assert len(categorised.expenses) == 1
 
 
 def test_create_valid_monthly_averages():

@@ -112,9 +112,9 @@ class Transaction(BaseModel):
 
 
 class CategorisedTransactions(BaseModel):
-    income: Dict[str, List[Transaction]]
-    savings: Dict[str, List[Transaction]]
-    expenses: Dict[str, List[Transaction]]
+    income: List[Transaction]
+    savings: List[Transaction]
+    expenses: List[Transaction]
 
 
 class MonthlyAverages(BaseModel):
