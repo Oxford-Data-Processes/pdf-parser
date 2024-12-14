@@ -30,17 +30,17 @@ def test_create_valid_income():
             {
                 "name": "SALARY",
                 "frequency": "MONTHLY",
-                "monthly_average": MonetaryAmount(amount=21862400, currency="GBP"),
+                "monthly_average": {"amount": 218624, "currency": "GBP"},
                 "reliability_score": Decimal("98.96"),
             }
         ],
         "stability_score": Decimal("98.96"),
         "monthly_averages": {
-            "last_3_months": MonetaryAmount(amount=21895700, currency="GBP"),
-            "last_6_months": MonetaryAmount(amount=21895700, currency="GBP"),
-            "last_12_months": MonetaryAmount(amount=21895700, currency="GBP"),
+            "last_3_months": {"amount": 218957, "currency": "GBP"},
+            "last_6_months": {"amount": 218957, "currency": "GBP"},
+            "last_12_months": {"amount": 218957, "currency": "GBP"},
         },
-        "annual_projection": MonetaryAmount(amount=262348400, currency="GBP"),
+        "annual_projection": {"amount": 2623484, "currency": "GBP"},
     }
     income = Income(**income_data)
     assert income.income_trend == IncomeTrend.STABLE
@@ -51,36 +51,30 @@ def test_create_valid_income():
 def test_create_valid_expenses():
     expenses_data = {
         "fixed_costs": {
-            "total": MonetaryAmount(amount=2799900, currency="GBP"),
+            "total": {"amount": 27999, "currency": "GBP"},
             "categories": {
                 TransactionCategory.HOUSING.value: {
-                    "total": MonetaryAmount(amount=2799900, currency="GBP"),
+                    "total": "27999",
                     "subcategories": {
-                        "Insurance": MonetaryAmount(amount=0, currency="GBP"),
-                        "Utilities": MonetaryAmount(amount=391200, currency="GBP"),
-                        "Rent": MonetaryAmount(amount=0, currency="GBP"),
+                        "Insurance": "0",
+                        "Utilities": "3912",
+                        "Rent": "0",
                     },
                 }
             },
         },
         "variable_costs": {
-            "total": MonetaryAmount(amount=7751200, currency="GBP"),
+            "total": {"amount": 77512, "currency": "GBP"},
             "categories": {
-                TransactionCategory.FOOD.value: MonetaryAmount(
-                    amount=6213600, currency="GBP"
-                ),
-                TransactionCategory.ENTERTAINMENT.value: MonetaryAmount(
-                    amount=48000, currency="GBP"
-                ),
-                TransactionCategory.TRANSPORT.value: MonetaryAmount(
-                    amount=2408700, currency="GBP"
-                ),
+                TransactionCategory.FOOD.value: "62136",
+                TransactionCategory.ENTERTAINMENT.value: "480",
+                TransactionCategory.TRANSPORT.value: "24087",
             },
         },
         "monthly_averages": {
-            "last_3_months": MonetaryAmount(amount=10551100, currency="GBP"),
-            "last_6_months": MonetaryAmount(amount=10551100, currency="GBP"),
-            "last_12_months": MonetaryAmount(amount=10551100, currency="GBP"),
+            "last_3_months": {"amount": 105511, "currency": "GBP"},
+            "last_6_months": {"amount": 105511, "currency": "GBP"},
+            "last_12_months": {"amount": 105511, "currency": "GBP"},
         },
     }
     expenses = Expenses(**expenses_data)
@@ -96,57 +90,51 @@ def test_create_valid_assessment_data():
                 {
                     "name": "SALARY",
                     "frequency": "MONTHLY",
-                    "monthly_average": MonetaryAmount(amount=21862400, currency="GBP"),
+                    "monthly_average": {"amount": 218624, "currency": "GBP"},
                     "reliability_score": Decimal("98.96"),
                 }
             ],
             "stability_score": Decimal("98.96"),
             "monthly_averages": {
-                "last_3_months": MonetaryAmount(amount=21895700, currency="GBP"),
-                "last_6_months": MonetaryAmount(amount=21895700, currency="GBP"),
-                "last_12_months": MonetaryAmount(amount=21895700, currency="GBP"),
+                "last_3_months": {"amount": 218957, "currency": "GBP"},
+                "last_6_months": {"amount": 218957, "currency": "GBP"},
+                "last_12_months": {"amount": 218957, "currency": "GBP"},
             },
-            "annual_projection": MonetaryAmount(amount=262348400, currency="GBP"),
+            "annual_projection": {"amount": 2623484, "currency": "GBP"},
         },
         "expenses": {
             "fixed_costs": {
-                "total": MonetaryAmount(amount=2799900, currency="GBP"),
+                "total": {"amount": 27999, "currency": "GBP"},
                 "categories": {
                     TransactionCategory.HOUSING.value: {
-                        "total": MonetaryAmount(amount=2799900, currency="GBP"),
+                        "total": "27999",
                         "subcategories": {
-                            "Insurance": MonetaryAmount(amount=0, currency="GBP"),
-                            "Utilities": MonetaryAmount(amount=391200, currency="GBP"),
-                            "Rent": MonetaryAmount(amount=0, currency="GBP"),
+                            "Insurance": "0",
+                            "Utilities": "3912",
+                            "Rent": "0",
                         },
                     }
                 },
             },
             "variable_costs": {
-                "total": MonetaryAmount(amount=7751200, currency="GBP"),
+                "total": {"amount": 77512, "currency": "GBP"},
                 "categories": {
-                    TransactionCategory.FOOD.value: MonetaryAmount(
-                        amount=6213600, currency="GBP"
-                    ),
-                    TransactionCategory.ENTERTAINMENT.value: MonetaryAmount(
-                        amount=48000, currency="GBP"
-                    ),
-                    TransactionCategory.TRANSPORT.value: MonetaryAmount(
-                        amount=2408700, currency="GBP"
-                    ),
+                    TransactionCategory.FOOD.value: "62136",
+                    TransactionCategory.ENTERTAINMENT.value: "480",
+                    TransactionCategory.TRANSPORT.value: "24087",
                 },
             },
             "monthly_averages": {
-                "last_3_months": MonetaryAmount(amount=10551100, currency="GBP"),
-                "last_6_months": MonetaryAmount(amount=10551100, currency="GBP"),
-                "last_12_months": MonetaryAmount(amount=10551100, currency="GBP"),
+                "last_3_months": {"amount": 105511, "currency": "GBP"},
+                "last_6_months": {"amount": 105511, "currency": "GBP"},
+                "last_12_months": {"amount": 105511, "currency": "GBP"},
             },
         },
         "affordability": {
             "metrics": {
                 "savings_ratio": 51.81,
                 "disposable_income": {
-                    "current": MonetaryAmount(amount=11344600, currency="GBP"),
+                    "current": {"amount": 113446, "currency": "GBP"},
                     "three_month_trend": "stable",
                     "six_month_trend": "stable",
                 },
@@ -166,7 +154,7 @@ def test_create_valid_assessment_data():
                 {"type": "dti", "message": "Healthy debt-to-income ratio"}
             ],
             "overall_risk_level": "low",
-            "affordability_buffer": 113446,  # Adjusted to match MonetaryAmount
+            "affordability_buffer": 113446,
             "income_stability_score": 98.96,
         },
     }
@@ -189,61 +177,51 @@ def test_create_valid_assessment_row():
                     {
                         "name": "SALARY",
                         "frequency": "MONTHLY",
-                        "monthly_average": MonetaryAmount(
-                            amount=21862400, currency="GBP"
-                        ),
+                        "monthly_average": {"amount": 218624, "currency": "GBP"},
                         "reliability_score": Decimal("98.96"),
                     }
                 ],
                 "stability_score": Decimal("98.96"),
                 "monthly_averages": {
-                    "last_3_months": MonetaryAmount(amount=21895700, currency="GBP"),
-                    "last_6_months": MonetaryAmount(amount=21895700, currency="GBP"),
-                    "last_12_months": MonetaryAmount(amount=21895700, currency="GBP"),
+                    "last_3_months": {"amount": 218957, "currency": "GBP"},
+                    "last_6_months": {"amount": 218957, "currency": "GBP"},
+                    "last_12_months": {"amount": 218957, "currency": "GBP"},
                 },
-                "annual_projection": MonetaryAmount(amount=262348400, currency="GBP"),
+                "annual_projection": {"amount": 2623484, "currency": "GBP"},
             },
             "expenses": {
                 "fixed_costs": {
-                    "total": MonetaryAmount(amount=2799900, currency="GBP"),
+                    "total": {"amount": 27999, "currency": "GBP"},
                     "categories": {
                         TransactionCategory.HOUSING.value: {
-                            "total": MonetaryAmount(amount=2799900, currency="GBP"),
+                            "total": "27999",
                             "subcategories": {
-                                "Insurance": MonetaryAmount(amount=0, currency="GBP"),
-                                "Utilities": MonetaryAmount(
-                                    amount=391200, currency="GBP"
-                                ),
-                                "Rent": MonetaryAmount(amount=0, currency="GBP"),
+                                "Insurance": "0",
+                                "Utilities": "3912",
+                                "Rent": "0",
                             },
                         }
                     },
                 },
                 "variable_costs": {
-                    "total": MonetaryAmount(amount=7751200, currency="GBP"),
+                    "total": {"amount": 77512, "currency": "GBP"},
                     "categories": {
-                        TransactionCategory.FOOD.value: MonetaryAmount(
-                            amount=6213600, currency="GBP"
-                        ),
-                        TransactionCategory.ENTERTAINMENT.value: MonetaryAmount(
-                            amount=48000, currency="GBP"
-                        ),
-                        TransactionCategory.TRANSPORT.value: MonetaryAmount(
-                            amount=2408700, currency="GBP"
-                        ),
+                        TransactionCategory.FOOD.value: "62136",
+                        TransactionCategory.ENTERTAINMENT.value: "480",
+                        TransactionCategory.TRANSPORT.value: "24087",
                     },
                 },
                 "monthly_averages": {
-                    "last_3_months": MonetaryAmount(amount=10551100, currency="GBP"),
-                    "last_6_months": MonetaryAmount(amount=10551100, currency="GBP"),
-                    "last_12_months": MonetaryAmount(amount=10551100, currency="GBP"),
+                    "last_3_months": {"amount": 105511, "currency": "GBP"},
+                    "last_6_months": {"amount": 105511, "currency": "GBP"},
+                    "last_12_months": {"amount": 105511, "currency": "GBP"},
                 },
             },
             "affordability": {
                 "metrics": {
                     "savings_ratio": 51.81,
                     "disposable_income": {
-                        "current": MonetaryAmount(amount=11344600, currency="GBP"),
+                        "current": {"amount": 113446, "currency": "GBP"},
                         "three_month_trend": "stable",
                         "six_month_trend": "stable",
                     },
@@ -263,7 +241,7 @@ def test_create_valid_assessment_row():
                     {"type": "dti", "message": "Healthy debt-to-income ratio"}
                 ],
                 "overall_risk_level": "low",
-                "affordability_buffer": 113446,  # Adjusted to match MonetaryAmount
+                "affordability_buffer": 113446,
                 "income_stability_score": 98.96,
             },
         },
