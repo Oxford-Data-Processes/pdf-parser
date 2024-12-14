@@ -173,7 +173,6 @@ def test_create_valid_assessment_data():
                 ),
                 payment_to_income_ratio=Decimal("48.19"),
             ),
-            dti_ratio=Decimal("12.79"),
         ),
         risk_assessment=RiskAssessment(
             metrics=RiskAssessmentMetrics(
@@ -277,7 +276,6 @@ def test_create_valid_assessment_row():
                     ),
                     payment_to_income_ratio=Decimal("48.19"),
                 ),
-                dti_ratio=Decimal("12.79"),
             ),
             risk_assessment=RiskAssessment(
                 metrics=RiskAssessmentMetrics(
