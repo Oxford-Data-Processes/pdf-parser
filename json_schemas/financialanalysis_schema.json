@@ -1,0 +1,310 @@
+{
+    "$defs": {
+        "BaseSalary": {
+            "properties": {
+                "annual": {
+                    "$ref": "#/$defs/MonetaryAmount"
+                },
+                "monthly": {
+                    "$ref": "#/$defs/MonetaryAmount"
+                },
+                "stability": {
+                    "anyOf": [
+                        {
+                            "maximum": 1.0,
+                            "minimum": 0.0,
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "Stability"
+                }
+            },
+            "required": [
+                "annual",
+                "monthly",
+                "stability"
+            ],
+            "title": "BaseSalary",
+            "type": "object"
+        },
+        "Currency": {
+            "enum": [
+                "USD",
+                "GBP",
+                "EUR"
+            ],
+            "title": "Currency",
+            "type": "string"
+        },
+        "ExpenseAnalysis": {
+            "properties": {
+                "fixed_costs": {
+                    "$ref": "#/$defs/MonetaryAmount"
+                },
+                "expense_categories": {
+                    "items": {
+                        "$ref": "#/$defs/ExpenseCategory"
+                    },
+                    "title": "Expense Categories",
+                    "type": "array"
+                },
+                "total_monthly_expenses": {
+                    "$ref": "#/$defs/MonetaryAmount"
+                }
+            },
+            "required": [
+                "fixed_costs",
+                "expense_categories",
+                "total_monthly_expenses"
+            ],
+            "title": "ExpenseAnalysis",
+            "type": "object"
+        },
+        "ExpenseBreakdown": {
+            "properties": {
+                "category": {
+                    "$ref": "#/$defs/TransactionSubcategory"
+                },
+                "amount": {
+                    "$ref": "#/$defs/MonetaryAmount"
+                }
+            },
+            "required": [
+                "category",
+                "amount"
+            ],
+            "title": "ExpenseBreakdown",
+            "type": "object"
+        },
+        "ExpenseCategory": {
+            "properties": {
+                "category": {
+                    "const": "EXPENSE",
+                    "title": "Category",
+                    "type": "string"
+                },
+                "total": {
+                    "$ref": "#/$defs/MonetaryAmount"
+                },
+                "breakdown": {
+                    "items": {
+                        "$ref": "#/$defs/ExpenseBreakdown"
+                    },
+                    "title": "Breakdown",
+                    "type": "array"
+                }
+            },
+            "required": [
+                "category",
+                "total",
+                "breakdown"
+            ],
+            "title": "ExpenseCategory",
+            "type": "object"
+        },
+        "IncomeAnalysis": {
+            "properties": {
+                "base_salary": {
+                    "$ref": "#/$defs/BaseSalary"
+                },
+                "total_monthly_income": {
+                    "$ref": "#/$defs/MonetaryAmount"
+                }
+            },
+            "required": [
+                "base_salary",
+                "total_monthly_income"
+            ],
+            "title": "IncomeAnalysis",
+            "type": "object"
+        },
+        "MonetaryAmount": {
+            "description": "Amount with currency",
+            "properties": {
+                "amount": {
+                    "title": "Amount",
+                    "type": "integer"
+                },
+                "currency": {
+                    "$ref": "#/$defs/Currency"
+                }
+            },
+            "required": [
+                "amount",
+                "currency"
+            ],
+            "title": "MonetaryAmount",
+            "type": "object"
+        },
+        "RiskAssessment": {
+            "properties": {
+                "risk_factors": {
+                    "items": {
+                        "$ref": "#/$defs/RiskFactors"
+                    },
+                    "title": "Risk Factors",
+                    "type": "array"
+                },
+                "risk_metrics": {
+                    "$ref": "#/$defs/RiskMetrics"
+                },
+                "overall_risk_level": {
+                    "$ref": "#/$defs/RiskLevel"
+                }
+            },
+            "required": [
+                "risk_factors",
+                "risk_metrics",
+                "overall_risk_level"
+            ],
+            "title": "RiskAssessment",
+            "type": "object"
+        },
+        "RiskFactors": {
+            "enum": [
+                "FIXED_COSTS",
+                "DEBT_TO_INCOME_RATIO",
+                "INCOME_STABILITY"
+            ],
+            "title": "RiskFactors",
+            "type": "string"
+        },
+        "RiskLevel": {
+            "enum": [
+                "LOW",
+                "MEDIUM",
+                "HIGH"
+            ],
+            "title": "RiskLevel",
+            "type": "string"
+        },
+        "RiskMetrics": {
+            "properties": {
+                "fixed_cost_ratio": {
+                    "anyOf": [
+                        {
+                            "maximum": 1.0,
+                            "minimum": 0.0,
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "Fixed Cost Ratio"
+                },
+                "debt_to_income_ratio": {
+                    "anyOf": [
+                        {
+                            "maximum": 1.0,
+                            "minimum": 0.0,
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "Debt To Income Ratio"
+                },
+                "income_stability_score": {
+                    "anyOf": [
+                        {
+                            "maximum": 1.0,
+                            "minimum": 0.0,
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "Income Stability Score"
+                }
+            },
+            "required": [
+                "fixed_cost_ratio",
+                "debt_to_income_ratio",
+                "income_stability_score"
+            ],
+            "title": "RiskMetrics",
+            "type": "object"
+        },
+        "TransactionSubcategory": {
+            "enum": [
+                "AUTOMATED_SAVINGS",
+                "BANK_TRANSFER",
+                "SALARY",
+                "REFUND",
+                "PERSONAL_TRANSFER",
+                "FITNESS",
+                "CAR",
+                "PUBLIC",
+                "MICROMOBILITY",
+                "GROCERIES",
+                "TAKEAWAY",
+                "DINING_OUT",
+                "UTILITIES",
+                "RENT",
+                "MORTGAGE",
+                "INSURANCE",
+                "MAINTENANCE",
+                "ONLINE_RETAIL",
+                "IN_STORE_RETAIL",
+                "CLOTHING",
+                "ELECTRONICS",
+                "CASH",
+                "FEES",
+                "SUBSCRIPTIONS",
+                "SOFTWARE",
+                "STREAMING",
+                "ACTIVITIES",
+                "EVENTS",
+                "HOBBIES",
+                "CARE",
+                "EDUCATION",
+                "GIFTS",
+                "OTHER"
+            ],
+            "title": "TransactionSubcategory",
+            "type": "string"
+        }
+    },
+    "properties": {
+        "id": {
+            "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[1-5][a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+            "title": "Id",
+            "type": "string"
+        },
+        "client_id": {
+            "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[1-5][a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+            "title": "Client Id",
+            "type": "string"
+        },
+        "analysis_date": {
+            "pattern": "^(19|20)\\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$",
+            "title": "Analysis Date",
+            "type": "string"
+        },
+        "income_analysis": {
+            "$ref": "#/$defs/IncomeAnalysis"
+        },
+        "expense_analysis": {
+            "$ref": "#/$defs/ExpenseAnalysis"
+        },
+        "risk_assessment": {
+            "$ref": "#/$defs/RiskAssessment"
+        }
+    },
+    "required": [
+        "id",
+        "client_id",
+        "analysis_date",
+        "income_analysis",
+        "expense_analysis",
+        "risk_assessment"
+    ],
+    "title": "FinancialAnalysis",
+    "type": "object"
+}

@@ -133,7 +133,7 @@ class AssessmentType(str, Enum):
     FULL = "FULL"
 
 
-class AssessmentRow(BaseModel):
+class Assessment(BaseModel):
     id: IdStr
     client_id: IdStr
     assessment_type: AssessmentType

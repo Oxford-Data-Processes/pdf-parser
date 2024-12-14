@@ -1,0 +1,854 @@
+{
+    "$defs": {
+        "AccountType": {
+            "enum": [
+                "CURRENT",
+                "SAVINGS",
+                "MONEY_MARKET",
+                "INVESTMENT",
+                "CREDIT",
+                "OTHER"
+            ],
+            "title": "AccountType",
+            "type": "string"
+        },
+        "AnalysisResults": {
+            "properties": {
+                "summary": {
+                    "$ref": "#/$defs/Summary"
+                },
+                "categorised_transactions": {
+                    "$ref": "#/$defs/CategorisedTransactions"
+                }
+            },
+            "required": [
+                "summary",
+                "categorised_transactions"
+            ],
+            "title": "AnalysisResults",
+            "type": "object"
+        },
+        "BankCodeType": {
+            "enum": [
+                "SORT_CODE",
+                "ROUTING_NUMBER",
+                "BANK_STATE_BRANCH_NUMBER"
+            ],
+            "title": "BankCodeType",
+            "type": "string"
+        },
+        "BankIdentifier": {
+            "description": "International bank identification",
+            "properties": {
+                "swift_bic": {
+                    "anyOf": [
+                        {
+                            "pattern": "^[A-Z]{6}[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3})?$",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Swift Bic"
+                },
+                "local_bank_code": {
+                    "anyOf": [
+                        {
+                            "pattern": "^\\d{2}-\\d{2}-\\d{2}$",
+                            "type": "string"
+                        },
+                        {
+                            "pattern": "^\\d{9}$",
+                            "type": "string"
+                        },
+                        {
+                            "pattern": "^\\d{6}$",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Local Bank Code"
+                },
+                "local_bank_code_type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/BankCodeType"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                }
+            },
+            "title": "BankIdentifier",
+            "type": "object"
+        },
+        "BankStatementData": {
+            "properties": {
+                "type": {
+                    "$ref": "#/$defs/DocumentType",
+                    "default": "BANK_STATEMENT"
+                },
+                "bank_identifier": {
+                    "$ref": "#/$defs/BankIdentifier"
+                },
+                "account_type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/AccountType"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "statement_period_start": {
+                    "anyOf": [
+                        {
+                            "pattern": "^(19|20)\\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Statement Period Start"
+                },
+                "statement_period_end": {
+                    "anyOf": [
+                        {
+                            "pattern": "^(19|20)\\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Statement Period End"
+                },
+                "account_number": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Account Number"
+                },
+                "account_holder": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Account Holder"
+                },
+                "start_balance": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/MonetaryAmount"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "end_balance": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/MonetaryAmount"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "total_money_in": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/MonetaryAmount"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "total_money_out": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/MonetaryAmount"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "overdraft_limit": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/MonetaryAmount"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "iban": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Iban"
+                },
+                "currency": {
+                    "$ref": "#/$defs/Currency"
+                },
+                "analysis_results": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/AnalysisResults"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                }
+            },
+            "required": [
+                "bank_identifier",
+                "currency"
+            ],
+            "title": "BankStatementData",
+            "type": "object"
+        },
+        "CategorisedTransactions": {
+            "properties": {
+                "income": {
+                    "items": {
+                        "$ref": "#/$defs/Transaction"
+                    },
+                    "title": "Income",
+                    "type": "array"
+                },
+                "savings": {
+                    "items": {
+                        "$ref": "#/$defs/Transaction"
+                    },
+                    "title": "Savings",
+                    "type": "array"
+                },
+                "expenses": {
+                    "items": {
+                        "$ref": "#/$defs/Transaction"
+                    },
+                    "title": "Expenses",
+                    "type": "array"
+                }
+            },
+            "required": [
+                "income",
+                "savings",
+                "expenses"
+            ],
+            "title": "CategorisedTransactions",
+            "type": "object"
+        },
+        "CountryCode": {
+            "enum": [
+                "GB",
+                "US",
+                "DE",
+                "FR",
+                "IT",
+                "ES",
+                "NL",
+                "BE",
+                "IE",
+                "DK",
+                "SE",
+                "NO",
+                "FI",
+                "PT",
+                "AT",
+                "CH"
+            ],
+            "title": "CountryCode",
+            "type": "string"
+        },
+        "Currency": {
+            "enum": [
+                "USD",
+                "GBP",
+                "EUR"
+            ],
+            "title": "Currency",
+            "type": "string"
+        },
+        "DeductionType": {
+            "description": "Universal deduction types",
+            "enum": [
+                "FEDERAL_INCOME_TAX",
+                "STATE_INCOME_TAX",
+                "SOCIAL_SECURITY",
+                "PENSION",
+                "HEALTH_INSURANCE",
+                "OTHER"
+            ],
+            "title": "DeductionType",
+            "type": "string"
+        },
+        "DocumentType": {
+            "enum": [
+                "BANK_STATEMENT",
+                "PAYSLIP",
+                "UTILITY_BILL",
+                "COUNCIL_TAX",
+                "MORTGAGE_STATEMENT",
+                "CREDIT_CARD_STATEMENT",
+                "INVESTMENT_STATEMENT",
+                "PENSION_STATEMENT",
+                "TAX_DOCUMENT",
+                "OTHER"
+            ],
+            "title": "DocumentType",
+            "type": "string"
+        },
+        "MonetaryAmount": {
+            "description": "Amount with currency",
+            "properties": {
+                "amount": {
+                    "title": "Amount",
+                    "type": "integer"
+                },
+                "currency": {
+                    "$ref": "#/$defs/Currency"
+                }
+            },
+            "required": [
+                "amount",
+                "currency"
+            ],
+            "title": "MonetaryAmount",
+            "type": "object"
+        },
+        "MonthlyAverages": {
+            "properties": {
+                "income": {
+                    "$ref": "#/$defs/MonetaryAmount"
+                },
+                "savings": {
+                    "$ref": "#/$defs/MonetaryAmount"
+                },
+                "expenses": {
+                    "$ref": "#/$defs/MonetaryAmount"
+                }
+            },
+            "required": [
+                "income",
+                "savings",
+                "expenses"
+            ],
+            "title": "MonthlyAverages",
+            "type": "object"
+        },
+        "PayrollDeduction": {
+            "description": "Generic deduction structure",
+            "properties": {
+                "type": {
+                    "$ref": "#/$defs/DeductionType"
+                },
+                "amount": {
+                    "$ref": "#/$defs/MonetaryAmount"
+                },
+                "year_to_date": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/MonetaryAmount"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "description": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Description"
+                }
+            },
+            "required": [
+                "type",
+                "amount"
+            ],
+            "title": "PayrollDeduction",
+            "type": "object"
+        },
+        "PayrollExemption": {
+            "description": "Generic payroll exemption structure",
+            "properties": {
+                "type": {
+                    "$ref": "#/$defs/PayrollExemptionType"
+                },
+                "amount": {
+                    "$ref": "#/$defs/MonetaryAmount"
+                },
+                "year_to_date": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/MonetaryAmount"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "description": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Description"
+                }
+            },
+            "required": [
+                "type",
+                "amount"
+            ],
+            "title": "PayrollExemption",
+            "type": "object"
+        },
+        "PayrollExemptionType": {
+            "description": "Specific payroll exemption types",
+            "enum": [
+                "PERSONAL_EXEMPTION"
+            ],
+            "title": "PayrollExemptionType",
+            "type": "string"
+        },
+        "PayslipData": {
+            "properties": {
+                "type": {
+                    "$ref": "#/$defs/DocumentType",
+                    "default": "PAYSLIP"
+                },
+                "pay_period_start": {
+                    "anyOf": [
+                        {
+                            "pattern": "^(19|20)\\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Pay Period Start"
+                },
+                "pay_period_end": {
+                    "anyOf": [
+                        {
+                            "pattern": "^(19|20)\\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Pay Period End"
+                },
+                "process_date": {
+                    "anyOf": [
+                        {
+                            "pattern": "^(19|20)\\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Process Date"
+                },
+                "employer_name": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Employer Name"
+                },
+                "employer_tax_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Employer Tax Id"
+                },
+                "employer_registration": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Employer Registration"
+                },
+                "employee_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Employee Id"
+                },
+                "tax_identifier": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Tax Identifier"
+                },
+                "local_tax_code": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Local Tax Code"
+                },
+                "currency": {
+                    "$ref": "#/$defs/Currency"
+                },
+                "gross_pay": {
+                    "$ref": "#/$defs/MonetaryAmount"
+                },
+                "net_pay": {
+                    "$ref": "#/$defs/MonetaryAmount"
+                },
+                "gross_ytd": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/MonetaryAmount"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "net_ytd": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/MonetaryAmount"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "deductions": {
+                    "default": [],
+                    "items": {
+                        "$ref": "#/$defs/PayrollDeduction"
+                    },
+                    "title": "Deductions",
+                    "type": "array"
+                },
+                "exemptions": {
+                    "default": [],
+                    "items": {
+                        "$ref": "#/$defs/PayrollExemption"
+                    },
+                    "title": "Exemptions",
+                    "type": "array"
+                },
+                "country_code": {
+                    "$ref": "#/$defs/CountryCode"
+                }
+            },
+            "required": [
+                "currency",
+                "gross_pay",
+                "net_pay",
+                "country_code"
+            ],
+            "title": "PayslipData",
+            "type": "object"
+        },
+        "Summary": {
+            "properties": {
+                "total_income": {
+                    "$ref": "#/$defs/MonetaryAmount"
+                },
+                "total_savings": {
+                    "$ref": "#/$defs/MonetaryAmount"
+                },
+                "total_expenses": {
+                    "$ref": "#/$defs/MonetaryAmount"
+                },
+                "monthly_averages": {
+                    "$ref": "#/$defs/MonthlyAverages"
+                }
+            },
+            "required": [
+                "total_income",
+                "total_savings",
+                "total_expenses",
+                "monthly_averages"
+            ],
+            "title": "Summary",
+            "type": "object"
+        },
+        "Transaction": {
+            "properties": {
+                "date": {
+                    "pattern": "^(19|20)\\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$",
+                    "title": "Date",
+                    "type": "string"
+                },
+                "type": {
+                    "$ref": "#/$defs/TransactionTypes"
+                },
+                "amount": {
+                    "$ref": "#/$defs/MonetaryAmount"
+                },
+                "balance": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/MonetaryAmount"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "category": {
+                    "$ref": "#/$defs/TransactionCategory"
+                },
+                "confidence": {
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "Confidence"
+                },
+                "description": {
+                    "title": "Description",
+                    "type": "string"
+                },
+                "subcategory": {
+                    "$ref": "#/$defs/TransactionSubcategory"
+                }
+            },
+            "required": [
+                "date",
+                "type",
+                "amount",
+                "category",
+                "confidence",
+                "description",
+                "subcategory"
+            ],
+            "title": "Transaction",
+            "type": "object"
+        },
+        "TransactionCategory": {
+            "enum": [
+                "INCOME",
+                "EXPENSE",
+                "TRANSFERS",
+                "HEALTHCARE",
+                "TRANSPORT",
+                "FOOD",
+                "HOUSING",
+                "SHOPPING",
+                "MISCELLANEOUS",
+                "DIGITAL_SERVICES",
+                "ENTERTAINMENT",
+                "UNCATEGORISED"
+            ],
+            "title": "TransactionCategory",
+            "type": "string"
+        },
+        "TransactionSubcategory": {
+            "enum": [
+                "AUTOMATED_SAVINGS",
+                "BANK_TRANSFER",
+                "SALARY",
+                "REFUND",
+                "PERSONAL_TRANSFER",
+                "FITNESS",
+                "CAR",
+                "PUBLIC",
+                "MICROMOBILITY",
+                "GROCERIES",
+                "TAKEAWAY",
+                "DINING_OUT",
+                "UTILITIES",
+                "RENT",
+                "MORTGAGE",
+                "INSURANCE",
+                "MAINTENANCE",
+                "ONLINE_RETAIL",
+                "IN_STORE_RETAIL",
+                "CLOTHING",
+                "ELECTRONICS",
+                "CASH",
+                "FEES",
+                "SUBSCRIPTIONS",
+                "SOFTWARE",
+                "STREAMING",
+                "ACTIVITIES",
+                "EVENTS",
+                "HOBBIES",
+                "CARE",
+                "EDUCATION",
+                "GIFTS",
+                "OTHER"
+            ],
+            "title": "TransactionSubcategory",
+            "type": "string"
+        },
+        "TransactionTypes": {
+            "enum": [
+                "BGC",
+                "BP",
+                "CHG",
+                "CHQ",
+                "COR",
+                "CPT",
+                "DD",
+                "DEB",
+                "DEP",
+                "FEE",
+                "FPI",
+                "FPO",
+                "MPI",
+                "MPO",
+                "PAY",
+                "SO",
+                "TFR"
+            ],
+            "title": "TransactionTypes",
+            "type": "string"
+        }
+    },
+    "properties": {
+        "id": {
+            "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[1-5][a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+            "title": "Id",
+            "type": "string"
+        },
+        "document_id": {
+            "title": "Document Id",
+            "type": "string"
+        },
+        "document_type": {
+            "$ref": "#/$defs/DocumentType"
+        },
+        "document_metadata": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/BankStatementData"
+                },
+                {
+                    "$ref": "#/$defs/PayslipData"
+                }
+            ],
+            "title": "Document Metadata"
+        },
+        "created_at": {
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?Z$",
+            "title": "Created At",
+            "type": "string"
+        },
+        "updated_at": {
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?Z$",
+            "title": "Updated At",
+            "type": "string"
+        }
+    },
+    "required": [
+        "id",
+        "document_id",
+        "document_type",
+        "document_metadata",
+        "created_at",
+        "updated_at"
+    ],
+    "title": "DocumentMetadata",
+    "type": "object"
+}

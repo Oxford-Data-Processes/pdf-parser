@@ -30,3 +30,8 @@ Checks:
 pre-commit run --all-files
 
 mypy {path_to_file_or_directory} --explicit-package-bases
+
+
+Generate types:
+
+npm run generate-types
