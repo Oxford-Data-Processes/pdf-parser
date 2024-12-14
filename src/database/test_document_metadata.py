@@ -14,7 +14,6 @@ from .document_metadata import (
     AccountType,
     ExchangeRate,
     BankStatementData,
-    TaxSystem,
     DeductionType,
     PayrollDeduction,
     PayslipData,
@@ -172,15 +171,14 @@ def test_create_valid_payslip_data():
                 local_type="NI",
             ),
         ],
-        tax_system=TaxSystem.UK,
-        country_code="GB",
+        country_code=CountryCode.GB,
         pay_period_start=DateStr("2023-12-01"),
         pay_period_end=DateStr("2023-12-31"),
         process_date=DateStr("2023-12-31"),
     )
     dump_json("payslip_data", payslip)
     assert payslip.type == DocumentType.PAYSLIP
-    assert payslip.tax_system == TaxSystem.UK
+    assert payslip.country_code == CountryCode.GB
     assert len(payslip.deductions) == 2
     assert payslip.gross_pay.amount == 300000
     assert payslip.net_pay.amount == 240000
@@ -205,7 +203,6 @@ def test_create_valid_document_metadata():
                 local_type="PAYE",
             ),
         ],
-        tax_system=TaxSystem.UK,
         country_code=CountryCode.GB,
     )
 
@@ -231,19 +228,6 @@ def test_invalid_swift_bic():
         )
 
 
-def test_invalid_tax_system():
-    with pytest.raises(ValueError):
-        PayslipData(
-            type=DocumentType.PAYSLIP,
-            employer_name="ACME Corp",
-            currency=Currency.GBP,
-            gross_pay=MonetaryAmount(amount=300000, currency=Currency.GBP),
-            net_pay=MonetaryAmount(amount=240000, currency=Currency.GBP),
-            tax_system="INVALID",  # Invalid tax system
-            country_code="GB",
-        )
-
-
 def test_invalid_country_code():
     with pytest.raises(ValueError):
         PayslipData(
@@ -252,6 +236,5 @@ def test_invalid_country_code():
             currency=Currency.GBP,
             gross_pay=MonetaryAmount(amount=300000, currency=Currency.GBP),
             net_pay=MonetaryAmount(amount=240000, currency=Currency.GBP),
-            tax_system=TaxSystem.UK,
-            country_code="INVALID",  # Invalid country code
+            country_code="INVALID",
         )

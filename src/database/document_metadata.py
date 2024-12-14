@@ -5,6 +5,7 @@ from .documents import DocumentType
 from enum import Enum
 from decimal import Decimal
 from typing_extensions import Annotated
+from .shared_models import CountryCode
 
 
 class TransactionTypes(str, Enum):
@@ -199,23 +200,30 @@ class BankStatementData(BaseModel):
     analysis_results: Optional[AnalysisResults] = None
 
 
-class TaxSystem(str, Enum):
-    """Different tax systems"""
-
-    UK = "UK"
-    US = "US"
-    EU = "EU"
-    OTHER = "OTHER"
-
-
 class DeductionType(str, Enum):
     """Universal deduction types"""
 
-    TAX = "TAX"
+    FEDERAL_INCOME_TAX = "FEDERAL_INCOME_TAX"
+    STATE_INCOME_TAX = "STATE_INCOME_TAX"
     SOCIAL_SECURITY = "SOCIAL_SECURITY"
     PENSION = "PENSION"
     HEALTH_INSURANCE = "HEALTH_INSURANCE"
     OTHER = "OTHER"
+
+
+class PayrollExemptionType(str, Enum):
+    """Specific payroll exemption types"""
+
+    PERSONAL_EXEMPTION = "PERSONAL_EXEMPTION"
+
+
+class PayrollExemption(BaseModel):
+    """Generic payroll exemption structure"""
+
+    type: PayrollExemptionType
+    amount: MonetaryAmount
+    year_to_date: Optional[MonetaryAmount] = None
+    description: Optional[str] = None
 
 
 class PayrollDeduction(BaseModel):
@@ -225,7 +233,6 @@ class PayrollDeduction(BaseModel):
     amount: MonetaryAmount
     year_to_date: Optional[MonetaryAmount] = None
     description: Optional[str] = None
-    local_type: Optional[str] = None  # e.g., "National Insurance", "Medicare"
 
 
 class PayslipData(BaseModel):
@@ -257,9 +264,10 @@ class PayslipData(BaseModel):
     # Deductions and contributions
     deductions: List[PayrollDeduction] = []
 
+    exemptions: List[PayrollExemption] = []
+
     # Country-specific metadata
-    tax_system: TaxSystem
-    country_code: str = Field(..., pattern=r"^[A-Z]{2}$")  # ISO 3166-1 alpha-2
+    country_code: CountryCode
 
     # Additional fields
     payment_method: Optional[str] = None
