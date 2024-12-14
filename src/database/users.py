@@ -1,11 +1,11 @@
 from pydantic import BaseModel, EmailStr, Field, HttpUrl, constr
-from typing import Optional
+from typing import Optional, Annotated
 from enum import Enum
 from database.shared_models import (
     IdStr,
-    Name,
+    NameStr,
     Address,
-    Datetime,
+    DatetimeStr,
     SubscriptionStatus,
     SubscriptionPlan,
 )
@@ -26,12 +26,8 @@ class CardBrand(str, Enum):
     JCB = "JCB"
 
 
-class LastFourDigits(constr):
-    __root__: str = Field(..., regex="^[0-9]{4}$")
-
-
-class ExpirationDate(constr):
-    __root__: str = Field(..., regex="^(0[1-9]|1[0-2])/[0-9]{2}$")
+LastFourDigits = Annotated[str, Field(pattern="^[0-9]{4}$")]
+ExpirationDate = Annotated[str, Field(pattern="^(0[1-9]|1[0-2])/[0-9]{2}$")]
 
 
 class PaymentMethod(BaseModel):
@@ -51,13 +47,13 @@ class UserType(str, Enum):
 class User(BaseModel):
     id: IdStr
     email: EmailStr
-    first_name: Name
-    last_name: Name
+    first_name: NameStr
+    last_name: NameStr
     avatar_url: Optional[HttpUrl] = None
     address: Address
     payment_method: Optional[PaymentMethod] = None
     subscription_plan: Optional[SubscriptionPlan] = None
     subscription_status: Optional[SubscriptionStatus] = None
     user_type: UserType
-    created_at: Datetime
-    updated_at: Datetime
+    created_at: DatetimeStr
+    updated_at: DatetimeStr

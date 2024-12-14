@@ -8,10 +8,13 @@ import os
 
 from json import JSONEncoder
 from decimal import Decimal
+from pydantic import HttpUrl
 
 
 class CustomJSONEncoder(JSONEncoder):
     def default(self, obj):
+        if isinstance(obj, HttpUrl):
+            return str(obj)
         if isinstance(obj, Decimal):
             return float(obj)
         if isinstance(obj, Enum):
