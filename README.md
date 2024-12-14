@@ -1,6 +1,5 @@
 TO DO:
 
-- Build get_template endpoint
 - Add unit tests (pytest)
 - Create API tests using jest/typescript
 - Create automated template builder
@@ -8,17 +7,7 @@ TO DO:
 - Set up CI/CD to run tests on each pr or commit.
 - Create a changelog
 - Create performance tests
-- Create a Docker container to test pulling and using of python package inside a container
-- Build brew dependecies list
 - Build diagrams for the project, formal diagrams expressed in code with auto-generation from code
-- Set up project as a pacakage (use setup.cfg with poetry and complete README.md)
-
-
-For template builder, run through OCR and Extraction and compare the words, see what % match. Use a threshold to classify as extraction or ocr method.
-
-Only convert to jpg if the OCR method is used or if there is a max pixel value for lines.
-
-Provide jpeg bytes in the pdf_data object for the OCR method.
 
 
 Start up:
