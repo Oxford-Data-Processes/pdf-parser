@@ -1,0 +1,13 @@
+{
+    "id": "123e4567-e89b-12d3-a456-426614174000",
+    "client_id": "987fcdeb-51a2-43d7-9012-345678901234",
+    "name": "bank_statement.pdf",
+    "document_type": "BANK_STATEMENT",
+    "document_status": "PENDING",
+    "file_path": "data/bank_statements/bank_statement.pdf",
+    "file_size": 1024,
+    "mime_type": "application/pdf",
+    "validation_errors": [],
+    "created_at": "2024-12-14T09:26:10.983218Z",
+    "updated_at": "2024-12-14T09:26:10.983222Z"
+}

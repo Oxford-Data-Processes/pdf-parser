@@ -33,15 +33,26 @@ class MimeType(str, Enum):
     PDF = "application/pdf"
 
 
+class ErrorType(str, Enum):
+    INVALID_DATE_FORMAT = "INVALID_DATE_FORMAT"
+    MISSING_REQUIRED_FIELD = "MISSING_REQUIRED_FIELD"
+    OTHER = "OTHER"
+
+
+class Error(BaseModel):
+    type: ErrorType
+    message: str
+
+
 class Document(BaseModel):
     id: IdStr
     client_id: IdStr
     name: FilePathStr
-    document_type: str
+    document_type: DocumentType
     document_status: DocumentStatus
     file_path: FilePathStr
-    file_size: int
+    file_size: int = Field(gt=0, description="File size in bytes")
     mime_type: MimeType
-    validation_errors: List[str] = []
+    validation_errors: List[Error] = []
     created_at: DatetimeStr
     updated_at: DatetimeStr

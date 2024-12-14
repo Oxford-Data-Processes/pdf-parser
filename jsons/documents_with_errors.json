@@ -1,0 +1,22 @@
+{
+    "id": "123e4567-e89b-12d3-a456-426614174000",
+    "client_id": "987fcdeb-51a2-43d7-9012-345678901234",
+    "name": "payslip.pdf",
+    "document_type": "PAYSLIP",
+    "document_status": "ERROR",
+    "file_path": "data/payslips/payslip.pdf",
+    "file_size": 2048,
+    "mime_type": "application/pdf",
+    "validation_errors": [
+        {
+            "type": "INVALID_DATE_FORMAT",
+            "message": "Invalid date format"
+        },
+        {
+            "type": "MISSING_REQUIRED_FIELD",
+            "message": "Missing required field"
+        }
+    ],
+    "created_at": "2024-12-14T09:26:10.983979Z",
+    "updated_at": "2024-12-14T09:26:10.983986Z"
+}
