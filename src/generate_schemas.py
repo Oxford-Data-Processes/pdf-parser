@@ -2,15 +2,17 @@ from pydantic import BaseModel
 import json
 import os
 
-
-class ExampleModel(BaseModel):
-    name: str
-    age: int
+from database.clients import Client
 
 
-# Example usage
-if __name__ == "__main__":
-    # Replace FinancialAnalysis with any Pydantic model you want to generate a schema for
-    json_schema_str = ExampleModel.schema()
-    with open(os.path.join("schemas", "example_model_schema.json"), "w") as f:
+def write_schema_to_json(model: BaseModel, output_dir: str = "json_schemas") -> None:
+    json_schema_str = model.schema()
+
+    with open(
+        os.path.join(output_dir, f"{model.__name__.lower()}_schema.json"), "w"
+    ) as f:
         json.dump(json_schema_str, f, indent=4)
+
+
+if __name__ == "__main__":
+    write_schema_to_json(Client)

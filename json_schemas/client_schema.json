@@ -1,0 +1,236 @@
+{
+    "$defs": {
+        "Address": {
+            "properties": {
+                "address_line_1": {
+                    "maxLength": 100,
+                    "minLength": 1,
+                    "title": "Address Line 1",
+                    "type": "string"
+                },
+                "address_line_2": {
+                    "anyOf": [
+                        {
+                            "maxLength": 100,
+                            "minLength": 1,
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Address Line 2"
+                },
+                "city": {
+                    "maxLength": 100,
+                    "minLength": 1,
+                    "title": "City",
+                    "type": "string"
+                },
+                "postcode": {
+                    "maxLength": 20,
+                    "minLength": 1,
+                    "pattern": "^[A-Za-z0-9\\s\\-]+$",
+                    "title": "Postcode",
+                    "type": "string"
+                },
+                "country_name": {
+                    "$ref": "#/$defs/CountryName"
+                },
+                "country_code": {
+                    "$ref": "#/$defs/CountryCode"
+                }
+            },
+            "required": [
+                "address_line_1",
+                "city",
+                "postcode",
+                "country_name",
+                "country_code"
+            ],
+            "title": "Address",
+            "type": "object"
+        },
+        "CountryCode": {
+            "enum": [
+                "GB",
+                "US",
+                "DE",
+                "FR",
+                "IT",
+                "ES",
+                "NL",
+                "BE",
+                "IE",
+                "DK",
+                "SE",
+                "NO",
+                "FI",
+                "PT",
+                "AT",
+                "CH"
+            ],
+            "title": "CountryCode",
+            "type": "string"
+        },
+        "CountryName": {
+            "enum": [
+                "United Kingdom",
+                "United States",
+                "Germany",
+                "France",
+                "Italy",
+                "Spain",
+                "Netherlands",
+                "Belgium",
+                "Ireland",
+                "Denmark",
+                "Sweden",
+                "Norway",
+                "Finland",
+                "Portugal",
+                "Austria",
+                "Switzerland"
+            ],
+            "title": "CountryName",
+            "type": "string"
+        },
+        "Currency": {
+            "enum": [
+                "USD",
+                "GBP",
+                "EUR"
+            ],
+            "title": "Currency",
+            "type": "string"
+        },
+        "EmploymentStatus": {
+            "enum": [
+                "EMPLOYED",
+                "SELF_EMPLOYED",
+                "UNEMPLOYED"
+            ],
+            "title": "EmploymentStatus",
+            "type": "string"
+        },
+        "MonetaryAmount": {
+            "description": "Amount with currency",
+            "properties": {
+                "amount": {
+                    "title": "Amount",
+                    "type": "integer"
+                },
+                "currency": {
+                    "$ref": "#/$defs/Currency"
+                }
+            },
+            "required": [
+                "amount",
+                "currency"
+            ],
+            "title": "MonetaryAmount",
+            "type": "object"
+        },
+        "PhoneCountryCode": {
+            "enum": [
+                "+44",
+                "+1",
+                "+49",
+                "+33",
+                "+39",
+                "+34",
+                "+31",
+                "+32",
+                "+353",
+                "+45",
+                "+46",
+                "+47",
+                "+358",
+                "+351",
+                "+43",
+                "+41"
+            ],
+            "title": "PhoneCountryCode",
+            "type": "string"
+        }
+    },
+    "properties": {
+        "id": {
+            "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[1-5][a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+            "title": "Id",
+            "type": "string"
+        },
+        "created_by": {
+            "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[1-5][a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+            "title": "Created By",
+            "type": "string"
+        },
+        "first_name": {
+            "maxLength": 50,
+            "title": "First Name",
+            "type": "string"
+        },
+        "last_name": {
+            "maxLength": 50,
+            "title": "Last Name",
+            "type": "string"
+        },
+        "email": {
+            "format": "email",
+            "title": "Email",
+            "type": "string"
+        },
+        "phone_country_code": {
+            "$ref": "#/$defs/PhoneCountryCode"
+        },
+        "phone_number": {
+            "maxLength": 15,
+            "minLength": 1,
+            "pattern": "^\\d{1,15}$",
+            "title": "Phone Number",
+            "type": "string"
+        },
+        "date_of_birth": {
+            "pattern": "^(19|20)\\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$",
+            "title": "Date Of Birth",
+            "type": "string"
+        },
+        "address": {
+            "$ref": "#/$defs/Address"
+        },
+        "employment_status": {
+            "$ref": "#/$defs/EmploymentStatus"
+        },
+        "annual_income": {
+            "$ref": "#/$defs/MonetaryAmount"
+        },
+        "created_at": {
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?Z$",
+            "title": "Created At",
+            "type": "string"
+        },
+        "updated_at": {
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?Z$",
+            "title": "Updated At",
+            "type": "string"
+        }
+    },
+    "required": [
+        "id",
+        "created_by",
+        "first_name",
+        "last_name",
+        "email",
+        "phone_country_code",
+        "phone_number",
+        "date_of_birth",
+        "address",
+        "employment_status",
+        "annual_income",
+        "created_at",
+        "updated_at"
+    ],
+    "title": "Client",
+    "type": "object"
+}
