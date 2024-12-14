@@ -225,13 +225,13 @@ def test_create_valid_assessment_row():
                         TransactionCategory.HOUSING.value: CategoryBreakdown(
                             total=MonetaryAmount(amount=27999, currency="GBP"),
                             subcategories={
-                                TransactionCategory.INSURANCE.value: MonetaryAmount(
+                                TransactionSubcategory.INSURANCE.value: MonetaryAmount(
                                     amount=0, currency="GBP"
                                 ),
-                                TransactionCategory.UTILITIES.value: MonetaryAmount(
+                                TransactionSubcategory.UTILITIES.value: MonetaryAmount(
                                     amount=3912, currency="GBP"
                                 ),
-                                TransactionCategory.HOUSING.value: MonetaryAmount(
+                                TransactionSubcategory.RENT.value: MonetaryAmount(
                                     amount=0, currency="GBP"
                                 ),
                             },
