@@ -24,7 +24,7 @@ from database.assessments import (
     RiskLevel,
     RiskFactorTypes,
 )
-from database.shared_models import MonetaryAmount, DateStr, DatetimeStr
+from database.shared_models import MonetaryAmount, DateStr, DatetimeStr, IdStr
 from database.document_metadata import TransactionCategory, TransactionSubcategory
 
 
@@ -201,8 +201,8 @@ def test_create_valid_assessment_data():
 
 def test_create_valid_assessment_row():
     row = AssessmentRow(
-        id="123e4567-e89b-12d3-a456-426614174000",
-        client_id="987fcdeb-51a2-43d7-9012-345678901234",
+        id=IdStr("123e4567-e89b-12d3-a456-426614174000"),
+        client_id=IdStr("987fcdeb-51a2-43d7-9012-345678901234"),
         assessment_type=AssessmentType.AFFORDABILITY,
         assessment_data=AssessmentData(
             income=Income(
