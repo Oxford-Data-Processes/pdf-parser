@@ -1,4 +1,3 @@
-import pytest
 from decimal import Decimal
 from datetime import datetime
 from database.assessments import (
@@ -13,6 +12,7 @@ from database.assessments import (
     IncomeSourceType,
     DisposableIncome,
     Frequency,
+    IncomeSource,
     MonthlyAverages,
     IncomeTrend,
     TrendType,
@@ -21,16 +21,18 @@ from database.assessments import (
     RiskAssessmentMetrics,
     PositiveFactor,
     CategoryBreakdown,
+    RiskLevel,
+    RiskFactorTypes,
 )
 from database.shared_models import MonetaryAmount
-from database.document_metadata import TransactionCategory
+from database.document_metadata import TransactionCategory, TransactionSubcategory
 
 
 def test_create_valid_income():
     income = Income(
         income_trend=IncomeTrend.STABLE,
         income_sources=[
-            IncomeSourceType(
+            IncomeSource(
                 name=IncomeSourceType.SALARY,
                 frequency=Frequency.MONTHLY,
                 monthly_average=MonetaryAmount(amount=218624, currency="GBP"),
@@ -58,9 +60,15 @@ def test_create_valid_expenses():
                 TransactionCategory.HOUSING.value: CategoryBreakdown(
                     total=MonetaryAmount(amount=27999, currency="GBP"),
                     subcategories={
-                        "Insurance": MonetaryAmount(amount=0, currency="GBP"),
-                        "Utilities": MonetaryAmount(amount=3912, currency="GBP"),
-                        "Rent": MonetaryAmount(amount=0, currency="GBP"),
+                        TransactionSubcategory.INSURANCE.value: MonetaryAmount(
+                            amount=0, currency="GBP"
+                        ),
+                        TransactionSubcategory.UTILITIES.value: MonetaryAmount(
+                            amount=3912, currency="GBP"
+                        ),
+                        TransactionSubcategory.RENT.value: MonetaryAmount(
+                            amount=0, currency="GBP"
+                        ),
                     },
                 )
             },
@@ -94,7 +102,7 @@ def test_create_valid_assessment_data():
         income=Income(
             income_trend=IncomeTrend.STABLE,
             income_sources=[
-                IncomeSourceType(
+                IncomeSource(
                     name=IncomeSourceType.SALARY,
                     frequency=Frequency.MONTHLY,
                     monthly_average=MonetaryAmount(amount=218624, currency="GBP"),
@@ -116,9 +124,15 @@ def test_create_valid_assessment_data():
                     TransactionCategory.HOUSING.value: CategoryBreakdown(
                         total=MonetaryAmount(amount=27999, currency="GBP"),
                         subcategories={
-                            "Insurance": MonetaryAmount(amount=0, currency="GBP"),
-                            "Utilities": MonetaryAmount(amount=3912, currency="GBP"),
-                            "Rent": MonetaryAmount(amount=0, currency="GBP"),
+                            TransactionSubcategory.INSURANCE.value: MonetaryAmount(
+                                amount=0, currency="GBP"
+                            ),
+                            TransactionSubcategory.UTILITIES.value: MonetaryAmount(
+                                amount=3912, currency="GBP"
+                            ),
+                            TransactionSubcategory.RENT.value: MonetaryAmount(
+                                amount=0, currency="GBP"
+                            ),
                         },
                     )
                 },
@@ -157,18 +171,21 @@ def test_create_valid_assessment_data():
         ),
         risk_assessment=RiskAssessment(
             metrics=RiskAssessmentMetrics(
-                dti_ratio=12.79,
-                savings_ratio=51.81,
-                disposable_ratio=51.81,
-                payment_to_income_ratio=48.19,
+                debt_to_income_ratio=Decimal("12.79"),
+                savings_ratio=Decimal("51.81"),
+                disposable_ratio=Decimal("51.81"),
+                payment_to_income_ratio=Decimal("48.19"),
             ),
             risk_factors=[],
             positive_factors=[
-                PositiveFactor(type="dti", message="Healthy debt-to-income ratio")
+                PositiveFactor(
+                    type=RiskFactorTypes.DEBT_TO_INCOME_RATIO,
+                    message="Healthy debt-to-income ratio",
+                )
             ],
-            overall_risk_level="low",
+            overall_risk_level=RiskLevel.LOW,
             affordability_buffer=113446,
-            income_stability_score=98.96,
+            income_stability_score=Decimal("98.96"),
         ),
     )
     assert isinstance(data.income, Income)
@@ -186,7 +203,7 @@ def test_create_valid_assessment_row():
             income=Income(
                 income_trend=IncomeTrend.STABLE,
                 income_sources=[
-                    IncomeSourceType(
+                    IncomeSource(
                         name=IncomeSourceType.SALARY,
                         frequency=Frequency.MONTHLY,
                         monthly_average=MonetaryAmount(amount=218624, currency="GBP"),
@@ -206,13 +223,17 @@ def test_create_valid_assessment_row():
                     total=MonetaryAmount(amount=27999, currency="GBP"),
                     categories={
                         TransactionCategory.HOUSING.value: CategoryBreakdown(
-                            total="27999",
+                            total=MonetaryAmount(amount=27999, currency="GBP"),
                             subcategories={
-                                "Insurance": MonetaryAmount(amount=0, currency="GBP"),
-                                "Utilities": MonetaryAmount(
+                                TransactionCategory.INSURANCE.value: MonetaryAmount(
+                                    amount=0, currency="GBP"
+                                ),
+                                TransactionCategory.UTILITIES.value: MonetaryAmount(
                                     amount=3912, currency="GBP"
                                 ),
-                                "Rent": MonetaryAmount(amount=0, currency="GBP"),
+                                TransactionCategory.HOUSING.value: MonetaryAmount(
+                                    amount=0, currency="GBP"
+                                ),
                             },
                         )
                     },
@@ -239,15 +260,15 @@ def test_create_valid_assessment_row():
             ),
             affordability=Affordability(
                 metrics=AffordabilityMetrics(
-                    savings_ratio=51.81,
+                    savings_ratio=Decimal("51.81"),
                     disposable_income=DisposableIncome(
                         current=MonetaryAmount(amount=113446, currency="GBP"),
                         three_month_trend=TrendType.STABLE,
                         six_month_trend=TrendType.STABLE,
                     ),
-                    payment_to_income_ratio=48.19,
+                    payment_to_income_ratio=Decimal("48.19"),
                 ),
-                dti_ratio=12.79,
+                dti_ratio=Decimal("12.79"),
             ),
             risk_assessment=RiskAssessment(
                 metrics=RiskAssessmentMetrics(
@@ -260,7 +281,7 @@ def test_create_valid_assessment_row():
                 positive_factors=[
                     PositiveFactor(type="dti", message="Healthy debt-to-income ratio")
                 ],
-                overall_risk_level="low",
+                overall_risk_level=RiskLevel.LOW,
                 affordability_buffer=113446,
                 income_stability_score=98.96,
             ),

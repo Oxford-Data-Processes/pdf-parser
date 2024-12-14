@@ -101,9 +101,9 @@ class PositiveFactor(BaseModel):
 
 
 class RiskLevel(str, Enum):
-    LOW = "low"
-    MEDIUM = "medium"
-    HIGH = "high"
+    LOW = "LOW"
+    MEDIUM = "MEDIUM"
+    HIGH = "HIGH"
 
 
 class RiskAssessment(BaseModel):
