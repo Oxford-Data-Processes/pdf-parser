@@ -1,7 +1,7 @@
 from pydantic import BaseModel, Field
 from typing import Optional, Dict, List, Union
-from shared_models import Datetime, Date, MonetaryAmount, Currency
-from documents import DocumentType
+from .shared_models import DatetimeStr, DateStr, MonetaryAmount, Currency
+from .documents import DocumentType
 from enum import Enum
 from decimal import Decimal
 
@@ -100,7 +100,7 @@ class TransactionSubcategory(str, Enum):
 
 
 class Transaction(BaseModel):
-    date: Date
+    date: DateStr
     type: TransactionTypes
     amount: MonetaryAmount
     balance: Optional[MonetaryAmount] = None
@@ -138,7 +138,7 @@ class BankIdentifier(BaseModel):
     """International bank identification"""
 
     swift_bic: Optional[str] = Field(
-        None, regex=r"^[A-Z]{6}[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3})?$"
+        None, pattern=r"^[A-Z]{6}[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3})?$"
     )
     local_bank_code: Optional[str] = (
         None  # e.g., Sort Code (UK), Routing Number (US), BSB (Australia)
@@ -170,8 +170,8 @@ class BankStatementData(BaseModel):
 
     bank_identifier: BankIdentifier
     account_type: Optional[AccountType] = None
-    statement_period_start: Optional[Date] = None
-    statement_period_end: Optional[Date] = None
+    statement_period_start: Optional[DateStr] = None
+    statement_period_end: Optional[DateStr] = None
     account_number: Optional[str] = None
     account_holder: Optional[str] = None
 
@@ -224,9 +224,9 @@ class PayslipData(BaseModel):
     """Generic international payslip data"""
 
     # Period information
-    pay_period_start: Optional[Date] = None
-    pay_period_end: Optional[Date] = None
-    process_date: Optional[Date] = None
+    pay_period_start: Optional[DateStr] = None
+    pay_period_end: Optional[DateStr] = None
+    process_date: Optional[DateStr] = None
 
     # Employer information
     employer_name: Optional[str] = None
@@ -250,7 +250,7 @@ class PayslipData(BaseModel):
 
     # Country-specific metadata
     tax_system: TaxSystem
-    country_code: str = Field(..., regex=r"^[A-Z]{2}$")  # ISO 3166-1 alpha-2
+    country_code: str = Field(..., pattern=r"^[A-Z]{2}$")  # ISO 3166-1 alpha-2
 
     # Additional fields
     payment_method: Optional[str] = None
@@ -261,5 +261,5 @@ class DocumentMetadata(BaseModel):
     document_id: str
     document_type: DocumentType
     document_metadata: Union[BankStatementData, PayslipData]
-    created_at: Datetime
-    updated_at: Datetime
+    created_at: DatetimeStr
+    updated_at: DatetimeStr

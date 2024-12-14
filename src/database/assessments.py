@@ -1,27 +1,39 @@
 from pydantic import BaseModel, Field
-from typing import List, Dict, Any
-from shared_models import MonetaryAmount, Category
+from typing import List, Dict, Any, Optional
+from .shared_models import MonetaryAmount, DateStr
 from enum import Enum
 from decimal import Decimal
+from .document_metadata import TransactionCategory
 
 
-class IncomeSource(Enum):
+class IncomeSourceType(str, Enum):
     SALARY = "SALARY"
     BUSINESS = "BUSINESS"
     INVESTMENT = "INVESTMENT"
     OTHER = "OTHER"
 
 
-class Frequency(Enum):
+class Frequency(str, Enum):
     MONTHLY = "MONTHLY"
     YEARLY = "YEARLY"
 
 
-class IncomeSource(BaseModel):
-    name: IncomeSource
-    frequency: Frequency
-    monthly_average: MonetaryAmount
-    reliability_score: Decimal = Field(..., decimal_places=2)
+class IncomeTrend(str, Enum):
+    INCREASING = "INCREASING"
+    DECREASING = "DECREASING"
+    STABLE = "STABLE"
+
+
+class TrendType(str, Enum):
+    STABLE = "stable"
+    INCREASING = "increasing"
+    DECREASING = "decreasing"
+
+
+class DisposableIncome(BaseModel):
+    current: MonetaryAmount
+    three_month_trend: TrendType
+    six_month_trend: TrendType
 
 
 class MonthlyAverages(BaseModel):
@@ -30,10 +42,11 @@ class MonthlyAverages(BaseModel):
     last_12_months: MonetaryAmount
 
 
-class IncomeTrend(Enum):
-    INCREASING = "INCREASING"
-    DECREASING = "DECREASING"
-    STABLE = "STABLE"
+class IncomeSource(BaseModel):
+    name: IncomeSourceType
+    frequency: Frequency
+    monthly_average: MonetaryAmount
+    reliability_score: Decimal = Field(..., decimal_places=2)
 
 
 class Income(BaseModel):
@@ -44,14 +57,19 @@ class Income(BaseModel):
     annual_projection: MonetaryAmount
 
 
+class CategoryBreakdown(BaseModel):
+    total: str
+    subcategories: Dict[str, str]
+
+
 class FixedCosts(BaseModel):
     total: MonetaryAmount
-    categories: Dict[str, Dict[str, float]]
+    categories: Dict[TransactionCategory, CategoryBreakdown]
 
 
 class VariableCosts(BaseModel):
     total: MonetaryAmount
-    categories: Dict[str, float]
+    categories: Dict[TransactionCategory, str]
 
 
 class Expenses(BaseModel):
@@ -62,7 +80,7 @@ class Expenses(BaseModel):
 
 class AffordabilityMetrics(BaseModel):
     savings_ratio: float
-    disposable_income: Dict[str, Any]
+    disposable_income: DisposableIncome
     payment_to_income_ratio: float
 
 
@@ -83,11 +101,17 @@ class PositiveFactor(BaseModel):
     message: str
 
 
+class RiskLevel(str, Enum):
+    LOW = "low"
+    MEDIUM = "medium"
+    HIGH = "high"
+
+
 class RiskAssessment(BaseModel):
     metrics: RiskAssessmentMetrics
     risk_factors: List[str]
     positive_factors: List[PositiveFactor]
-    overall_risk_level: str
+    overall_risk_level: RiskLevel
     affordability_buffer: float
     income_stability_score: float
 
@@ -100,14 +124,20 @@ class AssessmentData(BaseModel):
 
 
 class AnalysisPeriod(BaseModel):
-    start_date: str
-    end_date: str
+    start_date: DateStr
+    end_date: DateStr
+
+
+class AssessmentType(str, Enum):
+    AFFORDABILITY = "AFFORDABILITY"
+    RISK = "RISK"
+    FULL = "FULL"
 
 
 class AssessmentRow(BaseModel):
     id: str
     client_id: str
-    assessment_type: str
+    assessment_type: AssessmentType
     assessment_data: AssessmentData
     created_at: str
     analysis_period: AnalysisPeriod

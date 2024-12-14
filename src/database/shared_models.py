@@ -1,64 +1,79 @@
-from pydantic import constr, Field
+from pydantic import BaseModel, Field, constr
 import pycountry
-from typing import Optional
+from typing import Optional, Annotated
 from decimal import Decimal
-from pydantic import BaseModel
 from enum import Enum
 
 
-class Datetime(constr):
-    __root__: str = Field(
-        ...,
-        description="Datetime in ISO 8601 UTC format.",
-        regex=r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z$",
-    )
+DatetimeStr = Annotated[
+    str, Field(pattern=r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z$")
+]
 
+IdStr = Annotated[
+    str,
+    Field(
+        pattern=r"^[a-f0-9]{8}-[a-f0-9]{4}-[1-5][a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+    ),
+]
 
-class Id(constr):
-    __root__: str = Field(
-        ...,
-        regex=r"^[a-f0-9]{8}-[a-f0-9]{4}-[1-5][a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
-    )
+NameStr = Annotated[str, Field(max_length=50)]
 
+DateStr = Annotated[
+    str, Field(pattern=r"^(19|20)\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$")
+]
 
-class Name(constr):
-    __root__: str = Field(..., max_length=50)
+AddressLineStr = Annotated[str, Field(min_length=1, max_length=100)]
 
+CityStr = Annotated[str, Field(min_length=1, max_length=100)]
 
-class Date(constr):
-    __root__: str = Field(
-        ...,
-        regex=r"^(19|20)\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$",
-    )
-
-
-class AddressLine(constr):
-    __root__: str = Field(..., min_length=1, max_length=100)
-
-
-class City(constr):
-    __root__: str = Field(..., min_length=1, max_length=100)
-
-
-class Postcode(constr):
-    __root__: str = Field(..., regex=r"^[A-Za-z0-9\s\-]+$", min_length=1, max_length=20)
+PostcodeStr = Annotated[
+    str, Field(pattern=r"^[A-Za-z0-9\s\-]+$", min_length=1, max_length=20)
+]
 
 
 class CountryCode(str, Enum):
-    for country in pycountry.countries:
-        locals()[country.alpha_2] = country.alpha_2
+    GB = "GB"
+    US = "US"
+    DE = "DE"
+    FR = "FR"
+    IT = "IT"
+    ES = "ES"
+    NL = "NL"
+    BE = "BE"
+    IE = "IE"
+    DK = "DK"
+    SE = "SE"
+    NO = "NO"
+    FI = "FI"
+    PT = "PT"
+    AT = "AT"
+    CH = "CH"
 
 
 class CountryName(str, Enum):
-    for country in pycountry.countries:
-        locals()[country.name] = country.name
+    UNITED_KINGDOM = "United Kingdom"
+    UNITED_STATES = "United States"
+    GERMANY = "Germany"
+    FRANCE = "France"
+    ITALY = "Italy"
+    SPAIN = "Spain"
+    NETHERLANDS = "Netherlands"
+    BELGIUM = "Belgium"
+    IRELAND = "Ireland"
+    DENMARK = "Denmark"
+    SWEDEN = "Sweden"
+    NORWAY = "Norway"
+    FINLAND = "Finland"
+    PORTUGAL = "Portugal"
+    AUSTRIA = "Austria"
+    SWITZERLAND = "Switzerland"
 
 
 class Address(BaseModel):
-    address_line_1: AddressLine
-    address_line_2: Optional[AddressLine] = None
-    city: City
-    postcode: Postcode
+    address_line_1: AddressLineStr
+    address_line_2: Optional[AddressLineStr] = None
+    city: CityStr
+    postcode: PostcodeStr
     country_name: CountryName
     country_code: CountryCode
 
