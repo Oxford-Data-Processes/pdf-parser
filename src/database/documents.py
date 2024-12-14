@@ -12,12 +12,8 @@ class DocumentStatus(str, Enum):
 
 
 class DocumentType(str, Enum):
-    MORTGAGE_APPLICATION = "MORTGAGE_APPLICATION"
     BANK_STATEMENT = "BANK_STATEMENT"
-    PAY_STUB = "PAY_STUB"
-    TAX_RETURN = "TAX_RETURN"
-    ID_DOCUMENT = "ID_DOCUMENT"
-    OTHER = "OTHER"
+    PAYSLIP = "PAYSLIP"
 
 
 class FilePath(constr):

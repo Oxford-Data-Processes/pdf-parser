@@ -1,72 +1,272 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field, constr
 from typing import Optional, Dict, Any, List, Union
-from shared_models import Datetime
+from shared_models import Datetime, Date
 from documents import DocumentType
 from enum import Enum
+from decimal import Decimal
+
+
+class Currency(str, Enum):
+    USD = "USD"
+    GBP = "GBP"
+    EUR = "EUR"
+
+
+class MonetaryAmount(BaseModel):
+    """Amount with currency"""
+
+    amount: Decimal = Field(..., decimal_places=2)
+    currency: Currency
+
+
+class TransactionTypes(str, Enum):
+    BGC = "BGC"  # Bank Giro Credit
+    BP = "BP"  # Bill Payments
+    CHG = "CHG"  # Charge
+    CHQ = "CHQ"  # Cheque
+    COR = "COR"  # Correction
+    CPT = "CPT"  # Cashpoint
+    DD = "DD"  # Direct Debit
+    DEB = "DEB"  # Debit Card
+    DEP = "DEP"  # Deposit
+    FEE = "FEE"  # Fixed Service
+    FPI = "FPI"  # Faster Payment In
+    FPO = "FPO"  # Faster Payment Out
+    MPI = "MPI"  # Mobile Payment In
+    MPO = "MPO"  # Mobile Payment Out
+    PAY = "PAY"  # Payment
+    SO = "SO"  # Standing Order
+    TFR = "TFR"  # Transfer
+
+
+class TransactionCategory(str, Enum):
+    INCOME = "INCOME"
+    EXPENSE = "EXPENSE"
+    TRANSFERS = "TRANSFERS"
+    HEALTHCARE = "HEALTHCARE"
+    TRANSPORT = "TRANSPORT"
+    FOOD = "FOOD"
+    HOUSING = "HOUSING"
+    SHOPPING = "SHOPPING"
+    MISCELLANEOUS = "MISCELLANEOUS"
+    DIGITAL_SERVICES = "DIGITAL_SERVICES"
+    ENTERTAINMENT = "ENTERTAINMENT"
+    UNCATEGORISED = "UNCATEGORISED"
+
+
+class TransactionSubcategory(str, Enum):
+    # Transfer subcategories
+    AUTOMATED_SAVINGS = "AUTOMATED_SAVINGS"
+    BANK_TRANSFER = "BANK_TRANSFER"
+
+    # Income subcategories
+    SALARY = "SALARY"
+    REFUND = "REFUND"
+    PERSONAL_TRANSFER = "PERSONAL_TRANSFER"
+
+    # Healthcare subcategories
+    FITNESS = "FITNESS"
+
+    # Transport subcategories
+    CAR = "CAR"
+    PUBLIC = "PUBLIC"
+    MICROMOBILITY = "MICROMOBILITY"
+
+    # Food subcategories
+    GROCERIES = "GROCERIES"
+    TAKEAWAY = "TAKEAWAY"
+    DINING_OUT = "DINING_OUT"
+
+    # Housing subcategories
+    UTILITIES = "UTILITIES"
+    RENT = "RENT"
+    MORTGAGE = "MORTGAGE"
+    INSURANCE = "INSURANCE"
+    MAINTENANCE = "MAINTENANCE"
+
+    # Shopping subcategories
+    ONLINE_RETAIL = "ONLINE_RETAIL"
+    IN_STORE_RETAIL = "IN_STORE_RETAIL"
+    CLOTHING = "CLOTHING"
+    ELECTRONICS = "ELECTRONICS"
+
+    # Miscellaneous subcategories
+    CASH = "CASH"
+    FEES = "FEES"
+
+    # Digital services subcategories
+    SUBSCRIPTIONS = "SUBSCRIPTIONS"
+    SOFTWARE = "SOFTWARE"
+    STREAMING = "STREAMING"
+
+    # Entertainment subcategories
+    ACTIVITIES = "ACTIVITIES"
+    EVENTS = "EVENTS"
+    HOBBIES = "HOBBIES"
+
+    # Personal subcategories
+    CARE = "CARE"
+    EDUCATION = "EDUCATION"
+    GIFTS = "GIFTS"
+
+    OTHER = "OTHER"
 
 
 class Transaction(BaseModel):
-    date: str
-    type: str
-    amount: float
-    balance: Optional[float] = None
-    category: str
+    date: Date
+    type: TransactionTypes
+    amount: MonetaryAmount
+    balance: Optional[MonetaryAmount] = None
+    category: TransactionCategory
     confidence: float
     description: str
-    subcategory: str
+    subcategory: TransactionSubcategory
 
 
-class CategorizedTransactions(BaseModel):
+class CategorisedTransactions(BaseModel):
     income: Dict[str, List[Transaction]]
     savings: Dict[str, List[Transaction]]
     expenses: Dict[str, List[Transaction]]
 
 
+class MonthlyAverages(BaseModel):
+    income: MonetaryAmount
+    savings: MonetaryAmount
+    expenses: MonetaryAmount
+
+
+class Summary(BaseModel):
+    total_income: MonetaryAmount
+    total_savings: MonetaryAmount
+    total_expenses: MonetaryAmount
+    monthly_averages: MonthlyAverages
+
+
 class AnalysisResults(BaseModel):
-    summary: Dict[str, Any]
-    categorized_transactions: CategorizedTransactions
+    summary: Summary
+    categorised_transactions: CategorisedTransactions
 
 
-class BankCode(str, Enum):
-    """
-    Bank codes for UK banks given by first 4 characters ofBIC/SWIFT codes
-    """
+class BankIdentifier(BaseModel):
+    """International bank identification"""
 
-    LOYD = "LOYD"
-    BARC = "BARC"
-    HSBC = "HSBC"
-    NWBK = "NWBK"
+    swift_bic: Optional[str] = Field(
+        None, regex=r"^[A-Z]{6}[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3})?$"
+    )
+    local_bank_code: Optional[str] = (
+        None  # e.g., Sort Code (UK), Routing Number (US), BSB (Australia)
+    )
+    local_bank_code_type: Optional[str] = (
+        None  # e.g., "SORT_CODE", "ROUTING_NUMBER", "BSB"
+    )
+
+
+class AccountType(str, Enum):
+    CHECKING = "CHECKING"  # US/International
+    CURRENT = "CURRENT"  # UK
+    SAVINGS = "SAVINGS"
+    MONEY_MARKET = "MONEY_MARKET"
+    INVESTMENT = "INVESTMENT"
+    CREDIT = "CREDIT"
+    OTHER = "OTHER"
 
 
 class BankStatementData(BaseModel):
-    bank_name: Optional[str] = None
-    bank_code: Optional[BankCode]
-    account_type: Optional[str] = None
-    statement_period: Optional[str] = None
-    sort_code: Optional[str] = None
+    type: DocumentType = DocumentType.BANK_STATEMENT
+    """Generic international bank statement data"""
+
+    bank_identifier: BankIdentifier
+    account_type: Optional[AccountType] = None
+    statement_period_start: Optional[Date] = None
+    statement_period_end: Optional[Date] = None
     account_number: Optional[str] = None
     account_holder: Optional[str] = None
-    end_balance: Optional[float] = None
-    start_balance: Optional[float] = None
-    total_money_in: Optional[float] = None
-    overdraft_limit: Optional[float] = None
-    total_money_out: Optional[float] = None
+
+    # Monetary amounts with currency
+    start_balance: Optional[MonetaryAmount] = None
+    end_balance: Optional[MonetaryAmount] = None
+    total_money_in: Optional[MonetaryAmount] = None
+    total_money_out: Optional[MonetaryAmount] = None
+    overdraft_limit: Optional[MonetaryAmount] = None
+
+    # Additional international fields
+    iban: Optional[str] = None
+    currency: Currency
+    exchange_rates: Optional[Dict[str, float]] = None
+
     analysis_results: Optional[AnalysisResults] = None
 
 
-class PayStubData(BaseModel):
-    pay_period: Optional[str] = None
-    pay_date: Optional[str] = None
-    pay_amount: Optional[float] = None
-    pay_rate: Optional[float] = None
-    pay_period_start: Optional[str] = None
-    pay_period_end: Optional[str] = None
+class TaxSystem(str, Enum):
+    """Different tax systems"""
+
+    UK = "UK"  # National Insurance, PAYE
+    US = "US"  # Social Security, Medicare
+    EU = "EU"  # Social Security variations
+    OTHER = "OTHER"
+
+
+class DeductionType(str, Enum):
+    """Universal deduction types"""
+
+    TAX = "TAX"  # Generic income tax
+    SOCIAL_SECURITY = "SOCIAL_SECURITY"  # NI, Social Security, etc.
+    PENSION = "PENSION"
+    HEALTH_INSURANCE = "HEALTH_INSURANCE"
+    OTHER = "OTHER"
+
+
+class PayrollDeduction(BaseModel):
+    """Generic deduction structure"""
+
+    type: DeductionType
+    amount: MonetaryAmount
+    year_to_date: Optional[MonetaryAmount] = None
+    description: Optional[str] = None
+    local_type: Optional[str] = None  # e.g., "National Insurance", "Medicare"
+
+
+class PayslipData(BaseModel):
+    type: DocumentType = DocumentType.PAYSLIP
+    """Generic international payslip data"""
+
+    # Period information
+    pay_period_start: Optional[Date] = None
+    pay_period_end: Optional[Date] = None
+    process_date: Optional[Date] = None
+
+    # Employer information
+    employer_name: Optional[str] = None
+    employer_tax_id: Optional[str] = None
+    employer_registration: Optional[str] = None  # Various business registration numbers
+
+    # Employee information
+    employee_id: Optional[str] = None
+    tax_identifier: Optional[str] = None  # National Insurance Number, SSN, Tax ID etc.
+    local_tax_code: Optional[str] = None  # Specific to country
+
+    # Payment information
+    currency: Currency
+    gross_pay: MonetaryAmount
+    net_pay: MonetaryAmount
+    gross_ytd: Optional[MonetaryAmount] = None
+    net_ytd: Optional[MonetaryAmount] = None
+
+    # Deductions and contributions
+    deductions: List[PayrollDeduction] = []
+
+    # Country-specific metadata
+    tax_system: TaxSystem
+    country_code: str = Field(..., regex=r"^[A-Z]{2}$")  # ISO 3166-1 alpha-2
+
+    # Additional fields
+    payment_method: Optional[str] = None
 
 
 class DocumentMetadata(BaseModel):
     id: str
     document_id: str
     document_type: DocumentType
-    document_metadata: Union[BankStatementData, PayStubData]
+    document_metadata: Union[BankStatementData, PayslipData]
     created_at: Datetime
     updated_at: Datetime
