@@ -1,22 +1,9 @@
-from pydantic import BaseModel, Field, constr
-from typing import Optional, Dict, Any, List, Union
-from shared_models import Datetime, Date
+from pydantic import BaseModel, Field
+from typing import Optional, Dict, List, Union
+from shared_models import Datetime, Date, MonetaryAmount, Currency
 from documents import DocumentType
 from enum import Enum
 from decimal import Decimal
-
-
-class Currency(str, Enum):
-    USD = "USD"
-    GBP = "GBP"
-    EUR = "EUR"
-
-
-class MonetaryAmount(BaseModel):
-    """Amount with currency"""
-
-    amount: Decimal = Field(..., decimal_places=2)
-    currency: Currency
 
 
 class TransactionTypes(str, Enum):
@@ -118,7 +105,7 @@ class Transaction(BaseModel):
     amount: MonetaryAmount
     balance: Optional[MonetaryAmount] = None
     category: TransactionCategory
-    confidence: float
+    confidence: Decimal = Field(..., decimal_places=2)
     description: str
     subcategory: TransactionSubcategory
 
@@ -171,6 +158,12 @@ class AccountType(str, Enum):
     OTHER = "OTHER"
 
 
+class ExchangeRate(BaseModel):
+    from_currency: Currency
+    to_currency: Currency
+    rate: Decimal = Field(..., decimal_places=5)
+
+
 class BankStatementData(BaseModel):
     type: DocumentType = DocumentType.BANK_STATEMENT
     """Generic international bank statement data"""
@@ -192,7 +185,7 @@ class BankStatementData(BaseModel):
     # Additional international fields
     iban: Optional[str] = None
     currency: Currency
-    exchange_rates: Optional[Dict[str, float]] = None
+    exchange_rates: Optional[List[ExchangeRate]] = None
 
     analysis_results: Optional[AnalysisResults] = None
 

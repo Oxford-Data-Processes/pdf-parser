@@ -1,6 +1,7 @@
 from pydantic import constr, Field
 import pycountry
 from typing import Optional
+from decimal import Decimal
 from pydantic import BaseModel
 from enum import Enum
 
@@ -73,3 +74,16 @@ class SubscriptionPlan(str, Enum):
     BASIC = "BASIC"
     PREMIUM = "PREMIUM"
     ENTERPRISE = "ENTERPRISE"
+
+
+class Currency(str, Enum):
+    USD = "USD"
+    GBP = "GBP"
+    EUR = "EUR"
+
+
+class MonetaryAmount(BaseModel):
+    """Amount with currency"""
+
+    amount: Decimal = Field(..., decimal_places=2)
+    currency: Currency

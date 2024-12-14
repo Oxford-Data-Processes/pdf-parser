@@ -1,5 +1,5 @@
 from pydantic import BaseModel, EmailStr, constr, Field
-from shared_models import Id, Name, Date, Address, Datetime
+from shared_models import Id, Name, Date, Address, Datetime, MonetaryAmount
 from enum import Enum
 
 import phonenumbers
@@ -34,6 +34,6 @@ class Client(BaseModel):
     date_of_birth: Date
     address: Address
     employment_status: EmploymentStatus
-    annual_income: float
+    annual_income: MonetaryAmount
     created_at: Datetime
     updated_at: Datetime
