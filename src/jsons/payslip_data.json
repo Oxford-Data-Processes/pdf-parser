@@ -28,7 +28,7 @@
     },
     "deductions": [
         {
-            "type": "TAX",
+            "type": "FEDERAL_INCOME_TAX",
             "amount": {
                 "amount": 40000,
                 "currency": "GBP"
@@ -37,8 +37,7 @@
                 "amount": 360000,
                 "currency": "GBP"
             },
-            "description": "Income Tax",
-            "local_type": "PAYE"
+            "description": "Income Tax"
         },
         {
             "type": "SOCIAL_SECURITY",
@@ -50,11 +49,9 @@
                 "amount": 180000,
                 "currency": "GBP"
             },
-            "description": "National Insurance",
-            "local_type": "NI"
+            "description": "National Insurance"
         }
     ],
-    "tax_system": "UK",
-    "country_code": "GB",
-    "payment_method": null
+    "exemptions": [],
+    "country_code": "GB"
 }

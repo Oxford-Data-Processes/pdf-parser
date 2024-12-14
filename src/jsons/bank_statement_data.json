@@ -2,7 +2,7 @@
     "type": "BANK_STATEMENT",
     "bank_identifier": {
         "swift_bic": "NWBKGB2L",
-        "local_bank_code": "123456",
+        "local_bank_code": "12-34-56",
         "local_bank_code_type": "SORT_CODE"
     },
     "account_type": "CURRENT",

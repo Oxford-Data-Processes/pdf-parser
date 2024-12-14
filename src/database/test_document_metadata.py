@@ -220,6 +220,50 @@ def test_create_valid_document_metadata():
     assert isinstance(metadata.document_metadata, PayslipData)
 
 
+def test_create_valid_document_metadata_bank_statement():
+    bank_statement = BankStatementData(
+        type=DocumentType.BANK_STATEMENT,
+        bank_identifier=BankIdentifier(
+            swift_bic=BicStr("NWBKGB2L"),
+            local_bank_code=SortCodeStr("12-34-56"),
+            local_bank_code_type=BankCodeType.SORT_CODE,
+        ),
+        account_type=AccountType.CURRENT,
+        statement_period_start=DateStr("2023-12-01"),
+        statement_period_end=DateStr("2023-12-31"),
+        account_number="12345678",
+        account_holder="John Doe",
+        start_balance=MonetaryAmount(amount=500000, currency=Currency.GBP),
+        end_balance=MonetaryAmount(amount=450000, currency=Currency.GBP),
+        total_money_in=MonetaryAmount(amount=100000, currency=Currency.GBP),
+        total_money_out=MonetaryAmount(amount=150000, currency=Currency.GBP),
+        overdraft_limit=MonetaryAmount(amount=200000, currency=Currency.GBP),
+        currency=Currency.GBP,
+        exchange_rates=[
+            ExchangeRate(
+                from_currency=Currency.GBP,
+                to_currency=Currency.EUR,
+                rate=Decimal("1.16"),
+            )
+        ],
+    )
+
+    metadata = DocumentMetadata(
+        id=IdStr("123e4567-e89b-12d3-a456-426614174001"),
+        document_id=IdStr("987fcdeb-51a2-43d7-9012-345678901235"),
+        document_type=DocumentType.BANK_STATEMENT,
+        document_metadata=bank_statement,
+        created_at=DatetimeStr(datetime.now().isoformat() + "Z"),
+        updated_at=DatetimeStr(datetime.now().isoformat() + "Z"),
+    )
+    dump_json("document_metadata_bank_statement", metadata)
+    assert metadata.document_type == DocumentType.BANK_STATEMENT
+    assert isinstance(metadata.document_metadata, BankStatementData)
+    assert metadata.document_metadata.bank_identifier.swift_bic == "NWBKGB2L"
+    assert metadata.document_metadata.account_type == AccountType.CURRENT
+    assert metadata.document_metadata.currency == Currency.GBP
+
+
 def test_invalid_swift_bic():
     with pytest.raises(ValueError):
         BankIdentifier(
