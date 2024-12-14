@@ -215,7 +215,7 @@ def test_create_valid_document_metadata():
         created_at=DatetimeStr(datetime.now().isoformat() + "Z"),
         updated_at=DatetimeStr(datetime.now().isoformat() + "Z"),
     )
-    dump_json("document_metadata", metadata)
+    dump_json("document_metadata_payslip", metadata)
     assert metadata.document_type == DocumentType.PAYSLIP
     assert isinstance(metadata.document_metadata, PayslipData)
 
