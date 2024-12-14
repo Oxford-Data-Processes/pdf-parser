@@ -1,6 +1,14 @@
 from pydantic import BaseModel, Field
 from typing import Optional, Dict, List, Union
-from .shared_models import DatetimeStr, DateStr, MonetaryAmount, Currency, IdStr
+from .shared_models import (
+    DatetimeStr,
+    DateStr,
+    MonetaryAmount,
+    Currency,
+    IdStr,
+    TransactionCategory,
+    TransactionSubcategory,
+)
 from .documents import DocumentType
 from enum import Enum
 from decimal import Decimal
@@ -26,79 +34,6 @@ class TransactionTypes(str, Enum):
     PAY = "PAY"  # Payment
     SO = "SO"  # Standing Order
     TFR = "TFR"  # Transfer
-
-
-class TransactionCategory(str, Enum):
-    INCOME = "INCOME"
-    EXPENSE = "EXPENSE"
-    TRANSFERS = "TRANSFERS"
-    HEALTHCARE = "HEALTHCARE"
-    TRANSPORT = "TRANSPORT"
-    FOOD = "FOOD"
-    HOUSING = "HOUSING"
-    SHOPPING = "SHOPPING"
-    MISCELLANEOUS = "MISCELLANEOUS"
-    DIGITAL_SERVICES = "DIGITAL_SERVICES"
-    ENTERTAINMENT = "ENTERTAINMENT"
-    UNCATEGORISED = "UNCATEGORISED"
-
-
-class TransactionSubcategory(str, Enum):
-    # Transfer subcategories
-    AUTOMATED_SAVINGS = "AUTOMATED_SAVINGS"
-    BANK_TRANSFER = "BANK_TRANSFER"
-
-    # Income subcategories
-    SALARY = "SALARY"
-    REFUND = "REFUND"
-    PERSONAL_TRANSFER = "PERSONAL_TRANSFER"
-
-    # Healthcare subcategories
-    FITNESS = "FITNESS"
-
-    # Transport subcategories
-    CAR = "CAR"
-    PUBLIC = "PUBLIC"
-    MICROMOBILITY = "MICROMOBILITY"
-
-    # Food subcategories
-    GROCERIES = "GROCERIES"
-    TAKEAWAY = "TAKEAWAY"
-    DINING_OUT = "DINING_OUT"
-
-    # Housing subcategories
-    UTILITIES = "UTILITIES"
-    RENT = "RENT"
-    MORTGAGE = "MORTGAGE"
-    INSURANCE = "INSURANCE"
-    MAINTENANCE = "MAINTENANCE"
-
-    # Shopping subcategories
-    ONLINE_RETAIL = "ONLINE_RETAIL"
-    IN_STORE_RETAIL = "IN_STORE_RETAIL"
-    CLOTHING = "CLOTHING"
-    ELECTRONICS = "ELECTRONICS"
-
-    # Miscellaneous subcategories
-    CASH = "CASH"
-    FEES = "FEES"
-
-    # Digital services subcategories
-    SUBSCRIPTIONS = "SUBSCRIPTIONS"
-    SOFTWARE = "SOFTWARE"
-    STREAMING = "STREAMING"
-
-    # Entertainment subcategories
-    ACTIVITIES = "ACTIVITIES"
-    EVENTS = "EVENTS"
-    HOBBIES = "HOBBIES"
-
-    # Personal subcategories
-    CARE = "CARE"
-    EDUCATION = "EDUCATION"
-    GIFTS = "GIFTS"
-
-    OTHER = "OTHER"
 
 
 class Transaction(BaseModel):

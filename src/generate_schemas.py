@@ -21,10 +21,17 @@ def write_schema_to_json(model: BaseModel, output_dir: str = "json_schemas") -> 
 
 
 if __name__ == "__main__":
+    print("Client")
     write_schema_to_json(Client)
+    print("FinancialAnalysis")
     write_schema_to_json(FinancialAnalysis)
+    print("DocumentMetadata")
     write_schema_to_json(DocumentMetadata)
+    print("Assessment")
     write_schema_to_json(Assessment)
+    print("Document")
     write_schema_to_json(Document)
+    print("Subscription")
     write_schema_to_json(Subscription)
+    print("User")
     write_schema_to_json(User)

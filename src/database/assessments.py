@@ -1,9 +1,15 @@
 from pydantic import BaseModel, Field
 from typing import List, Dict, Any, Optional
-from .shared_models import MonetaryAmount, DateStr, IdStr, DatetimeStr
+from .shared_models import (
+    MonetaryAmount,
+    DateStr,
+    IdStr,
+    DatetimeStr,
+    TransactionCategory,
+    TransactionSubcategory,
+)
 from enum import Enum
 from decimal import Decimal
-from .document_metadata import TransactionCategory, TransactionSubcategory
 
 
 class IncomeSourceType(str, Enum):

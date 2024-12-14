@@ -5,12 +5,12 @@
     "stripe_subscription_id": "sub_987654321",
     "subscription_plan": "PREMIUM",
     "subscription_status": "ACTIVE",
-    "current_period_start": "2024-12-14T10:56:07.009311Z",
+    "current_period_start": "2024-12-14T12:23:11.054911Z",
     "current_period_end": "2024-12-31T23:59:59Z",
     "cancel_at": null,
     "canceled_at": null,
     "trial_start": null,
     "trial_end": null,
-    "created_at": "2024-12-14T10:56:07.009317Z",
-    "updated_at": "2024-12-14T10:56:07.009318Z"
+    "created_at": "2024-12-14T12:23:11.054917Z",
+    "updated_at": "2024-12-14T12:23:11.054919Z"
 }
