@@ -174,7 +174,6 @@ def test_create_valid_payslip_data():
         pay_period_end=DateStr("2023-12-31"),
         process_date=DateStr("2023-12-31"),
     )
-    dump_json("payslip_data", payslip)
     assert payslip.type == DocumentType.PAYSLIP
     assert payslip.country_code == CountryCode.GB
     assert len(payslip.deductions) == 2
