@@ -5,12 +5,12 @@
     "stripe_subscription_id": "sub_987654321",
     "subscription_plan": "ENTERPRISE",
     "subscription_status": "CANCELLED",
-    "current_period_start": "2024-12-14T10:27:13.874393Z",
+    "current_period_start": "2024-12-14T10:28:08.532949Z",
     "current_period_end": "2024-12-31T23:59:59Z",
     "cancel_at": "2024-12-31T23:59:59Z",
-    "canceled_at": "2024-12-14T10:27:13.874389Z",
+    "canceled_at": "2024-12-14T10:28:08.532941Z",
     "trial_start": null,
     "trial_end": null,
-    "created_at": "2024-12-14T10:27:13.874400Z",
-    "updated_at": "2024-12-14T10:27:13.874402Z"
+    "created_at": "2024-12-14T10:28:08.532959Z",
+    "updated_at": "2024-12-14T10:28:08.532960Z"
 }

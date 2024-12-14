@@ -13,7 +13,7 @@ from database.financial_analysis import (
     RiskAssessment,
     FinancialAnalysis,
 )
-from database.shared_models import MonetaryAmount, Currency, IdStr, DateStr
+from database.shared_models import MonetaryAmount, Currency, IdStr, DateStr, dump_json
 from database.document_metadata import TransactionCategory, TransactionSubcategory
 
 
@@ -180,6 +180,7 @@ def test_create_valid_financial_analysis():
         expense_analysis=expense_analysis,
         risk_assessment=risk_assessment,
     )
+    dump_json("financial_analysis_valid", financial_analysis)
 
     assert financial_analysis.income_analysis.base_salary.annual.amount == 6000000
     assert financial_analysis.expense_analysis.fixed_costs.amount == 250000

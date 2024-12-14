@@ -1,0 +1,69 @@
+{
+    "id": "123e4567-e89b-12d3-a456-426614174000",
+    "client_id": "987fcdeb-51a2-43d7-9012-345678901234",
+    "analysis_date": "2024-12-14",
+    "income_analysis": {
+        "base_salary": {
+            "annual": {
+                "amount": 6000000,
+                "currency": "GBP"
+            },
+            "monthly": {
+                "amount": 500000,
+                "currency": "GBP"
+            },
+            "stability": 0.95
+        },
+        "total_monthly_income": {
+            "amount": 550000,
+            "currency": "GBP"
+        }
+    },
+    "expense_analysis": {
+        "fixed_costs": {
+            "amount": 250000,
+            "currency": "GBP"
+        },
+        "expense_categories": [
+            {
+                "category": "EXPENSE",
+                "total": {
+                    "amount": 250000,
+                    "currency": "GBP"
+                },
+                "breakdown": [
+                    {
+                        "category": "RENT",
+                        "amount": {
+                            "amount": 200000,
+                            "currency": "GBP"
+                        }
+                    },
+                    {
+                        "category": "UTILITIES",
+                        "amount": {
+                            "amount": 50000,
+                            "currency": "GBP"
+                        }
+                    }
+                ]
+            }
+        ],
+        "total_monthly_expenses": {
+            "amount": 300000,
+            "currency": "GBP"
+        }
+    },
+    "risk_assessment": {
+        "risk_factors": [
+            "FIXED_COSTS",
+            "DEBT_TO_INCOME_RATIO"
+        ],
+        "risk_metrics": {
+            "fixed_cost_ratio": 0.45,
+            "debt_to_income_ratio": 0.3,
+            "income_stability_score": 0.95
+        },
+        "overall_risk_level": "LOW"
+    }
+}

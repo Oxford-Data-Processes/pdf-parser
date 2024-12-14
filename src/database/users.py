@@ -1,8 +1,8 @@
 from pydantic import BaseModel, EmailStr, Field, HttpUrl, constr
 from typing import Optional
 from enum import Enum
-from shared_models import (
-    Id,
+from database.shared_models import (
+    IdStr,
     Name,
     Address,
     Datetime,
@@ -49,7 +49,7 @@ class UserType(str, Enum):
 
 
 class User(BaseModel):
-    id: Id
+    id: IdStr
     email: EmailStr
     first_name: Name
     last_name: Name

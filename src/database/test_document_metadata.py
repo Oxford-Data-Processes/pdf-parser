@@ -135,7 +135,6 @@ def test_create_valid_bank_statement_data():
             )
         ],
     )
-    dump_json("bank_statement_data", bank_statement)
     assert bank_statement.type == DocumentType.BANK_STATEMENT
     assert bank_statement.bank_identifier.swift_bic == "NWBKGB2L"
     assert bank_statement.account_type == AccountType.CURRENT
