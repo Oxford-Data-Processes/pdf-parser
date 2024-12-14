@@ -1,12 +1,12 @@
 import pytest
 from datetime import datetime
 from decimal import Decimal
-from database.clients import (
+from .clients import (
     Client,
     EmploymentStatus,
     PhoneCountryCode,
 )
-from database.shared_models import (
+from .shared_models import (
     MonetaryAmount,
     Currency,
     CountryCode,

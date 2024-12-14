@@ -1,20 +1,45 @@
-from pydantic import BaseModel, EmailStr, constr, Field
-from shared_models import Id, Name, Date, Address, Datetime, MonetaryAmount
+from pydantic import BaseModel, EmailStr, Field, GetCoreSchemaHandler
+from pydantic_core import CoreSchema, core_schema
+from .shared_models import (
+    IdStr as Id,
+    NameStr as Name,
+    DateStr as Date,
+    Address,
+    DatetimeStr as Datetime,
+    MonetaryAmount,
+)
 from enum import Enum
 
 import phonenumbers
 
 
 class PhoneCountryCode(str, Enum):
-    for region in phonenumbers.SUPPORTED_REGIONS:
-        code = phonenumbers.region_code_for_number(
-            phonenumbers.parse(f"+{phonenumbers.country_code_for_region(region)}")
+    GB = "+44"  # United Kingdom
+    US = "+1"  # United States
+    DE = "+49"  # Germany
+    FR = "+33"  # France
+    IT = "+39"  # Italy
+    ES = "+34"  # Spain
+    NL = "+31"  # Netherlands
+    BE = "+32"  # Belgium
+    IE = "+353"  # Ireland
+    DK = "+45"  # Denmark
+    SE = "+46"  # Sweden
+    NO = "+47"  # Norway
+    FI = "+358"  # Finland
+    PT = "+351"  # Portugal
+    AT = "+43"  # Austria
+    CH = "+41"  # Switzerland
+
+
+class PhoneNumber(str):
+    @classmethod
+    def __get_pydantic_core_schema__(
+        cls, source_type: type[str], handler: GetCoreSchemaHandler
+    ) -> CoreSchema:
+        return core_schema.str_schema(
+            pattern=r"^\d{1,15}$", min_length=1, max_length=15
         )
-        locals()[region] = f"+{code}"
-
-
-class PhoneNumber(constr):
-    __root__: str = Field(..., max_length=20)
 
 
 class EmploymentStatus(str, Enum):
@@ -35,5 +60,5 @@ class Client(BaseModel):
     address: Address
     employment_status: EmploymentStatus
     annual_income: MonetaryAmount
-    created_at: DatetimeStr
-    updated_at: DatetimeStr
+    created_at: Datetime
+    updated_at: Datetime
