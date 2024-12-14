@@ -168,12 +168,6 @@ class AccountType(str, Enum):
     OTHER = "OTHER"
 
 
-class ExchangeRate(BaseModel):
-    from_currency: Currency
-    to_currency: Currency
-    rate: Decimal = Field(..., decimal_places=5)
-
-
 class BankStatementData(BaseModel):
     type: DocumentType = DocumentType.BANK_STATEMENT
     """Generic international bank statement data"""
@@ -195,7 +189,6 @@ class BankStatementData(BaseModel):
     # Additional international fields
     iban: Optional[str] = None
     currency: Currency
-    exchange_rates: Optional[List[ExchangeRate]] = None
 
     analysis_results: Optional[AnalysisResults] = None
 

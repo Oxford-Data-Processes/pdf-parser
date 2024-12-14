@@ -12,7 +12,6 @@ from .document_metadata import (
     AnalysisResults,
     BankIdentifier,
     AccountType,
-    ExchangeRate,
     BankStatementData,
     DeductionType,
     PayrollDeduction,
@@ -127,13 +126,6 @@ def test_create_valid_bank_statement_data():
         total_money_out=MonetaryAmount(amount=150000, currency=Currency.GBP),
         overdraft_limit=MonetaryAmount(amount=200000, currency=Currency.GBP),
         currency=Currency.GBP,
-        exchange_rates=[
-            ExchangeRate(
-                from_currency=Currency.GBP,
-                to_currency=Currency.EUR,
-                rate=Decimal("1.16"),
-            )
-        ],
     )
     assert bank_statement.type == DocumentType.BANK_STATEMENT
     assert bank_statement.bank_identifier.swift_bic == "NWBKGB2L"
