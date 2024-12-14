@@ -102,5 +102,13 @@ class MonetaryAmount(BaseModel):
 
     amount: int
     currency: Currency
-    decimal_places: int
-    decimal_amount: float
+
+    @property
+    def decimal_places(self) -> int:
+        if self.currency == Currency.GBP:
+            return 2
+        return 0
+
+    @property
+    def decimal_amount(self) -> float:
+        return float(self.amount) / 10**self.decimal_places
