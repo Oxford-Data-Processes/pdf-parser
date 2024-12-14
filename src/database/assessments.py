@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Literal
 from .shared_models import (
     MonetaryAmount,
     DateStr,
@@ -65,12 +65,12 @@ class Income(BaseModel):
 
 class CategoryBreakdown(BaseModel):
     total: MonetaryAmount
-    subcategories: Dict[TransactionSubcategory, MonetaryAmount]
+    subcategories: Dict[Literal[TransactionSubcategory], MonetaryAmount]
 
 
 class Costs(BaseModel):
     total: MonetaryAmount
-    categories: Dict[TransactionCategory, CategoryBreakdown]
+    categories: Dict[Literal[TransactionCategory], CategoryBreakdown]
 
 
 class Expenses(BaseModel):
