@@ -9,15 +9,18 @@ from database.assessments import (
     AssessmentData,
     AssessmentRow,
     AnalysisPeriod,
+    AssessmentType,
     IncomeSourceType,
+    DisposableIncome,
     Frequency,
     MonthlyAverages,
     IncomeTrend,
-    FixedCosts,
-    VariableCosts,
+    TrendType,
+    Costs,
     AffordabilityMetrics,
     RiskAssessmentMetrics,
     PositiveFactor,
+    CategoryBreakdown,
 )
 from database.shared_models import MonetaryAmount
 from database.document_metadata import TransactionCategory
@@ -49,11 +52,11 @@ def test_create_valid_income():
 
 def test_create_valid_expenses():
     expenses = Expenses(
-        fixed_costs=FixedCosts(
+        fixed_costs=Costs(
             total=MonetaryAmount(amount=27999, currency="GBP"),
             categories={
                 TransactionCategory.HOUSING.value: CategoryBreakdown(
-                    total="27999",
+                    total=MonetaryAmount(amount=27999, currency="GBP"),
                     subcategories={
                         "Insurance": MonetaryAmount(amount=0, currency="GBP"),
                         "Utilities": MonetaryAmount(amount=3912, currency="GBP"),
@@ -62,7 +65,7 @@ def test_create_valid_expenses():
                 )
             },
         ),
-        variable_costs=VariableCosts(
+        variable_costs=Costs(
             total=MonetaryAmount(amount=77512, currency="GBP"),
             categories={
                 TransactionCategory.FOOD.value: MonetaryAmount(
@@ -107,11 +110,11 @@ def test_create_valid_assessment_data():
             annual_projection=MonetaryAmount(amount=2623484, currency="GBP"),
         ),
         expenses=Expenses(
-            fixed_costs=FixedCosts(
+            fixed_costs=Costs(
                 total=MonetaryAmount(amount=27999, currency="GBP"),
                 categories={
                     TransactionCategory.HOUSING.value: CategoryBreakdown(
-                        total="27999",
+                        total=MonetaryAmount(amount=27999, currency="GBP"),
                         subcategories={
                             "Insurance": MonetaryAmount(amount=0, currency="GBP"),
                             "Utilities": MonetaryAmount(amount=3912, currency="GBP"),
@@ -120,7 +123,7 @@ def test_create_valid_assessment_data():
                     )
                 },
             ),
-            variable_costs=VariableCosts(
+            variable_costs=Costs(
                 total=MonetaryAmount(amount=77512, currency="GBP"),
                 categories={
                     TransactionCategory.FOOD.value: MonetaryAmount(
@@ -142,15 +145,15 @@ def test_create_valid_assessment_data():
         ),
         affordability=Affordability(
             metrics=AffordabilityMetrics(
-                savings_ratio=51.81,
+                savings_ratio=Decimal("51.81"),
                 disposable_income=DisposableIncome(
                     current=MonetaryAmount(amount=113446, currency="GBP"),
                     three_month_trend=TrendType.STABLE,
                     six_month_trend=TrendType.STABLE,
                 ),
-                payment_to_income_ratio=48.19,
+                payment_to_income_ratio=Decimal("48.19"),
             ),
-            dti_ratio=12.79,
+            dti_ratio=Decimal("12.79"),
         ),
         risk_assessment=RiskAssessment(
             metrics=RiskAssessmentMetrics(
@@ -199,7 +202,7 @@ def test_create_valid_assessment_row():
                 annual_projection=MonetaryAmount(amount=2623484, currency="GBP"),
             ),
             expenses=Expenses(
-                fixed_costs=FixedCosts(
+                fixed_costs=Costs(
                     total=MonetaryAmount(amount=27999, currency="GBP"),
                     categories={
                         TransactionCategory.HOUSING.value: CategoryBreakdown(
@@ -214,7 +217,7 @@ def test_create_valid_assessment_row():
                         )
                     },
                 ),
-                variable_costs=VariableCosts(
+                variable_costs=Costs(
                     total=MonetaryAmount(amount=77512, currency="GBP"),
                     categories={
                         TransactionCategory.FOOD.value: MonetaryAmount(

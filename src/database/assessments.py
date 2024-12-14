@@ -1,6 +1,6 @@
 from pydantic import BaseModel, Field
 from typing import List, Dict, Any, Optional
-from .shared_models import MonetaryAmount, DateStr
+from .shared_models import MonetaryAmount, DateStr, IdStr, DatetimeStr
 from enum import Enum
 from decimal import Decimal
 from .document_metadata import TransactionCategory, TransactionSubcategory
@@ -58,7 +58,7 @@ class Income(BaseModel):
 
 
 class CategoryBreakdown(BaseModel):
-    total: str
+    total: MonetaryAmount
     subcategories: Dict[TransactionSubcategory, MonetaryAmount]
 
 
@@ -134,9 +134,9 @@ class AssessmentType(str, Enum):
 
 
 class AssessmentRow(BaseModel):
-    id: str
-    client_id: str
+    id: IdStr
+    client_id: IdStr
     assessment_type: AssessmentType
     assessment_data: AssessmentData
-    created_at: str
+    created_at: DatetimeStr
     analysis_period: AnalysisPeriod
