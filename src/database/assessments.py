@@ -65,12 +65,12 @@ class Income(BaseModel):
 
 class CategoryBreakdown(BaseModel):
     total: MonetaryAmount
-    subcategories: Dict[Literal[TransactionSubcategory], MonetaryAmount]
+    subcategories: Dict[str, MonetaryAmount]
 
 
 class Costs(BaseModel):
     total: MonetaryAmount
-    categories: Dict[Literal[TransactionCategory], CategoryBreakdown]
+    categories: Dict[str, CategoryBreakdown]
 
 
 class Expenses(BaseModel):
@@ -94,7 +94,7 @@ class RiskAssessmentMetrics(BaseModel):
     payment_to_income_ratio: Decimal = Field(..., decimal_places=2)
 
 
-class RiskFactorTypes(Enum):
+class RiskFactorTypes(str, Enum):
     DEBT_TO_INCOME_RATIO = "DEBT_TO_INCOME_RATIO"
     SAVINGS_RATIO = "SAVINGS_RATIO"
     DISPOSABLE_INCOME_RATIO = "DISPOSABLE_INCOME_RATIO"

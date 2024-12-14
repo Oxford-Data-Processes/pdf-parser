@@ -1,0 +1,500 @@
+{
+    "$defs": {
+        "Affordability": {
+            "properties": {
+                "metrics": {
+                    "$ref": "#/$defs/AffordabilityMetrics"
+                }
+            },
+            "required": [
+                "metrics"
+            ],
+            "title": "Affordability",
+            "type": "object"
+        },
+        "AffordabilityMetrics": {
+            "properties": {
+                "disposable_income": {
+                    "$ref": "#/$defs/DisposableIncome"
+                }
+            },
+            "required": [
+                "disposable_income"
+            ],
+            "title": "AffordabilityMetrics",
+            "type": "object"
+        },
+        "AnalysisPeriod": {
+            "properties": {
+                "start_date": {
+                    "pattern": "^(19|20)\\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$",
+                    "title": "Start Date",
+                    "type": "string"
+                },
+                "end_date": {
+                    "pattern": "^(19|20)\\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$",
+                    "title": "End Date",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "start_date",
+                "end_date"
+            ],
+            "title": "AnalysisPeriod",
+            "type": "object"
+        },
+        "AssessmentData": {
+            "properties": {
+                "income": {
+                    "$ref": "#/$defs/Income"
+                },
+                "expenses": {
+                    "$ref": "#/$defs/Expenses"
+                },
+                "affordability": {
+                    "$ref": "#/$defs/Affordability"
+                },
+                "risk_assessment": {
+                    "$ref": "#/$defs/RiskAssessment"
+                }
+            },
+            "required": [
+                "income",
+                "expenses",
+                "affordability",
+                "risk_assessment"
+            ],
+            "title": "AssessmentData",
+            "type": "object"
+        },
+        "AssessmentType": {
+            "enum": [
+                "AFFORDABILITY",
+                "RISK",
+                "FULL"
+            ],
+            "title": "AssessmentType",
+            "type": "string"
+        },
+        "CategoryBreakdown": {
+            "properties": {
+                "total": {
+                    "$ref": "#/$defs/MonetaryAmount"
+                },
+                "subcategories": {
+                    "additionalProperties": {
+                        "$ref": "#/$defs/MonetaryAmount"
+                    },
+                    "title": "Subcategories",
+                    "type": "object"
+                }
+            },
+            "required": [
+                "total",
+                "subcategories"
+            ],
+            "title": "CategoryBreakdown",
+            "type": "object"
+        },
+        "Costs": {
+            "properties": {
+                "total": {
+                    "$ref": "#/$defs/MonetaryAmount"
+                },
+                "categories": {
+                    "additionalProperties": {
+                        "$ref": "#/$defs/CategoryBreakdown"
+                    },
+                    "title": "Categories",
+                    "type": "object"
+                }
+            },
+            "required": [
+                "total",
+                "categories"
+            ],
+            "title": "Costs",
+            "type": "object"
+        },
+        "Currency": {
+            "enum": [
+                "USD",
+                "GBP",
+                "EUR"
+            ],
+            "title": "Currency",
+            "type": "string"
+        },
+        "DisposableIncome": {
+            "properties": {
+                "current": {
+                    "$ref": "#/$defs/MonetaryAmount"
+                },
+                "three_month_trend": {
+                    "$ref": "#/$defs/TrendType"
+                },
+                "six_month_trend": {
+                    "$ref": "#/$defs/TrendType"
+                }
+            },
+            "required": [
+                "current",
+                "three_month_trend",
+                "six_month_trend"
+            ],
+            "title": "DisposableIncome",
+            "type": "object"
+        },
+        "Expenses": {
+            "properties": {
+                "fixed_costs": {
+                    "$ref": "#/$defs/Costs"
+                },
+                "variable_costs": {
+                    "$ref": "#/$defs/Costs"
+                },
+                "monthly_averages": {
+                    "$ref": "#/$defs/MonthlyAverages"
+                }
+            },
+            "required": [
+                "fixed_costs",
+                "variable_costs",
+                "monthly_averages"
+            ],
+            "title": "Expenses",
+            "type": "object"
+        },
+        "Frequency": {
+            "enum": [
+                "MONTHLY",
+                "YEARLY"
+            ],
+            "title": "Frequency",
+            "type": "string"
+        },
+        "Income": {
+            "properties": {
+                "income_trend": {
+                    "$ref": "#/$defs/IncomeTrend"
+                },
+                "income_sources": {
+                    "items": {
+                        "$ref": "#/$defs/IncomeSource"
+                    },
+                    "title": "Income Sources",
+                    "type": "array"
+                },
+                "stability_score": {
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "Stability Score"
+                },
+                "monthly_averages": {
+                    "$ref": "#/$defs/MonthlyAverages"
+                },
+                "annual_projection": {
+                    "$ref": "#/$defs/MonetaryAmount"
+                }
+            },
+            "required": [
+                "income_trend",
+                "income_sources",
+                "stability_score",
+                "monthly_averages",
+                "annual_projection"
+            ],
+            "title": "Income",
+            "type": "object"
+        },
+        "IncomeSource": {
+            "properties": {
+                "name": {
+                    "$ref": "#/$defs/IncomeSourceType"
+                },
+                "frequency": {
+                    "$ref": "#/$defs/Frequency"
+                },
+                "monthly_average": {
+                    "$ref": "#/$defs/MonetaryAmount"
+                },
+                "reliability_score": {
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "Reliability Score"
+                }
+            },
+            "required": [
+                "name",
+                "frequency",
+                "monthly_average",
+                "reliability_score"
+            ],
+            "title": "IncomeSource",
+            "type": "object"
+        },
+        "IncomeSourceType": {
+            "enum": [
+                "SALARY",
+                "BUSINESS",
+                "INVESTMENT",
+                "OTHER"
+            ],
+            "title": "IncomeSourceType",
+            "type": "string"
+        },
+        "IncomeTrend": {
+            "enum": [
+                "INCREASING",
+                "DECREASING",
+                "STABLE"
+            ],
+            "title": "IncomeTrend",
+            "type": "string"
+        },
+        "MonetaryAmount": {
+            "description": "Amount with currency",
+            "properties": {
+                "amount": {
+                    "title": "Amount",
+                    "type": "integer"
+                },
+                "currency": {
+                    "$ref": "#/$defs/Currency"
+                }
+            },
+            "required": [
+                "amount",
+                "currency"
+            ],
+            "title": "MonetaryAmount",
+            "type": "object"
+        },
+        "MonthlyAverages": {
+            "properties": {
+                "last_3_months": {
+                    "$ref": "#/$defs/MonetaryAmount"
+                },
+                "last_6_months": {
+                    "$ref": "#/$defs/MonetaryAmount"
+                },
+                "last_12_months": {
+                    "$ref": "#/$defs/MonetaryAmount"
+                }
+            },
+            "required": [
+                "last_3_months",
+                "last_6_months",
+                "last_12_months"
+            ],
+            "title": "MonthlyAverages",
+            "type": "object"
+        },
+        "PositiveFactor": {
+            "properties": {
+                "type": {
+                    "$ref": "#/$defs/RiskFactorTypes"
+                },
+                "message": {
+                    "title": "Message",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "type",
+                "message"
+            ],
+            "title": "PositiveFactor",
+            "type": "object"
+        },
+        "RiskAssessment": {
+            "properties": {
+                "metrics": {
+                    "$ref": "#/$defs/RiskAssessmentMetrics"
+                },
+                "risk_factors": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "title": "Risk Factors",
+                    "type": "array"
+                },
+                "positive_factors": {
+                    "items": {
+                        "$ref": "#/$defs/PositiveFactor"
+                    },
+                    "title": "Positive Factors",
+                    "type": "array"
+                },
+                "overall_risk_level": {
+                    "$ref": "#/$defs/RiskLevel"
+                },
+                "affordability_buffer": {
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "Affordability Buffer"
+                },
+                "income_stability_score": {
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "Income Stability Score"
+                }
+            },
+            "required": [
+                "metrics",
+                "risk_factors",
+                "positive_factors",
+                "overall_risk_level",
+                "affordability_buffer",
+                "income_stability_score"
+            ],
+            "title": "RiskAssessment",
+            "type": "object"
+        },
+        "RiskAssessmentMetrics": {
+            "properties": {
+                "debt_to_income_ratio": {
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "Debt To Income Ratio"
+                },
+                "savings_ratio": {
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "Savings Ratio"
+                },
+                "disposable_income_ratio": {
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "Disposable Income Ratio"
+                },
+                "payment_to_income_ratio": {
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "Payment To Income Ratio"
+                }
+            },
+            "required": [
+                "debt_to_income_ratio",
+                "savings_ratio",
+                "disposable_income_ratio",
+                "payment_to_income_ratio"
+            ],
+            "title": "RiskAssessmentMetrics",
+            "type": "object"
+        },
+        "RiskFactorTypes": {
+            "enum": [
+                "DEBT_TO_INCOME_RATIO",
+                "SAVINGS_RATIO",
+                "DISPOSABLE_INCOME_RATIO",
+                "PAYMENT_TO_INCOME_RATIO"
+            ],
+            "title": "RiskFactorTypes",
+            "type": "string"
+        },
+        "RiskLevel": {
+            "enum": [
+                "LOW",
+                "MEDIUM",
+                "HIGH"
+            ],
+            "title": "RiskLevel",
+            "type": "string"
+        },
+        "TrendType": {
+            "enum": [
+                "STABLE",
+                "INCREASING",
+                "DECREASING"
+            ],
+            "title": "TrendType",
+            "type": "string"
+        }
+    },
+    "properties": {
+        "id": {
+            "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[1-5][a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+            "title": "Id",
+            "type": "string"
+        },
+        "client_id": {
+            "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[1-5][a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
+            "title": "Client Id",
+            "type": "string"
+        },
+        "assessment_type": {
+            "$ref": "#/$defs/AssessmentType"
+        },
+        "assessment_data": {
+            "$ref": "#/$defs/AssessmentData"
+        },
+        "created_at": {
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?Z$",
+            "title": "Created At",
+            "type": "string"
+        },
+        "analysis_period": {
+            "$ref": "#/$defs/AnalysisPeriod"
+        }
+    },
+    "required": [
+        "id",
+        "client_id",
+        "assessment_type",
+        "assessment_data",
+        "created_at",
+        "analysis_period"
+    ],
+    "title": "Assessment",
+    "type": "object"
+}
