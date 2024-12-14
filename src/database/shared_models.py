@@ -100,9 +100,7 @@ class Currency(str, Enum):
 class MonetaryAmount(BaseModel):
     """Amount with currency"""
 
-    amount: str
+    amount: int
     currency: Currency
-
-    @property
-    def decimal_amount(self) -> Decimal:
-        return Decimal(self.amount)
+    decimal_places: int
+    decimal_amount: float

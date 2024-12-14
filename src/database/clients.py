@@ -35,5 +35,5 @@ class Client(BaseModel):
     address: Address
     employment_status: EmploymentStatus
     annual_income: MonetaryAmount
-    created_at: Datetime
-    updated_at: Datetime
+    created_at: DatetimeStr
+    updated_at: DatetimeStr
