@@ -1,0 +1,43 @@
+{
+    "type": "BANK_STATEMENT",
+    "bank_identifier": {
+        "swift_bic": "NWBKGB2L",
+        "local_bank_code": "123456",
+        "local_bank_code_type": "SORT_CODE"
+    },
+    "account_type": "CURRENT",
+    "statement_period_start": "2023-12-01",
+    "statement_period_end": "2023-12-31",
+    "account_number": "12345678",
+    "account_holder": "John Doe",
+    "start_balance": {
+        "amount": 500000,
+        "currency": "GBP"
+    },
+    "end_balance": {
+        "amount": 450000,
+        "currency": "GBP"
+    },
+    "total_money_in": {
+        "amount": 100000,
+        "currency": "GBP"
+    },
+    "total_money_out": {
+        "amount": 150000,
+        "currency": "GBP"
+    },
+    "overdraft_limit": {
+        "amount": 200000,
+        "currency": "GBP"
+    },
+    "iban": null,
+    "currency": "GBP",
+    "exchange_rates": [
+        {
+            "from_currency": "GBP",
+            "to_currency": "EUR",
+            "rate": 1.16
+        }
+    ],
+    "analysis_results": null
+}

@@ -1,0 +1,60 @@
+{
+    "type": "PAYSLIP",
+    "pay_period_start": "2023-12-01",
+    "pay_period_end": "2023-12-31",
+    "process_date": "2023-12-31",
+    "employer_name": "ACME Corp",
+    "employer_tax_id": "123/AB456",
+    "employer_registration": null,
+    "employee_id": "EMP123",
+    "tax_identifier": "AB123456C",
+    "local_tax_code": "1250L",
+    "currency": "GBP",
+    "gross_pay": {
+        "amount": 300000,
+        "currency": "GBP"
+    },
+    "net_pay": {
+        "amount": 240000,
+        "currency": "GBP"
+    },
+    "gross_ytd": {
+        "amount": 2700000,
+        "currency": "GBP"
+    },
+    "net_ytd": {
+        "amount": 2160000,
+        "currency": "GBP"
+    },
+    "deductions": [
+        {
+            "type": "TAX",
+            "amount": {
+                "amount": 40000,
+                "currency": "GBP"
+            },
+            "year_to_date": {
+                "amount": 360000,
+                "currency": "GBP"
+            },
+            "description": "Income Tax",
+            "local_type": "PAYE"
+        },
+        {
+            "type": "SOCIAL_SECURITY",
+            "amount": {
+                "amount": 20000,
+                "currency": "GBP"
+            },
+            "year_to_date": {
+                "amount": 180000,
+                "currency": "GBP"
+            },
+            "description": "National Insurance",
+            "local_type": "NI"
+        }
+    ],
+    "tax_system": "UK",
+    "country_code": "GB",
+    "payment_method": null
+}

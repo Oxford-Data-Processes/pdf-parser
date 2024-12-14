@@ -4,6 +4,7 @@ from .shared_models import DatetimeStr, DateStr, MonetaryAmount, Currency
 from .documents import DocumentType
 from enum import Enum
 from decimal import Decimal
+from typing_extensions import Annotated
 
 
 class TransactionTypes(str, Enum):
@@ -134,18 +135,27 @@ class AnalysisResults(BaseModel):
     categorised_transactions: CategorisedTransactions
 
 
+SortCodeStr = Annotated[str, Field(pattern=r"^\d{2}-\d{2}-\d{2}$")]
+
+RoutingNumberStr = Annotated[str, Field(pattern=r"^\d{9}$")]
+
+BSBNumberStr = Annotated[str, Field(pattern=r"^\d{6}$")]
+
+BicStr = Annotated[str, Field(pattern=r"^[A-Z]{6}[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3})?$")]
+
+
+class BankCodeType(str, Enum):
+    SORT_CODE = "SORT_CODE"
+    ROUTING_NUMBER = "ROUTING_NUMBER"
+    BSB = "BSB"
+
+
 class BankIdentifier(BaseModel):
     """International bank identification"""
 
-    swift_bic: Optional[str] = Field(
-        None, pattern=r"^[A-Z]{6}[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3})?$"
-    )
-    local_bank_code: Optional[str] = (
-        None  # e.g., Sort Code (UK), Routing Number (US), BSB (Australia)
-    )
-    local_bank_code_type: Optional[str] = (
-        None  # e.g., "SORT_CODE", "ROUTING_NUMBER", "BSB"
-    )
+    swift_bic: Optional[BicStr] = None
+    local_bank_code: Optional[Union[SortCodeStr, RoutingNumberStr, BSBNumberStr]] = None
+    local_bank_code_type: Optional[BankCodeType] = None
 
 
 class AccountType(str, Enum):
