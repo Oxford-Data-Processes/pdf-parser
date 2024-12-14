@@ -1,7 +1,7 @@
 from pydantic import BaseModel, Field
-from typing import List
-from shared_models import Id, MonetaryAmount, Date
-from document_metadata import TransactionCategory, TransactionSubcategory
+from typing import List, Literal
+from database.shared_models import IdStr, MonetaryAmount, DateStr
+from database.document_metadata import TransactionCategory, TransactionSubcategory
 from decimal import Decimal
 from enum import Enum
 
@@ -9,7 +9,7 @@ from enum import Enum
 class BaseSalary(BaseModel):
     annual: MonetaryAmount
     monthly: MonetaryAmount
-    stability: Decimal = Field(..., decimal_places=2)
+    stability: Decimal = Field(..., decimal_places=2, ge=0, le=1)
 
 
 class IncomeAnalysis(BaseModel):
@@ -23,7 +23,7 @@ class ExpenseBreakdown(BaseModel):
 
 
 class ExpenseCategory(BaseModel):
-    category: TransactionCategory.EXPENSE
+    category: Literal[TransactionCategory.EXPENSE]
     total: MonetaryAmount
     breakdown: List[ExpenseBreakdown]
 
@@ -35,18 +35,18 @@ class ExpenseAnalysis(BaseModel):
 
 
 class RiskMetrics(BaseModel):
-    fixed_cost_ratio: Decimal = Field(..., decimal_places=2)
-    debt_to_income_ratio: Decimal = Field(..., decimal_places=2)
-    income_stability_score: Decimal = Field(..., decimal_places=2)
+    fixed_cost_ratio: Decimal = Field(..., decimal_places=2, ge=0, le=1)
+    debt_to_income_ratio: Decimal = Field(..., decimal_places=2, ge=0, le=1)
+    income_stability_score: Decimal = Field(..., decimal_places=2, ge=0, le=1)
 
 
-class RiskFactors(Enum):
+class RiskFactors(str, Enum):
     FIXED_COSTS = "FIXED_COSTS"
     DEBT_TO_INCOME_RATIO = "DEBT_TO_INCOME_RATIO"
     INCOME_STABILITY = "INCOME_STABILITY"
 
 
-class RiskLevel(Enum):
+class RiskLevel(str, Enum):
     LOW = "LOW"
     MEDIUM = "MEDIUM"
     HIGH = "HIGH"
@@ -59,9 +59,9 @@ class RiskAssessment(BaseModel):
 
 
 class FinancialAnalysis(BaseModel):
-    id: Id
-    client_id: Id
-    analysis_date: Date
+    id: IdStr
+    client_id: IdStr
+    analysis_date: DateStr
     income_analysis: IncomeAnalysis
     expense_analysis: ExpenseAnalysis
     risk_assessment: RiskAssessment
