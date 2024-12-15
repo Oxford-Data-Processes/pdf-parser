@@ -16,6 +16,55 @@ export type Currency = "USD" | "GBP" | "EUR";
 export type ReliabilityScore = number | string;
 export type IncomeSources = IncomeSource[];
 export type StabilityScore = number | string;
+export type TransactionCategory =
+  | "INCOME"
+  | "EXPENSE"
+  | "TRANSFERS"
+  | "HEALTHCARE"
+  | "TRANSPORT"
+  | "FOOD"
+  | "HOUSING"
+  | "SHOPPING"
+  | "MISCELLANEOUS"
+  | "DIGITAL_SERVICES"
+  | "ENTERTAINMENT"
+  | "UNCATEGORISED";
+export type TransactionSubcategory =
+  | "AUTOMATED_SAVINGS"
+  | "BANK_TRANSFER"
+  | "SALARY"
+  | "REFUND"
+  | "PERSONAL_TRANSFER"
+  | "FITNESS"
+  | "CAR"
+  | "PUBLIC"
+  | "MICROMOBILITY"
+  | "GROCERIES"
+  | "TAKEAWAY"
+  | "DINING_OUT"
+  | "UTILITIES"
+  | "RENT"
+  | "MORTGAGE"
+  | "INSURANCE"
+  | "MAINTENANCE"
+  | "ONLINE_RETAIL"
+  | "IN_STORE_RETAIL"
+  | "CLOTHING"
+  | "ELECTRONICS"
+  | "CASH"
+  | "FEES"
+  | "SUBSCRIPTIONS"
+  | "SOFTWARE"
+  | "STREAMING"
+  | "ACTIVITIES"
+  | "EVENTS"
+  | "HOBBIES"
+  | "CARE"
+  | "EDUCATION"
+  | "GIFTS"
+  | "OTHER";
+export type Subcategories = SubcategoryBreakdown[];
+export type Categories = CategoryBreakdown[];
 export type TrendType = "STABLE" | "INCREASING" | "DECREASING";
 export type DebtToIncomeRatio = number | string;
 export type SavingsRatio = number | string;
@@ -87,21 +136,30 @@ export interface Expenses {
   monthly_averages: MonthlyAverages;
   [k: string]: unknown;
 }
+/**
+ * Represents the total costs and breakdown by categories.
+ */
 export interface Costs {
   total: MonetaryAmount;
   categories: Categories;
   [k: string]: unknown;
 }
-export interface Categories {
-  [k: string]: CategoryBreakdown;
-}
+/**
+ * Represents the breakdown of a single category with its subcategories.
+ */
 export interface CategoryBreakdown {
+  category: TransactionCategory;
   total: MonetaryAmount;
   subcategories: Subcategories;
   [k: string]: unknown;
 }
-export interface Subcategories {
-  [k: string]: MonetaryAmount;
+/**
+ * Represents the breakdown of a single subcategory.
+ */
+export interface SubcategoryBreakdown {
+  subcategory: TransactionSubcategory;
+  amount: MonetaryAmount;
+  [k: string]: unknown;
 }
 export interface Affordability {
   metrics: AffordabilityMetrics;

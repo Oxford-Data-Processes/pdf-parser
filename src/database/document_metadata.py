@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from typing import Optional, Dict, List, Union
+from typing import Optional, List, Union
 from .shared_models import (
     DatetimeStr,
     DateStr,
