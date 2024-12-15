@@ -1,6 +1,6 @@
 from decimal import Decimal
 from datetime import datetime
-from database.assessments import (
+from database.assessment import (
     Income,
     Expenses,
     Affordability,
@@ -33,7 +33,7 @@ from database.shared_models import (
     dump_json,
     Currency,
 )
-from database.document_metadata import TransactionCategory, TransactionSubcategory
+from database.documentmetadata import TransactionCategory, TransactionSubcategory
 
 
 def test_create_valid_income():
@@ -342,12 +342,10 @@ def test_create_valid_assessment_row():
             end_date=DateStr("2023-12-31"),
         ),
     )
-    dump_json("assessments_valid", row)
+    dump_json("assessment_valid", row)
     assert isinstance(row.assessment_data, AssessmentData)
     assert isinstance(row.analysis_period, AnalysisPeriod)
     assert len(row.assessment_data.expenses.fixed_costs.categories) == 1
     assert len(row.assessment_data.expenses.variable_costs.categories) == 3
-
-    dump_json("assessments_valid", row)
     assert isinstance(row.assessment_data, AssessmentData)
     assert isinstance(row.analysis_period, AnalysisPeriod)

@@ -1,6 +1,6 @@
 import pytest
 from datetime import datetime
-from .subscriptions import (
+from .subscription import (
     Subscription,
 )
 from .shared_models import (

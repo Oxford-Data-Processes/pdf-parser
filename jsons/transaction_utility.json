@@ -1,0 +1,16 @@
+{
+    "date": "2023-12-02",
+    "type": "DD",
+    "amount": {
+        "amount": 15000,
+        "currency": "GBP"
+    },
+    "balance": {
+        "amount": 285000,
+        "currency": "GBP"
+    },
+    "category": "HOUSING",
+    "confidence": 0.97,
+    "description": "BRITISH GAS ENERGY",
+    "subcategory": "UTILITIES"
+}

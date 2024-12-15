@@ -1,6 +1,6 @@
 import pytest
 from datetime import datetime
-from database.users import (
+from database.user import (
     PaymentMethodType,
     CardBrand,
     LastFourDigits,

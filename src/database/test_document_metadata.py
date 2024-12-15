@@ -1,7 +1,7 @@
 import pytest
 from datetime import datetime
 from decimal import Decimal
-from .document_metadata import (
+from .documentmetadata import (
     Transaction,
     TransactionTypes,
     TransactionCategory,
@@ -205,7 +205,7 @@ def test_create_valid_document_metadata():
         created_at=DatetimeStr(datetime.now().isoformat() + "Z"),
         updated_at=DatetimeStr(datetime.now().isoformat() + "Z"),
     )
-    dump_json("document_metadata_payslip", metadata)
+    dump_json("documentmetadata_payslip", metadata)
     assert metadata.document_type == DocumentType.PAYSLIP
     assert isinstance(metadata.document_metadata, PayslipData)
 
@@ -302,7 +302,7 @@ def test_create_valid_document_metadata_bank_statement():
         created_at=DatetimeStr(datetime.now().isoformat() + "Z"),
         updated_at=DatetimeStr(datetime.now().isoformat() + "Z"),
     )
-    dump_json("document_metadata_bank_statement", metadata)
+    dump_json("documentmetadata_bank_statement", metadata)
 
     # Basic metadata assertions
     assert metadata.document_type == DocumentType.BANK_STATEMENT

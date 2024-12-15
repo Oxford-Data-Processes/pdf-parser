@@ -1,6 +1,6 @@
 import pytest
 from datetime import datetime
-from .documents import (
+from .document import (
     Document,
     DocumentStatus,
     DocumentType,

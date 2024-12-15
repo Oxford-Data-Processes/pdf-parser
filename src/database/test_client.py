@@ -1,7 +1,7 @@
 import pytest
 from datetime import datetime
 from decimal import Decimal
-from .clients import (
+from .client import (
     Client,
     EmploymentStatus,
     PhoneCountryCode,
@@ -46,7 +46,7 @@ def test_create_valid_client():
         created_at=DatetimeStr(datetime.now().isoformat() + "Z"),
         updated_at=DatetimeStr(datetime.now().isoformat() + "Z"),
     )
-    dump_json("clients_valid", client)
+    dump_json("client_valid", client)
     assert client.first_name == "Jeff"
     assert client.last_name == "Marsters"
     assert client.email == "jeff.marsters@example.com"
@@ -78,7 +78,7 @@ def test_create_valid_client_self_employed():
         created_at=DatetimeStr(datetime.now().isoformat() + "Z"),
         updated_at=DatetimeStr(datetime.now().isoformat() + "Z"),
     )
-    dump_json("clients_self_employed", client)
+    dump_json("client_self_employed", client)
     assert client.first_name == "Jane"
     assert client.last_name == "Smith"
     assert client.email == "jane.smith@example.com"
@@ -110,7 +110,7 @@ def test_create_valid_client_international():
         created_at=DatetimeStr(datetime.now().isoformat() + "Z"),
         updated_at=DatetimeStr(datetime.now().isoformat() + "Z"),
     )
-    dump_json("clients_international", client)
+    dump_json("client_international", client)
     assert client.first_name == "Hans"
     assert client.last_name == "Schmidt"
     assert client.email == "hans.schmidt@example.com"

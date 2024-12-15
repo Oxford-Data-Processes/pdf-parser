@@ -7,7 +7,7 @@ from database.shared_models import (
     Table,
     PercentageDecimal,
 )
-from database.document_metadata import TransactionCategory, TransactionSubcategory
+from database.documentmetadata import TransactionCategory, TransactionSubcategory
 from decimal import Decimal
 from enum import Enum
 

@@ -1,0 +1,14 @@
+{
+    "income": {
+        "amount": 500000,
+        "currency": "GBP"
+    },
+    "savings": {
+        "amount": 50000,
+        "currency": "GBP"
+    },
+    "expenses": {
+        "amount": 300000,
+        "currency": "GBP"
+    }
+}

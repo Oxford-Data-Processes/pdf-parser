@@ -1,0 +1,16 @@
+{
+    "date": "2023-12-03",
+    "type": "TFR",
+    "amount": {
+        "amount": 50000,
+        "currency": "GBP"
+    },
+    "balance": {
+        "amount": 235000,
+        "currency": "GBP"
+    },
+    "category": "TRANSFERS",
+    "confidence": 0.99,
+    "description": "TRANSFER TO SAVINGS",
+    "subcategory": "AUTOMATED_SAVINGS"
+}

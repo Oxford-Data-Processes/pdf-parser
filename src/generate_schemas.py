@@ -4,13 +4,13 @@ import os
 from typing import Dict, Any, Set, Type
 from enum import Enum
 
-from database.clients import Client
-from database.financial_analysis import FinancialAnalysis
-from database.document_metadata import DocumentMetadata
-from database.assessments import Assessment
-from database.documents import Document
-from database.subscriptions import Subscription
-from database.users import User
+from database.client import Client
+from database.financialanalysis import FinancialAnalysis
+from database.documentmetadata import DocumentMetadata
+from database.assessment import Assessment
+from database.document import Document
+from database.subscription import Subscription
+from database.user import User
 
 
 def write_schema_to_json(
