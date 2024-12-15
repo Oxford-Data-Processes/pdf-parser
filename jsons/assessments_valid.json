@@ -42,57 +42,70 @@
                     "amount": 27999,
                     "currency": "GBP"
                 },
-                "categories": {
-                    "HOUSING": {
+                "categories": [
+                    {
+                        "category": "HOUSING",
                         "total": {
                             "amount": 27999,
                             "currency": "GBP"
                         },
-                        "subcategories": {
-                            "INSURANCE": {
-                                "amount": 0,
-                                "currency": "GBP"
+                        "subcategories": [
+                            {
+                                "subcategory": "INSURANCE",
+                                "amount": {
+                                    "amount": 0,
+                                    "currency": "GBP"
+                                }
                             },
-                            "UTILITIES": {
-                                "amount": 3912,
-                                "currency": "GBP"
+                            {
+                                "subcategory": "UTILITIES",
+                                "amount": {
+                                    "amount": 3912,
+                                    "currency": "GBP"
+                                }
                             },
-                            "RENT": {
-                                "amount": 0,
-                                "currency": "GBP"
+                            {
+                                "subcategory": "RENT",
+                                "amount": {
+                                    "amount": 0,
+                                    "currency": "GBP"
+                                }
                             }
-                        }
+                        ]
                     }
-                }
+                ]
             },
             "variable_costs": {
                 "total": {
                     "amount": 77512,
                     "currency": "GBP"
                 },
-                "categories": {
-                    "FOOD": {
+                "categories": [
+                    {
+                        "category": "FOOD",
                         "total": {
                             "amount": 62136,
                             "currency": "GBP"
                         },
-                        "subcategories": {}
+                        "subcategories": []
                     },
-                    "ENTERTAINMENT": {
+                    {
+                        "category": "ENTERTAINMENT",
                         "total": {
                             "amount": 480,
                             "currency": "GBP"
                         },
-                        "subcategories": {}
+                        "subcategories": []
                     },
-                    "TRANSPORT": {
+                    {
+                        "category": "TRANSPORT",
                         "total": {
                             "amount": 24087,
                             "currency": "GBP"
                         },
-                        "subcategories": {}
+                        "subcategories": []
                     }
-                }
+                ]
             },
             "monthly_averages": {
                 "last_3_months": {
@@ -140,7 +153,7 @@
             "income_stability_score": 98.96
         }
     },
-    "created_at": "2024-12-14T12:23:11.035913Z",
+    "created_at": "2024-12-15T07:34:44.239207Z",
     "analysis_period": {
         "start_date": "2023-01-01",
         "end_date": "2023-12-31"

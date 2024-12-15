@@ -78,19 +78,24 @@
             "type": "string"
         },
         "CategoryBreakdown": {
+            "description": "Represents the breakdown of a single category with its subcategories.",
             "properties": {
+                "category": {
+                    "$ref": "#/$defs/TransactionCategory"
+                },
                 "total": {
                     "$ref": "#/$defs/MonetaryAmount"
                 },
                 "subcategories": {
-                    "additionalProperties": {
-                        "$ref": "#/$defs/MonetaryAmount"
+                    "items": {
+                        "$ref": "#/$defs/SubcategoryBreakdown"
                     },
                     "title": "Subcategories",
-                    "type": "object"
+                    "type": "array"
                 }
             },
             "required": [
+                "category",
                 "total",
                 "subcategories"
             ],
@@ -98,16 +103,17 @@
             "type": "object"
         },
         "Costs": {
+            "description": "Represents the total costs and breakdown by categories.",
             "properties": {
                 "total": {
                     "$ref": "#/$defs/MonetaryAmount"
                 },
                 "categories": {
-                    "additionalProperties": {
+                    "items": {
                         "$ref": "#/$defs/CategoryBreakdown"
                     },
                     "title": "Categories",
-                    "type": "object"
+                    "type": "array"
                 }
             },
             "required": [
@@ -449,6 +455,80 @@
                 "HIGH"
             ],
             "title": "RiskLevel",
+            "type": "string"
+        },
+        "SubcategoryBreakdown": {
+            "description": "Represents the breakdown of a single subcategory.",
+            "properties": {
+                "subcategory": {
+                    "$ref": "#/$defs/TransactionSubcategory"
+                },
+                "amount": {
+                    "$ref": "#/$defs/MonetaryAmount"
+                }
+            },
+            "required": [
+                "subcategory",
+                "amount"
+            ],
+            "title": "SubcategoryBreakdown",
+            "type": "object"
+        },
+        "TransactionCategory": {
+            "enum": [
+                "INCOME",
+                "EXPENSE",
+                "TRANSFERS",
+                "HEALTHCARE",
+                "TRANSPORT",
+                "FOOD",
+                "HOUSING",
+                "SHOPPING",
+                "MISCELLANEOUS",
+                "DIGITAL_SERVICES",
+                "ENTERTAINMENT",
+                "UNCATEGORISED"
+            ],
+            "title": "TransactionCategory",
+            "type": "string"
+        },
+        "TransactionSubcategory": {
+            "enum": [
+                "AUTOMATED_SAVINGS",
+                "BANK_TRANSFER",
+                "SALARY",
+                "REFUND",
+                "PERSONAL_TRANSFER",
+                "FITNESS",
+                "CAR",
+                "PUBLIC",
+                "MICROMOBILITY",
+                "GROCERIES",
+                "TAKEAWAY",
+                "DINING_OUT",
+                "UTILITIES",
+                "RENT",
+                "MORTGAGE",
+                "INSURANCE",
+                "MAINTENANCE",
+                "ONLINE_RETAIL",
+                "IN_STORE_RETAIL",
+                "CLOTHING",
+                "ELECTRONICS",
+                "CASH",
+                "FEES",
+                "SUBSCRIPTIONS",
+                "SOFTWARE",
+                "STREAMING",
+                "ACTIVITIES",
+                "EVENTS",
+                "HOBBIES",
+                "CARE",
+                "EDUCATION",
+                "GIFTS",
+                "OTHER"
+            ],
+            "title": "TransactionSubcategory",
             "type": "string"
         },
         "TrendType": {
