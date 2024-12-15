@@ -342,8 +342,17 @@
         },
         "MonetaryAmount": {
             "description": "Amount with currency",
+            "examples": [
+                {
+                    "amount": 10000,
+                    "currency": "GBP"
+                }
+            ],
             "properties": {
                 "amount": {
+                    "description": "Amount in smallest currency unit (e.g., cents)",
+                    "maximum": 1000000000000,
+                    "minimum": 0,
                     "title": "Amount",
                     "type": "integer"
                 },
@@ -706,6 +715,8 @@
                     "title": "Confidence"
                 },
                 "description": {
+                    "maxLength": 1000,
+                    "minLength": 1,
                     "title": "Description",
                     "type": "string"
                 },
@@ -813,6 +824,7 @@
             "type": "string"
         },
         "document_id": {
+            "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[1-5][a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
             "title": "Document Id",
             "type": "string"
         },

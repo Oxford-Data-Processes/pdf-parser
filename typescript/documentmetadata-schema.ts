@@ -38,6 +38,9 @@ export type StatementPeriodStart = string | null;
 export type StatementPeriodEnd = string | null;
 export type AccountNumber = string | null;
 export type AccountHolder = string | null;
+/**
+ * Amount in smallest currency unit (e.g., cents)
+ */
 export type Amount = number;
 export type Currency = "USD" | "GBP" | "EUR";
 export type Iban = string | null;

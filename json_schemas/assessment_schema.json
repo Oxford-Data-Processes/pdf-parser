@@ -273,8 +273,17 @@
         },
         "MonetaryAmount": {
             "description": "Amount with currency",
+            "examples": [
+                {
+                    "amount": 10000,
+                    "currency": "GBP"
+                }
+            ],
             "properties": {
                 "amount": {
+                    "description": "Amount in smallest currency unit (e.g., cents)",
+                    "maximum": 1000000000000,
+                    "minimum": 0,
                     "title": "Amount",
                     "type": "integer"
                 },

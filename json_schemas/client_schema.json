@@ -5,6 +5,7 @@
                 "address_line_1": {
                     "maxLength": 100,
                     "minLength": 1,
+                    "pattern": "^[a-zA-Z0-9\\s\\-\\.,#'\u00df\u00e4\u00f6\u00fc\u00c4\u00d6\u00dc]+$",
                     "title": "Address Line 1",
                     "type": "string"
                 },
@@ -13,6 +14,7 @@
                         {
                             "maxLength": 100,
                             "minLength": 1,
+                            "pattern": "^[a-zA-Z0-9\\s\\-\\.,#'\u00df\u00e4\u00f6\u00fc\u00c4\u00d6\u00dc]+$",
                             "type": "string"
                         },
                         {
@@ -25,6 +27,7 @@
                 "city": {
                     "maxLength": 100,
                     "minLength": 1,
+                    "pattern": "^[a-zA-Z\\s\\-']+$",
                     "title": "City",
                     "type": "string"
                 },
@@ -116,8 +119,17 @@
         },
         "MonetaryAmount": {
             "description": "Amount with currency",
+            "examples": [
+                {
+                    "amount": 10000,
+                    "currency": "GBP"
+                }
+            ],
             "properties": {
                 "amount": {
+                    "description": "Amount in smallest currency unit (e.g., cents)",
+                    "maximum": 1000000000000,
+                    "minimum": 0,
                     "title": "Amount",
                     "type": "integer"
                 },
@@ -161,6 +173,31 @@
             "title": "Id",
             "type": "string"
         },
+        "created_at": {
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?Z$",
+            "title": "Created At",
+            "type": "string"
+        },
+        "updated_at": {
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?Z$",
+            "title": "Updated At",
+            "type": "string"
+        },
+        "version": {
+            "default": 1,
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+        },
+        "is_active": {
+            "default": true,
+            "title": "Is Active",
+            "type": "boolean"
+        },
+        "metadata": {
+            "title": "Metadata",
+            "type": "object"
+        },
         "created_by": {
             "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[1-5][a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$",
             "title": "Created By",
@@ -168,11 +205,15 @@
         },
         "first_name": {
             "maxLength": 50,
+            "minLength": 1,
+            "pattern": "^[a-zA-Z\\s\\-']+$",
             "title": "First Name",
             "type": "string"
         },
         "last_name": {
             "maxLength": 50,
+            "minLength": 1,
+            "pattern": "^[a-zA-Z\\s\\-']+$",
             "title": "Last Name",
             "type": "string"
         },
@@ -204,20 +245,12 @@
         },
         "annual_income": {
             "$ref": "#/$defs/MonetaryAmount"
-        },
-        "created_at": {
-            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?Z$",
-            "title": "Created At",
-            "type": "string"
-        },
-        "updated_at": {
-            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?Z$",
-            "title": "Updated At",
-            "type": "string"
         }
     },
     "required": [
         "id",
+        "created_at",
+        "updated_at",
         "created_by",
         "first_name",
         "last_name",
@@ -227,9 +260,7 @@
         "date_of_birth",
         "address",
         "employment_status",
-        "annual_income",
-        "created_at",
-        "updated_at"
+        "annual_income"
     ],
     "title": "Client",
     "type": "object"

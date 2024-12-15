@@ -32,6 +32,8 @@
                     "$ref": "#/$defs/ErrorType"
                 },
                 "message": {
+                    "maxLength": 1000,
+                    "minLength": 1,
                     "title": "Message",
                     "type": "string"
                 }

@@ -6,6 +6,10 @@
  */
 
 export type Id = string;
+export type CreatedAt = string;
+export type UpdatedAt = string;
+export type Version = number;
+export type IsActive = boolean;
 export type Email = string;
 export type FirstName = string;
 export type LastName = string;
@@ -56,11 +60,14 @@ export type IsDefault = boolean;
 export type SubscriptionPlan = "BASIC" | "PREMIUM" | "ENTERPRISE";
 export type SubscriptionStatus = "ACTIVE" | "INACTIVE" | "TRIALING" | "CANCELLED";
 export type UserType = "CLIENT" | "CO_APPLICANT";
-export type CreatedAt = string;
-export type UpdatedAt = string;
 
 export interface User {
   id: Id;
+  created_at: CreatedAt;
+  updated_at: UpdatedAt;
+  version?: Version;
+  is_active?: IsActive;
+  metadata?: Metadata;
   email: Email;
   first_name: FirstName;
   last_name: LastName;
@@ -70,8 +77,9 @@ export interface User {
   subscription_plan?: SubscriptionPlan | null;
   subscription_status?: SubscriptionStatus | null;
   user_type: UserType;
-  created_at: CreatedAt;
-  updated_at: UpdatedAt;
+  [k: string]: unknown;
+}
+export interface Metadata {
   [k: string]: unknown;
 }
 export interface Address {

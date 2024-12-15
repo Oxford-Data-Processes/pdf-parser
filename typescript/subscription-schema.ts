@@ -6,6 +6,10 @@
  */
 
 export type Id = string;
+export type CreatedAt = string;
+export type UpdatedAt = string;
+export type Version = number;
+export type IsActive = boolean;
 export type UserId = string;
 export type StripeCustomerId = string | null;
 export type StripeSubscriptionId = string | null;
@@ -17,11 +21,14 @@ export type CancelAt = string | null;
 export type CanceledAt = string | null;
 export type TrialStart = string | null;
 export type TrialEnd = string | null;
-export type CreatedAt = string;
-export type UpdatedAt = string;
 
 export interface Subscription {
   id: Id;
+  created_at: CreatedAt;
+  updated_at: UpdatedAt;
+  version?: Version;
+  is_active?: IsActive;
+  metadata?: Metadata;
   user_id: UserId;
   stripe_customer_id?: StripeCustomerId;
   stripe_subscription_id?: StripeSubscriptionId;
@@ -33,7 +40,8 @@ export interface Subscription {
   canceled_at?: CanceledAt;
   trial_start?: TrialStart;
   trial_end?: TrialEnd;
-  created_at: CreatedAt;
-  updated_at: UpdatedAt;
+  [k: string]: unknown;
+}
+export interface Metadata {
   [k: string]: unknown;
 }

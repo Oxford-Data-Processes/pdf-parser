@@ -11,6 +11,9 @@ export type AssessmentType = "AFFORDABILITY" | "RISK" | "FULL";
 export type IncomeTrend = "INCREASING" | "DECREASING" | "STABLE";
 export type IncomeSourceType = "SALARY" | "BUSINESS" | "INVESTMENT" | "OTHER";
 export type Frequency = "MONTHLY" | "YEARLY";
+/**
+ * Amount in smallest currency unit (e.g., cents)
+ */
 export type Amount = number;
 export type Currency = "USD" | "GBP" | "EUR";
 export type ReliabilityScore = number | string;

@@ -6,6 +6,10 @@
  */
 
 export type Id = string;
+export type CreatedAt = string;
+export type UpdatedAt = string;
+export type Version = number;
+export type IsActive = boolean;
 export type CreatedBy = string;
 export type FirstName = string;
 export type LastName = string;
@@ -68,13 +72,19 @@ export type CountryCode =
   | "AT"
   | "CH";
 export type EmploymentStatus = "EMPLOYED" | "SELF_EMPLOYED" | "UNEMPLOYED";
+/**
+ * Amount in smallest currency unit (e.g., cents)
+ */
 export type Amount = number;
 export type Currency = "USD" | "GBP" | "EUR";
-export type CreatedAt = string;
-export type UpdatedAt = string;
 
 export interface Client {
   id: Id;
+  created_at: CreatedAt;
+  updated_at: UpdatedAt;
+  version?: Version;
+  is_active?: IsActive;
+  metadata?: Metadata;
   created_by: CreatedBy;
   first_name: FirstName;
   last_name: LastName;
@@ -85,8 +95,9 @@ export interface Client {
   address: Address;
   employment_status: EmploymentStatus;
   annual_income: MonetaryAmount;
-  created_at: CreatedAt;
-  updated_at: UpdatedAt;
+  [k: string]: unknown;
+}
+export interface Metadata {
   [k: string]: unknown;
 }
 export interface Address {
