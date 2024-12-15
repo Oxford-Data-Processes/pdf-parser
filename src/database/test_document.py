@@ -30,7 +30,7 @@ def test_create_valid_pdf_document():
         created_at=DatetimeStr(datetime.now().isoformat() + "Z"),
         updated_at=DatetimeStr(datetime.now().isoformat() + "Z"),
     )
-    dump_json("documents_valid_pdf", document)
+    dump_json("document_valid_pdf", document)
     assert document.document_type == DocumentType.BANK_STATEMENT
     assert document.document_status == DocumentStatus.PENDING
     assert document.mime_type == MimeType.PDF
@@ -57,7 +57,7 @@ def test_create_valid_document_with_errors():
         created_at=DatetimeStr(datetime.now().isoformat() + "Z"),
         updated_at=DatetimeStr(datetime.now().isoformat() + "Z"),
     )
-    dump_json("documents_with_errors", document)
+    dump_json("document_with_errors", document)
     assert document.document_type == DocumentType.PAYSLIP
     assert document.document_status == DocumentStatus.ERROR
     assert len(document.validation_errors) == 2
@@ -92,7 +92,7 @@ def test_create_valid_processed_document():
         created_at=DatetimeStr(datetime.now().isoformat() + "Z"),
         updated_at=DatetimeStr(datetime.now().isoformat() + "Z"),
     )
-    dump_json("documents_processed", document)
+    dump_json("document_processed", document)
     assert document.document_type == DocumentType.UTILITY_BILL
     assert document.document_status == DocumentStatus.PROCESSED
     assert document.file_size == 3072
