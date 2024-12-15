@@ -3,29 +3,46 @@
         "money_in": {
             "processor": "clean_currency",
             "options": {
-                "decimal_places": 2,
-                "remove_symbols": ["£", "$", "€"]
+                "decimal_places": 2
             }
         },
         "start_balance": {
             "processor": "clean_currency",
             "options": {
-                "decimal_places": 2,
-                "remove_symbols": ["£", "$", "€"]
+                "decimal_places": 2
             }
         },
         "money_out": {
             "processor": "clean_currency",
             "options": {
-                "decimal_places": 2,
-                "remove_symbols": ["£", "$", "€"]
+                "decimal_places": 2
             }
         },
         "end_balance": {
             "processor": "clean_currency",
             "options": {
-                "decimal_places": 2,
-                "remove_symbols": ["£", "$", "€"]
+                "decimal_places": 2
+            }
+        },
+        "customer_name": {
+            "processor": "clean_text",
+            "options": {
+                "remove_titles": true,
+                "max_length": 50
+            }
+        },
+        "account_number": {
+            "processor": "clean_numbers",
+            "options": {
+                "allow_chars": "",
+                "format": "########"
+            }
+        },
+        "sort_code": {
+            "processor": "clean_numbers",
+            "options": {
+                "allow_chars": "-",
+                "format": "##-##-##"
             }
         }
     },
@@ -53,8 +70,19 @@
             "money_out": {
                 "processor": "clean_currency",
                 "options": {
-                    "decimal_places": 2,
-                    "remove_symbols": ["£", "$", "€"]
+                    "decimal_places": 2
+                }
+            },
+            "money_in": {
+                "processor": "clean_currency",
+                "options": {
+                    "decimal_places": 2
+                }
+            },
+            "balance": {
+                "processor": "clean_currency",
+                "options": {
+                    "decimal_places": 2
                 }
             }
         }

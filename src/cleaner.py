@@ -59,21 +59,15 @@ class ProcessorRegistry:
         if not value:
             return value
 
-        # Remove specified currency symbols
-        for symbol in options.get("remove_symbols", []):
-            value = value.replace(symbol, "")
+        decimal_places = options.get("decimal_places", 2)
 
         # Remove any remaining non-numeric chars except decimal point
-        result = re.sub(r"[^0-9.]", "", value)
+        result = re.sub(r"[^0-9.\-]", "", value)
 
-        # Format to specified decimal places
         try:
-            decimal_places = options.get("decimal_places", 2)
-            result = f"{float(result):.{decimal_places}f}"
+            return int(round(float(result) * 10**decimal_places))
         except ValueError:
             return value
-
-        return result
 
     def clean_date(self, value: str, options: Dict[str, Any]) -> str:
         if not value:
