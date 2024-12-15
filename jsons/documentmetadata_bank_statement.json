@@ -81,7 +81,7 @@
                         "category": "INCOME",
                         "confidence": 0.95,
                         "description": "ACME CORP SALARY",
-                        "subcategory": "SALARY"
+                        "subcategory": "INCOME_WAGES"
                     }
                 ],
                 "savings": [
@@ -96,10 +96,10 @@
                             "amount": 250000,
                             "currency": "GBP"
                         },
-                        "category": "TRANSFERS",
+                        "category": "TRANSFER_OUT",
                         "confidence": 0.99,
                         "description": "TRANSFER TO SAVINGS",
-                        "subcategory": "AUTOMATED_SAVINGS"
+                        "subcategory": "TRANSFER_OUT_SAVINGS"
                     }
                 ],
                 "expenses": [
@@ -114,15 +114,15 @@
                             "amount": 300000,
                             "currency": "GBP"
                         },
-                        "category": "HOUSING",
+                        "category": "RENT_AND_UTILITIES",
                         "confidence": 0.98,
                         "description": "LANDLORD RENT PAYMENT",
-                        "subcategory": "RENT"
+                        "subcategory": "RENT_AND_UTILITIES_RENT"
                     }
                 ]
             }
         }
     },
-    "created_at": "2024-12-15T15:46:20.647466Z",
-    "updated_at": "2024-12-15T15:46:20.647473Z"
+    "created_at": "2024-12-15T16:14:36.881681Z",
+    "updated_at": "2024-12-15T16:14:36.881684Z"
 }
