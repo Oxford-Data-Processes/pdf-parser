@@ -4,7 +4,8 @@ from fastapi.middleware.cors import CORSMiddleware
 import json
 import os
 import sys
-from cleaner import PageCleaner
+from api.cleaner import PageCleaner
+
 
 # Add the parent directory to the system path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
@@ -71,7 +72,7 @@ def document_cleaner(document_data: dict, config: dict):
 
 @app.post("/clean-document/")
 async def clean_document(
-    document_data: dict = Body(...),
+    document_data: str = Form(...),
     template_name: str = Form(...),
 ) -> JSONResponse:
     try:
