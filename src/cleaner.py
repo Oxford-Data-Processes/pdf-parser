@@ -70,6 +70,8 @@ class ProcessorRegistry:
 
         try:
             date_obj = datetime.strptime(value, options["input_format"])
+            if options.get("use_statement_date_year", False):
+                date_obj = date_obj.replace(year=2023)
             return date_obj.strftime(options["output_format"])
         except ValueError:
             return value

@@ -9,6 +9,10 @@ TO DO:
 - Create performance tests
 - Build diagrams for the project, formal diagrams expressed in code with auto-generation from code
 
+Bugs:
+
+- Barclays:
+  - Use statement date year is not working
 
 Start up:
 
