@@ -44,28 +44,28 @@
                 },
                 "categories": [
                     {
-                        "category": "HOUSING",
+                        "category": "RENT_AND_UTILITIES",
                         "total": {
                             "amount": 27999,
                             "currency": "GBP"
                         },
                         "subcategories": [
                             {
-                                "subcategory": "INSURANCE",
+                                "subcategory": "RENT_AND_UTILITIES_INTERNET_AND_CABLE",
                                 "amount": {
                                     "amount": 0,
                                     "currency": "GBP"
                                 }
                             },
                             {
-                                "subcategory": "UTILITIES",
+                                "subcategory": "RENT_AND_UTILITIES_GAS_AND_ELECTRICITY",
                                 "amount": {
                                     "amount": 3912,
                                     "currency": "GBP"
                                 }
                             },
                             {
-                                "subcategory": "RENT",
+                                "subcategory": "RENT_AND_UTILITIES_RENT",
                                 "amount": {
                                     "amount": 0,
                                     "currency": "GBP"
@@ -82,7 +82,7 @@
                 },
                 "categories": [
                     {
-                        "category": "FOOD",
+                        "category": "FOOD_AND_DRINK",
                         "total": {
                             "amount": 62136,
                             "currency": "GBP"
@@ -98,7 +98,7 @@
                         "subcategories": []
                     },
                     {
-                        "category": "TRANSPORT",
+                        "category": "TRANSPORTATION",
                         "total": {
                             "amount": 24087,
                             "currency": "GBP"
@@ -153,7 +153,7 @@
             "income_stability_score": 98.96
         }
     },
-    "created_at": "2024-12-15T15:46:20.627227Z",
+    "created_at": "2024-12-15T16:02:06.316919Z",
     "analysis_period": {
         "start_date": "2023-01-01",
         "end_date": "2023-12-31"

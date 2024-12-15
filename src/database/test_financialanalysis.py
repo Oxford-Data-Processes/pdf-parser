@@ -20,8 +20,9 @@ from database.shared_models import (
     DateStr,
     DatetimeStr,
     dump_json,
+    TransactionCategory,
+    TransactionSubcategory,
 )
-from database.documentmetadata import TransactionCategory, TransactionSubcategory
 
 
 def test_create_valid_base_salary():
@@ -51,26 +52,26 @@ def test_create_valid_income_analysis():
 
 def test_create_valid_expense_breakdown():
     expense_breakdown = ExpenseBreakdown(
-        category=TransactionSubcategory.RENT,
+        category=TransactionSubcategory.RENT_AND_UTILITIES_RENT,
         amount=MonetaryAmount(amount=200000, currency=Currency.GBP),
     )
-    assert expense_breakdown.category == TransactionSubcategory.RENT
+    assert expense_breakdown.category == TransactionSubcategory.RENT_AND_UTILITIES_RENT
     assert expense_breakdown.amount.amount == 200000
 
 
 def test_create_valid_expense_category():
     expense_breakdowns = [
         ExpenseBreakdown(
-            category=TransactionSubcategory.RENT,
+            category=TransactionSubcategory.RENT_AND_UTILITIES_RENT,
             amount=MonetaryAmount(amount=200000, currency=Currency.GBP),
         ),
         ExpenseBreakdown(
-            category=TransactionSubcategory.UTILITIES,
+            category=TransactionSubcategory.RENT_AND_UTILITIES_GAS_AND_ELECTRICITY,
             amount=MonetaryAmount(amount=50000, currency=Currency.GBP),
         ),
     ]
     expense_category = ExpenseCategory(
-        category=TransactionCategory.EXPENSE,
+        category=TransactionCategory.RENT_AND_UTILITIES,
         total=MonetaryAmount(amount=250000, currency=Currency.GBP),
         breakdown=expense_breakdowns,
     )
@@ -81,16 +82,16 @@ def test_create_valid_expense_category():
 def test_create_valid_expense_analysis():
     expense_breakdowns = [
         ExpenseBreakdown(
-            category=TransactionSubcategory.RENT,
+            category=TransactionSubcategory.RENT_AND_UTILITIES_RENT,
             amount=MonetaryAmount(amount=200000, currency=Currency.GBP),
         ),
         ExpenseBreakdown(
-            category=TransactionSubcategory.UTILITIES,
+            category=TransactionSubcategory.RENT_AND_UTILITIES_GAS_AND_ELECTRICITY,
             amount=MonetaryAmount(amount=50000, currency=Currency.GBP),
         ),
     ]
     expense_category = ExpenseCategory(
-        category=TransactionCategory.EXPENSE,
+        category=TransactionCategory.RENT_AND_UTILITIES,
         total=MonetaryAmount(amount=250000, currency=Currency.GBP),
         breakdown=expense_breakdowns,
     )
@@ -147,16 +148,16 @@ def test_create_valid_financial_analysis():
     # Create expense analysis
     expense_breakdowns = [
         ExpenseBreakdown(
-            category=TransactionSubcategory.RENT,
+            category=TransactionSubcategory.RENT_AND_UTILITIES_RENT,
             amount=MonetaryAmount(amount=200000, currency=Currency.GBP),
         ),
         ExpenseBreakdown(
-            category=TransactionSubcategory.UTILITIES,
+            category=TransactionSubcategory.RENT_AND_UTILITIES_GAS_AND_ELECTRICITY,
             amount=MonetaryAmount(amount=50000, currency=Currency.GBP),
         ),
     ]
     expense_category = ExpenseCategory(
-        category=TransactionCategory.INCOME,
+        category=TransactionCategory.RENT_AND_UTILITIES,
         total=MonetaryAmount(amount=250000, currency=Currency.GBP),
         breakdown=expense_breakdowns,
     )

@@ -32,8 +32,9 @@ from database.shared_models import (
     IdStr,
     dump_json,
     Currency,
+    TransactionCategory,
+    TransactionSubcategory,
 )
-from database.documentmetadata import TransactionCategory, TransactionSubcategory
 
 
 def test_create_valid_income():
@@ -66,19 +67,19 @@ def test_create_valid_expenses():
             total=MonetaryAmount(amount=27999, currency=Currency.GBP),
             categories=[
                 CategoryBreakdown(
-                    category=TransactionCategory.HOUSING,
+                    category=TransactionCategory.RENT_AND_UTILITIES,
                     total=MonetaryAmount(amount=27999, currency=Currency.GBP),
                     subcategories=[
                         SubcategoryBreakdown(
-                            subcategory=TransactionSubcategory.INSURANCE,
+                            subcategory=TransactionSubcategory.RENT_AND_UTILITIES_INTERNET_AND_CABLE,
                             amount=MonetaryAmount(amount=0, currency=Currency.GBP),
                         ),
                         SubcategoryBreakdown(
-                            subcategory=TransactionSubcategory.UTILITIES,
+                            subcategory=TransactionSubcategory.RENT_AND_UTILITIES_GAS_AND_ELECTRICITY,
                             amount=MonetaryAmount(amount=3912, currency=Currency.GBP),
                         ),
                         SubcategoryBreakdown(
-                            subcategory=TransactionSubcategory.RENT,
+                            subcategory=TransactionSubcategory.RENT_AND_UTILITIES_RENT,
                             amount=MonetaryAmount(amount=0, currency=Currency.GBP),
                         ),
                     ],
@@ -89,7 +90,7 @@ def test_create_valid_expenses():
             total=MonetaryAmount(amount=77512, currency=Currency.GBP),
             categories=[
                 CategoryBreakdown(
-                    category=TransactionCategory.FOOD,
+                    category=TransactionCategory.FOOD_AND_DRINK,
                     total=MonetaryAmount(amount=62136, currency=Currency.GBP),
                     subcategories=[],
                 ),
@@ -99,7 +100,7 @@ def test_create_valid_expenses():
                     subcategories=[],
                 ),
                 CategoryBreakdown(
-                    category=TransactionCategory.TRANSPORT,
+                    category=TransactionCategory.TRANSPORTATION,
                     total=MonetaryAmount(amount=24087, currency=Currency.GBP),
                     subcategories=[],
                 ),
@@ -145,21 +146,21 @@ def test_create_valid_assessment_data():
                 total=MonetaryAmount(amount=27999, currency=Currency.GBP),
                 categories=[
                     CategoryBreakdown(
-                        category=TransactionCategory.HOUSING,
+                        category=TransactionCategory.RENT_AND_UTILITIES,
                         total=MonetaryAmount(amount=27999, currency=Currency.GBP),
                         subcategories=[
                             SubcategoryBreakdown(
-                                subcategory=TransactionSubcategory.INSURANCE,
+                                subcategory=TransactionSubcategory.RENT_AND_UTILITIES_INTERNET_AND_CABLE,
                                 amount=MonetaryAmount(amount=0, currency=Currency.GBP),
                             ),
                             SubcategoryBreakdown(
-                                subcategory=TransactionSubcategory.UTILITIES,
+                                subcategory=TransactionSubcategory.RENT_AND_UTILITIES_GAS_AND_ELECTRICITY,
                                 amount=MonetaryAmount(
                                     amount=3912, currency=Currency.GBP
                                 ),
                             ),
                             SubcategoryBreakdown(
-                                subcategory=TransactionSubcategory.RENT,
+                                subcategory=TransactionSubcategory.RENT_AND_UTILITIES_RENT,
                                 amount=MonetaryAmount(amount=0, currency=Currency.GBP),
                             ),
                         ],
@@ -170,7 +171,7 @@ def test_create_valid_assessment_data():
                 total=MonetaryAmount(amount=77512, currency=Currency.GBP),
                 categories=[
                     CategoryBreakdown(
-                        category=TransactionCategory.FOOD,
+                        category=TransactionCategory.FOOD_AND_DRINK,
                         total=MonetaryAmount(amount=62136, currency=Currency.GBP),
                         subcategories=[],
                     ),
@@ -180,7 +181,7 @@ def test_create_valid_assessment_data():
                         subcategories=[],
                     ),
                     CategoryBreakdown(
-                        category=TransactionCategory.TRANSPORT,
+                        category=TransactionCategory.TRANSPORTATION,
                         total=MonetaryAmount(amount=24087, currency=Currency.GBP),
                         subcategories=[],
                     ),
@@ -257,23 +258,23 @@ def test_create_valid_assessment_row():
                     total=MonetaryAmount(amount=27999, currency=Currency.GBP),
                     categories=[
                         CategoryBreakdown(
-                            category=TransactionCategory.HOUSING,
+                            category=TransactionCategory.RENT_AND_UTILITIES,
                             total=MonetaryAmount(amount=27999, currency=Currency.GBP),
                             subcategories=[
                                 SubcategoryBreakdown(
-                                    subcategory=TransactionSubcategory.INSURANCE,
+                                    subcategory=TransactionSubcategory.RENT_AND_UTILITIES_INTERNET_AND_CABLE,
                                     amount=MonetaryAmount(
                                         amount=0, currency=Currency.GBP
                                     ),
                                 ),
                                 SubcategoryBreakdown(
-                                    subcategory=TransactionSubcategory.UTILITIES,
+                                    subcategory=TransactionSubcategory.RENT_AND_UTILITIES_GAS_AND_ELECTRICITY,
                                     amount=MonetaryAmount(
                                         amount=3912, currency=Currency.GBP
                                     ),
                                 ),
                                 SubcategoryBreakdown(
-                                    subcategory=TransactionSubcategory.RENT,
+                                    subcategory=TransactionSubcategory.RENT_AND_UTILITIES_RENT,
                                     amount=MonetaryAmount(
                                         amount=0, currency=Currency.GBP
                                     ),
@@ -286,7 +287,7 @@ def test_create_valid_assessment_row():
                     total=MonetaryAmount(amount=77512, currency=Currency.GBP),
                     categories=[
                         CategoryBreakdown(
-                            category=TransactionCategory.FOOD,
+                            category=TransactionCategory.FOOD_AND_DRINK,
                             total=MonetaryAmount(amount=62136, currency=Currency.GBP),
                             subcategories=[],
                         ),
@@ -296,7 +297,7 @@ def test_create_valid_assessment_row():
                             subcategories=[],
                         ),
                         CategoryBreakdown(
-                            category=TransactionCategory.TRANSPORT,
+                            category=TransactionCategory.TRANSPORTATION,
                             total=MonetaryAmount(amount=24087, currency=Currency.GBP),
                             subcategories=[],
                         ),
