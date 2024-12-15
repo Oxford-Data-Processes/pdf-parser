@@ -22,11 +22,6 @@ class ProcessorRegistry:
         if options.get("uppercase", False):
             result = result.upper()
 
-        if options.get("remove_titles", False):
-            titles = ["Mr", "Mrs", "Ms", "Dr", "Prof"]
-            for title in titles:
-                result = result.replace(title, "").strip()
-
         if "max_length" in options:
             result = result[: options["max_length"]]
 
