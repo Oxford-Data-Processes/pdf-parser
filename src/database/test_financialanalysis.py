@@ -156,7 +156,7 @@ def test_create_valid_financial_analysis():
         ),
     ]
     expense_category = ExpenseCategory(
-        category=TransactionCategory.EXPENSE,
+        category=TransactionCategory.INCOME,
         total=MonetaryAmount(amount=250000, currency=Currency.GBP),
         breakdown=expense_breakdowns,
     )

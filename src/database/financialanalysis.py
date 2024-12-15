@@ -50,10 +50,8 @@ class ExpenseBreakdown(BaseModel):
 
 
 class ExpenseCategory(BaseModel):
-    category: Literal[TransactionCategory.EXPENSE]
     total: MonetaryAmount
     breakdown: List[ExpenseBreakdown]
-    metadata: Dict[str, Any] = Field(default_factory=dict)
 
 
 class ExpenseAnalysis(BaseModel):

@@ -89,7 +89,7 @@ class TransactionCategory(str, Enum):
     RENT_AND_UTILITIES = "RENT_AND_UTILITIES"
 
 
-class TransactionSubcategory:
+class TransactionSubcategory(str, Enum):
     pass
 
 
