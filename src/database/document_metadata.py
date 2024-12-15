@@ -43,7 +43,7 @@ class Transaction(BaseModel):
     balance: Optional[MonetaryAmount] = None
     category: TransactionCategory
     confidence: Decimal = Field(..., decimal_places=2)
-    description: str
+    description: str = Field(..., min_length=1, max_length=1000)
     subcategory: TransactionSubcategory
 
 
@@ -200,7 +200,7 @@ class PayslipData(BaseModel):
 
 class DocumentMetadata(BaseModel):
     id: IdStr
-    document_id: str
+    document_id: IdStr
     document_type: DocumentType
     document_metadata: Union[BankStatementData, PayslipData]
     created_at: DatetimeStr

@@ -1,7 +1,10 @@
 {
     "id": "123e4567-e89b-12d3-a456-426614174000",
-    "created_at": "2024-12-15T09:05:41.134309Z",
-    "updated_at": "2024-12-15T09:05:41.134313Z",
+    "created_at": "2024-12-15T09:13:51.659152Z",
+    "updated_at": "2024-12-15T09:13:51.659161Z",
+    "version": 1,
+    "is_active": true,
+    "metadata": {},
     "email": "john.doe@example.com",
     "first_name": "John",
     "last_name": "Doe",

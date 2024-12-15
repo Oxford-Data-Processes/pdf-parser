@@ -1,6 +1,6 @@
-from pydantic import BaseModel, Field, constr
+from pydantic import BaseModel, Field, constr, PositiveInt, confloat, conint, ConfigDict
 import pycountry
-from typing import Optional, Annotated
+from typing import Optional, Annotated, Dict, Any
 from decimal import Decimal
 from enum import Enum
 import json
@@ -21,11 +21,53 @@ IdStr = Annotated[
     ),
 ]
 
+NameStr = Annotated[
+    str, Field(min_length=1, max_length=50, pattern=r"^[a-zA-Z\s\-']+$")
+]
+
+DateStr = Annotated[
+    str, Field(pattern=r"^(19|20)\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$")
+]
+
+AddressLineStr = Annotated[
+    str,
+    Field(
+        min_length=1,
+        max_length=100,
+        pattern=r"^[a-zA-Z0-9\s\-\.,#'ßäöüÄÖÜ]+$",  # Added German characters
+    ),
+]
+
+CityStr = Annotated[
+    str, Field(min_length=1, max_length=100, pattern=r"^[a-zA-Z\s\-']+$")
+]
+
+PostcodeStr = Annotated[
+    str, Field(pattern=r"^[A-Za-z0-9\s\-]+$", min_length=1, max_length=20)
+]
+
+PercentageDecimal = Annotated[Decimal, Field(ge=0, le=1, decimal_places=4)]
+
+AmountDecimal = Annotated[Decimal, Field(ge=0, decimal_places=2)]
+
+PositiveAmount = Annotated[
+    PositiveInt, Field(ge=0, le=1_000_000_000_000)  # 1 trillion limit, allowing zero
+]
+
+# Integer constraints
+NonNegativeInt = Annotated[
+    conint(ge=0, le=1_000_000_000_000),  # 1 trillion limit, allowing zero
+    Field(description="Amount in smallest currency unit (e.g., cents)"),
+]
+
 
 class Table(BaseModel):
     id: IdStr
     created_at: DatetimeStr
     updated_at: DatetimeStr
+    version: conint(ge=1) = Field(default=1)
+    is_active: bool = Field(default=True)
+    metadata: Dict[str, Any] = Field(default_factory=dict)
 
 
 class TransactionCategory(str, Enum):
@@ -121,21 +163,6 @@ def dump_json(name, pydantic_object):
         f.write(json_string)
 
 
-NameStr = Annotated[str, Field(max_length=50)]
-
-DateStr = Annotated[
-    str, Field(pattern=r"^(19|20)\d{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$")
-]
-
-AddressLineStr = Annotated[str, Field(min_length=1, max_length=100)]
-
-CityStr = Annotated[str, Field(min_length=1, max_length=100)]
-
-PostcodeStr = Annotated[
-    str, Field(pattern=r"^[A-Za-z0-9\s\-]+$", min_length=1, max_length=20)
-]
-
-
 class CountryCode(str, Enum):
     GB = "GB"
     US = "US"
@@ -205,7 +232,7 @@ class Currency(str, Enum):
 class MonetaryAmount(BaseModel):
     """Amount with currency"""
 
-    amount: int
+    amount: NonNegativeInt
     currency: Currency
 
     @property
@@ -217,3 +244,7 @@ class MonetaryAmount(BaseModel):
     @property
     def decimal_amount(self) -> float:
         return float(self.amount) / 10**self.decimal_places
+
+    model_config = ConfigDict(
+        json_schema_extra={"examples": [{"amount": 10000, "currency": "GBP"}]}
+    )

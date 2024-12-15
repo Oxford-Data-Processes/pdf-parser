@@ -41,7 +41,7 @@ class ErrorType(str, Enum):
 
 class Error(BaseModel):
     type: ErrorType
-    message: str
+    message: str = Field(..., min_length=1, max_length=1000)
 
 
 class Document(BaseModel):
