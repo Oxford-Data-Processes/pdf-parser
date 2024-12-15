@@ -15,9 +15,8 @@
         "account_number": {
             "processor": "clean_numbers",
             "options": {
-                "allow_chars": "",
-                "format": "########"
-            }
+                "allow_chars": ""
+                        }
         },
         "money_in": {
             "processor": "clean_currency",

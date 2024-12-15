@@ -1,10 +1,7 @@
 {
     "id": "123e4567-e89b-12d3-a456-426614174000",
-    "created_at": "2024-12-15T16:14:36.869347Z",
-    "updated_at": "2024-12-15T16:14:36.869351Z",
-    "version": 1,
-    "is_active": true,
-    "metadata": {},
+    "created_at": "2024-12-15T17:35:04.571981Z",
+    "updated_at": "2024-12-15T17:35:04.571985Z",
     "created_by": "987fcdeb-51a2-43d7-9012-345678901234",
     "first_name": "Jeff",
     "last_name": "Marsters",

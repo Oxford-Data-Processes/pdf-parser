@@ -31,26 +31,15 @@ class ProcessorRegistry:
         if not value:
             return value
 
-        allowed = options.get("allow_chars", "")
-        pattern = f"[^0-9{re.escape(allowed)}]"
-        result = re.sub(pattern, "", value)
+        try:
+            allowed = options.get("allow_chars", "")
+            pattern = f"[^0-9{re.escape(allowed)}]"
+            result = re.sub(pattern, "", value)
+            return result
+        except Exception as e:
+            return ""
 
-        if "format" in options:
-            format_str = options["format"]
-            current_pos = 0
-            formatted = ""
-            for char in format_str:
-                if char == "#":
-                    if current_pos < len(result):
-                        formatted += result[current_pos]
-                        current_pos += 1
-                else:
-                    formatted += char
-            result = formatted
-
-        return result
-
-    def clean_currency(self, value: str, options: Dict[str, Any]) -> str:
+    def clean_currency(self, value: str, options: Dict[str, Any]) -> int:
         if not value:
             return value
 
@@ -62,7 +51,7 @@ class ProcessorRegistry:
         try:
             return int(round(float(result) * 10**decimal_places))
         except ValueError:
-            return value
+            return ""
 
     def clean_date(self, value: str, options: Dict[str, Any]) -> str:
         if not value:
@@ -74,7 +63,7 @@ class ProcessorRegistry:
                 date_obj = date_obj.replace(year=2023)
             return date_obj.strftime(options["output_format"])
         except ValueError:
-            return value
+            return ""
 
     def get_processor(self, name: str):
         return self.processors.get(name)

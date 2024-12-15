@@ -41,6 +41,12 @@
             "options": {
                 "decimal_places": 2
             }
+        },
+        "overdraft_limit": {
+            "processor": "clean_currency",
+            "options": {
+                "decimal_places": 2
+            }
         }
     },
     "tables": {

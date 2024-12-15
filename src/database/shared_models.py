@@ -54,20 +54,11 @@ PositiveAmount = Annotated[
     PositiveInt, Field(ge=0, le=1_000_000_000_000)  # 1 trillion limit, allowing zero
 ]
 
-# Integer constraints
-NonNegativeInt = Annotated[
-    conint(ge=0, le=1_000_000_000_000),  # 1 trillion limit, allowing zero
-    Field(description="Amount in smallest currency unit (e.g., cents)"),
-]
-
 
 class Table(BaseModel):
     id: IdStr
     created_at: DatetimeStr
     updated_at: DatetimeStr
-    version: conint(ge=1) = Field(default=1)
-    is_active: bool = Field(default=True)
-    metadata: Dict[str, Any] = Field(default_factory=dict)
 
 
 class TransactionCategory(str, Enum):
@@ -336,7 +327,7 @@ class Currency(str, Enum):
 class MonetaryAmount(BaseModel):
     """Amount with currency"""
 
-    amount: NonNegativeInt
+    amount: int
     currency: Currency
 
     @property

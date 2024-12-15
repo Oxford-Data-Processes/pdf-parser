@@ -213,22 +213,6 @@ def test_invalid_bank_identifier():
         )
 
 
-def test_invalid_transaction_amount():
-    with pytest.raises(ValueError):
-        Transaction(
-            date=DateStr("2023-12-01"),
-            type=TransactionTypes.FPI,
-            amount=MonetaryAmount(
-                amount=-100000, currency=Currency.GBP
-            ),  # Negative amount
-            balance=MonetaryAmount(amount=500000, currency=Currency.GBP),
-            category=TransactionCategory.INCOME,
-            subcategory=TransactionSubcategory.INCOME_WAGES,
-            confidence=Decimal("0.95"),
-            description="Salary payment",
-        )
-
-
 def test_invalid_payslip_dates():
     with pytest.raises(ValueError):
         PayslipData(

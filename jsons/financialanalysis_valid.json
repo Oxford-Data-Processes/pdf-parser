@@ -1,10 +1,7 @@
 {
     "id": "123e4567-e89b-12d3-a456-426614174000",
-    "created_at": "2024-12-15T16:14:36.885665Z",
-    "updated_at": "2024-12-15T16:14:36.885668Z",
-    "version": 1,
-    "is_active": true,
-    "metadata": {},
+    "created_at": "2024-12-15T17:35:04.587986Z",
+    "updated_at": "2024-12-15T17:35:04.587988Z",
     "client_id": "987fcdeb-51a2-43d7-9012-345678901234",
     "analysis_date": "2024-12-15",
     "income_analysis": {
@@ -80,5 +77,6 @@
         "confidence_score": 1.0,
         "metadata": {}
     },
-    "confidence_score": 1.0
+    "confidence_score": 1.0,
+    "metadata": {}
 }
