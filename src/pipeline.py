@@ -36,12 +36,26 @@ def prepare_files(pdf_bytes: bytes, jpg_bytes: List[bytes]) -> List[tuple]:
     return files
 
 
-def send_request(files: List[tuple], template: dict) -> requests.Response:
+def send_parse_pdf_request(files: List[tuple], template: dict) -> requests.Response:
     """Send the request to the API."""
     response = requests.post(
         f"{api_url}/parse-pdf/",
         files=files,
         data={"template": json.dumps(template)},
+    )
+    return response
+
+
+def send_clean_document_request(
+    document_data: dict, template_name: str
+) -> requests.Response:
+    """Send the request to the API."""
+    response = requests.post(
+        f"{api_url}/clean-document/",
+        data={
+            "document_data": json.dumps(document_data),
+            "template_name": template_name,
+        },
     )
     return response
 
@@ -90,7 +104,7 @@ def get_sort_code(pdf_path: str) -> str:
         files = prepare_files(pdf_bytes, jpg_bytes)
 
     try:
-        response = send_request(files, template)
+        response = send_parse_pdf_request(files, template)
         if response.status_code == 200:
             sort_code = next(
                 (
@@ -113,8 +127,12 @@ def parse_pdf(pdf_path: str, template_name: str, identifier: str):
         pdf_bytes = pdf_file.read()
         jpg_bytes = create_jpg_bytes(pdf_bytes)
         files = prepare_files(pdf_bytes, jpg_bytes)
-        response = send_request(files, template_dict)
+        response = send_parse_pdf_request(files, template_dict)
         return response.json()
+
+
+def clean_document(document_data: dict, template_name: str):
+    return send_clean_document_request(document_data, template_name)
 
 
 def main(pdf_path: str, template_name: str, identifier: str):
@@ -139,4 +157,5 @@ if __name__ == "__main__":
         f"{template_name}_{identifier}.pdf",
     )
     parsed_pdf = main(pdf_path, template_name, identifier)
-    print(parsed_pdf)
+    cleaned_pdf = clean_document(parsed_pdf, template_name)
+    print(cleaned_pdf)

@@ -70,9 +70,8 @@ class ProcessorRegistry:
 
 
 class PageCleaner:
-    def __init__(self, config_path: str):
-        with open(config_path) as f:
-            self.config = json.load(f)
+    def __init__(self, config: dict):
+        self.config = config
         self.processor_registry = ProcessorRegistry()
 
     def clean_value(self, value: Any, cleaning_rule: Dict) -> Any:
