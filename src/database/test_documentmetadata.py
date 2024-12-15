@@ -90,8 +90,8 @@ def test_create_valid_document_metadata_bank_statement():
     categorised = CategorisedTransactions(
         income=[salary],
         expenses=[rent],
-        transfers=[savings],
+        savings=[savings],
     )
     assert len(categorised.income) == 1
     assert len(categorised.expenses) == 1
-    assert len(categorised.transfers) == 1
+    assert len(categorised.savings) == 1
