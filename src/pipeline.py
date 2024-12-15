@@ -132,7 +132,8 @@ def parse_pdf(pdf_path: str, template_name: str, identifier: str):
 
 
 def clean_document(document_data: dict, template_name: str):
-    return send_clean_document_request(document_data, template_name)
+    response = send_clean_document_request(document_data, template_name)
+    return response.json()
 
 
 def main(pdf_path: str, template_name: str, identifier: str):
@@ -158,4 +159,5 @@ if __name__ == "__main__":
     )
     parsed_pdf = main(pdf_path, template_name, identifier)
     cleaned_pdf = clean_document(parsed_pdf, template_name)
+    print("Cleaned PDF:")
     print(cleaned_pdf)

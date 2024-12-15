@@ -35,28 +35,28 @@ async def parse_pdf(
     images: list[UploadFile] = File(...),
     template: str = Form(...),
 ) -> JSONResponse:
-    try:
-        template_dict = json.loads(template)
+    # try:
+    template_dict = json.loads(template)
 
-        # Read the PDF bytes
-        pdf_bytes = await pdf.read()
+    # Read the PDF bytes
+    pdf_bytes = await pdf.read()
 
-        # Read the image bytes
-        jpg_bytes = [await image.read() for image in images]
+    # Read the image bytes
+    jpg_bytes = [await image.read() for image in images]
 
-        data_extractor = DataExtractor(pdf_bytes)
-        pdf_data = data_extractor.extract_data()
+    data_extractor = DataExtractor(pdf_bytes)
+    pdf_data = data_extractor.extract_data()
 
-        pdf_data["number_of_pages"] = len(jpg_bytes)
+    pdf_data["number_of_pages"] = len(jpg_bytes)
 
-        output = Parser.parse_pdf(template_dict, pdf_data, jpg_bytes)
-        return JSONResponse(status_code=200, content=json.loads(output))
+    output = Parser.parse_pdf(template_dict, pdf_data, jpg_bytes)
+    return JSONResponse(status_code=200, content=json.loads(output))
 
-    except Exception as e:
-        return JSONResponse(
-            status_code=500,
-            content={"error": "Processing failed", "details": str(e)},
-        )
+    # except Exception as e:
+    #     return JSONResponse(
+    #         status_code=500,
+    #         content={"error": "Processing failed", "details": str(e)},
+    #     )
 
 
 def document_cleaner(document_data: dict, config: dict):
@@ -75,21 +75,27 @@ async def clean_document(
     document_data: str = Form(...),
     template_name: str = Form(...),
 ) -> JSONResponse:
-    try:
-        config_path = os.path.join(
-            os.path.dirname(__file__),
-            "cleaner_configs",
-            f"{template_name}_cleaner_config.json",
-        )
-        with open(config_path) as f:
-            config = json.load(f)
-        cleaned_document_data = document_cleaner(
-            document_data, config
-        )  # Clean the provided document data
-        return JSONResponse(status_code=200, content=cleaned_document_data)
+    # try:
+    config_path = os.path.join(
+        os.path.dirname(__file__),
+        "cleaner_configs",
+        f"{template_name}_cleaner_config.json",
+    )
+    with open(config_path) as f:
+        config = json.load(f)
 
-    except Exception as e:
-        return JSONResponse(
-            status_code=500,
-            content={"error": "Processing failed", "details": str(e)},
-        )
+    document_data = json.loads(document_data)
+    print("Document data:")
+    print(document_data)
+    print("Config:")
+    print(config)
+    cleaned_document_data = document_cleaner(
+        document_data, config
+    )  # Clean the provided document data
+    return JSONResponse(status_code=200, content=cleaned_document_data)
+
+    # except Exception as e:
+    #     return JSONResponse(
+    #         status_code=500,
+    #         content={"error": "Processing failed", "details": str(e)},
+    #     )
