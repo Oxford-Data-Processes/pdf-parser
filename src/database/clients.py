@@ -1,12 +1,12 @@
-from pydantic import BaseModel, EmailStr, Field, GetCoreSchemaHandler
+from pydantic import EmailStr, GetCoreSchemaHandler
 from pydantic_core import CoreSchema, core_schema
 from .shared_models import (
-    IdStr as Id,
-    NameStr as Name,
-    DateStr as Date,
+    IdStr,
+    NameStr,
+    DateStr,
     Address,
-    DatetimeStr as Datetime,
     MonetaryAmount,
+    Table,
 )
 from enum import Enum
 
@@ -46,17 +46,14 @@ class EmploymentStatus(str, Enum):
     UNEMPLOYED = "UNEMPLOYED"
 
 
-class Client(BaseModel):
-    id: Id
-    created_by: Id
-    first_name: Name
-    last_name: Name
+class Client(Table):
+    created_by: IdStr
+    first_name: NameStr
+    last_name: NameStr
     email: EmailStr
     phone_country_code: PhoneCountryCode
     phone_number: PhoneNumber
-    date_of_birth: Date
+    date_of_birth: DateStr
     address: Address
     employment_status: EmploymentStatus
     annual_income: MonetaryAmount
-    created_at: Datetime
-    updated_at: Datetime

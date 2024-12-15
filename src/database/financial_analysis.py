@@ -1,6 +1,6 @@
 from pydantic import BaseModel, Field
 from typing import List, Literal
-from database.shared_models import IdStr, MonetaryAmount, DateStr
+from database.shared_models import IdStr, MonetaryAmount, DateStr, Table
 from database.document_metadata import TransactionCategory, TransactionSubcategory
 from decimal import Decimal
 from enum import Enum
@@ -58,8 +58,7 @@ class RiskAssessment(BaseModel):
     overall_risk_level: RiskLevel
 
 
-class FinancialAnalysis(BaseModel):
-    id: IdStr
+class FinancialAnalysis(Table):
     client_id: IdStr
     analysis_date: DateStr
     income_analysis: IncomeAnalysis

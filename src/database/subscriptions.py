@@ -1,7 +1,8 @@
 from pydantic import BaseModel
 from .shared_models import (
-    IdStr as Id,
-    DatetimeStr as Datetime,
+    Table,
+    DatetimeStr,
+    IdStr,
     SubscriptionStatus,
     SubscriptionPlan,
 )
@@ -20,18 +21,15 @@ StripeSubscriptionIdStr = Annotated[
 ]
 
 
-class Subscription(BaseModel):
-    id: Id
-    user_id: Id
+class Subscription(Table):
+    user_id: IdStr
     stripe_customer_id: Optional[StripeCustomerIdStr] = None
     stripe_subscription_id: Optional[StripeSubscriptionIdStr] = None
     subscription_plan: SubscriptionPlan
     subscription_status: SubscriptionStatus
-    current_period_start: Optional[Datetime] = None
-    current_period_end: Optional[Datetime] = None
-    cancel_at: Optional[Datetime] = None
-    canceled_at: Optional[Datetime] = None
-    trial_start: Optional[Datetime] = None
-    trial_end: Optional[Datetime] = None
-    created_at: Datetime
-    updated_at: Datetime
+    current_period_start: Optional[DatetimeStr] = None
+    current_period_end: Optional[DatetimeStr] = None
+    cancel_at: Optional[DatetimeStr] = None
+    canceled_at: Optional[DatetimeStr] = None
+    trial_start: Optional[DatetimeStr] = None
+    trial_end: Optional[DatetimeStr] = None

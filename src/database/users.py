@@ -1,11 +1,10 @@
-from pydantic import BaseModel, EmailStr, Field, HttpUrl, constr
+from pydantic import BaseModel, EmailStr, Field, HttpUrl
 from typing import Optional, Annotated
 from enum import Enum
 from database.shared_models import (
-    IdStr,
+    Table,
     NameStr,
     Address,
-    DatetimeStr,
     SubscriptionStatus,
     SubscriptionPlan,
 )
@@ -44,8 +43,7 @@ class UserType(str, Enum):
     CO_APPLICANT = "CO_APPLICANT"
 
 
-class User(BaseModel):
-    id: IdStr
+class User(Table):
     email: EmailStr
     first_name: NameStr
     last_name: NameStr
@@ -55,5 +53,3 @@ class User(BaseModel):
     subscription_plan: Optional[SubscriptionPlan] = None
     subscription_status: Optional[SubscriptionStatus] = None
     user_type: UserType
-    created_at: DatetimeStr
-    updated_at: DatetimeStr

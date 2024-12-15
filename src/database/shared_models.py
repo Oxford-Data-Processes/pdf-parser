@@ -8,7 +8,24 @@ import os
 
 from json import JSONEncoder
 from decimal import Decimal
-from pydantic import HttpUrl
+from pydantic import HttpUrl, BaseModel
+
+DatetimeStr = Annotated[
+    str, Field(pattern=r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z$")
+]
+
+IdStr = Annotated[
+    str,
+    Field(
+        pattern=r"^[a-f0-9]{8}-[a-f0-9]{4}-[1-5][a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+    ),
+]
+
+
+class Table(BaseModel):
+    Id: IdStr
+    created_at: DatetimeStr
+    updated_at: DatetimeStr
 
 
 class TransactionCategory(str, Enum):
@@ -103,17 +120,6 @@ def dump_json(name, pydantic_object):
     with open(f"jsons/{name}.json", "w") as f:
         f.write(json_string)
 
-
-DatetimeStr = Annotated[
-    str, Field(pattern=r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z$")
-]
-
-IdStr = Annotated[
-    str,
-    Field(
-        pattern=r"^[a-f0-9]{8}-[a-f0-9]{4}-[1-5][a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
-    ),
-]
 
 NameStr = Annotated[str, Field(max_length=50)]
 
