@@ -1,6 +1,6 @@
 import pytest
 from decimal import Decimal
-from datetime import date
+from datetime import date, datetime
 from database.financial_analysis import (
     BaseSalary,
     IncomeAnalysis,
@@ -13,7 +13,14 @@ from database.financial_analysis import (
     RiskAssessment,
     FinancialAnalysis,
 )
-from database.shared_models import MonetaryAmount, Currency, IdStr, DateStr, dump_json
+from database.shared_models import (
+    MonetaryAmount,
+    Currency,
+    IdStr,
+    DateStr,
+    DatetimeStr,
+    dump_json,
+)
 from database.document_metadata import TransactionCategory, TransactionSubcategory
 
 
@@ -179,6 +186,8 @@ def test_create_valid_financial_analysis():
         income_analysis=income_analysis,
         expense_analysis=expense_analysis,
         risk_assessment=risk_assessment,
+        created_at=DatetimeStr(datetime.now().isoformat() + "Z"),
+        updated_at=DatetimeStr(datetime.now().isoformat() + "Z"),
     )
     dump_json("financial_analysis_valid", financial_analysis)
 

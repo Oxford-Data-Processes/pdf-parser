@@ -1,5 +1,7 @@
 {
     "id": "123e4567-e89b-12d3-a456-426614174000",
+    "created_at": "2024-12-15T09:05:41.113551Z",
+    "updated_at": "2024-12-15T09:05:41.113555Z",
     "created_by": "987fcdeb-51a2-43d7-9012-345678901234",
     "first_name": "Jeff",
     "last_name": "Marsters",
@@ -19,7 +21,5 @@
     "annual_income": {
         "amount": 32000,
         "currency": "GBP"
-    },
-    "created_at": "2024-12-15T07:34:44.240444Z",
-    "updated_at": "2024-12-15T07:34:44.240448Z"
+    }
 }

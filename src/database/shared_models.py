@@ -23,7 +23,7 @@ IdStr = Annotated[
 
 
 class Table(BaseModel):
-    Id: IdStr
+    id: IdStr
     created_at: DatetimeStr
     updated_at: DatetimeStr
 

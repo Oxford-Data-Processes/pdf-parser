@@ -1,5 +1,7 @@
 {
     "id": "123e4567-e89b-12d3-a456-426614174000",
+    "created_at": "2024-12-15T09:05:41.134309Z",
+    "updated_at": "2024-12-15T09:05:41.134313Z",
     "email": "john.doe@example.com",
     "first_name": "John",
     "last_name": "Doe",
@@ -22,7 +24,5 @@
     },
     "subscription_plan": "PREMIUM",
     "subscription_status": "ACTIVE",
-    "user_type": "CLIENT",
-    "created_at": "2024-12-15T07:34:44.265902Z",
-    "updated_at": "2024-12-15T07:34:44.265909Z"
+    "user_type": "CLIENT"
 }
