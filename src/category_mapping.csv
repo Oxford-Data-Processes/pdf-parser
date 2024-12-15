@@ -1,0 +1,5 @@
+keyword,category,subcategory
+salary,INCOME,SALARY
+income,INCOME,SALARY
+rent,HOUSING,RENT
+mortgage,HOUSING,MORTGAGE
