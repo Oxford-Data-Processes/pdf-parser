@@ -39,7 +39,7 @@ class ProcessorRegistry:
         except Exception as e:
             return ""
 
-    def clean_currency(self, value: str, options: Dict[str, Any]) -> int:
+    def clean_currency(self, value: str, options: Dict[str, Any]) -> str:
         if not value:
             return value
 
@@ -49,7 +49,7 @@ class ProcessorRegistry:
         result = re.sub(r"[^0-9.\-]", "", value)
 
         try:
-            return int(round(float(result) * 10**decimal_places))
+            return str(round(float(result) * 10**decimal_places))
         except ValueError:
             return ""
 

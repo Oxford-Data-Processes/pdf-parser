@@ -18,25 +18,19 @@
                 "allow_chars": ""
             }
         },
-        "opening_balance": {
+        "end_balance": {
             "processor": "clean_currency",
             "options": {
                 "decimal_places": 2
             }
         },
-        "payments_in": {
+        "total_outgoings": {
             "processor": "clean_currency",
             "options": {
                 "decimal_places": 2
             }
         },
-        "payments_out": {
-            "processor": "clean_currency",
-            "options": {
-                "decimal_places": 2
-            }
-        },
-        "closing_balance": {
+        "total_deposits": {
             "processor": "clean_currency",
             "options": {
                 "decimal_places": 2
@@ -48,15 +42,9 @@
             "date": {
                 "processor": "clean_date",
                 "options": {
-                    "input_format": "%d %b",
+                    "input_format": "%d/%m/%Y",
                     "output_format": "%Y-%m-%d",
                     "use_statement_date_year": true
-                }
-            },
-            "payment_type": {
-                "processor": "clean_text",
-                "options": {
-                    "uppercase": true
                 }
             },
             "description": {
@@ -65,13 +53,7 @@
                     "max_length": 100
                 }
             },
-            "paid_out": {
-                "processor": "clean_currency",
-                "options": {
-                    "decimal_places": 2
-                }
-            },
-            "paid_in": {
+            "amount": {
                 "processor": "clean_currency",
                 "options": {
                     "decimal_places": 2

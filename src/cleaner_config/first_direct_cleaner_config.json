@@ -41,6 +41,12 @@
             "options": {
                 "decimal_places": 2
             }
+        },
+        "overdraft_limit": {
+            "processor": "clean_currency",
+            "options": {
+                "decimal_places": 2
+            }
         }
     },
     "tables": {
@@ -48,7 +54,7 @@
             "date": {
                 "processor": "clean_date",
                 "options": {
-                    "input_format": "%d %b",
+                    "input_format": "%d %b %y",
                     "output_format": "%Y-%m-%d",
                     "use_statement_date_year": true
                 }
