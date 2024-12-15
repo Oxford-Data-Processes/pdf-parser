@@ -69,7 +69,7 @@ class ProcessorRegistry:
         return self.processors.get(name)
 
 
-class DocumentCleaner:
+class PageCleaner:
     def __init__(self, config_path: str):
         with open(config_path) as f:
             self.config = json.load(f)

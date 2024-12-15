@@ -4,13 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import json
 import os
 import sys
-import pdfplumber
-import pytesseract
-from typing import List
-import io
-from PIL import Image
-import numpy as np
-import cv2
+from cleaner import BankStatementPageCleaner
 
 # Add the parent directory to the system path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))

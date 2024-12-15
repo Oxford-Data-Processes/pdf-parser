@@ -1,5 +1,6 @@
 TO DO:
 
+- Run mypy/ruff again
 - Add unit tests (pytest)
 - Create API tests using jest/typescript
 - Create automated template builder

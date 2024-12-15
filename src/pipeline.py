@@ -1,7 +1,6 @@
 import requests
 import json
 from typing import List, Dict
-from PIL import Image
 from pdf2image import convert_from_path
 import io
 import os
@@ -108,21 +107,6 @@ def get_sort_code(pdf_path: str) -> str:
         print(f"Error making request: {str(e)}")
 
 
-def handle_response(response: requests.Response, template_name: str, identifier: str):
-    """Handle the API response."""
-    print(f"Response status: {response.status_code}")
-    if response.status_code != 200:
-        print(f"Error response: {response.text}")
-    assert response.status_code == 200, f"API request failed: {response.text}"
-
-    output_path = os.path.join(
-        "src", "outputs", f"{template_name}_{identifier}_output.json"
-    )
-    with open(output_path, "w") as f:
-        json.dump(response.json(), f, indent=4)
-        print(f"Output saved to: {output_path}")
-
-
 def parse_pdf(pdf_path: str, template_name: str, identifier: str):
     template_dict = load_template(template_name)
     with open(pdf_path, "rb") as pdf_file:
@@ -130,17 +114,14 @@ def parse_pdf(pdf_path: str, template_name: str, identifier: str):
         jpg_bytes = create_jpg_bytes(pdf_bytes)
         files = prepare_files(pdf_bytes, jpg_bytes)
         response = send_request(files, template_dict)
-        handle_response(
-            response,
-            template_name,
-            identifier,
-        )
+        return response.json()
 
 
 def main(pdf_path: str, template_name: str, identifier: str):
     sort_code = get_sort_code(pdf_path)
     template_name = get_sort_code_template_mapping().get(sort_code)
-    parse_pdf(pdf_path, template_name, identifier)
+    parsed_pdf = parse_pdf(pdf_path, template_name, identifier)
+    return parsed_pdf
 
 
 if __name__ == "__main__":
@@ -157,4 +138,5 @@ if __name__ == "__main__":
         "pdf",
         f"{template_name}_{identifier}.pdf",
     )
-    main(pdf_path, template_name, identifier)
+    parsed_pdf = main(pdf_path, template_name, identifier)
+    print(parsed_pdf)
