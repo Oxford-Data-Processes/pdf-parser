@@ -21,14 +21,7 @@ python -m venv venv
 source venv/bin/activate
 pip install -r requirements_dev.txt
 
-API:
 
-docker build -t pdf-parser-api ./api
-docker run -p 8000:8000 -v $(pwd)/src:/app/src pdf-parser-api
-
-Local:
-
-uvicorn api.main:app --host 0.0.0.0 --port 8000 --reload
 
 Checks:
 
