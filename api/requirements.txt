@@ -1,3 +1,0 @@
-uvicorn
-fastapi
-git+https://github.com/Oxford-Data-Processes/pdf-parser.git
