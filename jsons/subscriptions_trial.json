@@ -1,7 +1,7 @@
 {
     "id": "123e4567-e89b-12d3-a456-426614174000",
-    "created_at": "2024-12-15T17:35:04.589954Z",
-    "updated_at": "2024-12-15T17:35:04.589955Z",
+    "created_at": "2024-12-16T09:19:06.578190Z",
+    "updated_at": "2024-12-16T09:19:06.578192Z",
     "user_id": "987fcdeb-51a2-43d7-9012-345678901234",
     "stripe_customer_id": null,
     "stripe_subscription_id": null,
@@ -11,6 +11,6 @@
     "current_period_end": null,
     "cancel_at": null,
     "canceled_at": null,
-    "trial_start": "2024-12-15T17:35:04.589947Z",
+    "trial_start": "2024-12-16T09:19:06.578183Z",
     "trial_end": "2024-01-31T23:59:59Z"
 }

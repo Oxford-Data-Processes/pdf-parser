@@ -1,9 +1,9 @@
 {
     "id": "123e4567-e89b-12d3-a456-426614174000",
-    "created_at": "2024-12-15T17:35:04.587986Z",
-    "updated_at": "2024-12-15T17:35:04.587988Z",
+    "created_at": "2024-12-16T09:19:06.575953Z",
+    "updated_at": "2024-12-16T09:19:06.575957Z",
     "client_id": "987fcdeb-51a2-43d7-9012-345678901234",
-    "analysis_date": "2024-12-15",
+    "analysis_date": "2024-12-16",
     "income_analysis": {
         "base_salary": {
             "annual": {
