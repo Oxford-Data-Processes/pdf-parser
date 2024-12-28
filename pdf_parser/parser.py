@@ -186,7 +186,7 @@ class Parser:
         output = {
             "metadata": {
                 "document_id": str(uuid.uuid4()),
-                "parsed_at": datetime.now().strftime("%Y-%m-%dT%H:%M:%S"),
+                "parsed_at": datetime.now().strftime("%Y-%m-%dT%H:%M:%S.%fZ"),
                 "number_of_pages": number_of_pages,
             },
             "pages": [{"forms": forms, "tables": tables}],
